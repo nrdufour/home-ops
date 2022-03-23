@@ -1,0 +1,6 @@
+---
+storage:
+  hosts:
+    possum:
+      ansible_host: possum.home
+      ansible_user: pi

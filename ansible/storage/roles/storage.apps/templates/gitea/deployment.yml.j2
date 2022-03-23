@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitea
+  labels:
+    app: gitea
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitea
+  template:
+    metadata:
+      labels:
+        app: gitea
+    spec:
+      containers:
+        - name: gitea
+          image: docker.io/gitea/gitea:1.16.0
+          env:
+            - name: "GITEA__database__DB_TYPE"
+              value: "sqlite3"
+          ports:
+            - containerPort: 3000
+            - containerPort: 2222
+          volumeMounts:
+            - name: data
+              mountPath: /data
+      volumes:
+        - name: data
+          hostPath:
+            path: {{ storage_base_dir }}/gitea
+            type: Directory

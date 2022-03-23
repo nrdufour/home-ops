@@ -1,0 +1,19 @@
+---
+
+- name: Provision possum machine
+  hosts: possum
+  become: yes
+
+  vars:
+    k3s_become: yes
+    pip_install_packages:
+      - name: kubernetes
+        version: 23.3.0
+      - name: PyYAML
+        version: 6.0
+
+  roles:
+    - role: storage.os
+    - role: geerlingguy.pip
+    - role: xanmanning.k3s
+    - role: storage.apps

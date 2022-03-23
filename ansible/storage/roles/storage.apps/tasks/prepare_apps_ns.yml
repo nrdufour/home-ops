@@ -1,0 +1,19 @@
+---
+
+- name: Ensure namespace apps exists
+  kubernetes.core.k8s:
+    kubeconfig: /etc/rancher/k3s/k3s.yaml
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: apps
+
+- name: Deploy Traefik Middleware object to redirect to HTTPS
+  kubernetes.core.k8s:
+    kubeconfig: /etc/rancher/k3s/k3s.yaml
+    namespace: apps
+    template: "{{ item }}"
+  loop:
+    - apps/traefik_redirect.yml.j2
