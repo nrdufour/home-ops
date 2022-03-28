@@ -3,3 +3,4 @@
 - import_tasks: cert-manager.yml
 - import_tasks: prepare_apps_ns.yml
 - import_tasks: gitea.yml
+- import_tasks: registry.yml

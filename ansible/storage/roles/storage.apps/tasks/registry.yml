@@ -1,0 +1,19 @@
+---
+
+- name: Ensure registry data dir exists
+  ansible.builtin.file:
+    path: "{{ storage_base_dir }}/registry"
+    state: directory
+    owner: 1000
+    group: 1000
+    mode: '0750'
+
+- name: Deploy registry objects
+  kubernetes.core.k8s:
+    kubeconfig: /etc/rancher/k3s/k3s.yaml
+    namespace: apps
+    template: "{{ item }}"
+  loop:
+    - registry/certificate.yml.j2
+    - registry/deployment.yml.j2
+    - registry/service.yml.j2
