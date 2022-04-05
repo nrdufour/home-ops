@@ -5,7 +5,12 @@
   become: yes
 
   vars:
+    k3s_server:
+      disable:
+        - traefik
+
     k3s_become: yes
+
     pip_install_packages:
       - name: kubernetes
         version: 23.3.0
