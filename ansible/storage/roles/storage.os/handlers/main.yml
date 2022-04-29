@@ -2,3 +2,8 @@
 
 - name: reboot
   ansible.builtin.reboot:
+
+- name: reload nfsd
+  systemd:
+    name: nfs-server
+    state: reloaded

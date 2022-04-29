@@ -3,3 +3,4 @@
 - import_tasks: prepare_raspberry.yml
 - import_tasks: prepare_disk.yml
 - import_tasks: dependencies.yml
+- import_tasks: setup_nfs.yml
