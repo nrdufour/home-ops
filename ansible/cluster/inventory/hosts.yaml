@@ -1,0 +1,52 @@
+---
+cluster:
+  children:
+    controller:
+      hosts:
+        raccoon00:
+
+    worker:
+      hosts:
+        raccoon01:
+        raccoon02:
+        raccoon03:
+        raccoon04:
+        raccoon05:
+        sparrow01:
+        sparrow02:
+        sparrow03:
+        sparrow04:
+        sparrow05:
+        sparrow06:
+
+    rasp4:
+      hosts:
+        raccoon00:
+          ansible_host: raccoon00.home
+        raccoon01:
+          ansible_host: raccoon01.home
+        raccoon02:
+          ansible_host: raccoon02.home
+        raccoon03:
+          ansible_host: raccoon03.home
+        raccoon04:
+          ansible_host: raccoon04.home
+        raccoon05:
+          ansible_host: raccoon05.home
+          
+    rasp3:
+      hosts:
+        sparrow01:
+          ansible_host: sparrow01.home
+        sparrow02:
+          ansible_host: sparrow02.home
+        sparrow03:
+          ansible_host: sparrow03.home
+        sparrow04:
+          ansible_host: sparrow04.home
+        sparrow05:
+          ansible_host: sparrow05.home
+        sparrow06:
+          ansible_host: sparrow06.home 
+  vars:
+    ansible_user: pi
