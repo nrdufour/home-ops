@@ -1,4 +1,3 @@
 ---
 
 storage_base_dir: /srv/storage
-nfs_base_dir: "{{ storage_base_dir }}/nfs"
