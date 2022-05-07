@@ -1,0 +1,5 @@
+---
+
+helm_release: "v3.8.2"
+helm_release_arm64_sha256: "238db7f55e887f9c1038b7e43585b84389a05fff5424e70557886cad1635b3ce"
+helm_arch: "linux-arm64"
