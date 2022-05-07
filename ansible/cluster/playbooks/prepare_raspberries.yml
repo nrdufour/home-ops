@@ -6,6 +6,7 @@
   roles:
     - role: mikolak-net.raspi_config
       raspi_config_hostname: "{{ ansible_host }}"
+    - geerlingguy.pip
     - geerlingguy.swap
 
   tasks:

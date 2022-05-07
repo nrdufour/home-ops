@@ -1,0 +1,118 @@
+---
+
+- name: Installing the required helm charts
+  hosts: controller
+  become: yes
+
+  roles:
+    - role: helm
+
+  tasks:
+    - name: Install openshift module used by kube module
+      ansible.builtin.pip:
+        name: openshift
+
+    - name: Install cert-manager
+      ansible.builtin.include_role:
+        name: local-cert-manager
+
+    - name: Add ingress-nginx chart repo
+      kubernetes.core.helm_repository:
+        name: ingress-nginx
+        repo_url: "https://kubernetes.github.io/ingress-nginx"
+
+    - name: Install Nginx controller
+      kubernetes.core.helm:
+        kubeconfig: "/etc/rancher/k3s/k3s.yaml"
+        name: ingress-nginx
+        chart_ref: ingress-nginx/ingress-nginx
+        update_repo_cache: yes
+        release_namespace: default
+        values:
+          controller:
+            extraArgs:
+              enable-ssl-passthrough: true
+
+    - name: Add argo chart repo
+      kubernetes.core.helm_repository:
+        name: argo
+        repo_url: "https://argoproj.github.io/argo-helm"
+
+    - name: Install ArgoCD
+      kubernetes.core.helm:
+        kubeconfig: "/etc/rancher/k3s/k3s.yaml"
+        name: argocd
+        chart_ref: argo/argo-cd
+        update_repo_cache: yes
+        release_namespace: argocd
+        create_namespace: yes
+        values:
+          global:
+            image:
+              repository: "alinbalutoiu/argocd"
+              #tag: "linux-arm-v2.0.0"
+              tag: "v2.2.2"
+          installCRDs: "false"
+          configs:
+            secret:
+              # Remember how it's generated:
+              # htpasswd -nbBC 10 "" $ARGO_PWD | tr -d ':\n' | sed 's/$2y/$2a/'
+              argocdServerAdminPassword: "{{ SECRET_ARGOCD_PASSWORD }}"
+
+    - name: Install the ingress for argocd
+      kubernetes.core.k8s:
+        kubeconfig: "/etc/rancher/k3s/k3s.yaml"
+        state: present
+        namespace: argocd
+        definition:
+          apiVersion: networking.k8s.io/v1
+          kind: Ingress
+          metadata:
+            name: argocd-ingress
+            namespace: argocd
+            annotations:
+              nginx.ingress.kubernetes.io/rewrite-target: /
+              nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+              cert-manager.io/cluster-issuer: ca-cluster-issuer
+              cert-manager.io/common-name: argocd.home
+          spec:
+            ingressClassName: nginx
+            rules:
+            - host: argocd.home
+              http:
+                paths:
+                - path: /
+                  pathType: Prefix
+                  backend:
+                    service:
+                      name: argocd-server
+                      port:
+                        number: 443
+            tls:
+            - hosts:
+              - argocd.home
+              secretName: argocd-secret # do not change, this is provided by Argo CD
+
+    - name: Bootstrap applications
+      kubernetes.core.k8s:
+        kubeconfig: "/etc/rancher/k3s/k3s.yaml"
+        state: present
+        namespace: argocd
+        definition:
+          apiVersion: argoproj.io/v1alpha1
+          kind: Application
+          metadata:
+            name: bootstrap-applications
+            namespace: argocd
+          spec:
+            destination:
+              namespace: argocd
+              server: https://kubernetes.default.svc
+            project: default
+            source:
+              path: argocd/applications
+              repoURL: https://git.home/nrdufour/rpi-cluster.git
+              targetRevision: HEAD
+            syncPolicy:
+              automated:
+                selfHeal: true
