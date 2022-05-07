@@ -1,0 +1,55 @@
+---
+
+- name: Add jetstack chart repo
+  become: yes
+  kubernetes.core.helm_repository:
+    name: jetstack
+    repo_url: "https://charts.jetstack.io"
+
+- name: Ensure namespace cert-manager exists
+  become: yes
+  kubernetes.core.k8s:
+    kubeconfig: "{{ local_cm_kubeconfig }}"
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Namespace
+      metadata:
+        name: cert-manager
+
+- name: Deploy latest version of cert-manager chart inside cert-manager namespace with values
+  become: yes
+  kubernetes.core.helm:
+    kubeconfig: "{{ local_cm_kubeconfig }}"
+    name: cert-manager
+    chart_ref: jetstack/cert-manager
+    release_namespace: cert-manager
+    values:
+      installCRDs: true
+
+- name: Deploy private CA secret
+  kubernetes.core.k8s:
+    kubeconfig: "{{ local_cm_kubeconfig }}"
+    namespace: cert-manager
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: ca-key-pair
+      type: Opaque
+      data:
+        tls.crt: "{{ SECRET_CA_CRT | b64encode }}"
+        tls.key: "{{ SECRET_CA_KEY | b64encode }}"
+
+- name: Deploy private CA as ClusterIssuer
+  kubernetes.core.k8s:
+    kubeconfig: "{{ local_cm_kubeconfig }}"
+    namespace: cert-manager
+    definition:
+      apiVersion: cert-manager.io/v1
+      kind: ClusterIssuer
+      metadata:
+        name: ca-cluster-issuer
+      spec:
+        ca:
+          secretName: ca-key-pair

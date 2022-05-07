@@ -21,4 +21,5 @@
     - role: storage.os
     - role: geerlingguy.pip
     - role: xanmanning.k3s
+    - role: local-cert-manager
     - role: storage.apps
