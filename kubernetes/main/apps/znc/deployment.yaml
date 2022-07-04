@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: znc-bouncer
+  name: znc-bouncer
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: znc-bouncer
+  template:
+    metadata:
+      labels:
+        app: znc-bouncer
+    spec:
+      volumes:
+      - name: znc-config
+        persistentVolumeClaim:
+          claimName: znc-pvc
+      initContainers:
+      - name: init-config
+        image: znc:1.8.2
+        command: ['/bin/sh', '-c', "until [ -f /znc-data/configs/znc.conf ]; do echo waiting for znc.conf; sleep 2; done"]
+        volumeMounts:
+          - mountPath: /znc-data
+            name: znc-config
+      containers:
+      - name: znc
+        image: znc:1.8.2
+        ports:
+        - containerPort: 6667
+        volumeMounts:
+          - mountPath: /znc-data
+            name: znc-config

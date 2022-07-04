@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: znc-bouncer
+  namespace: default
+spec:
+  type: LoadBalancer
+  selector:
+    app: znc-bouncer
+  ports:
+    - protocol: TCP
+      port: 6667
+      targetPort: 6667
