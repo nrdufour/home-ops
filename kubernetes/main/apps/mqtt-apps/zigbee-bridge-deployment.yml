@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zigbee-bridge
+  namespace: default
+  labels:
+    app: zigbee-bridge
+spec:
+  revisionHistoryLimit: 0
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zigbee-bridge
+  template:
+    metadata:
+      labels:
+        app: zigbee-bridge
+    spec:
+      containers:
+      - name: zigbee-bridge
+        image: registry.home:5000/zigbee-bridge:latest
+        imagePullPolicy: Always
+        env:
+          - name:  "MQTT_HOST"
+            value: "mqtt.default"
+          - name:  "MQTT_CLIENT_ID"
+            value: "Zigbee2MQTT"

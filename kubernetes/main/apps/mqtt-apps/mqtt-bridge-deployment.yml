@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mqtt-bridge
+  namespace: default
+  labels:
+    app: mqtt-bridge
+spec:
+  revisionHistoryLimit: 0
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mqtt-bridge
+  template:
+    metadata:
+      labels:
+        app: mqtt-bridge
+    spec:
+      containers:
+      - name: mqtt-bridge
+        image: registry.home:5000/mqtt-bridge:latest
+        imagePullPolicy: Always
+        env:
+          - name:  "INFLUXDB_HOST"
+            value: "influxdb.default"
+          - name:  "INFLUXDB_DBNAME"
+            value: "home_sensors"
+          - name:  "MQTT_HOST"
+            value: "mqtt.default"
+          - name:  "MQTT_CLIENT_ID"
+            value: "MQTTInfluxDBBridge"

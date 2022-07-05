@@ -4,3 +4,4 @@ resources:
 - znc
 - registry
 - mqtt
+- mqtt-apps
