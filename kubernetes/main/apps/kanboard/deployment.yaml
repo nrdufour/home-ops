@@ -1,0 +1,43 @@
+---
+# As per this page
+# https://geek-cookbook.funkypenguin.co.nz/recipes/kubernetes/kanboard/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kanboard
+  namespace: default
+  labels:
+    app: kanboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kanboard
+  template:
+    metadata:
+      labels:
+        app: kanboard
+    spec:
+      securityContext:
+        runAsUser:  0
+        runAsGroup: 0
+      containers:
+      - name: kanboard
+        image: kanboard/kanboard:v1.2.22
+        volumeMounts:
+          - mountPath: /var/www/app/config.php
+            name: kanboard-conf
+            subPath: config.php
+          - mountPath: /var/www/app/plugins
+            name: kanboard-data
+            subPath: plugins
+          - mountPath: /var/www/app/data
+            name: kanboard-data
+            subPath: data
+      volumes:
+        - name: kanboard-conf
+          configMap:
+            name: kanboard-config
+        - name: kanboard-data
+          persistentVolumeClaim:
+            claimName: kanboard-pvc

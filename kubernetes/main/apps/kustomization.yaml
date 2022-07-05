@@ -8,3 +8,4 @@ resources:
 - flame
 - influxdb
 - grafana
+- kanboard
