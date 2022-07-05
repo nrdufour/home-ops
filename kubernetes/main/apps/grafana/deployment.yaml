@@ -21,7 +21,7 @@ spec:
         runAsGroup: 472
       containers:
         - name: grafana
-          image: grafana/grafana:8.4.3
+          image: grafana/grafana:8.5.6
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
