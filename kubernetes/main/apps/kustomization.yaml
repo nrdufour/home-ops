@@ -5,3 +5,4 @@ resources:
 - registry
 - mqtt
 - mqtt-apps
+- flame

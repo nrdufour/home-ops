@@ -1,0 +1,34 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flame
+  namespace: default
+  labels:
+    app: flame
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flame
+  template:
+    metadata:
+      labels:
+        app: flame
+    spec:
+      containers:
+      - name: flame
+        image: pawelmalak/flame:multiarch2.3.0
+        envFrom:
+          - secretRef:
+              name: flame-config
+        ports:
+          - containerPort: 5005
+            name: http-flame
+        volumeMounts:
+          - mountPath: /app/data
+            name: flame-data
+      volumes:
+        - name: flame-data
+          persistentVolumeClaim:
+            claimName: flame-pvc
