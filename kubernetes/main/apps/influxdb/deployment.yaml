@@ -21,7 +21,7 @@ spec:
         runAsGroup: 1000
       containers:
       - name: influxdb
-        image: influxdb:1.8
+        image: influxdb:1.8.10
         ports:
         - containerPort: 8086
         volumeMounts:
