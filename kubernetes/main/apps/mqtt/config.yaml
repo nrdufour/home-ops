@@ -3,6 +3,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mqtt-config
+  namespace: default
 data:
   mosquitto.conf: |
     # Config file for mosquitto
