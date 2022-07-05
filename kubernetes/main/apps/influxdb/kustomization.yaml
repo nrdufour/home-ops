@@ -1,9 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- znc
-- registry
-- mqtt
-- mqtt-apps
-- flame
-- influxdb
+- deployment.yaml
+- pv.yaml
+- service.yaml
