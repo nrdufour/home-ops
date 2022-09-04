@@ -15,3 +15,6 @@ roles:
     version: 2.1.0
   - src: xanmanning.k3s
     version: v3.1.1
+  - src: cloudalchemy.prometheus
+    src: git+https://github.com/cloudalchemy/ansible-prometheus.git
+    version: 4.0.0

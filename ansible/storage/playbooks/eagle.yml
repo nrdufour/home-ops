@@ -1,0 +1,8 @@
+---
+
+- name: Provision eagle machine
+  hosts: eagle
+  become: yes
+
+  roles:
+    - role: ansible-prometheus

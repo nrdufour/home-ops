@@ -4,3 +4,9 @@ storage:
     possum:
       ansible_host: possum.home
       ansible_user: pi
+
+monitoring:
+  hosts:
+    eagle:
+      ansible_host: eagle.home
+      ansible_user: pi
