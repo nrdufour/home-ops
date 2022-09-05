@@ -50,3 +50,15 @@ cluster:
           ansible_host: sparrow06.home 
   vars:
     ansible_user: pi
+
+storage:
+  hosts:
+    possum:
+      ansible_host: possum.home
+      ansible_user: pi
+
+monitoring:
+  hosts:
+    eagle:
+      ansible_host: eagle.home
+      ansible_user: pi
