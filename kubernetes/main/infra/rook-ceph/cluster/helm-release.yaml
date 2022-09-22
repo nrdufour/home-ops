@@ -56,9 +56,9 @@ spec:
         config:
           osdsPerDevice: "1"
         nodes:
-          - name: raccoon00.home
-            devices:
-              - name: "/dev/disk/by-id/usb-Samsung_Flash_Drive_FIT_0361422060007504-0:0"
+          #- name: raccoon00.home
+          #  devices:
+          #    - name: "/dev/disk/by-id/usb-Samsung_Flash_Drive_FIT_0361422060007504-0:0"
           - name: raccoon01.home
             devices:
               - name: "/dev/disk/by-id/usb-Samsung_Flash_Drive_FIT_0362022060009149-0:0"
