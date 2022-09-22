@@ -22,7 +22,7 @@ spec:
     remediation:
       retries: 5
   dependsOn:
-    - name: rook-ceph-operator
+    - name: rook-ceph
       namespace: rook-ceph
   values:
     monitoring:
