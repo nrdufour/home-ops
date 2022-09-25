@@ -3,5 +3,8 @@
 - name: Prepare the machines themselves
   import_playbook: prepare_raspberries.yml
 
+- name: Extra steps for raspberry pi 4
+  import_playbook: prepare_rasp4.yml
+
 - name: Setup k3s across the cluster
   import_playbook: setup_k3s.yml

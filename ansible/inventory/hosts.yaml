@@ -20,8 +20,12 @@ cluster:
         sparrow06:
 
     rasp4:
+      vars:
+        extra_storage_disk: /dev/sda
       hosts:
         raccoon00:
+          nfs_storage_disk: /dev/sda
+          extra_storage_disk: /dev/sdb
           ansible_host: raccoon00.home
         raccoon01:
           ansible_host: raccoon01.home
