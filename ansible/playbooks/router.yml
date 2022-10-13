@@ -1,0 +1,8 @@
+---
+
+- name: Provision router features
+  hosts: router
+  become: yes
+
+  roles:
+    - role: router.coredns
