@@ -1,0 +1,19 @@
+---
+- name: Retrieve the kubeconfig file from the cluster
+  hosts: raccoon00
+
+  tasks:
+    - name: Copy kubeconfig to provision folder
+      become: true
+      ansible.builtin.fetch:
+        src: "/etc/rancher/k3s/k3s.yaml"
+        dest: "{{ playbook_dir }}/../../kubernetes/local/kubeconfig-main"
+        flat: true
+
+    - name: Update kubeconfig with the right IPv4 address
+      delegate_to: localhost
+      become: false
+      ansible.builtin.replace:
+        path: "{{ playbook_dir }}/../../kubernetes/local/kubeconfig-main"
+        regexp: "https://127.0.0.1:6443"
+        replace: "https://raccoon00.home:6443"

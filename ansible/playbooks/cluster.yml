@@ -8,3 +8,9 @@
 
 - name: Setup k3s across the cluster
   import_playbook: setup_k3s.yml
+
+- name: Retrieve the configuration file
+  import_playbook: cluster-retrieve-conf.yml
+
+- name: Build the configuration file for home-dns exchange
+  import_playbook: cluster-home-dns.yml
