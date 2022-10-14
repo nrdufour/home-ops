@@ -1,6 +1,7 @@
 ---
 
-- hosts: all
+- name: Setup the cluster with k3s
+  hosts: cluster
   become: yes
 
   roles:

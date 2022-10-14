@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: cluster
   become: yes
 
   roles:
