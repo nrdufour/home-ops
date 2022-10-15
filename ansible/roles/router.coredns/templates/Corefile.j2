@@ -24,6 +24,12 @@
 }
 
 . {
-    bind 192.168.0.1 192.168.10.1 192.168.20.1 127.0.0.1 ::1
     import common
+    bind 192.168.0.1 192.168.10.1 192.168.20.1 127.0.0.1 ::1
+
+    k8s_gateway apps {
+        ttl 10
+        kubeconfig /usr/local/etc/coredns/kubeconfig
+        fallthrough
+    }
 }

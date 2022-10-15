@@ -43,10 +43,10 @@
     mode: 0755
 
 - block:
-    #- name: Copy kubeconfig
-    #  ansible.builtin.copy:
-    #    src: "{{ playbook_dir }}/../../../cluster/local/kubeconfig-homedns"
-    #    dest: /usr/local/etc/coredns/kubeconfig
+    - name: Copy kubeconfig
+      ansible.builtin.copy:
+        src: "{{ playbook_dir }}/../../kubernetes/local/kubeconfig-homedns"
+        dest: /usr/local/etc/coredns/kubeconfig
     - name: Create Corefile
       ansible.builtin.template:
         src: Corefile.j2
