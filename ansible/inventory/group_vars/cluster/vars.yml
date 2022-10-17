@@ -6,5 +6,8 @@ k3s_server:
     - traefik
 k3s_become: yes
 
+# Use local etcd
+k3s_etcd_datastore: true
+
 # geerlingguy.swap
 swap_file_state: absent

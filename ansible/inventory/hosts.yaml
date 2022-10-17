@@ -4,11 +4,11 @@ cluster:
     controller:
       hosts:
         raccoon00:
+        raccoon01:
+        raccoon02:
 
     worker:
       hosts:
-        raccoon01:
-        raccoon02:
         raccoon03:
         raccoon04:
         raccoon05:
