@@ -56,3 +56,8 @@
         name: hciuart
         state: stopped
         enabled: no
+
+    - name: Ensure lvm2 is present
+      ansible.builtin.apt:
+        name: lvm2
+        state: present
