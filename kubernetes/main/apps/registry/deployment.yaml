@@ -24,9 +24,9 @@ spec:
         image: registry:2.8.1
         env:
           - name: REGISTRY_HTTP_TLS_KEY
-            value: /certs/registry.key
+            value: /certs/tls.key
           - name: REGISTRY_HTTP_TLS_CERTIFICATE
-            value: /certs/registry.crt
+            value: /certs/tls.crt
         ports:
         - containerPort: 5000
         volumeMounts:
