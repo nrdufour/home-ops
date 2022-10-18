@@ -40,4 +40,4 @@ spec:
             claimName: registry-pvc
         - name: registry-ssl
           secret:
-            secretName: registry-ssl
+            secretName: registry-home-cert
