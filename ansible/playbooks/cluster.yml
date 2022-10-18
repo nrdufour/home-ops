@@ -1,10 +1,10 @@
 ---
 
 - name: Prepare the machines themselves
-  import_playbook: prepare_raspberries.yml
+  import_playbook: cluster_prepare_raspberries.yml
 
 - name: Setup k3s across the cluster
-  import_playbook: setup_k3s.yml
+  import_playbook: cluster_setup_k3s.yml
 
 - name: Retrieve the configuration file
   import_playbook: cluster-retrieve-conf.yml
