@@ -1,0 +1,28 @@
+---
+- name: Deploy the private CA to each node of the cluster
+  hosts: cluster
+
+  tasks:
+    - name: Create the CA file in /usr/local/share/ca-certificates
+      become: true
+      ansible.builtin.copy:
+        dest: "/usr/local/share/ca-certificates/private_ca_ptinem.crt"
+        content: |
+          {{ SECRET_CA_CRT }}
+        owner: root
+        group: root
+        mode: '0644'
+      notify:
+        - Update CA certs
+        - Restart k3s
+
+  handlers:
+    - name: Update CA certs
+      become: true
+      ansible.builtin.command: /usr/sbin/update-ca-certificates
+
+    - name: Restart k3s
+      become: true
+      ansible.builtin.systemd:
+        name: k3s
+        state: restarted
