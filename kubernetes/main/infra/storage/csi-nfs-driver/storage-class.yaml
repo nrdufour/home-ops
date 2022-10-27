@@ -7,7 +7,7 @@ provisioner: nfs.csi.k8s.io
 parameters:
   server: possum.home
   share: /srv/storage/cluster/main/pvs
-reclaimPolicy: Delete
+reclaimPolicy: Retain
 volumeBindingMode: Immediate
 mountOptions:
   - nfsvers=4.2
