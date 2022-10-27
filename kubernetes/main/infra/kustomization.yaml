@@ -7,3 +7,4 @@ resources:
   - home-dns
   - rook-ceph
   - monitoring
+  - storage

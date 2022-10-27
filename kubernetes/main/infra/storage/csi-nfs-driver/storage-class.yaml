@@ -1,0 +1,16 @@
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-main
+provisioner: nfs.csi.k8s.io
+parameters:
+  server: possum.home
+  share: /srv/storage/cluster/main/pvs
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+mountOptions:
+  - nfsvers=4.2
+  - nconnect=8
+  - hard
+  - noatime
