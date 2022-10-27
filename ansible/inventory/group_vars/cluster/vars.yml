@@ -1,9 +1,5 @@
 ---
 
-# xanmanning.k3s
-k3s_server:
-  disable:
-    - traefik
 k3s_become: yes
 
 # Use local etcd
