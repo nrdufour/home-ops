@@ -26,6 +26,7 @@ spec:
       enabled: false
     grafana:
       enabled: false
+      forceDeployDashboards: true
     prometheus:
       ingress:
         enabled: true
