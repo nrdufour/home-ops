@@ -27,6 +27,36 @@ spec:
     grafana:
       enabled: false
       forceDeployDashboards: true
+    kubeApiServer:
+      enabled: true
+    kubeControllerManager:
+      enabled: true
+      endpoints:
+        - 192.168.20.50
+        - 192.168.20.51
+        - 192.168.20.52
+    kubeScheduler:
+      enabled: true
+      endpoints:
+        - 192.168.20.50
+        - 192.168.20.51
+        - 192.168.20.52
+    kubeProxy:
+      enabled: true
+      endpoints:
+        - 192.168.20.50
+        - 192.168.20.51
+        - 192.168.20.52
+    kubeEtcd:
+      enabled: true
+      endpoints:
+        - 192.168.20.50
+        - 192.168.20.51
+        - 192.168.20.52
+      service:
+        enabled: true
+        port: 2381
+        targetPort: 2381
     prometheus:
       ingress:
         enabled: true
