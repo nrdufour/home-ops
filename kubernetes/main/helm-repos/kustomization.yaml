@@ -4,3 +4,4 @@ resources:
 - jetstack.yaml
 - ingress-nginx.yaml
 - rook-ceph.yaml
+- prometheus-community-charts.yaml
