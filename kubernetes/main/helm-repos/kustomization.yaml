@@ -5,3 +5,4 @@ resources:
 - ingress-nginx.yaml
 - rook-ceph.yaml
 - prometheus-community-charts.yaml
+- csi-driver-nfs-charts.yaml
