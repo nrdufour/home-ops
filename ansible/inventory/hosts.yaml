@@ -19,6 +19,16 @@ cluster:
         sparrow05:
         sparrow06:
 
+    fedora:
+      hosts:
+        raccoon00:
+        raccoon01:
+        raccoon02:
+        raccoon03:
+        raccoon04:
+        raccoon05:
+        sparrow02:
+
     rasp4:
       vars:
         extra_storage_disk: /dev/sda
@@ -27,16 +37,22 @@ cluster:
           nfs_storage_disk: /dev/sda
           extra_storage_disk: /dev/sdb
           ansible_host: raccoon00.home
+          ansible_user: root
         raccoon01:
           ansible_host: raccoon01.home
+          ansible_user: root
         raccoon02:
           ansible_host: raccoon02.home
+          ansible_user: root
         raccoon03:
           ansible_host: raccoon03.home
+          ansible_user: root
         raccoon04:
           ansible_host: raccoon04.home
+          ansible_user: root
         raccoon05:
           ansible_host: raccoon05.home
+          ansible_user: root
           
     rasp3:
       hosts:
@@ -44,6 +60,7 @@ cluster:
           ansible_host: sparrow01.home
         sparrow02:
           ansible_host: sparrow02.home
+          ansible_user: root
         sparrow03:
           ansible_host: sparrow03.home
         sparrow04:
