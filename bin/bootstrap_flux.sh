@@ -8,5 +8,12 @@ cd kubernetes/main
 
 k apply --kustomize ./bootstrap/
 flux create secret git gitea-access --url=ssh://git@git.home:2222/nrdufour/home-ops.git --private-key-file=~/.ssh/fluxcd-home-ops
+
+cat ~/.config/sops/age/keys.txt |
+kubectl create secret generic sops-age \
+--namespace=flux-system \
+--from-file=age.agekey=/dev/stdin
+
+
 k apply --kustomize ./cluster/flux-system/
 flux reconcile source git kubernetes
