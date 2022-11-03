@@ -80,6 +80,28 @@ spec:
           - name: raccoon05.home
             devices:
               - name: "/dev/disk/by-id/usb-Samsung_Flash_Drive_FIT_0378622060007498-0:0"
+      resources:
+        mgr:
+          limits:
+            cpu: "1000m"
+            memory: "1Gi"
+          requests:
+            cpu: "500m"
+            memory: "512Mi"
+        mon:
+          limits:
+            cpu: "2000m"
+            memory: "2Gi"
+          requests:
+            cpu: "1000m"
+            memory: "1Gi"
+        osd:
+          limits:
+            cpu: "2000m"
+            memory: "2Gi"
+          requests:
+            cpu: "1000m"
+            memory: "1Gi"
     cephBlockPools: []
     cephFileSystems: []
     cephObjectStores: []
