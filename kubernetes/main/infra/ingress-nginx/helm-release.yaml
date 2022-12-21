@@ -24,7 +24,7 @@ spec:
   values:
     controller:
       nodeSelector:
-        kubernetes.io/hostname: raccoon04.home
+        svccontroller.k3s.cattle.io/enablelb: true
       config:
         enable-real-ip: true
         use-forwarded-headers: true
