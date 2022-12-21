@@ -24,7 +24,7 @@ spec:
   values:
     controller:
       nodeSelector:
-        svccontroller.k3s.cattle.io/enablelb: true
+        svccontroller.k3s.cattle.io/enablelb: "true"
       config:
         enable-real-ip: true
         use-forwarded-headers: true
