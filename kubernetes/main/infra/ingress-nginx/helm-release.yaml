@@ -25,3 +25,5 @@ spec:
     controller:
       extraArgs:
         enable-ssl-passthrough: true
+      service:
+        externalTrafficPolicy: Local
