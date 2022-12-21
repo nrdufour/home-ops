@@ -1,4 +1,8 @@
 ---
+
+# Based on
+# https://ajmaradiaga.com/Adding-trusting-CA-Fedora/
+
 - name: Deploy the private CA to each fedora node of the cluster
   hosts: fedora
 
