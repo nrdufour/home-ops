@@ -17,8 +17,7 @@ roles:
     version: 1.0.2
   - src: geerlingguy.pip
     version: 2.1.0
-  - src: xanmanning.k3s
-    version: v3.1.1
-  - src: cloudalchemy.prometheus
-    src: git+https://github.com/cloudalchemy/ansible-prometheus.git
-    version: 4.0.0
+  - src: https://github.com/PyratLabs/ansible-role-k3s.git
+    scm: git
+    name: xanmanning.k3s
+    version: v3.3.1
