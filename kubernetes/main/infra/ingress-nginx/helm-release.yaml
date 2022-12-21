@@ -23,6 +23,8 @@ spec:
       retries: 5
   values:
     controller:
+      nodeSelector:
+        kubernetes.io/hostname: raccoon04.home
       config:
         enable-real-ip: true
         use-forwarded-headers: true
