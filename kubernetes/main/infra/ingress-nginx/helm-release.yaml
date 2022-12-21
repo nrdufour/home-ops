@@ -23,6 +23,12 @@ spec:
       retries: 5
   values:
     controller:
+      config:
+        enable-real-ip: true
+        use-forwarded-headers: true
+        compute-full-forwarded-for: true
+        use-proxy-protocol: true
+        proxy-add-original-uri-header: true
       extraArgs:
         enable-ssl-passthrough: true
       service:
