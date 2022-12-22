@@ -1,0 +1,26 @@
+---
+
+- name: Setup CA facts on Fedora
+  ansible.builtin.set_fact:
+    cacert_path: /etc/pki/ca-trust/source/anchors
+    cacert_update_command: /usr/bin/update-ca-trust
+  when: ansible_os_family == "RedHat"
+
+- name: Setup CA facts on Debian
+  ansible.builtin.set_fact:
+    cacert_path: /usr/local/share/ca-certificates
+    cacert_update_command: /usr/sbin/update-ca-certificates
+  when: ansible_os_family == "Debian"
+
+- name: Create the CA file and update
+  become: true
+  ansible.builtin.copy:
+    dest: "{{ cacert_path }}/{{ private_ca_filename }}"
+    content: |
+      {{ SECRET_CA_CRT }}
+    owner: root
+    group: root
+    mode: '0644'
+  notify:
+    - Update CA certs
+    - Restart k3s

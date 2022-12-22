@@ -1,0 +1,11 @@
+---
+
+- name: Update CA certs
+  become: true
+  ansible.builtin.command: "{{ cacert_update_command }}"
+
+- name: Restart k3s
+  become: true
+  ansible.builtin.systemd:
+    name: k3s
+    state: restarted
