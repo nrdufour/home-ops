@@ -2,7 +2,7 @@
 
 - name: Provision possum machine
   hosts: possum
-  become: yes
+  become: true
 
   vars:
     k3s_server:

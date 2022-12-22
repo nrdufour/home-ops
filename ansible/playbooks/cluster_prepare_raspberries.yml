@@ -1,7 +1,7 @@
 ---
 
 - hosts: cluster
-  become: yes
+  become: true
 
   roles:
     - role: mikolak-net.raspi_config

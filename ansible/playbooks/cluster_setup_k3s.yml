@@ -2,7 +2,7 @@
 
 - name: Setup the cluster with k3s
   hosts: cluster
-  become: yes
+  become: true
 
   roles:
     - xanmanning.k3s
