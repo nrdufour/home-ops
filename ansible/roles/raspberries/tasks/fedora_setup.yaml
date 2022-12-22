@@ -1,5 +1,14 @@
 ---
 
+- name: Ensure the hostname is properly set
+  become: true
+  ansible.builtin.hostname:
+    name: "{{ ansible_host }}"
+    use: "systemd"
+  notify:
+    - stop k3s
+    - reboot
+
 - name: Upgrade all packages
   become: true
   ansible.builtin.dnf:

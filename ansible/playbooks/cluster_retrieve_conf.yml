@@ -1,6 +1,6 @@
 ---
 - name: Retrieve the kubeconfig file from the cluster
-  hosts: raccoon00
+  hosts: raccoon00.home
 
   tasks:
     - name: Copy kubeconfig to provision folder

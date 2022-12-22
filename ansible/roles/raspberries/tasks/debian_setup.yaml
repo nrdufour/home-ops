@@ -1,5 +1,14 @@
 ---
 
+- name: Ensure the hostname is properly set
+  become: true
+  ansible.builtin.hostname:
+    name: "{{ ansible_host }}"
+    use: "debian"
+  notify:
+    - stop k3s
+    - reboot
+
 - name: Disabling HDMI Port
   lineinfile:
     path: /etc/rc.local

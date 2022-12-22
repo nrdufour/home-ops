@@ -1,79 +1,38 @@
 ---
 cluster:
-  children:
-    controller:
-      hosts:
-        raccoon00:
-        raccoon01:
-        raccoon02:
-
-    worker:
-      hosts:
-        raccoon03:
-        raccoon04:
-        raccoon05:
-        sparrow01:
-        sparrow02:
-        sparrow03:
-        sparrow04:
-        sparrow05:
-        sparrow06:
-
-    fedora:
-      hosts:
-        raccoon00:
-        raccoon01:
-        raccoon02:
-        raccoon03:
-        raccoon04:
-        raccoon05:
-        sparrow02:
-
-    rasp4:
-      vars:
-        extra_storage_disk: /dev/sda
-      hosts:
-        raccoon00:
-          nfs_storage_disk: /dev/sda
-          extra_storage_disk: /dev/sdb
-          ansible_host: raccoon00.home
-          ansible_user: root
-        raccoon01:
-          ansible_host: raccoon01.home
-          ansible_user: root
-        raccoon02:
-          ansible_host: raccoon02.home
-          ansible_user: root
-        raccoon03:
-          ansible_host: raccoon03.home
-          ansible_user: root
-        raccoon04:
-          ansible_host: raccoon04.home
-          ansible_user: root
-        raccoon05:
-          ansible_host: raccoon05.home
-          ansible_user: root
-          
-    rasp3:
-      hosts:
-        sparrow01:
-          ansible_host: sparrow01.home
-        sparrow02:
-          ansible_host: sparrow02.home
-          ansible_user: root
-        sparrow03:
-          ansible_host: sparrow03.home
-        sparrow04:
-          ansible_host: sparrow04.home
-        sparrow05:
-          ansible_host: sparrow05.home
-        sparrow06:
-          ansible_host: sparrow06.home 
   vars:
     ansible_user: pi
 
+  children:
+    controller:
+      hosts:
+        raccoon00.home:
+          ansible_user: root
+        raccoon01.home:
+          ansible_user: root
+        raccoon02.home:
+          ansible_user: root
+
+    worker:
+      hosts:
+        raccoon03.home:
+          ansible_user: root
+        raccoon04.home:
+          ansible_user: root
+        raccoon05.home:
+          ansible_user: root
+        eagle.home:
+          ansible_user: root
+
+        sparrow01.home:
+        sparrow02.home:
+          ansible_user: root
+        sparrow03.home:
+        sparrow04.home:
+        sparrow05.home:
+        sparrow06.home:
+
 storage:
   hosts:
-    possum:
-      ansible_host: possum.home
+    possum.home:
       ansible_user: pi
