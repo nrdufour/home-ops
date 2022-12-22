@@ -14,7 +14,9 @@
     backrefs: yes
     regexp: '^((?!.*\bcgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory\b).*)$'
     line: '\1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory'
-  notify: reboot
+  notify:
+    - stop k3s
+    - reboot
 
 - name: Disable wifi and bluetooth
   blockinfile:
@@ -22,7 +24,9 @@
     block: |
       dtoverlay=disable-bt
       dtoverlay=disable-wifi
-  notify: reboot
+  notify:
+    - stop k3s
+    - reboot
 
 # Disable wifi and bt modules
 - name: Block kernel modules from loading
@@ -39,7 +43,9 @@
       blacklist btqca
       blacklist btsdio
       blacklist bluetooth
-  notify: reboot
+  notify:
+    - stop k3s
+    - reboot
 
 - name: Disable hciuart
   systemd:

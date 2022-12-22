@@ -1,4 +1,16 @@
 ---
 
+#
+# Safe reboot handlers
+# Do not apply to raccoon00 for now because it has the nfs shares
+# TODO: move that to the storage server
+#
+
+- name: stop k3s
+  become: true
+  ansible.builtin.shell: test -f /usr/local/bin/k3s-killall.sh && /usr/local/bin/k3s-killall.sh
+  when: ansible_hostname != "raccoon00"
+
 - name: reboot
   ansible.builtin.reboot:
+  when: ansible_hostname != "raccoon00"

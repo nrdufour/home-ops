@@ -5,6 +5,9 @@
   ansible.builtin.dnf:
     name: "*"
     state: latest
+  notify:
+    - stop k3s
+    - reboot
 
 - name: Install nfs-utils
   become: true
