@@ -1,10 +1,12 @@
 ---
 
-- name: Prepare the machines themselves
-  ansible.builtin.import_playbook: cluster_prepare_raspberries.yml
+- name: Setup cluster
+  hosts: cluster
+  become: true
 
-- name: Setup k3s across the cluster
-  ansible.builtin.import_playbook: cluster_setup_k3s.yml
+  roles:
+    - raspberries
+    - xanmanning.k3s
 
 - name: Retrieve the configuration file
   ansible.builtin.import_playbook: cluster_retrieve_conf.yml

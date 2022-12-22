@@ -1,0 +1,15 @@
+---
+
+- ansible.builtin.include_role:
+    name: "{{ item }}"
+  loop:
+    - geerlingguy.pip
+    - geerlingguy.swap
+
+- name: Setup Fedora raspberry
+  ansible.builtin.include_tasks: fedora_setup.yaml
+  when: ansible_os_family == "RedHat"
+
+- name: Setup Debian raspberry
+  ansible.builtin.include_tasks: debian_setup.yaml
+  when: ansible_os_family == "Debian"
