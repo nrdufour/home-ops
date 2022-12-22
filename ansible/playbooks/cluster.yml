@@ -1,13 +1,10 @@
 ---
 
 - name: Prepare the machines themselves
-  import_playbook: cluster_prepare_raspberries.yml
+  ansible.builtin.import_playbook: cluster_prepare_raspberries.yml
 
 - name: Setup k3s across the cluster
-  import_playbook: cluster_setup_k3s.yml
+  ansible.builtin.import_playbook: cluster_setup_k3s.yml
 
 - name: Retrieve the configuration file
-  import_playbook: cluster_retrieve_conf.yml
-
-- name: Build the configuration file for home-dns exchange
-  import_playbook: cluster_home_dns.yml
+  ansible.builtin.import_playbook: cluster_retrieve_conf.yml
