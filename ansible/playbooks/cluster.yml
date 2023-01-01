@@ -7,13 +7,9 @@
   roles:
     - raspberries
 
-
 - name: Setup k3s
   hosts: cluster
   become: true
 
   roles:
     - xanmanning.k3s
-
-- name: Retrieve the configuration file
-  ansible.builtin.import_playbook: cluster_retrieve_conf.yml
