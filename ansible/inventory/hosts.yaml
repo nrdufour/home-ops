@@ -26,7 +26,6 @@ cluster:
 
         sparrow01.home:
         sparrow02.home:
-          ansible_user: root
         sparrow03.home:
         sparrow04.home:
         sparrow05.home:
