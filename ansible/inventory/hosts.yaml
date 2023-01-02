@@ -7,22 +7,15 @@ cluster:
     controller:
       hosts:
         raccoon00.home:
-          ansible_user: root
         raccoon01.home:
-          ansible_user: root
         raccoon02.home:
-          ansible_user: root
 
     worker:
       hosts:
         raccoon03.home:
-          ansible_user: root
         raccoon04.home:
-          ansible_user: root
         raccoon05.home:
-          ansible_user: root
         eagle.home:
-          ansible_user: root
 
         sparrow01.home:
         sparrow02.home:
