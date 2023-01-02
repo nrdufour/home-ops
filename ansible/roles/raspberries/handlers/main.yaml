@@ -8,7 +8,7 @@
 
 - name: stop k3s
   become: true
-  ansible.builtin.shell: test -f /usr/local/bin/k3s-killall.sh && /usr/local/bin/k3s-killall.sh
+  ansible.builtin.shell: test -f /usr/local/bin/k3s-killall.sh && /usr/local/bin/k3s-killall.sh || echo 'skipping k3s kill'
   when: ansible_hostname != "raccoon00"
 
 - name: reboot
