@@ -4,6 +4,8 @@ kind: Service
 metadata:
   name: znc-bouncer
   namespace: default
+labels:
+  svccontroller.k3s.cattle.io/lbpool: internal
 spec:
   type: LoadBalancer
   selector:
