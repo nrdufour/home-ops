@@ -23,8 +23,10 @@ spec:
       retries: 5
   values:
     controller:
+      kind: DaemonSet
       nodeSelector:
         svccontroller.k3s.cattle.io/enablelb: "true"
+        svccontroller.k3s.cattle.io/lbpool: internal
       config:
         enable-real-ip: true
         use-forwarded-headers: true
@@ -35,3 +37,5 @@ spec:
         enable-ssl-passthrough: true
       service:
         externalTrafficPolicy: Local
+        labels:
+          svccontroller.k3s.cattle.io/lbpool: internal
