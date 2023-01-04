@@ -4,6 +4,7 @@ metadata:
   name: ingress-nginx-external
   namespace: default
 spec:
+  releaseName: ingress-nginx-external
   interval: 15m
   chart:
     spec:
