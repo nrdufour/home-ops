@@ -25,6 +25,9 @@ spec:
   values:
     controller:
       ingressClass: nginx-external
+      ingressClassResource:
+        controller-class: k8s.io/ingress-nginx-external
+        name: nginx-external
       kind: DaemonSet
       nodeSelector:
         svccontroller.k3s.cattle.io/enablelb: "true"
