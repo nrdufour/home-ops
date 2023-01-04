@@ -26,7 +26,7 @@ spec:
     controller:
       ingressClass: nginx-external
       ingressClassResource:
-        controller-class: k8s.io/ingress-nginx-external
+        controllerValue: k8s.io/ingress-nginx-external
         name: nginx-external
       kind: DaemonSet
       nodeSelector:
