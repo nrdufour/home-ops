@@ -5,6 +5,5 @@ resources:
   - cert-manager
   - ingress-nginx
   - ingress-nginx-external
-  - home-dns
   - monitoring
   - storage
