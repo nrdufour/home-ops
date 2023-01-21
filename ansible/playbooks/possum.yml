@@ -1,7 +1,7 @@
 ---
 
 - name: Provision possum machine
-  hosts: possum
+  hosts: possum.home
   become: true
 
   vars:
