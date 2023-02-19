@@ -22,6 +22,10 @@ spec:
     remediation:
       retries: 5
   values:
+    image:
+      registry: docker.io
+      repository: postgres
+      tag: 15.2
     global:
       postgresql:
         auth:
