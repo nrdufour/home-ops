@@ -9,3 +9,4 @@ resources:
 - influxdb
 - grafana
 - kanboard
+- wikijs
