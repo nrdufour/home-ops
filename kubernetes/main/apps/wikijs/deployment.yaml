@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wikijs
+  namespace: default
+  labels:
+    app: wikijs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wikijs
+  template:
+    metadata:
+      labels:
+        app: wikijs
+    spec:
+      containers:
+      - name: wikijs
+        image: requarks/wiki:2.5
+        env:
+          - name: "DB_TYPE"
+            value: "postgres"
+          - name: "DB_HOST"
+            value: "postgreql.default"
+          - name: "DB_PORT"
+            value: "5432"
+          - name: "DB_NAME"
+            value: "wikijs"
+          - name: "DB_USER"
+            value: "wikijs"
+        envFrom:
+          - secretRef:
+              name: wikijs-config
+
