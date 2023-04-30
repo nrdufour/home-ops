@@ -1,15 +1,9 @@
 ---
 
-- name: Setup cluster machines
+- name: Setup cluster
   hosts: cluster
   become: true
 
   roles:
     - raspberries
-
-- name: Setup k3s
-  hosts: cluster
-  become: true
-
-  roles:
     - xanmanning.k3s
