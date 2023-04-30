@@ -11,7 +11,7 @@
 - name: Deploy gitea deployment object
   kubernetes.core.k8s:
     kubeconfig: /etc/rancher/k3s/k3s.yaml
-    namespace: apps
+    namespace: default
     template: "{{ item }}"
   loop:
     - gitea/deployment.yml.j2

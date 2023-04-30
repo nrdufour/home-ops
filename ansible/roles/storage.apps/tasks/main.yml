@@ -1,6 +1,5 @@
 ---
 
 - import_tasks: nginx_controller.yml
-- import_tasks: prepare_apps_ns.yml
 - import_tasks: gitea.yml
 - import_tasks: registry.yml
