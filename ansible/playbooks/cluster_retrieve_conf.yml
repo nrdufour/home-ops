@@ -7,13 +7,20 @@
       become: true
       ansible.builtin.fetch:
         src: "/etc/rancher/k3s/k3s.yaml"
-        dest: "{{ playbook_dir }}/../../kubernetes/local/kubeconfig-main"
+        dest: "~/.kube/config-main"
         flat: true
 
     - name: Update kubeconfig with the right IPv4 address
       delegate_to: localhost
       become: false
       ansible.builtin.replace:
-        path: "{{ playbook_dir }}/../../kubernetes/local/kubeconfig-main"
+        path: "~/.kube/config-main"
         regexp: "https://127.0.0.1:6443"
         replace: "https://raccoon00.home:6443"
+
+    - name: Ensure proper permission on kubeconfig file
+      delegate_to: localhost
+      become: false
+      ansible.builtin.file:
+        path: "~/.kube/config-main"
+        mode: '0640'
