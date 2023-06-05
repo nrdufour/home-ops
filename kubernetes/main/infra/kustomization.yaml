@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
   - cert-manager
   - ingress-nginx
-  - ingress-nginx-external
+  # - ingress-nginx-external
   - monitoring
   - storage
   - database
