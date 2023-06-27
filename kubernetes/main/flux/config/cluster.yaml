@@ -1,32 +1,34 @@
 ---
-apiVersion: source.toolkit.fluxcd.io/v1beta2
+apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: kubernetes
+  name: home-ops-kubernetes
   namespace: flux-system
 spec:
-  interval: 1m
-  ref:
-    branch: main
+  interval: 30m
   secretRef:
     name: gitea-access
   url: ssh://git@git.home:2222/nrdufour/home-ops.git
   ignore: |
     # exclude all
     /*
-    # include kube stuff only
+    # include kubernetes directory
     !/kubernetes
 ---
-apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
+apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
   name: cluster
   namespace: flux-system
 spec:
-  interval: 10m
-  path: ./kubernetes/main/cluster
+  interval: 30m
+  path: ./kubernetes/main/flux
   prune: true
-  wait: true
+  wait: false
   sourceRef:
     kind: GitRepository
-    name: kubernetes
+    name: home-ops-kubernetes
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
