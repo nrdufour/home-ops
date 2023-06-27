@@ -68,6 +68,7 @@ spec:
           - hosts:
               - *host
       prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
             spec:
