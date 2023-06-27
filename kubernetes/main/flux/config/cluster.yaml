@@ -6,6 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m
+  ref:
+    branch: main
   secretRef:
     name: gitea-access
   url: ssh://git@git.home:2222/nrdufour/home-ops.git
