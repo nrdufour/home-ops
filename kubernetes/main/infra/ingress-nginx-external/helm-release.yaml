@@ -36,3 +36,10 @@ spec:
         externalTrafficPolicy: Local
         labels:
           svccontroller.k3s.cattle.io/lbpool: external
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+          namespace: default
+          namespaceSelector:
+            any: true
