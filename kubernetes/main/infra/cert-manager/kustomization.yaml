@@ -1,7 +1,9 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-- helm-release.yaml
-- private-ca-secret.yaml
-- ca-cluster-issuer.yaml
-- le-cluster-issuers.yaml
+  # Pre Flux-Kustomizations
+  - ./namespace.yaml
+  # Flux-Kustomizations
+  - ./cert-manager/ks.yaml
