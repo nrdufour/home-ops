@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
 - helm-release.yaml
 - private-ca-secret.yaml
-- cluster-issuer.yaml
+- ca-cluster-issuer.yaml
+- le-cluster-issuers.yaml
