@@ -8,6 +8,7 @@ resources:
   - ./kanboard/ks.yaml
   - ./influxdb/ks.yaml
   - ./mqtt/ks.yaml
+  - ./mqtt-apps/ks.yaml
   - ./registry/ks.yaml
   - ./wikijs/ks.yaml
   - ./znc/ks.yaml
