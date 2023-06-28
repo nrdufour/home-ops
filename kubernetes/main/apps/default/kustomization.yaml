@@ -4,6 +4,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   # Flux-Kustomizations
+  - ./grafana/ks.yaml
   - ./kanboard/ks.yaml
   - ./registry/ks.yaml
   - ./wikijs/ks.yaml
