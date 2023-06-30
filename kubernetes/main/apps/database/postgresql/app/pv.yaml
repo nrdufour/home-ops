@@ -7,7 +7,7 @@ metadata:
 spec:
   volumeName: pvc-405080b3-ef08-4bea-bb18-0e06cdc385b9
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   resources:
     requests:
       storage: 10Gi
