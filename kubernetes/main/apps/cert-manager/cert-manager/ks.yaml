@@ -22,7 +22,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cluster-infra-cert-manager
+    - name: cluster-apps-cert-manager
   path: ./kubernetes/main/apps/cert-manager/cert-manager/issuers
   prune: true
   sourceRef:
