@@ -32,6 +32,7 @@ spec:
           existingSecret: main-postgresql-secret
     primary:
       persistence:
+        existingClaim: postgresql-pvc
         size: "10Gi"
       nodeSelector:
         kubernetes.io/hostname: eagle.home
