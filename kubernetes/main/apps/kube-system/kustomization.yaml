@@ -6,4 +6,6 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./node-feature-discovery/ks.yaml
+  ## Disable this for now as it has some trouble with raspberry pi machines.
+  ## Need more study.
+  # - ./node-feature-discovery/ks.yaml
