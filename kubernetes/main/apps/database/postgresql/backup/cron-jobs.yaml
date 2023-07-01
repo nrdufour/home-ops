@@ -28,3 +28,33 @@ spec:
               persistentVolumeClaim:
                 claimName: pg-backup-pvc
           restartPolicy: OnFailure
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: wikijs-backup
+  namespace: database
+spec:
+  schedule: "0 4 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: backup
+              image: docker.io/postgres:15.2
+              command: ["bash",  "-c", "cd /backup; pg_dump -h postgresql.database -U postgres -Fc wikijs -f backup_wikijs_$(date +%Y%m%d).dump"]
+              env:
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: main-postgresql-secret
+                      key: postgres-password
+              volumeMounts:
+                - name: backup
+                  mountPath: /backup
+          volumes:
+            - name: backup
+              persistentVolumeClaim:
+                claimName: pg-backup-pvc
+          restartPolicy: OnFailure
