@@ -1,0 +1,30 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: toot-backup
+  namespace: toot
+spec:
+  schedule: "0 5 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: backup
+              image: docker.io/postgres:15.2
+              command: ["bash",  "-c", "cd /backup; pg_dump -h postgres -U toot -Fc toot -f backup_$(date +%Y%m%d).dump"]
+              env:
+                - name: PGPASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: toot-mastodon
+                      key: postgres-password
+              volumeMounts:
+                - name: backup
+                  mountPath: /backup
+          volumes:
+            - name: backup
+              persistentVolumeClaim:
+                claimName: pg-backup-pvc
+          restartPolicy: OnFailure
