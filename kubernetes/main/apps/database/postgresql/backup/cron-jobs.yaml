@@ -13,7 +13,7 @@ spec:
           containers:
             - name: backup
               image: docker.io/postgres:15.2
-              command: ["bash",  "-c", "cd /backup; pg_dump -h postgres -U postgres -Fc toot -f backup_toot_$(date +%Y%m%d).dump"]
+              command: ["bash",  "-c", "cd /backup; pg_dump -h postgresql.database -U postgres -Fc toot -f backup_toot_$(date +%Y%m%d).dump"]
               env:
                 - name: PGPASSWORD
                   valueFrom:
