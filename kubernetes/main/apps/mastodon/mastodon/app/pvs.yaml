@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: toot-mastodon-assets
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 4Gi
+  nfs:
+    path: /srv/nfs/data/toot/assets
+    server: raccoon00.home
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: toot-mastodon-system
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 137Gi
+  nfs:
+    path: /srv/nfs/data/toot/system
+    server: raccoon00.home
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs

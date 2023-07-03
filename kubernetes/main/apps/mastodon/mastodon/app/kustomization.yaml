@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - ./pvs.yaml
+  - ./secrets.sops.yaml
+  - ./helm-release.yaml
+labels:
+  - pairs:
+      app.kubernetes.io/name: mastodon
+      app.kubernetes.io/instance: toot
+configMapGenerator:
+  - name: mastodon-values
+    files:
+      - values.yaml=mastodon-values.yaml
+generatorOptions:
+  disableNameSuffixHash: true
