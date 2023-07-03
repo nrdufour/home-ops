@@ -210,7 +210,7 @@ ingress:
     #   for the NGINX ingress controller:
     nginx.org/client-max-body-size: 40m
   # -- you can specify the ingressClassName if it differs from the default
-  ingressClassName: nginx-external
+  # ingressClassName: nginx-external
   hosts:
     - host: toot.ptinem.io
       paths:
