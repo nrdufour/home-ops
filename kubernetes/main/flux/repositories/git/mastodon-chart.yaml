@@ -8,4 +8,4 @@ spec:
   interval: 30m
   url: https://github.com/nrdufour/mastodon-chart
   ref:
-    tag: 20230425
+    tag: "20230425"
