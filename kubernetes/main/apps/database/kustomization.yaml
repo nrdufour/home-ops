@@ -7,3 +7,4 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./postgresql/ks.yaml
+  - ./influxdb2/ks.yaml
