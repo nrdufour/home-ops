@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: influxdb2
-  namespace: default
+  namespace: database
   labels:
     svccontroller.k3s.cattle.io/lbpool: internal
 spec:
