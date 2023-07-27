@@ -22,7 +22,7 @@ cluster:
         sparrow03.home:
         sparrow04.home:
         sparrow05.home:
-        sparrow06.home:
+        #sparrow06.home:
 
 storage:
   hosts:
