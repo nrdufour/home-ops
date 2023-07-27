@@ -21,7 +21,7 @@ k3s_server:
     # https://github.com/k3s-io/k3s/issues/1264
     - "node-monitor-period=4s"
     - "node-monitor-grace-period=16s"
-    - "pod-eviction-timeout=20s"
+    #- "pod-eviction-timeout=20s"
   kube-proxy-arg:
     # Required to monitor component with kube-prometheus-stack
     - "metrics-bind-address=0.0.0.0"
