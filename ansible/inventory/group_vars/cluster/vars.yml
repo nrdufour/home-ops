@@ -7,3 +7,5 @@ k3s_etcd_datastore: true
 
 # geerlingguy.swap
 swap_file_state: absent
+
+k3s_registration_address: 192.168.20.250
