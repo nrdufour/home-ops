@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: marmitton-pv
+  namespace: default
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    path: /srv/nfs/data/marmitton
+    server: raccoon00.home
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: marmitton-pvc
+  namespace: default
+spec:
+  storageClassName: nfs
+  volumeName: marmitton-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi

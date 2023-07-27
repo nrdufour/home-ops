@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: marmitton-config
+data:
+  marmitton.conf: |
+    server = "irc.nlnog.net:6667"
+    nick = "Marmitton"
+    ssl = false
+    channels = ["#souk"]
+

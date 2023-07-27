@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: marmitton
+  name: marmitton
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: marmitton
+  template:
+    metadata:
+      labels:
+        app: marmitton
+    spec:
+      containers:
+        - image: registry.home:5000/marmitton:latest
+          name: marmitton
+          args:
+            - "-config"
+            - "/etc/marmitton/marmitton.conf"
+          volumeMounts:
+            - name: config
+              mountPath: /etc/marmitton
+              readOnly: true
+            - name: marmitton-storage
+              mountPath: /data
+      volumes:
+        - name: config
+          configMap:
+            name: marmitton-config
+        - name: marmitton-storage
+          persistentVolumeClaim:
+            claimName: marmitton-pvc
+
+
