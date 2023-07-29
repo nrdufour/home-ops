@@ -1,7 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
 
-  // Adding specific paths to be properly recognized
   "flux": {
     "fileMatch": ["(^|/)kubernetes/.+\\.ya?ml$"]
   },
