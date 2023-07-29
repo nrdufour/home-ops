@@ -1,3 +1,17 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+
+  // Adding specific paths to be properly recognized
+  "flux": {
+    "fileMatch": ["(^|/)kubernetes/.+\\.ya?ml$"]
+  },
+  "helm-values": {
+    "fileMatch": ["(^|/)kubernetes/.+\\.ya?ml$"]
+  },
+  "kubernetes": {
+    "fileMatch": [
+      "(^|/)ansible/.+\\.ya?ml(\\.j2)?$",
+      "(^|/)kubernetes/.+\\.ya?ml$"
+    ]
+  }
 }
