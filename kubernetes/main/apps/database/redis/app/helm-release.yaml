@@ -32,6 +32,8 @@ spec:
     master:
       persistence:
         existingClaim: redis-pvc
+      nodeSelector:
+        kubernetes.io/hostname: eagle.home
     replica:
       replicaCount: 0
     sentinel:
