@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: bitnami
-        namespace: default
+        namespace: flux-system
       interval: 15m
   install:
     createNamespace: true
