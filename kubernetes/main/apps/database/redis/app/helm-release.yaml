@@ -26,6 +26,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    architecture: standalone
     auth:
       enabled: false
       sentinel: false
@@ -34,8 +35,6 @@ spec:
         existingClaim: redis-pvc
       nodeSelector:
         kubernetes.io/hostname: eagle.home
-    replica:
-      replicaCount: 0
     sentinel:
       enabled: false
     metrics:
