@@ -12,5 +12,9 @@
       "(^|/)ansible/.+\\.ya?ml(\\.j2)?$",
       "(^|/)kubernetes/.+\\.ya?ml$"
     ]
-  }
+  },
+
+  "ignorePaths": [
+    "kubernetes/main/apps/default/influxdb/app/**"
+  ]
 }
