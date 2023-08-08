@@ -1,0 +1,19 @@
+---
+
+- name: Ensure minio data dir exists
+  ansible.builtin.file:
+    path: "{{ storage_base_dir }}/minio"
+    state: directory
+    owner: 1000
+    group: 1000
+    mode: '0750'
+
+- name: Deploy minio deployment object
+  kubernetes.core.k8s:
+    kubeconfig: /etc/rancher/k3s/k3s.yaml
+    namespace: default
+    template: "{{ item }}"
+  loop:
+    - minio/sts.yml.j2
+    - minio/service.yml.j2
+    - minio/ingress.yml.j2
