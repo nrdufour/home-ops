@@ -19,10 +19,10 @@ spec:
         - name: minio
           image: quay.io/minio/minio:RELEASE.2023-08-04T17-40-21Z
           args:
-              - "server",
-              - "/data",
-              - "--console-address",
-              - ":9001"
+            - "server"
+            - "/data"
+            - "--console-address"
+            - ":9001"
           env:
             - name: "TZ"
               value: "America/New_York"
