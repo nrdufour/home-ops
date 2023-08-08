@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: minio-extra-ca-cm
+  namespace: default
+data:
+  private-ca.crt: |
+    {{ SECRET_CA_CRT }}

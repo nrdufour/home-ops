@@ -66,6 +66,8 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /data
+            - name: minio-extra-ca
+              mountPath: /root/.minio/certs/CAs
           resources:
             requests:
               cpu: 1
@@ -77,3 +79,6 @@ spec:
           hostPath:
             path: {{ storage_base_dir }}/minio
             type: Directory
+          - configMap:
+              name: minio-extra-ca-cm
+            name: minio-extra-ca

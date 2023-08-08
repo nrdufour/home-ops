@@ -14,6 +14,7 @@
     namespace: default
     template: "{{ item }}"
   loop:
-    - minio/sts.yml.j2
+    - private-ca-cm.yml.j2
+    - minio/deployment.yml.j2
     - minio/service.yml.j2
     - minio/ingress.yml.j2
