@@ -79,6 +79,6 @@ spec:
           hostPath:
             path: {{ storage_base_dir }}/minio
             type: Directory
-          - configMap:
-              name: minio-extra-ca-cm
-            name: minio-extra-ca
+        - name: minio-extra-ca
+          configMap:
+            name: minio-extra-ca-cm
