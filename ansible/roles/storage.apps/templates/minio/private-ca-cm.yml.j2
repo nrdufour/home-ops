@@ -6,4 +6,4 @@ metadata:
   namespace: default
 data:
   private-ca.crt: |
-    {{ SECRET_CA_CRT }}
+    {{ SECRET_CA_CRT | indent(4) }}

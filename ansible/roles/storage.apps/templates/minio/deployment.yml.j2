@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: minio
-          image: quay.io/minio/minio:RELEASE.2023-08-04T17-40-21Z
+          image: quay.io/minio/minio:RELEASE.2023-08-09T23-30-22Z
           args:
             - "server"
             - "/data"
@@ -37,16 +37,14 @@ spec:
             - name: "MINIO_PROMETHEUS_AUTH_TYPE"
               value: "public"
             - name: "MINIO_SERVER_URL"
-              value: "http://s3.home"
+              value: "https://s3.home"
             - name: "MINIO_UPDATE"
               value: "off"
           ports:
             - name: console
               containerPort: 9001
-              hostPort: 9001
             - name: s3
               containerPort: 9000
-              hostPort: 9000
           livenessProbe:
             httpGet:
               path: /minio/health/live
