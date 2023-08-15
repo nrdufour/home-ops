@@ -1,0 +1,12 @@
+---
+k3s_server:
+  disable:
+    - traefik
+
+k3s_become: true
+
+pip_install_packages:
+  - name: kubernetes
+    version: 23.3.0
+  - name: PyYAML
+    version: 6.0
