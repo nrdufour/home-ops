@@ -2,10 +2,10 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-marmitton
+  name: cluster-apps-irc-marmitton
   namespace: flux-system
 spec:
-  path: ./kubernetes/main/apps/default/marmitton/app
+  path: ./kubernetes/main/apps/irc/marmitton/app
   prune: true
   sourceRef:
     kind: GitRepository

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: marmitton-config
-  namespace: default
+  namespace: irc
 data:
   marmitton.conf: |
     server = "irc.nlnog.net:6667"

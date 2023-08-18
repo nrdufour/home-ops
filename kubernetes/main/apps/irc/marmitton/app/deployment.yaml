@@ -4,7 +4,7 @@ metadata:
   labels:
     app: marmitton
   name: marmitton
-  namespace: default
+  namespace: irc
 spec:
   replicas: 1
   selector:
