@@ -24,11 +24,8 @@ spec:
             name: http-dashy
         volumeMounts:
           - mountPath: /app/public
-            name: dashy-conf
+            name: dashy-data
       volumes:
-        - name: dashy-conf
-          configMap:
-            name: dashy-config
-            items:
-              - key: conf.yml
-                path: conf.yml
+        - name: dashy-data
+          persistentVolumeClaim:
+            claimName: dashy-pvc
