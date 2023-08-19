@@ -13,3 +13,4 @@ resources:
   - ./registry/ks.yaml
   - ./wikijs/ks.yaml
   - ./znc/ks.yaml
+  - ./dashy/ks.yaml

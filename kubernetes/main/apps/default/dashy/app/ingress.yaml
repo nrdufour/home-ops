@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dashy-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: ca-cluster-issuer
+    cert-manager.io/common-name: dashy.home
+    nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/24
+spec:
+  tls:
+    - hosts:
+      - dashy.home
+      secretName: dashy-ing-cert
+  ingressClassName: nginx
+  rules:
+  - host: dashy.home
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dashy
+            port:
+              number: 80
