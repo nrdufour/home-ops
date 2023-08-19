@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: flame
-        image: pawelmalak/flame:multiarch2.3.0
+        image: pawelmalak/flame:multiarch2.3.1
         envFrom:
           - secretRef:
               name: flame-config
