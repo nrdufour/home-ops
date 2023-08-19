@@ -8,7 +8,7 @@ k3s_server:
   docker: false
   disable:
     - traefik
-  disable-network-policy: true
+  disable-network-policy: false
   disable-cloud-controller: true
   # Required to monitor component with kube-prometheus-stack
   etcd-expose-metrics: true
