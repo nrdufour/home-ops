@@ -6,16 +6,16 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-cluster-issuer
-    cert-manager.io/common-name: dashy.home
+    cert-manager.io/common-name: start.home
     nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/24
 spec:
   tls:
     - hosts:
-      - dashy.home
+      - start.home
       secretName: dashy-ing-cert
   ingressClassName: nginx
   rules:
-  - host: dashy.home
+  - host: start.home
     http:
       paths:
       - path: /
