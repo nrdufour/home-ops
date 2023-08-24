@@ -1,6 +1,7 @@
 ---
 
-- ansible.builtin.include_role:
+- name: Include common raspberry roles
+  ansible.builtin.include_role:
     name: "{{ item }}"
   loop:
     - geerlingguy.pip

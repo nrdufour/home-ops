@@ -6,8 +6,8 @@
     name: "{{ ansible_host }}"
     use: "systemd"
   notify:
-    - stop k3s
-    - reboot
+    - Stop k3s
+    - Reboot
 
 - name: Upgrade all packages
   become: true
@@ -15,8 +15,8 @@
     name: "*"
     state: latest
   notify:
-    - stop k3s
-    - reboot
+    - Stop k3s
+    - Reboot
 
 - name: Install nfs-utils
   become: true

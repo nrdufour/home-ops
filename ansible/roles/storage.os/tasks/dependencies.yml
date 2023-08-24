@@ -1,7 +1,7 @@
 ---
 
 - name: Retrieve helm tarball
-  become: yes
+  become: true
   ansible.builtin.get_url:
     url: "https://get.helm.sh/helm-v3.8.1-linux-arm64.tar.gz"
     dest: /tmp/helm.tar.gz
@@ -10,7 +10,7 @@
     mode: '0440'
 
 - name: Extract helm binary from the tarball
-  become: yes
+  become: true
   ansible.builtin.unarchive:
     src: /tmp/helm.tar.gz
     dest: /usr/local/bin
@@ -23,7 +23,7 @@
       - linux-arm64/helm
 
 - name: Install utils
-  become: yes
+  become: true
   ansible.builtin.apt:
     name:
       - vim

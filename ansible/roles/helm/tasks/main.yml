@@ -1,7 +1,7 @@
 ---
 
 - name: Retrieve helm tarball
-  become: yes
+  become: true
   ansible.builtin.get_url:
     url: "https://get.helm.sh/helm-{{ helm_release }}-{{ helm_arch }}.tar.gz"
     checksum: "sha256:{{ helm_release_arm64_sha256 }}"
@@ -11,7 +11,7 @@
     mode: '0440'
 
 - name: Extract helm binary from the tarball
-  become: yes
+  become: true
   ansible.builtin.unarchive:
     src: /var/tmp/helm.tar.gz
     dest: /usr/local/bin

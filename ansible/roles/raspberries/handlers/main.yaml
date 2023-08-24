@@ -6,11 +6,11 @@
 # TODO: move that to the storage server
 #
 
-- name: stop k3s
+- name: Stop k3s
   become: true
   ansible.builtin.shell: test -f /usr/local/bin/k3s-killall.sh && /usr/local/bin/k3s-killall.sh || echo 'skipping k3s kill'
   when: ansible_hostname != "raccoon00"
 
-- name: reboot
+- name: Reboot
   ansible.builtin.reboot:
   when: ansible_hostname != "raccoon00"
