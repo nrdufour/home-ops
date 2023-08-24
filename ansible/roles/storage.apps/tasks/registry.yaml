@@ -1,19 +1,19 @@
 ---
 
-- name: Ensure gitea data dir exists
+- name: Ensure registry data dir exists
   ansible.builtin.file:
-    path: "{{ storage_base_dir }}/gitea"
+    path: "{{ storage_base_dir }}/registry"
     state: directory
     owner: 1000
     group: 1000
     mode: '0750'
 
-- name: Deploy gitea deployment object
+- name: Deploy registry objects
   kubernetes.core.k8s:
     kubeconfig: /etc/rancher/k3s/k3s.yaml
     namespace: default
     template: "{{ item }}"
   loop:
-    - gitea/deployment.yml.j2
-    - gitea/service.yml.j2
-    - gitea/ingress.yml.j2
+    - registry/certificate.yaml.j2
+    - registry/deployment.yaml.j2
+    - registry/service.yaml.j2
