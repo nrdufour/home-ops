@@ -1,13 +1,7 @@
 {
     "ansible.validation.lint.arguments": "-c .ansible-lint",
-    "files.associations": {
-        "**/ansible/**/*.yaml": "ansible",
-        "**/ansible/**/*.sops.yaml": "yaml",
-        "**/ansible/**/inventory/**/*.yaml": "yaml"
-    },
     "yaml.schemaStore.enable": true,
     "yaml.schemas": {
-      "ansible": "ansible/**/*.yaml",
       "kubernetes": "kubernetes/**/*.yaml"
     },
     "editor.fontLigatures": true,
@@ -22,6 +16,4 @@
     ],
     "explorer.autoReveal": false,
     "files.trimTrailingWhitespace": true,
-    "ansible.python.interpreterPath": "/usr/bin/python3",
-    "sops.defaults.ageKeyFile": "age.key"
 }
