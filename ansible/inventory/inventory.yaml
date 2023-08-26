@@ -12,6 +12,9 @@ cluster:
 
     worker:
       hosts:
+        opi01.home:
+          ansible_user: ndufour
+
         raccoon03.home:
         raccoon04.home:
         raccoon05.home:
@@ -36,3 +39,27 @@ storage:
   hosts:
     possum.home:
       ansible_user: pi
+
+orangepi5plus:
+  hosts:
+    opi01.home:
+
+raspberries:
+  children:
+    rasp4:
+      hosts:
+        raccoon00.home:
+        raccoon01.home:
+        raccoon02.home:
+        raccoon03.home:
+        raccoon04.home:
+        raccoon05.home:
+        eagle.home:
+
+    rasp3:
+      hosts:
+        sparrow01.home:
+        sparrow02.home:
+        sparrow03.home:
+        sparrow04.home:
+        sparrow05.home:
