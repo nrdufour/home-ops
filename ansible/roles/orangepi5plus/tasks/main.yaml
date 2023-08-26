@@ -1,0 +1,23 @@
+---
+
+- name: Include common roles
+  ansible.builtin.include_role:
+    name: "{{ item }}"
+  loop:
+    - geerlingguy.pip
+    - geerlingguy.swap
+
+- name: Ensure the hostname is properly set
+  become: true
+  ansible.builtin.hostname:
+    name: "{{ ansible_host }}"
+    use: "debian"
+  notify:
+    - Stop k3s
+    - Reboot
+
+- name: Install nfs-common
+  become: true
+  ansible.builtin.apt:
+    name: "nfs-common"
+    state: present

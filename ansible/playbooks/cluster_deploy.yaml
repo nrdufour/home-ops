@@ -7,6 +7,13 @@
   roles:
     - raspberries
 
+- name: Setting up orangepi5plus
+  hosts: orangepi5plus
+  become: true
+
+  roles:
+    - orangepi5plus
+
 - name: Setup cluster
   hosts: cluster
   become: true

@@ -1,0 +1,8 @@
+---
+
+- name: Stop k3s
+  become: true
+  ansible.builtin.shell: test -f /usr/local/bin/k3s-killall.sh && /usr/local/bin/k3s-killall.sh || echo 'skipping k3s kill'
+
+- name: Reboot
+  ansible.builtin.reboot:
