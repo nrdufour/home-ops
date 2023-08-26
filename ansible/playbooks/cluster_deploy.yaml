@@ -1,9 +1,15 @@
 ---
 
+- name: Setting up raspberries
+  hosts: raspberries
+  become: true
+
+  roles:
+    - raspberries
+
 - name: Setup cluster
   hosts: cluster
   become: true
 
   roles:
-    - raspberries
     - xanmanning.k3s
