@@ -1,22 +1,29 @@
 ---
 
-- hosts: all
+- name: Upgrade all machines
+  hosts: all
   become: true
+
+  handlers:
+
+    - name: Stop k3s
+      ansible.builtin.command: /usr/local/bin/k3s-killall.sh
+      register: my_output
+      changed_when: my_output.rc != 0
+
+    - name: Reboot
+      ansible.builtin.reboot:
 
   tasks:
 
     - name: Upgrade all packages
       ansible.builtin.apt:
-        name: "*"
-        state: "latest"
+        upgrade: true
         update_cache: true
+      notify:
+        - Stop k3s
+        - Reboot
 
-    # Only useful for raspberry pi 4 but that's ok
-    - name: Upgrade bootloader
-      ansible.builtin.command: rpi-eeprom-update -a
-
-    - name: Stop k3s before Reboot
-      ansible.builtin.command: /usr/local/bin/k3s-killall.sh
-
-    - name: Reboot
-      ansible.builtin.reboot:
+## Only useful for raspberry pi 4 but that's ok
+# - name: Upgrade bootloader
+#   ansible.builtin.command: rpi-eeprom-update -a
