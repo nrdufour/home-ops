@@ -8,4 +8,4 @@ resources:
   # Flux-Kustomizations
   ## Disable this for now as it has some trouble with raspberry pi machines.
   ## Need more study.
-  # - ./node-feature-discovery/ks.yaml
+  - ./node-feature-discovery/ks.yaml
