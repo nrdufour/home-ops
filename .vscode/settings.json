@@ -16,4 +16,5 @@
     ],
     "explorer.autoReveal": false,
     "files.trimTrailingWhitespace": true,
+    "ansible.python.interpreterPath": "/bin/python",
 }
