@@ -21,3 +21,5 @@
   ansible.builtin.apt:
     name: "nfs-common"
     state: present
+
+- import_tasks: prepare_disk.yaml
