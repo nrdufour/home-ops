@@ -9,3 +9,4 @@ resources:
 - csi-driver-nfs-charts.yaml
 - bitnami.yaml
 - node-feature-discovery.yaml
+- cloudnative-pg.yaml
