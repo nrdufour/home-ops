@@ -12,8 +12,8 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs
   nfs:
-    path: /srv/nfs/data/dashy
-    server: raccoon00.home
+    path: /srv/storage/nfs/data/dashy
+    server: possum.home
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
