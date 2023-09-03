@@ -1,0 +1,32 @@
+---
+
+storage_nfs_ip_range: 192.168.0.0/16
+
+# Possum NFS shares
+storage_nfs_shares:
+  - name: dashy
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000"
+  - name: influxdb
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000"
+  - name: influxdb2
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000"
+  - name: registry
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=1000"
+  - name: kanboard
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0"
+  - name: mqtt
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=1883,anongid=1883"
+  - name: grafana
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=472,anongid=472"
+  - name: psql
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=999,anongid=999"
+  - name: znc
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=100,anongid=101"
+  - name: prometheus
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0"
+  - name: marmitton
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0"
+  - name: toot
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0"
+  - name: pg_backup
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0"

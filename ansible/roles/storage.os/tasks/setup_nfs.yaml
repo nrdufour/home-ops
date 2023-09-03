@@ -13,6 +13,15 @@
     group: nogroup
     state: directory
 
+- name: "Ensure shares exist"
+  ansible.builtin.file:
+    path: "{{ nfs_base_dir }}/data/{{ item.name }}"
+    owner: "root"
+    group: "root"
+    mode: "1777"
+    state: directory
+  loop: "{{ storage_nfs_shares }}"
+
 - name: "nfsd: Configure exports"
   ansible.builtin.template:
     src: "exports.j2"
