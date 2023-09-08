@@ -9,3 +9,5 @@ spec:
   url: ssh://git@git.home:2222/nrdufour/mastodon-chart.git
   ref:
     branch: "main"
+  secretRef:
+    name: gitea-access
