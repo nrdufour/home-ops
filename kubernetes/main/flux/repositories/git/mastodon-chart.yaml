@@ -6,6 +6,6 @@ metadata:
   namespace: flux-system
 spec:
   interval: 30m
-  url: https://github.com/nrdufour/mastodon-chart
+  url: ssh://git@git.home:2222/nrdufour/mastodon-chart.git
   ref:
     branch: "main"
