@@ -12,8 +12,8 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs
   nfs:
-    path: /srv/nfs/data/mqtt
-    server: raccoon00.home
+    path: /srv/storage/nfs/data/mqtt
+    server: possum.home
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
