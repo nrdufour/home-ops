@@ -255,6 +255,8 @@ postgresql:
 redis:
   # disable if you want to use an existing redis instance; in which case the
   # values below must match those of that external redis instance
+  image:
+    tag: "7.2.1"
   enabled: true
   hostname: ""
   port: 6379
