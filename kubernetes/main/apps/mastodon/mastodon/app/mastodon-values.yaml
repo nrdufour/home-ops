@@ -42,17 +42,24 @@ mastodon:
       # -- ReadWriteOnce is more widely supported than ReadWriteMany, but limits
       # scalability, since it requires the Rails and Sidekiq pods to run on the
       # same node.
-      accessMode: ReadWriteMany
       storageClassName: nfs
+      accessMode: ReadWriteMany
+      nfs:
+        path: /srv/nfs/data/toot
+        server: raccoon00.home
       resources:
         requests:
-          storage: 4Gi
+          storage: 10Gi
     system:
-      accessMode: ReadWriteMany
       storageClassName: nfs
+      accessMode: ReadWriteMany
+      nfs:
+        path: /srv/nfs/data/toot
+        server: raccoon00.home
       resources:
         requests:
-          storage: 137Gi
+          storage: 100Gi
+
   s3:
     enabled: false
     access_key: ""
