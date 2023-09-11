@@ -12,5 +12,5 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs
   nfs:
-    path: /srv/nfs/data/prometheus
-    server: raccoon00.home
+    path: /srv/storage/nfs/data/prometheus
+    server: possum.home
