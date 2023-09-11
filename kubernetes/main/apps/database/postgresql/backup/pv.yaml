@@ -13,8 +13,8 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs
   nfs:
-    path: /srv/nfs/data/pg_backup
-    server: raccoon00.home
+    path: /srv/storage/nfs/data/pg_backup
+    server: possum.home
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
