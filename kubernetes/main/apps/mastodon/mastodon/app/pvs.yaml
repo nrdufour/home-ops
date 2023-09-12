@@ -9,8 +9,8 @@ spec:
   capacity:
     storage: 4Gi
   nfs:
-    path: /srv/nfs/data/toot/assets
-    server: raccoon00.home
+    path: /srv/storage/nfs/data/toot/assets
+    server: possum.home
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs
 ---
@@ -24,7 +24,7 @@ spec:
   capacity:
     storage: 137Gi
   nfs:
-    path: /srv/nfs/data/toot/system
-    server: raccoon00.home
+    path: /srv/storage/nfs/data/toot/system
+    server: possum.home
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs
