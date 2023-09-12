@@ -45,8 +45,8 @@ mastodon:
       storageClassName: nfs
       accessMode: ReadWriteMany
       nfs:
-        path: /srv/nfs/data/toot
-        server: raccoon00.home
+        path: /srv/storage/nfs/data/toot
+        server: possum.home
       resources:
         requests:
           storage: 10Gi
@@ -54,8 +54,8 @@ mastodon:
       storageClassName: nfs
       accessMode: ReadWriteMany
       nfs:
-        path: /srv/nfs/data/toot
-        server: raccoon00.home
+        path: /srv/storage/nfs/data/toot
+        server: possum.home
       resources:
         requests:
           storage: 100Gi
