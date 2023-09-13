@@ -23,7 +23,7 @@ storage_nfs_shares:
   - name: znc
     options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=100,anongid=101"
   - name: prometheus
-    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0"
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=1000,anongid=2000"
   - name: marmitton
     options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0"
   - name: toot
