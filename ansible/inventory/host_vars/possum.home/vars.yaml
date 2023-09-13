@@ -27,6 +27,6 @@ storage_nfs_shares:
   - name: marmitton
     options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0"
   - name: toot
-    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0"
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=991,anongid=991"
   - name: pg_backup
     options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0"
