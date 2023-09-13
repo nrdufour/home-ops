@@ -1,0 +1,12 @@
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: mastodon
+resources:
+  - ./cronjob.yaml
+configMapGenerator:
+  - name: mastodon-scripts
+    files:
+      - purge-media.sh=purge-media.sh
+generatorOptions:
+  disableNameSuffixHash: true
