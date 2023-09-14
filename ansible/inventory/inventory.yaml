@@ -14,6 +14,7 @@ cluster:
       hosts:
         opi01.home:
         opi02.home:
+        opi03.home:
 
         raccoon03.home:
         raccoon04.home:
@@ -46,6 +47,7 @@ orangepi5plus:
   hosts:
     opi01.home:
     opi02.home:
+    opi03.home:
 
 raspberries:
   children:
