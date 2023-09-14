@@ -13,7 +13,7 @@ cluster:
     worker:
       hosts:
         opi01.home:
-          ansible_user: ndufour
+        opi02.home:
 
         raccoon03.home:
         raccoon04.home:
@@ -41,8 +41,11 @@ storage:
       ansible_user: pi
 
 orangepi5plus:
+  vars:
+    ansible_user: ndufour
   hosts:
     opi01.home:
+    opi02.home:
 
 raspberries:
   children:
