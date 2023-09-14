@@ -6,3 +6,9 @@
 
 - name: Reboot
   ansible.builtin.reboot:
+
+- name: Restart k3s
+  become: true
+  ansible.builtin.systemd:
+    name: k3s
+    state: restarted

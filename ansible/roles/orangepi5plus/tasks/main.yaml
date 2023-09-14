@@ -23,3 +23,20 @@
     state: present
 
 - import_tasks: prepare_disk.yaml
+
+# Ensure iptables is present and in legacy state
+- name: Install iptables
+  become: true
+  ansible.builtin.apt:
+    name: iptables
+    state: present
+  notify:
+    - Restart k3s
+
+- name: Ensure iptables is in legacy mode
+  become: true
+  ansible.builtin.shell: |
+    update-alternatives --set iptables /usr/sbin/iptables-legacy
+    update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+  args:
+    executable: /bin/bash
