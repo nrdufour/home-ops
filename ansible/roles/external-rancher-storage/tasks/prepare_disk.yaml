@@ -1,0 +1,24 @@
+---
+
+- name: Ensure the storage is using ext4
+  become: true
+  community.general.filesystem:
+    fstype: "{{ external_rancher_storage_fstype }}"
+    dev: "{{ external_rancher_storage_device }}"
+
+- name: "Ensure {{ external_rancher_storage_path }} directory exists"
+  become: true
+  ansible.builtin.file:
+    path: "{{ external_rancher_storage_path }}"
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Mount the external disk
+  become: true
+  ansible.posix.mount:
+    path: "{{ external_rancher_storage_path }}"
+    src: "{{ external_rancher_storage_device }}"
+    fstype: "{{ external_rancher_storage_fstype }}"
+    state: mounted

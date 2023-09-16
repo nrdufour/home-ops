@@ -1,0 +1,5 @@
+---
+
+- name: "Do it only if the external storage exists"
+  ansible.builtin.include_tasks: prepare_disk.yaml
+  when: external_rancher_storage_exists

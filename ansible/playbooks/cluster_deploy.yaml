@@ -1,5 +1,12 @@
 ---
 
+- name: Presetting rasp4 and opi5 with an external storage
+  hosts: rasp4,orangepi5plus
+  tags: preset
+
+  roles:
+    - external-rancher-storage
+
 - name: Setting up raspberries
   hosts: raspberries
   become: true

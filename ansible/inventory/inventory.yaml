@@ -45,6 +45,8 @@ storage:
 orangepi5plus:
   vars:
     ansible_user: ndufour
+    external_rancher_storage_exists: true
+    external_rancher_storage_device: /dev/sda
   hosts:
     opi01.home:
     opi02.home:
@@ -53,6 +55,9 @@ orangepi5plus:
 raspberries:
   children:
     rasp4:
+      vars:
+        external_rancher_storage_exists: true
+        external_rancher_storage_device: /dev/sda
       hosts:
         raccoon00.home:
         raccoon01.home:

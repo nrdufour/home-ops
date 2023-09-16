@@ -1,0 +1,6 @@
+---
+
+external_rancher_storage_exists: false
+external_rancher_storage_device: /dev/sda
+external_rancher_storage_fstype: ext4
+external_rancher_storage_path: /var/lib/rancher
