@@ -4,7 +4,7 @@ metadata:
   name: mastodon-toot-media-cleanup
   namespace: default
 spec:
-  schedule: "0 */3 * * *"
+  schedule: "0 */12 * * *"
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
