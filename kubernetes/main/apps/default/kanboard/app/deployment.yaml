@@ -18,6 +18,8 @@ spec:
       labels:
         app: kanboard
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: eagle.home
       securityContext:
         runAsUser:  0
         runAsGroup: 0
