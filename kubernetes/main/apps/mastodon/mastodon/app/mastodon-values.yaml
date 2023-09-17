@@ -21,13 +21,6 @@ mastodon:
   createAdmin:
     # @ignored
     enabled: false
-  cron:
-    # -- run `tootctl media remove` every week
-    removeMedia:
-      # @ignored
-      enabled: true
-      # @ignored
-      schedule: "0 0 * * 0"
   # -- available locales: https://github.com/mastodon/mastodon/blob/main/config/application.rb#L71
   locale: en
   local_domain: toot.ptinem.io
