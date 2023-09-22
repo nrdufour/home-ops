@@ -284,6 +284,7 @@ spec:
       enabled: true
       hostname: ""
       port: 6379
+      architecture: standalone
 
     # @ignored
     service:
