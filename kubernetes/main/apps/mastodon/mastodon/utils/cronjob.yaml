@@ -30,7 +30,7 @@ spec:
                   name: toot-mastodon-env
               - secretRef:
                   name: toot-mastodon
-              image: ghcr.io/mastodon/mastodon:v4.1.9
+              image: ghcr.io/mastodon/mastodon:v4.2.0
               imagePullPolicy: IfNotPresent
               name: mastodon
               volumeMounts:
