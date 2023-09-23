@@ -1,6 +1,6 @@
 ---
 - name: Deploy the private CA to each node of the cluster
-  hosts: cluster
+  hosts: cluster,storage
 
   vars:
     private_ca_filename: private_ca_filename.crt
