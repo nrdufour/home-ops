@@ -12,7 +12,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: renovate/renovate:37.0
+              image: renovate/renovate:37.1
               args:
                 - nrdufour/mqtt-apps
                 - nrdufour/home-ops
