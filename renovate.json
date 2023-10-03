@@ -2,15 +2,15 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
 
   "flux": {
-    "fileMatch": ["(^|/)kubernetes/.+\\.ya?ml$"]
+    "fileMatch": ["(^|/)kubernetes/.+\\.yaml$"]
   },
   "helm-values": {
-    "fileMatch": ["(^|/)kubernetes/.+\\.ya?ml$"]
+    "fileMatch": ["(^|/)kubernetes/.+\\.yaml$"]
   },
   "kubernetes": {
     "fileMatch": [
-      "(^|/)ansible/.+\\.ya?ml\\.j2$",
-      "(^|/)kubernetes/.+\\.ya?ml$"
+      "(^|/)ansible/.+\\.yaml\\.j2$",
+      "(^|/)kubernetes/.+\\.yaml$"
     ]
   },
 
