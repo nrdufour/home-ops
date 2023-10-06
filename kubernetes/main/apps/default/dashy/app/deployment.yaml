@@ -17,6 +17,9 @@ spec:
         app: dashy
     spec:
       containers:
+      - env:
+        - name: "NODE_ENV"
+          value: "production"
       - name: dashy
         image: lissy93/dashy:2.1.1
         ports:
