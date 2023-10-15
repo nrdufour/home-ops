@@ -43,7 +43,7 @@ spec:
           - name: "RUN_MIGRATIONS"
             value: "1"
         ports:
-          - containerPort: 8000
+          - containerPort: 80
             name: http-miniflux
         resources:
           requests:
