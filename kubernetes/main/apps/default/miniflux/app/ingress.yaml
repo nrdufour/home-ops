@@ -24,4 +24,4 @@ spec:
           service:
             name: miniflux
             port:
-              number: 8000
+              number: 80
