@@ -8,6 +8,6 @@ spec:
   selector:
     app: miniflux
   ports:
-    - port: 80
+    - port: 8080
       protocol: TCP
       targetPort: http-miniflux
