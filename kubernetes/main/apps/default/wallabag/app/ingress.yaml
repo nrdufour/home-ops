@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: wallabag-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: ca-cluster-issuer
+    cert-manager.io/common-name: wallabag.home
+    nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/24
+spec:
+  tls:
+    - hosts:
+      - wallabag.home
+      secretName: wallabag-ing-cert
+  ingressClassName: nginx
+  rules:
+  - host: wallabag.home
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wallabag
+            port:
+              number: 80

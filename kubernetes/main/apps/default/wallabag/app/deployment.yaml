@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wallabag
+  namespace: default
+  labels:
+    app: wallabag
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wallabag
+  template:
+    metadata:
+      labels:
+        app: wallabag
+    spec:
+      containers:
+      - name: wallabag
+        image: wallabag/wallabag:2.6.7
+        envFrom:
+          - secretRef:
+              name: wallabag-secret
+        env:
+          - name: "SYMFONY__ENV__DATABASE_DRIVER"
+            value: "pdo_pgsql"
+          - name: "SYMFONY__ENV__DATABASE_HOST"
+            value: "postgresql.database"
+          - name: "SYMFONY__ENV__DATABASE_PORT"
+            value: "5432"
+          - name: "SYMFONY__ENV__DATABASE_NAME"
+            value: "wallabag"
+          - name: "SYMFONY__ENV__DATABASE_USER"
+            value: "wallabag"
+          - name: "SYMFONY__ENV__DOMAIN_NAME"
+            value: "https://wallabag.home"
+          - name: "SYMFONY__ENV__SERVER_NAME"
+            value: "Wallabag"
+          - name: "SYMFONY__ENV__FOSUSER_REGISTRATION"
+            value: "false"
+          - name: "SYMFONY__ENV__FOSUSER_CONFIRMATION"
+            value: "false"
+          - name: "POPULATE_DATABASE"
+            value: "false"
+        ports:
+          - containerPort: 80
+            name: http
+        resources:
+          requests:
+            cpu: 12m
+            memory: 64M
+          limits:
+            memory: 256M
