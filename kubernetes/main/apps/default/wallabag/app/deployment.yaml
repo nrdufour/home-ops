@@ -21,7 +21,7 @@ spec:
         image: wallabag/wallabag:2.6.7
         envFrom:
           - secretRef:
-              name: wallabag-secret
+              name: wallabag-pguser
         env:
           - name: "SYMFONY__ENV__DATABASE_DRIVER"
             value: "pdo_pgsql"
