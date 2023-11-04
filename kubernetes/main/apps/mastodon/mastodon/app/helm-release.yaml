@@ -282,7 +282,7 @@ spec:
       # values below must match those of that external redis instance
       image:
         repository: redis
-        tag: "7.2.2"
+        tag: "7.2.3"
       enabled: true
       hostname: ""
       port: 6379
