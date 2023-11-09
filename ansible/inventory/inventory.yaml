@@ -9,6 +9,7 @@ cluster:
         raccoon00.home:
           ansible_user: ndufour
         raccoon01.home:
+          ansible_user: ndufour
         raccoon02.home:
 
     worker:
@@ -27,7 +28,8 @@ cluster:
         sparrow03.home:
         sparrow04.home:
         sparrow05.home:
-        #sparrow06.home:
+        sparrow06.home:
+          ansible_user: ndufour
 
     internal_lb:
       hosts:
@@ -74,3 +76,4 @@ raspberries:
         sparrow03.home:
         sparrow04.home:
         sparrow05.home:
+        sparrow06.home:
