@@ -12,7 +12,7 @@ spec:
         spec:
           containers:
             - name: backup
-              image: docker.io/postgres:15.4
+              image: docker.io/postgres:15.5
               command: ["bash",  "-c", "cd /backup; pg_dump -h postgresql.database -U postgres -Fc toot -f backup_toot_$(date +%Y%m%d).dump"]
               env:
                 - name: PGPASSWORD
@@ -42,7 +42,7 @@ spec:
         spec:
           containers:
             - name: backup
-              image: docker.io/postgres:15.4
+              image: docker.io/postgres:15.5
               command: ["bash",  "-c", "cd /backup; pg_dump -h postgresql.database -U postgres -Fc wikijs -f backup_wikijs_$(date +%Y%m%d).dump"]
               env:
                 - name: PGPASSWORD

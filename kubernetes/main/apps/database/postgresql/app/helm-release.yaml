@@ -27,7 +27,7 @@ spec:
     image:
       registry: docker.io
       repository: postgres
-      tag: "15.4"
+      tag: "15.5"
     global:
       postgresql:
         auth:
