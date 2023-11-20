@@ -10,3 +10,4 @@ resources:
 - bitnami.yaml
 - node-feature-discovery.yaml
 - cloudnative-pg.yaml
+- crunchydata.yaml
