@@ -7,6 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-cluster-issuer
     cert-manager.io/common-name: minio.home
+    nginx.ingress.kubernetes.io/proxy-body-size: 5g
 
 spec:
   ingressClassName: nginx
@@ -34,6 +35,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-cluster-issuer
     cert-manager.io/common-name: s3.home
+    nginx.ingress.kubernetes.io/proxy-body-size: 5g
 
 spec:
   ingressClassName: nginx
