@@ -32,9 +32,3 @@ spec:
     worker:
       nodeSelector:
         beta.kubernetes.io/arch: arm64
-      config:
-        core:
-          sources: ["pci", "usb"]
-        sources:
-          usb:
-            deviceLabelFields: ["class", "vendor", "device"]
