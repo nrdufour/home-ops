@@ -11,6 +11,7 @@ cluster:
         raccoon01.home:
           ansible_user: ndufour
         raccoon02.home:
+          ansible_user: ndufour
 
     worker:
       hosts:
@@ -19,8 +20,11 @@ cluster:
         opi03.home:
 
         raccoon03.home:
+          ansible_user: ndufour
         raccoon04.home:
+          ansible_user: ndufour
         raccoon05.home:
+          ansible_user: ndufour
         eagle.home:
 
         sparrow01.home:
