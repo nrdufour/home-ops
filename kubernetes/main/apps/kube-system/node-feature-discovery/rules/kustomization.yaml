@@ -6,3 +6,5 @@ namespace: kube-system
 resources:
   - ./rtl-sdr-device.yaml
   - ./opi5plus-detect.yaml
+  - ./raspberry3-detect.yaml
+  - ./raspberry4-detect.yaml

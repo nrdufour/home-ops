@@ -1,0 +1,16 @@
+---
+apiVersion: nfd.k8s-sigs.io/v1alpha1
+kind: NodeFeatureRule
+metadata:
+  name: raspberry4-detect
+spec:
+  rules:
+    - # Flag Raspberry Pi 4 with their own label
+      name: raspberry.4
+      labels:
+        raspberry.feature.node.kubernetes.io/4: "true"
+      matchFeatures:
+        - feature: cpu.model
+          matchExpressions:
+            family: { op: "In", value: ["15"] }
+            id: { op: "In", value: ["53379"] }
