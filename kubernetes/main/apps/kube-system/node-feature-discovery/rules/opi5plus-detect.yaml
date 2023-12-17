@@ -1,0 +1,15 @@
+---
+apiVersion: nfd.k8s-sigs.io/v1alpha1
+kind: NodeFeatureRule
+metadata:
+  name: opi5plus-detect
+spec:
+  rules:
+    - # Flag Orange Pi 5 Plus with their own label
+      name: opi.5plus
+      labels:
+        opi.feature.node.kubernetes.io/5plus: "true"
+      matchFeatures:
+        - feature: cpu.model
+          matchExpressions:
+            family: { op: "In", value: ["79"] }
