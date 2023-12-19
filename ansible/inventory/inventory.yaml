@@ -29,9 +29,13 @@ cluster:
 
         sparrow01.home:
         sparrow02.home:
+          ansible_user: ndufour
         sparrow03.home:
+          ansible_user: ndufour
         sparrow04.home:
+          ansible_user: ndufour
         sparrow05.home:
+          ansible_user: ndufour
         sparrow06.home:
           ansible_user: ndufour
 
