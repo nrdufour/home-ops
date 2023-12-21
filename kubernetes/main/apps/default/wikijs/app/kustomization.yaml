@@ -6,3 +6,5 @@ resources:
 - deployment.yaml
 - ingress.yaml
 - service.yaml
+- pg-cluster.yaml
+- schedulebackup.yaml
