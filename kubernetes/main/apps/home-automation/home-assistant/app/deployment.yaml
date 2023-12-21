@@ -22,6 +22,12 @@ spec:
       containers:
         - image: homeassistant/home-assistant:2021.2.3
           name: home-assistant
+          env:
+            - name: "SECRET_RECORDER_DB_URL"
+              valueFrom:
+                secretKeyRef:
+                  key: uri
+                  name: hass-db-app
           volumeMounts:
             - mountPath: "/config"
               name: ha-storage
