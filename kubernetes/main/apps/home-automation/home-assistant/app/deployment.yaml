@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: homeassistant
+  name: homeassistant
+  namespace: home-automation
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homeassistant
+  template:
+    metadata:
+      labels:
+        app: homeassistant
+    spec:
+      volumes:
+        - name: ha-storage
+          persistentVolumeClaim:
+            claimName: ha-pvc
+      containers:
+        - image: homeassistant/home-assistant:2021.2.3
+          name: home-assistant
+          volumeMounts:
+            - mountPath: "/config"
+              name: ha-storage

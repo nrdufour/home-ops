@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ha-pv
+  namespace: default
+spec:
+  capacity:
+    storage: 100Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    path: /srv/storage/nfs/data/ha
+    server: possum.home
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ha-pvc
+  namespace: default
+spec:
+  storageClassName: nfs
+  volumeName: ha-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
