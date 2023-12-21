@@ -7,7 +7,7 @@ metadata:
   labels:
     app: miniflux
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: miniflux
@@ -30,7 +30,7 @@ spec:
           - name: "DATABASE_URL"
             valueFrom:
               secretKeyRef:
-                name: miniflux-pguser
+                name: miniflux-db-app
                 key: uri
           - name: "DEBUG"
             value: "1"
