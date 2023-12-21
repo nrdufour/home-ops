@@ -7,4 +7,4 @@ resources:
 - ingress.yaml
 - service.yaml
 - pg-cluster.yaml
-- schedulebackup.yaml
+- scheduledbackup.yaml
