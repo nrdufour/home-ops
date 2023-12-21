@@ -20,7 +20,7 @@ spec:
           persistentVolumeClaim:
             claimName: ha-pvc
       containers:
-        - image: homeassistant/home-assistant:2021.2.3
+        - image: ghcr.io/home-assistant/home-assistant:2023.12.3
           name: home-assistant
           env:
             - name: "SECRET_RECORDER_DB_URL"
