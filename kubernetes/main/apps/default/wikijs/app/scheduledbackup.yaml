@@ -2,11 +2,11 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: ScheduledBackup
 metadata:
-  name: wallabag-db
+  name: wikijs-db
   namespace: default
 spec:
   schedule: "@daily"
   immediate: true
   backupOwnerReference: self
   cluster:
-    name: wallabag-db
+    name: wikijs-db
