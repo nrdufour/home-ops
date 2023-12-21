@@ -7,7 +7,7 @@ metadata:
   labels:
     app: wallabag
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: wallabag
@@ -19,20 +19,34 @@ spec:
       containers:
       - name: wallabag
         image: wallabag/wallabag:2.6.7
-        envFrom:
-          - secretRef:
-              name: wallabag-pguser
         env:
           - name: "SYMFONY__ENV__DATABASE_DRIVER"
             value: "pdo_pgsql"
           - name: "SYMFONY__ENV__DATABASE_HOST"
-            value: "postgresql.database"
+            valueFrom:
+              secretKeyRef:
+                key: host
+                name: wallabag-db-app
           - name: "SYMFONY__ENV__DATABASE_PORT"
-            value: "5432"
+            valueFrom:
+              secretKeyRef:
+                key: port
+                name: wallabag-db-app
           - name: "SYMFONY__ENV__DATABASE_NAME"
-            value: "wallabag"
+            valueFrom:
+              secretKeyRef:
+                key: dbname
+                name: wallabag-db-app
           - name: "SYMFONY__ENV__DATABASE_USER"
-            value: "wallabag"
+            valueFrom:
+              secretKeyRef:
+                key: username
+                name: wallabag-db-app
+          - name: "SYMFONY__ENV__DATABASE_PASSWORD"
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: wallabag-db-app
           - name: "SYMFONY__ENV__DOMAIN_NAME"
             value: "https://wallabag.home"
           - name: "SYMFONY__ENV__SERVER_NAME"
