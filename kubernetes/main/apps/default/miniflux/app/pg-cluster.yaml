@@ -38,6 +38,11 @@ spec:
           name: cnpg-minio-access
           key: aws-secret-access-key
 
+  bootstrap:
+    initdb:
+      database: miniflux
+      owner: miniflux
+
   # bootstrap:
   #   recovery:
   #     source: clusterBackup
