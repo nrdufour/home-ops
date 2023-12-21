@@ -7,7 +7,7 @@ metadata:
   labels:
     app: wikijs
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       app: wikijs
@@ -23,14 +23,27 @@ spec:
           - name: "DB_TYPE"
             value: "postgres"
           - name: "DB_HOST"
-            value: "postgresql.database"
+            valueFrom:
+              secretKeyRef:
+                key: host
+                name: wallabag-db-app
           - name: "DB_PORT"
-            value: "5432"
+            valueFrom:
+              secretKeyRef:
+                key: port
+                name: wallabag-db-app
           - name: "DB_NAME"
-            value: "wikijs"
+            valueFrom:
+              secretKeyRef:
+                key: dbname
+                name: wallabag-db-app
           - name: "DB_USER"
-            value: "wikijs"
-        envFrom:
-          - secretRef:
-              name: wikijs-config
-
+            valueFrom:
+              secretKeyRef:
+                key: username
+                name: wallabag-db-app
+          - name: "DB_PASS"
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: wallabag-db-app
