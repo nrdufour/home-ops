@@ -12,4 +12,4 @@ spec:
       matchFeatures:
         - feature: cpu.model
           matchExpressions:
-            family: { op: "In", value: ["79"] }
+            family: { op: "In", value: ["79", "47"] }
