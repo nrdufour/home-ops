@@ -28,33 +28,3 @@ spec:
               persistentVolumeClaim:
                 claimName: pg-backup-pvc
           restartPolicy: OnFailure
----
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: wallabag-backup
-  namespace: database
-spec:
-  schedule: "0 4 * * *"
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          containers:
-            - name: backup
-              image: docker.io/postgres:15.5
-              command: ["bash",  "-c", "cd /backup; pg_dump -h postgresql.database -U postgres -Fc wallabag -f backup_wallabag_$(date +%Y%m%d).dump"]
-              env:
-                - name: PGPASSWORD
-                  valueFrom:
-                    secretKeyRef:
-                      name: main-postgresql-secret
-                      key: postgres-password
-              volumeMounts:
-                - name: backup
-                  mountPath: /backup
-          volumes:
-            - name: backup
-              persistentVolumeClaim:
-                claimName: pg-backup-pvc
-          restartPolicy: OnFailure
