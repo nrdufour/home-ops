@@ -19,7 +19,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: ha-pvc
-  namespace: default
+  namespace: home-automation
 spec:
   storageClassName: nfs
   volumeName: ha-pv
