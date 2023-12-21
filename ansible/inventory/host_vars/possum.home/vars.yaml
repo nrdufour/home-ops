@@ -30,3 +30,5 @@ storage_nfs_shares:
     options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=991,anongid=991"
   - name: pg_backup
     options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0"
+  - name: ha
+    options: "rw,all_squash,insecure,sync,no_subtree_check,anonuid=0,anongid=0"
