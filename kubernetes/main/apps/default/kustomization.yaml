@@ -17,5 +17,6 @@ resources:
   - ./renovate/ks.yaml
   - ./miniflux/ks.yaml
   - ./wallabag/ks.yaml
+  - ./mealie/ks.yaml
   # Secrets
   - ./cnpg-minio-access.sops.yaml

@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mealie-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: ca-cluster-issuer
+    cert-manager.io/common-name: mealie.home
+    nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/24,10.0.0.0/8
+spec:
+  tls:
+    - hosts:
+      - mealie.home
+      secretName: mealie-ing-cert
+  ingressClassName: nginx
+  rules:
+  - host: mealie.home
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: mealie
+            port:
+              number: 8080

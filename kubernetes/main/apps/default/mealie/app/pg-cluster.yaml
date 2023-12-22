@@ -1,0 +1,70 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: mealie-db
+  namespace: default
+spec:
+  instances: 2
+  imageName: ghcr.io/cloudnative-pg/postgresql:15.4
+
+  enableSuperuserAccess: true
+
+  affinity:
+    nodeSelector:
+      opi.feature.node.kubernetes.io/5plus: "true"
+
+  storage:
+    size: 5Gi
+
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore:
+      data:
+        compression: bzip2
+      wal:
+        compression: bzip2
+        maxParallel: 8
+      destinationPath: s3://cloudnative-pg/
+      endpointURL: https://s3.home
+      endpointCA:
+        name: cnpg-minio-access
+        key: tls.crt
+      serverName: mealie-v1
+      s3Credentials:
+        accessKeyId:
+          name: cnpg-minio-access
+          key: aws-access-key-id
+        secretAccessKey:
+          name: cnpg-minio-access
+          key: aws-secret-access-key
+
+  bootstrap:
+    initdb:
+      database: mealie
+      owner: mealie
+
+  # bootstrap:
+  #   recovery:
+  #     source: clusterBackup
+
+  # externalClusters:
+  #   - name: clusterBackup
+  #     barmanObjectStore:
+  #       data:
+  #         compression: bzip2
+  #       wal:
+  #         compression: bzip2
+  #         maxParallel: 8
+  #       destinationPath: s3://cloudnative-pg/
+  #       endpointURL: https://s3.home
+  #       endpointCA:
+  #         name: cnpg-minio-access
+  #         key: tls.crt
+  #       serverName: mealie-v1
+  #       s3Credentials:
+  #         accessKeyId:
+  #           name: cnpg-minio-access
+  #           key: aws-access-key-id
+  #         secretAccessKey:
+  #           name: cnpg-minio-access
+  #           key: aws-secret-access-key
