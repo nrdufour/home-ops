@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
 - pg-cluster.yaml
 - scheduledbackup.yaml
-#- deployment.yaml
-#- service.yaml
-#- ingress.yaml
+- deployment.yaml
+- service.yaml
+- ingress.yaml
