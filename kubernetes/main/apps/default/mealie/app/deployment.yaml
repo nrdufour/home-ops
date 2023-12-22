@@ -23,7 +23,7 @@ spec:
           - name: "DB_ENGINE"
             value: "postgres"
           - name: "ALLOW_SIGNUP"
-            value: "false"
+            value: "true"
           - name: "PUID"
             value: "1000"
           - name: "PGID"
