@@ -19,9 +19,6 @@ spec:
       containers:
       - name: mealie
         image: ghcr.io/mealie-recipes/mealie:v1.0.0-RC1.1
-        envFrom:
-          - secretRef:
-              name: mealie-secret
         env:
           - name: "DB_ENGINE"
             value: "postgres"
