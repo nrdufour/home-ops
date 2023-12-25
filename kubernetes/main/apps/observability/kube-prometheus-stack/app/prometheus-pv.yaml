@@ -12,7 +12,6 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
-  storageClassName: nfs
   nfs:
     path: /srv/storage/nfs/data/prometheus
     server: possum.home
