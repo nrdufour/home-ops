@@ -70,8 +70,6 @@ spec:
               - *host
       prometheusSpec:
         serviceMonitorSelectorNilUsesHelmValues: false
-        nodeSelector:
-          kubernetes.io/hostname: eagle.home
         storageSpec:
           volumeClaimTemplate:
             spec:
