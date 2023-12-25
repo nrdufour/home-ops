@@ -3,6 +3,8 @@ kind: PersistentVolume
 metadata:
   name: prometheus-pv
   namespace: observability
+  labels:
+    app.kubernetes.io/name: kube-prometheus-pv
 spec:
   capacity:
     storage: 50Gi
@@ -14,19 +16,3 @@ spec:
   nfs:
     path: /srv/storage/nfs/data/prometheus
     server: possum.home
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: prometheus-pvc
-  namespace: observability
-  labels:
-    app.kubernetes.io/name: kube-prometheus-pvc
-spec:
-  storageClassName: nfs
-  volumeName: prometheus-pv
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 50Gi
