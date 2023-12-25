@@ -72,11 +72,6 @@ spec:
         serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           volumeClaimTemplate:
-            spec:
-              storageClassName: nfs
-              volumeName: prometheus-pv
-              accessModes:
-                - ReadWriteMany
-              resources:
-                requests:
-                  storage: 50Gi
+            selector:
+              matchLabels:
+                app.kubernetes.io/name: kube-prometheus-pvc
