@@ -48,8 +48,8 @@ spec:
         enabled: false
     persistence:
       config-file:
-        type: secret
-        name: rtlamr2mqtt-secret
+        type: configmap
+        name: rtlamr2mqtt-config
         globalMounts:
           - path: /etc/rtlamr2mqtt.yaml
             subPath: rtlamr2mqtt.yaml

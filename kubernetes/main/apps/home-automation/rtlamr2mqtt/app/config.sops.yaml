@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: rtlamr2mqtt-config
+    namespace: home-automation
+data:
+    rtlamr2mqtt.yaml: ENC[AES256_GCM,data:RORsU8ngq7VYmwrS9X+J5jBE3hEDl9SKIy3QSgITPVFgqv1s6Hw7PkZ+O5vAYsCylyU88pvcvCK53zU6soBeQWu0k/XbzqTFRRXPu954yI6V3CUuPkLhaWSRCFjdEf0tpDaIw5TNjQL8BDr7gi0R3rZhxNSSn/Ci5OEiHdLTeT1qS4JHv65XTLs7Ao1f2jEy6GnEHEY5PB3aJj+ZPDcywoCKgTZ5r5rvk8Mn10OflPdLqHMjCx/rgMn4CAYxSnOLRoK8xKfRy4yncL8m9mp9gpp+7TI2/y8y6659tYCepA1yXuSJF5ZW3x651/gbNwouZfljFhhOIVT3swHZG7ezmmjyzLvhzlwTujBjft/ovvWosJv8UQ5TYhcSWp19hEcsxupU/YjFVE7z5a16r5j5kVFpRPPU75isqwV4jWWDhe8VJwirmYWVH0vOt8FR0me7fslYZCkhtYk4NQnMWnmrJezpV4NYMuCSoWx8kTQOIbZo99xEB81yVlplACD+WLdQ22S3ZLMpkr5xKSYdLmttZeUYCIGD7LN7KEf/1AtnJdqT/2/XuWylWLXkRCUr81zPKueVhF0RX31uphWPQbh3WcGAQ/yQNzWKbQubEhX5+IKUOIQKZIHQFJ199ECc6uAAVUluVuu6ON/DDxwEwrUciPhaxm+xmswo5rRD48xnU/ebKQdswPLZcklX+OasnPxm7NofnUSXtO6R7LT2weHhnVEQbUOI0tHdfm2+gapeoPeUcSbVdeLNixL+KUhw5BOvcKvn7jAWRijWI3VSuMwZvtZt8PQRcscWVk0txZ6/XGpiNt0auv6lOgjYancYiuUE5r9eHudydM2kAbxpFVGrp0hu4SJgERszlD71stWH9HEwCdNgmiPwqdGgHg1x6OQKQNnfq0nYWWJd6R4=,iv:9IPuLcaiDqFsgu7vLslWbNAwTMep7NKGIRTp4A7X0us=,tag:zstSNn/DtsJksODtCZLrgw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1tmrr00pnj6gpc4pfp3wzvyjt66tfhudwj2kn84skt24qvwzlcsusrvrypj
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBJRWFqYnRjUzczWm04djNt
+            clFaVVoyQ2E3SGc0NXEzOVJIRHZmUTdTU25jCjYwSkM4N0JuTGlNSzhLV3FhOHFh
+            YnlvNDBMcWxJWUNjZi93TXFZYUJSZmcKLS0tIEJpNTNKa2V3MjFnRU9DUWJDa09O
+            VW1RSy9NRlBZRjR1b1BOZHpTQ2hSWlEKuyfcPJLF1gti/TiZAcDwz3/hSgY9aPa7
+            qaMnW/h+5z8ySlzxgYgx8aMq8Cz5dl5Xktp1EmSIPH69AJuaX2c/jQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-12-26T02:34:53Z"
+    mac: ENC[AES256_GCM,data:r4XS97rfM2gX65ktNw8TcIzwlf1OE0nCBQHLYeonw+k1s7+GNl4glIOU3hDuBkU0s9qR5YMSeQxFuwMSwdJCxAAZi1e0V01CTJrHTga4ucxGMUlaVWEgM3GJU9ciXVJVxNIKDTJe2+64ISz6/ddwrxmoRcJ+pi4n5qlmsKAUuvg=,iv:pEBkIQMNUvWd/lyfb8+A4RmMMiSkGPuuwLPb65viWh4=,tag:TJTjW79ld6uFpSAuahiu5Q==,type:str]
+    pgp: []
+    encrypted_regex: ^(data|stringData)$
+    version: 3.8.1
