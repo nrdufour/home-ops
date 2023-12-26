@@ -48,7 +48,7 @@ spec:
         enabled: false
     persistence:
       config-file:
-        type: configmap
+        type: configMap
         name: rtlamr2mqtt-config
         globalMounts:
           - path: /etc/rtlamr2mqtt.yaml
