@@ -39,7 +39,7 @@ spec:
                 cpu: 50m
                 memory: 64Mi
               limits:
-                memory: 128Mi
+                memory: 256Mi
         pod:
           nodeSelector:
             rtlsdr.feature.node.kubernetes.io/v3: "true"
