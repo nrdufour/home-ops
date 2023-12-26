@@ -11,3 +11,4 @@ resources:
 - node-feature-discovery.yaml
 - cloudnative-pg.yaml
 - crunchydata.yaml
+- bjw-s.yaml
