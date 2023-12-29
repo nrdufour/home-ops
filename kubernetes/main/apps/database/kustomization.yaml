@@ -10,4 +10,3 @@ resources:
   - ./influxdb2/ks.yaml
   - ./redis/ks.yaml
   - ./cloudnative-pg/ks.yaml
-  # - ./crunchy-postgres-operator/ks.yaml
