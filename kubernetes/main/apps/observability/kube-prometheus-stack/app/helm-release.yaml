@@ -68,11 +68,13 @@ spec:
         tls:
           - hosts:
               - *host
-      prometheusSpec:
-        serviceMonitorSelectorNilUsesHelmValues: false
-        nodeSelector:
-          kubernetes.io/hostname: eagle.home
         storageSpec:
           volumeClaimTemplate:
             spec:
-              volumeName: "prometheus-pv"
+              storageClassName: nfs
+              volumeName: prometheus-pv
+              accessModes:
+                - ReadWriteMany
+              resources:
+                requests:
+                  storage: 50Gi
