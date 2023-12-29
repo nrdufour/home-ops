@@ -6,7 +6,7 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./postgresql/ks.yaml
+  #- ./postgresql/ks.yaml
   - ./influxdb2/ks.yaml
   - ./redis/ks.yaml
   - ./cloudnative-pg/ks.yaml
