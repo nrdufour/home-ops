@@ -15,6 +15,7 @@
   },
 
   "ignorePaths": [
+    "kubernetes/archives/**",
     "kubernetes/main/apps/default/influxdb/app/**"
   ]
 }
