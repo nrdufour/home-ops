@@ -7,13 +7,21 @@
   roles:
     - external-rancher-storage
 
-- name: Setting up raspberries
-  hosts: raspberries
+- name: Setting up legacy raspberries
+  hosts: legacy_raspberry
   become: true
-  tags: raspberries
+  tags: legacy
 
   roles:
-    - raspberries
+    - legacy-raspberry
+
+- name: Setting up armbian based raspberries
+  hosts: armbian_raspberry
+  become: true
+  tags: armbian
+
+  roles:
+    - armbian-raspberry
 
 - name: Setting up orangepi5plus
   hosts: orangepi5plus

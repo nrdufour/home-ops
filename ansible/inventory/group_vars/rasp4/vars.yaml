@@ -1,0 +1,3 @@
+---
+external_rancher_storage_exists: true
+external_rancher_storage_device: /dev/sda

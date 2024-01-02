@@ -1,17 +1,14 @@
 ---
 cluster:
   vars:
-    ansible_user: pi
+    ansible_user: ndufour
 
   children:
     controller:
       hosts:
         raccoon00.home:
-          ansible_user: ndufour
         raccoon01.home:
-          ansible_user: ndufour
         raccoon02.home:
-          ansible_user: ndufour
 
     worker:
       hosts:
@@ -20,24 +17,16 @@ cluster:
         opi03.home:
 
         raccoon03.home:
-          ansible_user: ndufour
         raccoon04.home:
-          ansible_user: ndufour
         raccoon05.home:
-          ansible_user: ndufour
         eagle.home:
 
         sparrow01.home:
         sparrow02.home:
-          ansible_user: ndufour
         sparrow03.home:
-          ansible_user: ndufour
         sparrow04.home:
-          ansible_user: ndufour
         sparrow05.home:
-          ansible_user: ndufour
         sparrow06.home:
-          ansible_user: ndufour
 
     internal_lb:
       hosts:
@@ -52,36 +41,48 @@ storage:
     possum.home:
       ansible_user: pi
 
+legacy_raspberry:
+  hosts:
+    raccoon00.home:
+    raccoon01.home:
+    raccoon02.home:
+    raccoon03.home:
+    raccoon04.home:
+    raccoon05.home:
+    eagle.home:
+    sparrow01.home:
+    sparrow02.home:
+    sparrow03.home:
+    sparrow05.home:
+
+armbian_raspberry:
+  hosts:
+    sparrow04.home:
+    sparrow06.home:
+
+rasp4:
+  hosts:
+    raccoon00.home:
+    raccoon01.home:
+    raccoon02.home:
+    raccoon03.home:
+    raccoon04.home:
+    raccoon05.home:
+    eagle.home:
+      ansible_user: pi
+
+rasp3:
+  hosts:
+    sparrow01.home:
+      ansible_user: pi
+    sparrow02.home:
+    sparrow03.home:
+    sparrow04.home:
+    sparrow05.home:
+    sparrow06.home:
+
 orangepi5plus:
-  vars:
-    ansible_user: ndufour
-    external_rancher_storage_exists: true
-    external_rancher_storage_device: /dev/sda
   hosts:
     opi01.home:
     opi02.home:
     opi03.home:
-
-raspberries:
-  children:
-    rasp4:
-      vars:
-        external_rancher_storage_exists: true
-        external_rancher_storage_device: /dev/sda
-      hosts:
-        raccoon00.home:
-        raccoon01.home:
-        raccoon02.home:
-        raccoon03.home:
-        raccoon04.home:
-        raccoon05.home:
-        eagle.home:
-
-    rasp3:
-      hosts:
-        sparrow01.home:
-        sparrow02.home:
-        sparrow03.home:
-        sparrow04.home:
-        sparrow05.home:
-        sparrow06.home:

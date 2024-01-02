@@ -1,0 +1,33 @@
+---
+
+# Well, fresh machine don't have the right name for sure
+- name: Ensure the hostname is properly set
+  become: true
+  ansible.builtin.hostname:
+    name: "{{ ansible_host }}"
+    use: "debian"
+  notify:
+    - Stop k3s
+    - Reboot
+
+# Ensure the machine can create/manage containers
+- name: Enable cgroup via boot commandline if not already enabled
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/cmdline.txt
+    backrefs: true
+    regexp: '^((?!.*\bcgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory\b).*)$'
+    line: '\1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory'
+  notify:
+    - Stop k3s
+    - Reboot
+
+# Make sure wifi and bluetooth are disabled -- not needed
+- name: Disable wifi and bluetooth
+  ansible.builtin.blockinfile:
+    path: /boot/firmware/config.txt
+    block: |
+      dtoverlay=disable-bt
+      dtoverlay=disable-wifi
+  notify:
+    - Stop k3s
+    - Reboot

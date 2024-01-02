@@ -1,0 +1,14 @@
+---
+
+- name: Include common raspberry roles
+  ansible.builtin.include_role:
+    name: "{{ item }}"
+  loop:
+    - geerlingguy.pip
+    - geerlingguy.swap
+
+- name: Setup raspberry
+  ansible.builtin.include_tasks: setup.yaml
+
+- name: Prepare for k3s
+  ansible.builtin.include_tasks: prepare_for_k3s.yaml
