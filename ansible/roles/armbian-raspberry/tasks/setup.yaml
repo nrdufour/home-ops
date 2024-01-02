@@ -31,3 +31,11 @@
   notify:
     - Stop k3s
     - Reboot
+
+# No point wasting memory for that GPU
+- name: Set GPU memory split to 16 MB
+  ansible.builtin.lineinfile:
+    path: /boot/firmware/config.txt
+    line: "gpu_mem=16"
+    create: yes
+  notify: reboot
