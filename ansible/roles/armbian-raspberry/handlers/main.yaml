@@ -12,3 +12,4 @@
   ansible.builtin.systemd:
     name: k3s
     state: restarted
+  ignore_errors: true

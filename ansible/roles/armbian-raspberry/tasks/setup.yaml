@@ -38,4 +38,6 @@
     path: /boot/firmware/config.txt
     line: "gpu_mem=16"
     create: yes
-  notify: reboot
+  notify:
+    - Stop k3s
+    - Reboot
