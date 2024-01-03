@@ -51,13 +51,13 @@ legacy_raspberry:
     raccoon05.home:
     eagle.home:
     sparrow01.home:
-    sparrow02.home:
-    sparrow03.home:
-    sparrow05.home:
 
 armbian_raspberry:
   hosts:
+    sparrow02.home:
+    sparrow03.home:
     sparrow04.home:
+    sparrow05.home:
     sparrow06.home:
 
 rasp4:
