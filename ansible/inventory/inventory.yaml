@@ -43,17 +43,18 @@ storage:
 
 legacy_raspberry:
   hosts:
+    eagle.home:
+    sparrow01.home:
+
+armbian_raspberry:
+  hosts:
     raccoon00.home:
     raccoon01.home:
     raccoon02.home:
     raccoon03.home:
     raccoon04.home:
     raccoon05.home:
-    eagle.home:
-    sparrow01.home:
 
-armbian_raspberry:
-  hosts:
     sparrow02.home:
     sparrow03.home:
     sparrow04.home:
