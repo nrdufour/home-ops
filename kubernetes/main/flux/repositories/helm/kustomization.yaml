@@ -4,12 +4,12 @@ kind: Kustomization
 resources:
 - jetstack.yaml
 - ingress-nginx.yaml
-#- rook-ceph.yaml
+- rook-ceph.yaml
 - prometheus-community-charts.yaml
-- csi-driver-nfs-charts.yaml
+# - csi-driver-nfs-charts.yaml
 - bitnami.yaml
 - node-feature-discovery.yaml
 - cloudnative-pg.yaml
-- crunchydata.yaml
+# - crunchydata.yaml
 - bjw-s.yaml
 - piraeus.yaml
