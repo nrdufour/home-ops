@@ -12,3 +12,4 @@ resources:
 - cloudnative-pg.yaml
 - crunchydata.yaml
 - bjw-s.yaml
+- piraeus.yaml
