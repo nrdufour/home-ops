@@ -14,3 +14,4 @@ resources:
 - bjw-s.yaml
 - piraeus.yaml
 - democratic-csi.yaml
+- backube.yaml
