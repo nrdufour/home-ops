@@ -40,6 +40,11 @@ spec:
                 memory: 64Mi
               limits:
                 memory: 256Mi
+            env:
+              DRIVER: "apcupsd-ups"
+              API_USER: "changme"
+              API_PASSWORD: "changme"
+              DESCRIPTION: "Main Cluster UPS"
         pod:
           nodeSelector:
             apc.feature.node.kubernetes.io/1500s: "true"
