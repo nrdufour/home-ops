@@ -10,3 +10,4 @@ resources:
   - ./home-assistant/ks.yaml
   - ./rtlamr2mqtt/ks.yaml
   - ./esphome/ks.yaml
+  - ./nut-upsd/ks.yaml
