@@ -1,0 +1,15 @@
+---
+apiVersion: nfd.k8s-sigs.io/v1alpha1
+kind: NodeFeatureRule
+metadata:
+  name: rtlsdr-v3-device
+spec:
+  rules:
+    - # APC 1500 S USB
+      name: apc.1500s
+      labels:
+        apc.feature.node.kubernetes.io/1500s: "true"
+      matchFeatures:
+        - feature: usb.device
+          matchExpressions:
+            vendor: { op: In, value: ["051d", "0002"] }

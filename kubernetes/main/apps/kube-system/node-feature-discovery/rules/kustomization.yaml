@@ -8,3 +8,4 @@ resources:
   - ./opi5plus-detect.yaml
   - ./raspberry3-detect.yaml
   - ./raspberry4-detect.yaml
+  - ./apc-usb-detect.yaml
