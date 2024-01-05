@@ -40,9 +40,8 @@ spec:
               - "-Mstats:2:300"
               - "-R40"
               - "-R41"
-              - "-Fjson"
-              - "-Finflux://influxdb.default:8086/write?db=test_sensors"
-              - "-Fmqtt://mqtt.default,retain=0,events=rtl_433[/model][/id]"
+              - "-Finflux://influxdb.home:8086/write?db=test_sensors"
+              - "-Fmqtt://mqtt.home,retain=0,events=rtl_433[/model][/id]"
             securityContext:
               privileged: true
             resources:
