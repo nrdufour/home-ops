@@ -1,0 +1,60 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: rtl433
+  namespace: home-automation
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      main:
+        containers:
+          main:
+            image:
+              repository: docker.io/hertzg/rtl_433
+              tag: 22.11
+            args:
+              - "-Ccustomary"
+              - "-Mtime:unix:usec:utc"
+              - "-Mlevel"
+              - "-Mprotocol"
+              - "-Mstats:2:300"
+              - "-R40"
+              - "-R41"
+              - "-Finflux://influxdb.home:8086/write?db=test_sensors"
+            securityContext:
+              privileged: true
+            resources:
+              requests:
+                cpu: 50m
+                memory: 64Mi
+              limits:
+                memory: 256Mi
+        pod:
+          nodeSelector:
+            # For now pinning it directly to the machine.
+            # Next step is to use nfd flags and anti-affinity
+            # to not collide with rtlamr one.
+            kubernetes.io/hostname: "sparrow01.home"
+    service:
+      main:
+        enabled: false
