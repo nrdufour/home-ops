@@ -42,9 +42,10 @@ spec:
                 memory: 256Mi
             env:
               DRIVER: "usbhid-ups"
-              API_USER: "changme"
-              API_PASSWORD: "changme"
               DESCRIPTION: "Main Cluster UPS"
+            envFrom:
+              - secretRef:
+                  nameRef: nut-upsd-secret
         pod:
           nodeSelector:
             apc.feature.node.kubernetes.io/1500s: "true"
