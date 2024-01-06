@@ -11,4 +11,5 @@ data:
     log_dest stdout
     listener 1883
     allow_anonymous true
+    persistence true
 
