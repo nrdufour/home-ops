@@ -42,6 +42,7 @@ spec:
               - "-R41"
               - "-Finflux://influxdb.home:8086/write?db=test_sensors"
               - "-Fmqtt://mqtt.home,retain=0,events=rtl_433[/model][/id]"
+              - "-Flog"
             securityContext:
               privileged: true
             resources:
