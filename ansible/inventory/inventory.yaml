@@ -19,7 +19,6 @@ cluster:
         raccoon03.home:
         raccoon04.home:
         raccoon05.home:
-        eagle.home:
 
         sparrow01.home:
         sparrow02.home:
@@ -43,7 +42,6 @@ storage:
 
 legacy_raspberry:
   hosts:
-    eagle.home:
     sparrow01.home:
 
 armbian_raspberry:
@@ -69,8 +67,6 @@ rasp4:
     raccoon03.home:
     raccoon04.home:
     raccoon05.home:
-    eagle.home:
-      ansible_user: pi
 
 rasp3:
   hosts:
