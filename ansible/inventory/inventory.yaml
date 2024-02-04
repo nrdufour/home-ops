@@ -6,80 +6,80 @@ cluster:
   children:
     controller:
       hosts:
-        raccoon00.home:
-        raccoon01.home:
-        raccoon02.home:
+        raccoon00:
+        raccoon01:
+        raccoon02:
 
     worker:
       hosts:
-        opi01.home:
-        opi02.home:
-        opi03.home:
+        opi01:
+        opi02:
+        opi03:
 
-        raccoon03.home:
-        raccoon04.home:
-        raccoon05.home:
+        raccoon03:
+        raccoon04:
+        raccoon05:
 
-        sparrow01.home:
-        sparrow02.home:
-        sparrow03.home:
-        sparrow04.home:
-        sparrow05.home:
-        sparrow06.home:
+        sparrow01:
+        sparrow02:
+        sparrow03:
+        sparrow04:
+        sparrow05:
+        sparrow06:
 
     internal_lb:
       hosts:
-        raccoon04.home:
+        raccoon04:
 
     external_lb:
       hosts:
-        sparrow05.home:
+        sparrow05:
 
 storage:
   hosts:
-    possum.home:
+    possum:
       ansible_user: pi
 
 legacy_raspberry:
   hosts:
-    sparrow01.home:
+    sparrow01:
 
 armbian_raspberry:
   hosts:
-    raccoon00.home:
-    raccoon01.home:
-    raccoon02.home:
-    raccoon03.home:
-    raccoon04.home:
-    raccoon05.home:
+    raccoon00:
+    raccoon01:
+    raccoon02:
+    raccoon03:
+    raccoon04:
+    raccoon05:
 
-    sparrow02.home:
-    sparrow03.home:
-    sparrow04.home:
-    sparrow05.home:
-    sparrow06.home:
+    sparrow02:
+    sparrow03:
+    sparrow04:
+    sparrow05:
+    sparrow06:
 
 rasp4:
   hosts:
-    raccoon00.home:
-    raccoon01.home:
-    raccoon02.home:
-    raccoon03.home:
-    raccoon04.home:
-    raccoon05.home:
+    raccoon00:
+    raccoon01:
+    raccoon02:
+    raccoon03:
+    raccoon04:
+    raccoon05:
 
 rasp3:
   hosts:
-    sparrow01.home:
+    sparrow01:
       ansible_user: pi
-    sparrow02.home:
-    sparrow03.home:
-    sparrow04.home:
-    sparrow05.home:
-    sparrow06.home:
+    sparrow02:
+    sparrow03:
+    sparrow04:
+    sparrow05:
+    sparrow06:
 
 orangepi5plus:
   hosts:
-    opi01.home:
-    opi02.home:
-    opi03.home:
+    opi01:
+    opi02:
+    opi03:
