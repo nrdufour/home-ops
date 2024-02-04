@@ -6,16 +6,16 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-cluster-issuer
-    cert-manager.io/common-name: mealie.home
+    cert-manager.io/common-name: mealie.home.arpa
     nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/24,10.0.0.0/8
 spec:
   tls:
     - hosts:
-      - mealie.home
+      - mealie.home.arpa
       secretName: mealie-ing-cert
   ingressClassName: nginx
   rules:
-  - host: mealie.home
+  - host: mealie.home.arpa
     http:
       paths:
       - path: /
