@@ -23,7 +23,7 @@ spec:
         runAsGroup: 0
       containers:
       - name: kanboard
-        image: kanboard/kanboard:v1.2.34
+        image: kanboard/kanboard:v1.2.35
         volumeMounts:
           - mountPath: /var/www/app/config.php
             name: kanboard-conf
