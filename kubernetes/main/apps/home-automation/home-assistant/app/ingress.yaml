@@ -6,16 +6,16 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-cluster-issuer
-    cert-manager.io/common-name: ha.home
+    cert-manager.io/common-name: ha.home.arpa
     nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/24,10.0.0.0/8
 spec:
   tls:
     - hosts:
-        - ha.home
+        - ha.home.arpa
       secretName: ha-ing-cert
   ingressClassName: nginx
   rules:
-  - host: ha.home
+  - host: ha.home.arpa
     http:
       paths:
       - path: /
