@@ -6,7 +6,6 @@ resources:
   # Secrets
   - ./cnpg-minio-access.sops.yaml
   # Flux-Kustomizations
-  # - ./flame/ks.yaml
   - ./grafana/ks.yaml
   - ./kanboard/ks.yaml
   - ./influxdb/ks.yaml
