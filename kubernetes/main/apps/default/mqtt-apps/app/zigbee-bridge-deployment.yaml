@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: zigbee-bridge
-        image: registry.home:5000/zigbee-bridge:latest
+        image: registry.home.arpa:5000/zigbee-bridge:latest
         imagePullPolicy: Always
         env:
           - name:  "MQTT_HOST"
