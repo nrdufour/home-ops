@@ -24,7 +24,7 @@ spec:
               name: miniflux-secret
         env:
           - name: "BASE_URL"
-            value: "https://miniflux.home"
+            value: "https://miniflux.home.arpa"
           - name: "CREATE_ADMIN"
             value: "1"
           - name: "DATABASE_URL"
