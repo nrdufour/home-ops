@@ -37,7 +37,7 @@ cluster:
 
 storage:
   hosts:
-    possum:
+    possum.home:
       ansible_user: pi
 
 legacy_raspberry:
