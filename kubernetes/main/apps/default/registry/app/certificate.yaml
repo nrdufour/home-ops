@@ -15,8 +15,8 @@ spec:
     encoding: PKCS1
     size: 2048
   dnsNames:
+    - registry.home.arpa
     - registry.home
-    - possum.home
   issuerRef:
     name: ca-cluster-issuer
     kind: ClusterIssuer
