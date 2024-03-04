@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: dashy
-        image: lissy93/dashy:2.1.1
+        image: lissy93/dashy:2.1.2
         env:
           - name: "NODE_ENV"
             value: "production"
