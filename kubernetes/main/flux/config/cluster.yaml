@@ -11,7 +11,7 @@ spec:
     branch: main
   secretRef:
     name: gitea-access
-  url: ssh://git@git.home:2222/nrdufour/home-ops.git
+  url: gitea@git.internal:nrdufour/home-ops.git
   ignore: |
     # exclude all
     /*
