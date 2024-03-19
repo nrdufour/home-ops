@@ -2,5 +2,5 @@
 
 - import_tasks: nginx_controller.yaml
 # - import_tasks: gitea.yaml
-- import_tasks: registry.yaml
+# - import_tasks: registry.yaml
 - import_tasks: minio.yaml
