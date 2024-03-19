@@ -45,6 +45,7 @@ spec:
             rtlsdr.feature.node.kubernetes.io/v3: "true"
     service:
       main:
+        controller: main
         enabled: false
     persistence:
       config-file:
