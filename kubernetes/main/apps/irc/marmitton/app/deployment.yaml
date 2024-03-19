@@ -16,7 +16,7 @@ spec:
         app: marmitton
     spec:
       containers:
-        - image: registry.home.arpa:5000/marmitton:latest
+        - image: git.internal/nrdufour/marmitton:latest
           name: marmitton
           args:
             - "-config"
