@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: mqtt-bridge
-        image: registry.home.arpa:5000/mqtt-bridge:latest
+        image: git.internal/nrdufour/mqtt-bridge:latest
         imagePullPolicy: Always
         env:
           - name:  "INFLUXDB_HOST"
