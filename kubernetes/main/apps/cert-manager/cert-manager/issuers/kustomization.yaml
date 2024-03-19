@@ -5,3 +5,4 @@ resources:
 - private-ca-secret.yaml
 - ca-cluster-issuer.yaml
 - le-cluster-issuers.yaml
+- ca-server-cluster-issuer.yaml
