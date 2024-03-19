@@ -59,4 +59,5 @@ spec:
             kubernetes.io/hostname: "sparrow01"
     service:
       main:
+        controller: main
         enabled: false
