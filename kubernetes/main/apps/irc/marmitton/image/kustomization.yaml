@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
 - imagerepo.yaml
 - imagepol.yaml
+- imageauto.yaml
