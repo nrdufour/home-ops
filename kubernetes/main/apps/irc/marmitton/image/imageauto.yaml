@@ -15,7 +15,7 @@ spec:
         branch: main
     commit:
       author:
-        email: nrdufour@gmail.com
+        email: fluxcdbot@ptinem.casa
         name: fluxcdbot
       messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
     push:
