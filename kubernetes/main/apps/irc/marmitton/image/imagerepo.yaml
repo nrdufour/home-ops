@@ -1,0 +1,11 @@
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageRepository
+metadata:
+  name: marmitton
+  namespace: flux-system
+spec:
+  image: git.internal/nrdufour/marmitton
+  interval: 5m
+  certSecretRef:
+    name: private-ca-2024
