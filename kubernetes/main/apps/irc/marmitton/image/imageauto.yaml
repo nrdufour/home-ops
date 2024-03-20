@@ -17,7 +17,7 @@ spec:
       author:
         email: fluxcdbot@ptinem.casa
         name: fluxcdbot
-      messageTemplate: '{{range .Updated.Images}}{{println .}}{{end}}'
+      messageTemplate: 'chore(marmitton): Image updated to {{range .Updated.Images}}{{println .}}{{end}}'
     push:
       branch: main
   update:
