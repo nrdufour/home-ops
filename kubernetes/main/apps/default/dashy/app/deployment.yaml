@@ -28,6 +28,13 @@ spec:
         volumeMounts:
           - mountPath: /app/public
             name: dashy-data
+        resources:
+          requests:
+            cpu: 10m
+            memory: 256m
+          limits:
+            cpu: 100m
+            memory: 512m
       volumes:
         - name: dashy-data
           persistentVolumeClaim:

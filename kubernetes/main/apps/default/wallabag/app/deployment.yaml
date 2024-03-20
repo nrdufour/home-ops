@@ -62,7 +62,8 @@ spec:
             name: http
         resources:
           requests:
-            cpu: 12m
+            cpu: 1m
             memory: 64M
           limits:
+            cpu: 500m
             memory: 256M

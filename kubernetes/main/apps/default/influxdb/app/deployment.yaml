@@ -30,6 +30,13 @@ spec:
         env:
           - name: INFLUXDB_DB
             value: 'home_sensors'
+        resources:
+          requests:
+            cpu: 50m
+            memory: 2000Mi
+          limits:
+            cpu: 250m
+            memory: 3000Mi
       volumes:
         - name: influxdb-storage
           persistentVolumeClaim:
