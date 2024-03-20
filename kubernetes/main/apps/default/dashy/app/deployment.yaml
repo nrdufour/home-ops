@@ -31,10 +31,10 @@ spec:
         resources:
           requests:
             cpu: 10m
-            memory: 256m
+            memory: 256Mi
           limits:
             cpu: 100m
-            memory: 512m
+            memory: 512Mi
       volumes:
         - name: dashy-data
           persistentVolumeClaim:
