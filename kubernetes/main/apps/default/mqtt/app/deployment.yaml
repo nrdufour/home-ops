@@ -34,13 +34,6 @@ spec:
           - mountPath: /mosquitto/data
             name: mqtt-data
             subPath: data
-        resources:
-          requests:
-            cpu: 12m
-            memory: 32M
-          limits:
-            cpu: 25m
-            memory: 256M
       volumes:
         - name: mqtt-conf
           configMap:
