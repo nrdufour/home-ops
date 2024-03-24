@@ -25,7 +25,7 @@ cluster:
         sparrow03:
         sparrow04:
         sparrow05:
-        sparrow06:
+        # sparrow06:
 
     internal_lb:
       hosts:
@@ -57,7 +57,7 @@ armbian_raspberry:
     sparrow03:
     sparrow04:
     sparrow05:
-    sparrow06:
+    # sparrow06:
 
 rasp4:
   hosts:
@@ -76,7 +76,7 @@ rasp3:
     sparrow03:
     sparrow04:
     sparrow05:
-    sparrow06:
+    # sparrow06:
 
 orangepi5plus:
   hosts:
