@@ -4,8 +4,9 @@
     nativeBuildInputs = with pkgs.buildPackages; [
       go-task
       kubectl
+      kubectl-cnpg
       fluxcd
       kubernetes-helm
-      rpi-imager
+      jq
     ];
 }
