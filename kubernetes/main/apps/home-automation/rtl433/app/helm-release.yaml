@@ -56,7 +56,7 @@ spec:
             # For now pinning it directly to the machine.
             # Next step is to use nfd flags and anti-affinity
             # to not collide with rtlamr one.
-            kubernetes.io/hostname: "sparrow01"
+            kubernetes.io/hostname: "sparrow05"
     service:
       main:
         controller: main
