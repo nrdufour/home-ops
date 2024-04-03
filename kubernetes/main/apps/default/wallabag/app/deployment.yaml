@@ -48,7 +48,7 @@ spec:
                 key: password
                 name: wallabag-db-app
           - name: "SYMFONY__ENV__DOMAIN_NAME"
-            value: "https://wallabag.home.arpa"
+            value: "https://wallabag.internal"
           - name: "SYMFONY__ENV__SERVER_NAME"
             value: "Wallabag"
           - name: "SYMFONY__ENV__FOSUSER_REGISTRATION"
