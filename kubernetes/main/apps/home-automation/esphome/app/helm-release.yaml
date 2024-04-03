@@ -58,7 +58,7 @@ spec:
         enabled: true
         className: "nginx"
         hosts:
-          - host: "esphome.home.arpa"
+          - host: "esphome.internal"
             paths:
               - path: /
                 service:
@@ -66,7 +66,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "esphome.home.arpa"
+              - "esphome.internal"
 
     persistence:
       esphome-cache:
