@@ -16,7 +16,7 @@ spec:
         app: marmitton
     spec:
       containers:
-        - image: git.internal/nrdufour/marmitton:main-c3f685f-1710940437 # {"$imagepolicy": "flux-system:marmitton"}
+        - image: git.internal/nrdufour/marmitton:main-a83223c-1712170959 # {"$imagepolicy": "flux-system:marmitton"}
           name: marmitton
           args:
             - "-config"
