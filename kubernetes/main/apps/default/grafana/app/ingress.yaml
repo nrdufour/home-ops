@@ -6,16 +6,16 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
-    cert-manager.io/common-name: grafana.home.arpa
+    cert-manager.io/common-name: grafana.internal
     nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/24,10.0.0.0/8
 spec:
   tls:
     - hosts:
-      - grafana.home.arpa
+      - grafana.internal
       secretName: grafana-ing-cert
   ingressClassName: nginx
   rules:
-  - host: grafana.home.arpa
+  - host: grafana.internal
     http:
       paths:
       - path: /
