@@ -6,16 +6,16 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
-    cert-manager.io/common-name: miniflux.home.arpa
+    cert-manager.io/common-name: miniflux.internal
     nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/24,10.0.0.0/8
 spec:
   tls:
     - hosts:
-      - miniflux.home.arpa
+      - miniflux.internal
       secretName: miniflux-ing-cert
   ingressClassName: nginx
   rules:
-  - host: miniflux.home.arpa
+  - host: miniflux.internal
     http:
       paths:
       - path: /
