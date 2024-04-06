@@ -1,4 +1,15 @@
-creation_rules:
-  - encrypted_regex: '^(data|stringData)$'
-    age: age1tmrr00pnj6gpc4pfp3wzvyjt66tfhudwj2kn84skt24qvwzlcsusrvrypj
+keys:
+  - &admin-ndufour-2022 age1tmrr00pnj6gpc4pfp3wzvyjt66tfhudwj2kn84skt24qvwzlcsusrvrypj
 
+creation_rules:
+  - path_regex: kubernetes/.+\.sops\.ya?ml
+    input_type: yaml
+    encrypted_regex: '^(data|stringData)$'
+    age: *admin-ndufour-2022
+  - path_regex: ansible/.+\.sops\.ya?ml
+    input_type: yaml
+    age: *admin-ndufour-2022
+
+stores:
+  yaml:
+    indent: 2
