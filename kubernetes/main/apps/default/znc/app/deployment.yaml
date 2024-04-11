@@ -35,3 +35,10 @@ spec:
         volumeMounts:
           - mountPath: /znc-data
             name: znc-config
+        resources:
+          requests:
+            cpu: 5m
+            memory: 16M
+          limits:
+            cpu: 10m
+            memory: 32M
