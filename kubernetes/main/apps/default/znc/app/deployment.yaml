@@ -37,8 +37,8 @@ spec:
             name: znc-config
         resources:
           requests:
-            cpu: 10m
+            cpu: 5m
             memory: 16M
           limits:
-            cpu: 50m
+            cpu: 10m
             memory: 32M
