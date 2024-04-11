@@ -49,8 +49,8 @@ spec:
                 name: wallabag-db-app
         resources:
           requests:
-            cpu: 20m
+            cpu: 100m
             memory: 200M
           limits:
-            cpu: 100m
+            cpu: 500m
             memory: 512M
