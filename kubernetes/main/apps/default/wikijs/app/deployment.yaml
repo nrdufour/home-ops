@@ -47,3 +47,10 @@ spec:
               secretKeyRef:
                 key: password
                 name: wallabag-db-app
+        resources:
+          requests:
+            cpu: 20m
+            memory: 200M
+          limits:
+            cpu: 100m
+            memory: 512M
