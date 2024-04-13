@@ -78,9 +78,4 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              selector:
-                matchLabels:
-                  app.kubernetes.io/name: kube-prometheus-pv
-              resources:
-                requests:
-                  storage: 50Gi
+              volumeName: prometheus-pv
