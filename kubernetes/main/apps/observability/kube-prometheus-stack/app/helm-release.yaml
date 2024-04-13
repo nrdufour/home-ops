@@ -70,6 +70,11 @@ spec:
         tls:
           - hosts:
               - *host
+      prometheusSpec:
+        retention: 7d
+        retentionSize: 15GB
+        externalLabels:
+          cluster: main
         storageSpec:
           volumeClaimTemplate:
             spec:
