@@ -77,7 +77,6 @@ spec:
           cluster: main
         storageSpec:
           volumeClaimTemplate:
-            spec:
-              selector:
-                matchLabels:
-                  app.kubernetes.io/name: kube-prometheus-pv
+            selector:
+              matchLabels:
+                app.kubernetes.io/name: kube-prometheus-pv
