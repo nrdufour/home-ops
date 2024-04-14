@@ -11,6 +11,7 @@ spec:
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
+    - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
   nfs:
     path: /srv/storage/nfs/data/prometheus
