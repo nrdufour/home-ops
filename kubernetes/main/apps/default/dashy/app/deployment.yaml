@@ -26,7 +26,7 @@ spec:
           - containerPort: 8080
             name: http-dashy
         volumeMounts:
-          - mountPath: /app/public
+          - mountPath: /app/user-data
             name: dashy-data
       volumes:
         - name: dashy-data
