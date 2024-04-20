@@ -18,12 +18,12 @@ spec:
     spec:
       containers:
       - name: dashy
-        image: lissy93/dashy:2.1.2
+        image: lissy93/dashy:3.0.0
         env:
           - name: "NODE_ENV"
             value: "production"
         ports:
-          - containerPort: 80
+          - containerPort: 8080
             name: http-dashy
         volumeMounts:
           - mountPath: /app/public
