@@ -15,3 +15,4 @@ resources:
 - piraeus.yaml
 - democratic-csi.yaml
 - backube.yaml
+- external-secrets.yaml
