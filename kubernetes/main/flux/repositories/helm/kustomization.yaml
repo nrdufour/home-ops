@@ -16,3 +16,4 @@ resources:
 - democratic-csi.yaml
 - backube.yaml
 - external-secrets.yaml
+- influxdata.yaml
