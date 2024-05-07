@@ -31,7 +31,7 @@ spec:
           main:
             image:
               repository: docker.io/instantlinux/nut-upsd
-              tag: 2.8.1-r0
+              tag: 2.8.2-r0
             securityContext:
               privileged: true
             resources:
