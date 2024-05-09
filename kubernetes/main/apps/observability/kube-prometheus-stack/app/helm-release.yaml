@@ -98,11 +98,9 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: nfs
-              volumeName: prometheus-pv
               resources:
                 requests:
-                  storage: 50Gi
+                  storage: 15Gi
     nodeExporter:
       enabled: true
     prometheus-node-exporter:
