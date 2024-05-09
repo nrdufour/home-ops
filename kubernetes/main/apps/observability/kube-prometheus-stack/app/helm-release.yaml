@@ -99,6 +99,9 @@ spec:
           volumeClaimTemplate:
             spec:
               volumeName: prometheus-pv
+              resources:
+                requests:
+                  storage: 50Gi
     nodeExporter:
       enabled: true
     prometheus-node-exporter:
