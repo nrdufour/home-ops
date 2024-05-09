@@ -98,9 +98,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              resources:
-                claims:
-                  - name: prometheus-pvc
+              volumeName: prometheus-pv
     nodeExporter:
       enabled: true
     prometheus-node-exporter:
