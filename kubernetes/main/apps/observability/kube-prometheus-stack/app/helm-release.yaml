@@ -100,7 +100,7 @@ spec:
             spec:
               resources:
                 claims:
-                  - prometheus-pvc
+                  - name: prometheus-pvc
     nodeExporter:
       enabled: true
     prometheus-node-exporter:
