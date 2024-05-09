@@ -98,8 +98,10 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              volumeMode: Filesystem
               volumeName: prometheus-pv
+              resources:
+                requests:
+                  storage: 50Gi
     nodeExporter:
       enabled: true
     prometheus-node-exporter:
