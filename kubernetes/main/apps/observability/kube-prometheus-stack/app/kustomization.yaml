@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - prometheus-pv.yaml
   - helm-release.yaml
+  - scrapeconfig.yaml
