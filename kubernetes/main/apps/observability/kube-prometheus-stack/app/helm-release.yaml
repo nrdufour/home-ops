@@ -98,7 +98,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              volumeMode: ReadWriteOnce
+              volumeMode: Filesystem
               volumeName: prometheus-pv
     nodeExporter:
       enabled: true
