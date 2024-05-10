@@ -37,7 +37,7 @@ spec:
                     - "true"
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
-            - topologyKey: "rtlsdr.feature.node.kubernetes.io/v3"
+            - topologyKey: "kubernetes.io/hostname"
               labelSelector:
                 matchExpressions:
                   - key: "app.kubernetes.io/name"
