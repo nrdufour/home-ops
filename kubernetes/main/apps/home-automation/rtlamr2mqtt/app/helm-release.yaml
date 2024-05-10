@@ -34,7 +34,7 @@ spec:
                 - key: rtlsdr.feature.node.kubernetes.io/v3
                   operator: In
                   values:
-                    - true
+                    - "true"
     controllers:
       main:
         containers:
