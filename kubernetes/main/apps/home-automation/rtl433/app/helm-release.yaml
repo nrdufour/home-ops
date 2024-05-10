@@ -25,6 +25,25 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    defaultPodOptions:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                - key: "rtlsdr.feature.node.kubernetes.io/v3"
+                  operator: "In"
+                  values:
+                    - "true"
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - topologyKey: "kubernetes.io/hostname"
+              labelSelector:
+                matchExpressions:
+                  - key: "app.kubernetes.io/name"
+                    operator: "In"
+                    values:
+                      - "rtlamr2mqtt"
     controllers:
       main:
         containers:
@@ -51,12 +70,12 @@ spec:
                 memory: 64Mi
               limits:
                 memory: 256Mi
-        pod:
-          nodeSelector:
-            # For now pinning it directly to the machine.
-            # Next step is to use nfd flags and anti-affinity
-            # to not collide with rtlamr one.
-            kubernetes.io/hostname: "sparrow01"
+        # pod:
+        #   nodeSelector:
+        #     # For now pinning it directly to the machine.
+        #     # Next step is to use nfd flags and anti-affinity
+        #     # to not collide with rtlamr one.
+        #     kubernetes.io/hostname: "sparrow01"
     service:
       main:
         controller: main
