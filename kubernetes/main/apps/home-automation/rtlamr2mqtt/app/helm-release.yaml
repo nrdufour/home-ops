@@ -36,14 +36,14 @@ spec:
                   values:
                     - "true"
         podAntiAffinity:
-          topologyKey: "rtlsdr.feature.node.kubernetes.io/v3"
           requiredDuringSchedulingIgnoredDuringExecution:
-            labelSelector:
-              matchExpressions:
-                - key: "app.kubernetes.io/name"
-                  operator: "In"
-                  values:
-                    - "rtl433"
+            - topologyKey: "rtlsdr.feature.node.kubernetes.io/v3"
+              labelSelector:
+                matchExpressions:
+                  - key: "app.kubernetes.io/name"
+                    operator: "In"
+                    values:
+                      - "rtl433"
     controllers:
       main:
         containers:
