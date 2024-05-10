@@ -30,9 +30,9 @@ spec:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
-              - matchFields:
-                - key: rtlsdr.feature.node.kubernetes.io/v3
-                  operator: In
+              - matchExpressions:
+                - key: "rtlsdr.feature.node.kubernetes.io/v3"
+                  operator: "In"
                   values:
                     - "true"
     controllers:
