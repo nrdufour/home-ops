@@ -25,6 +25,16 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    defaultPodOptions:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchFields:
+                - key: rtlsdr.feature.node.kubernetes.io/v3
+                  operator: In
+                  values:
+                    - true
     controllers:
       main:
         containers:
@@ -44,14 +54,6 @@ spec:
         #   nodeSelector:
         #     rtlsdr.feature.node.kubernetes.io/v3: "true"
         pod:
-          nodeAffinity:
-            requiredDuringSchedulingIgnoredDuringExecution:
-              nodeSelectorTerms:
-                - matchFields:
-                  - key: rtlsdr.feature.node.kubernetes.io/v3
-                    operator: In
-                    values:
-                      - true
           nodeSelector:
             # For now pinning it directly to the machine.
             # Next step is to use nfd flags and anti-affinity
