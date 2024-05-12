@@ -28,3 +28,6 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  values:
+    configuration:
+      rebootSentinel: "/var/run/reboot-required"
