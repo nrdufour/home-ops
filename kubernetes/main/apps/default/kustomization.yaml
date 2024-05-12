@@ -12,7 +12,7 @@ resources:
   - ./mqtt/ks.yaml
   - ./mqtt-apps/ks.yaml
   - ./wikijs/ks.yaml
-  - ./znc/ks.yaml
+  #- ./znc/ks.yaml
   - ./dashy/ks.yaml
   - ./renovate/ks.yaml
   - ./miniflux/ks.yaml
