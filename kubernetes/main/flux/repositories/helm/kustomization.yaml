@@ -17,4 +17,4 @@ resources:
 - backube.yaml
 - external-secrets.yaml
 - influxdata.yaml
-- kubereboot.yaml
+- kured.yaml
