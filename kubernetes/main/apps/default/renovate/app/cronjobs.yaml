@@ -13,7 +13,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: renovate/renovate:37.363
+              image: renovate/renovate:37.364
               args:
                 - nrdufour/home-ops
               # Environment Variables
@@ -49,7 +49,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: renovate/renovate:37.363
+              image: renovate/renovate:37.364
               args:
                 - nrdufour/mqtt-apps
               # Environment Variables
@@ -85,7 +85,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: renovate/renovate:37.363
+              image: renovate/renovate:37.364
               args:
                 - nrdufour/marmitton
               # Environment Variables
@@ -121,7 +121,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: renovate/renovate:37.363
+              image: renovate/renovate:37.364
               args:
                 - nrdufour/snowy
               # Environment Variables
