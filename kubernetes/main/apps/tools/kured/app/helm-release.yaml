@@ -32,3 +32,5 @@ spec:
     configuration:
       rebootSentinel: "/var/run/reboot-required"
       period: "10m"
+      # Only for nix based node for now ...
+      rebootCommand: "/run/current-system/sw/bin/reboot"
