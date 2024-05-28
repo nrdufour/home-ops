@@ -21,6 +21,7 @@
   },
   "kubernetes": {
     "fileMatch": [
+      "(^|/)\\.taskfiles/.+\\.yaml$",
       "(^|/)ansible/.+\\.yaml\\.j2$",
       "(^|/)kubernetes/.+\\.yaml$"
     ]
