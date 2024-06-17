@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   # In Maintenance mode
-  nodeMaintanceWindow:
+  nodeMaintenanceWindow:
     inProgress: true
     reusePVC: false
 
