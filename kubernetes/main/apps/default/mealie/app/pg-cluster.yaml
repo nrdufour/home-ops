@@ -50,31 +50,26 @@ spec:
 
   bootstrap:
     recovery:
-      backup:
-        name: mealie-db-20240617000000
+      source: clusterBackup
 
-  # bootstrap:
-  #   recovery:
-  #     source: clusterBackup
-
-  # externalClusters:
-  #   - name: clusterBackup
-  #     barmanObjectStore:
-  #       data:
-  #         compression: bzip2
-  #       wal:
-  #         compression: bzip2
-  #         maxParallel: 8
-  #       destinationPath: s3://cloudnative-pg/
-  #       endpointURL: https://s3.home
-  #       endpointCA:
-  #         name: cnpg-minio-access
-  #         key: tls.crt
-  #       serverName: mealie-v1
-  #       s3Credentials:
-  #         accessKeyId:
-  #           name: cnpg-minio-access
-  #           key: aws-access-key-id
-  #         secretAccessKey:
-  #           name: cnpg-minio-access
-  #           key: aws-secret-access-key
+  externalClusters:
+    - name: clusterBackup
+      barmanObjectStore:
+        data:
+          compression: bzip2
+        wal:
+          compression: bzip2
+          maxParallel: 8
+        destinationPath: s3://cloudnative-pg/
+        endpointURL: https://s3.home
+        endpointCA:
+          name: cnpg-minio-access
+          key: tls.crt
+        serverName: mealie-v1
+        s3Credentials:
+          accessKeyId:
+            name: cnpg-minio-access
+            key: aws-access-key-id
+          secretAccessKey:
+            name: cnpg-minio-access
+            key: aws-secret-access-key
