@@ -4,11 +4,6 @@ metadata:
   name: mealie-db
   namespace: default
 spec:
-  # In Maintenance mode
-  nodeMaintenanceWindow:
-    inProgress: true
-    reusePVC: false
-
   instances: 2
   imageName: ghcr.io/cloudnative-pg/postgresql:15.4
 
@@ -42,11 +37,6 @@ spec:
         secretAccessKey:
           name: cnpg-minio-access
           key: aws-secret-access-key
-
-  # bootstrap:
-  #   initdb:
-  #     database: mealie
-  #     owner: mealie
 
   bootstrap:
     recovery:
