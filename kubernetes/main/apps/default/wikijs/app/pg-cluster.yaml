@@ -4,10 +4,10 @@ metadata:
   name: wikijs-db
   namespace: default
 spec:
-  # In Maintenance mode
-  nodeMaintenanceWindow:
-    inProgress: true
-    reusePVC: false
+  # # In Maintenance mode
+  # nodeMaintenanceWindow:
+  #   inProgress: true
+  #   reusePVC: false
 
   instances: 2
   imageName: ghcr.io/cloudnative-pg/postgresql:15.4
