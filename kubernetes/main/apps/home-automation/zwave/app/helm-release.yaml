@@ -92,3 +92,8 @@ spec:
           - path: /usr/src/app/store
       tmp:
         type: emptyDir
+      device:
+        type: hostPath
+        path: /dev/ttyACM0
+        globalMounts:
+          - path: /dev/zwave
