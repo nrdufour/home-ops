@@ -12,3 +12,4 @@ resources:
   - ./esphome/ks.yaml
   - ./nut-upsd/ks.yaml
   - ./rtl433/ks.yaml
+  - ./zwave/ks.yaml
