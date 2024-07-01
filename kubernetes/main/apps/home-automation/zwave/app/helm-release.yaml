@@ -94,6 +94,6 @@ spec:
         type: emptyDir
       device:
         type: hostPath
-        path: /dev/ttyACM0
+        hostPath: /dev/ttyACM0
         globalMounts:
           - path: /dev/zwave
