@@ -9,3 +9,4 @@ resources:
   - ./raspberry3-detect.yaml
   - ./raspberry4-detect.yaml
   - ./apc-usb-detect.yaml
+  - ./homeseer-g8-device.yaml
