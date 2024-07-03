@@ -3,7 +3,7 @@ version: "3"
 
 vars:
   # renovate: datasource=github-releases depName=prometheus-operator/prometheus-operator
-  PROMETHEUS_OPERATOR_VERSION: v0.74.0
+  PROMETHEUS_OPERATOR_VERSION: v0.75.0
 
 tasks:
   bootstrap:
@@ -12,10 +12,16 @@ tasks:
       CLUSTER: "main"
     cmds:
       # Install essential Prometheus Operator CRDs
+      - kubectl --context {{.CLUSTER}} apply --server-side --force-conflicts --filename https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/{{.PROMETHEUS_OPERATOR_VERSION}}/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagerconfigs.yaml
+      - kubectl --context {{.CLUSTER}} apply --server-side --force-conflicts --filename https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/{{.PROMETHEUS_OPERATOR_VERSION}}/example/prometheus-operator-crd/monitoring.coreos.com_alertmanagers.yaml
       - kubectl --context {{.CLUSTER}} apply --server-side --force-conflicts --filename https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/{{.PROMETHEUS_OPERATOR_VERSION}}/example/prometheus-operator-crd/monitoring.coreos.com_podmonitors.yaml
+      - kubectl --context {{.CLUSTER}} apply --server-side --force-conflicts --filename https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/{{.PROMETHEUS_OPERATOR_VERSION}}/example/prometheus-operator-crd/monitoring.coreos.com_probes.yaml
+      - kubectl --context {{.CLUSTER}} apply --server-side --force-conflicts --filename https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/{{.PROMETHEUS_OPERATOR_VERSION}}/example/prometheus-operator-crd/monitoring.coreos.com_prometheusagents.yaml
+      - kubectl --context {{.CLUSTER}} apply --server-side --force-conflicts --filename https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/{{.PROMETHEUS_OPERATOR_VERSION}}/example/prometheus-operator-crd/monitoring.coreos.com_prometheuses.yaml
       - kubectl --context {{.CLUSTER}} apply --server-side --force-conflicts --filename https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/{{.PROMETHEUS_OPERATOR_VERSION}}/example/prometheus-operator-crd/monitoring.coreos.com_prometheusrules.yaml
       - kubectl --context {{.CLUSTER}} apply --server-side --force-conflicts --filename https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/{{.PROMETHEUS_OPERATOR_VERSION}}/example/prometheus-operator-crd/monitoring.coreos.com_scrapeconfigs.yaml
       - kubectl --context {{.CLUSTER}} apply --server-side --force-conflicts --filename https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/{{.PROMETHEUS_OPERATOR_VERSION}}/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml
+      - kubectl --context {{.CLUSTER}} apply --server-side --force-conflicts --filename https://raw.githubusercontent.com/prometheus-operator/prometheus-operator/{{.PROMETHEUS_OPERATOR_VERSION}}/example/prometheus-operator-crd/monitoring.coreos.com_thanosrulers.yaml
       # Install Flux
       ## TODO: see why --force-conflicts is actually needed, especially after a reconcile
       ## Wonder if the install manifests are that different (seems related to limits and other helm deployment)
