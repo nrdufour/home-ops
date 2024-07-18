@@ -8,7 +8,7 @@ collections:
   - name: kubernetes.core
     version: 5.0.0
   - name: community.sops
-    version: 1.8.0
+    version: 1.8.1
 
 roles:
   - src: mikolak-net.raspi_config
