@@ -5,7 +5,7 @@ metadata:
   name: marmitton
   namespace: flux-system
 spec:
-  image: git.internal/nrdufour/marmitton
+  image: forge.internal/nemo/marmitton
   interval: 5m
   certSecretRef:
     name: private-ca-2024

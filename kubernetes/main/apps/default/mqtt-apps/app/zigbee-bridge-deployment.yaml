@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: zigbee-bridge
-        image: git.internal/nrdufour/zigbee-bridge:latest
+        image: forge.internal/nemo/zigbee-bridge:latest
         imagePullPolicy: Always
         env:
           - name:  "MQTT_HOST"

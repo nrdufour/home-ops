@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: mqtt-bridge
-        image: git.internal/nrdufour/mqtt-bridge:latest
+        image: forge.internal/nemo/mqtt-bridge:latest
         imagePullPolicy: Always
         env:
           - name:  "INFLUXDB_HOST"
