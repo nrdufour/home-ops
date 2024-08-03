@@ -15,7 +15,7 @@ spec:
             - name: renovate
               image: renovate/renovate:38.18
               args:
-                - nrdufour/home-ops
+                - nemo/home-ops
               # Environment Variables
               envFrom:
                 - secretRef:
@@ -51,7 +51,7 @@ spec:
             - name: renovate
               image: renovate/renovate:38.18
               args:
-                - nrdufour/mqtt-apps
+                - nemo/mqtt-apps
               # Environment Variables
               envFrom:
                 - secretRef:
@@ -87,7 +87,7 @@ spec:
             - name: renovate
               image: renovate/renovate:38.18
               args:
-                - nrdufour/marmitton
+                - nemo/marmitton
               # Environment Variables
               envFrom:
                 - secretRef:
@@ -123,7 +123,7 @@ spec:
             - name: renovate
               image: renovate/renovate:38.18
               args:
-                - nrdufour/snowy
+                - nemo/snowy
               # Environment Variables
               envFrom:
                 - secretRef:
