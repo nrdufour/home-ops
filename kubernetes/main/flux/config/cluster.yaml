@@ -11,7 +11,7 @@ spec:
     branch: main
   secretRef:
     name: gitea-access
-  url: ssh://gitea@git.internal/nrdufour/home-ops.git
+  url: ssh://forgejo@forge.internal:nemo/home-ops.git
   ignore: |
     # exclude all
     /*
