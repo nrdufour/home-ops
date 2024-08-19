@@ -16,7 +16,7 @@ spec:
         app: marmitton
     spec:
       containers:
-        - image: forge.internal/nemo/marmitton:main-929cfa0-1724071065 # {"$imagepolicy": "flux-system:marmitton"}
+        - image: forge.internal/nemo/marmitton:main-929cfa0-1724107841 # {"$imagepolicy": "flux-system:marmitton"}
           name: marmitton
           args:
             - "-config"
