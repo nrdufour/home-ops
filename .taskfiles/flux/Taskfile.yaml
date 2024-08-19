@@ -27,7 +27,7 @@ tasks:
       ## Wonder if the install manifests are that different (seems related to limits and other helm deployment)
       - kubectl --context {{.CLUSTER}} apply --server-side --force-conflicts --kustomize {{.KUBERNETES_DIR}}/{{.CLUSTER}}/bootstrap/flux
       # Access to gitea and sops keys
-      - sops --decrypt {{.KUBERNETES_DIR}}/{{.CLUSTER}}/bootstrap/flux/gitea-access.sops.yaml | kubectl --context {{.CLUSTER}} apply --server-side --filename -
+      - sops --decrypt {{.KUBERNETES_DIR}}/{{.CLUSTER}}/bootstrap/flux/gitea-access.sops.yaml | kubectl --context {{.CLUSTER}} apply --force-conflicts   --server-side --filename -
       - sops --decrypt {{.KUBERNETES_DIR}}/{{.CLUSTER}}/bootstrap/flux/sops-age.sops.yaml | kubectl --context {{.CLUSTER}} apply --server-side --filename -
       # Apply the kustomizations
       - kubectl --context {{.CLUSTER}} apply --server-side --kustomize {{.KUBERNETES_DIR}}/{{.CLUSTER}}/flux/config
