@@ -22,12 +22,12 @@
   "kubernetes": {
     "fileMatch": [
       "(^|/)\\.taskfiles/.+\\.yaml$",
-      "(^|/)ansible/.+\\.yaml\\.j2$",
       "(^|/)kubernetes/.+\\.yaml$"
     ]
   },
 
   "ignorePaths": [
+    "ansible/**",
     "kubernetes/archives/**",
     "kubernetes/main/apps/default/influxdb/app/**"
   ],
