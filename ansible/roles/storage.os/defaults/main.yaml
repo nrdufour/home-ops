@@ -1,7 +1,0 @@
----
-
-storage_base_dir: /srv/storage
-storage_disk_device: /dev/sda
-storage_disk_fstype: ext4
-
-nfs_base_dir: "{{ storage_base_dir }}/nfs"

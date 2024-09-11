@@ -27,8 +27,6 @@
   },
 
   "ignorePaths": [
-    "ansible/**",
-    "kubernetes/archives/**",
     "kubernetes/main/apps/default/influxdb/app/**"
   ],
 

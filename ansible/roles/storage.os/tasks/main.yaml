@@ -1,6 +1,0 @@
----
-
-- import_tasks: prepare_raspberry.yaml
-- import_tasks: prepare_disk.yaml
-- import_tasks: dependencies.yaml
-- import_tasks: setup_nfs.yaml

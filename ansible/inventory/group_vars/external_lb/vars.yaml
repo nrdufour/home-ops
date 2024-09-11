@@ -1,5 +1,0 @@
----
-k3s_agent:
-  node-label:
-    - "svccontroller.k3s.cattle.io/enablelb=true"
-    - "svccontroller.k3s.cattle.io/lbpool=external"
