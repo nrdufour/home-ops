@@ -12,8 +12,8 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: nfs
   nfs:
-    path: /srv/storage/nfs/data/influxdb2
-    server: possum.home
+    path: /tank/NFS/influxdb2
+    server: possum.internal
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
