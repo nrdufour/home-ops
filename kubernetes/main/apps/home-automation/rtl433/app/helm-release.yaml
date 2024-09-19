@@ -60,7 +60,7 @@ spec:
               - "-R40"
               - "-R41"
               - "-Finflux://influxdb.home:8086/write?db=test_sensors"
-              - "-Finflux://influxdb2.internal:8087/api/v2/write?org=nemoworld&bucket=rtl433,token=3-Fgpmje79Nqjeku3Pcr8l2p45ndKMNVLfu60wCrLK80iVFlmdgePVwqNNYOCcy5bMrRU52BaawkV6idEE5tgg=="
+              - "-Finflux://influxdb2.internal:8087/api/v2/write?org=nemoworld&bucket=rtl433_sensors,token=3-Fgpmje79Nqjeku3Pcr8l2p45ndKMNVLfu60wCrLK80iVFlmdgePVwqNNYOCcy5bMrRU52BaawkV6idEE5tgg=="
               - "-Fmqtt://mqtt.home,retain=0,events=rtl_433[/model][/id]"
               - "-Flog"
             securityContext:
