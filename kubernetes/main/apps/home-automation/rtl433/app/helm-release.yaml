@@ -59,9 +59,9 @@ spec:
               - "-Mstats:2:300"
               - "-R40"
               - "-R41"
-              - '-F "influx://influxdb.home:8086/write?db=test_sensors"'
-              - '-F "influx://influxdb2.internal:8087/api/v2/write?org=nemoworld&bucket=rtl433_sensors,token=$INFLUXDB2_TOKEN"'
-              - '-F "mqtt://mqtt.home,retain=0,events=rtl_433[/model][/id]"'
+              - "-Finflux://influxdb.home:8086/write?db=test_sensors"
+              - "-Finflux://influxdb2.internal:8087/api/v2/write?org=nemoworld&bucket=rtl433_sensors,token=$INFLUXDB2_TOKEN"
+              - "-Fmqtt://mqtt.home,retain=0,events=rtl_433[/model][/id]"
               - "-Flog"
             securityContext:
               privileged: true
