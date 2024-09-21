@@ -52,17 +52,17 @@ spec:
               repository: docker.io/hertzg/rtl_433
               tag: 23.11
             args:
-              - "-Ccustomary"
-              - "-Mtime:unix:usec:utc"
-              - "-Mlevel"
-              - "-Mprotocol"
-              - "-Mstats:2:300"
-              - "-R40"
-              - "-R41"
-              - "-Finflux://influxdb.home:8086/write?db=test_sensors"
-              - "-Finflux://influxdb2.internal:8087/api/v2/write?org=nemoworld&bucket=rtl433_sensors,token=$INFLUXDB2_TOKEN"
-              - "-Fmqtt://mqtt.home,retain=0,events=rtl_433[/model][/id]"
-              - "-Flog"
+              - '-C customary'
+              - '-M time:unix:usec:utc'
+              - '-M level'
+              - '-M protocol'
+              - '-M stats:2:300'
+              - '-R 40'
+              - '-R 41'
+              - '-F "influx://influxdb.home:8086/write?db=test_sensors"'
+              - '-F "influx://influxdb2.internal:8087/api/v2/write?org=nemoworld&bucket=rtl433_sensors,token=$INFLUXDB2_TOKEN"'
+              - '-F "mqtt://mqtt.home,retain=0,events=rtl_433[/model][/id]"'
+              - '-F log'
             securityContext:
               privileged: true
             resources:
