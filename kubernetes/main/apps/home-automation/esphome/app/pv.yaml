@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: esphome-pv
+  namespace: home-automation
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    path: /tank/NFS/esphome
+    server: possum.internal
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: esphome-pvc
+  namespace: home-automation
+spec:
+  storageClassName: nfs
+  volumeName: esphome-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
