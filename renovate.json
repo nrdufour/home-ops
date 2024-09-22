@@ -27,7 +27,6 @@
   },
 
   "ignorePaths": [
-    "kubernetes/main/apps/default/influxdb/app/**"
   ],
 
   "packageRules": [
