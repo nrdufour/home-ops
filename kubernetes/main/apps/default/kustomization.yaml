@@ -8,9 +8,7 @@ resources:
   # Flux-Kustomizations
   - ./grafana/ks.yaml
   - ./kanboard/ks.yaml
-  - ./influxdb/ks.yaml
   - ./mqtt/ks.yaml
-  - ./mqtt-apps/ks.yaml
   - ./wikijs/ks.yaml
   - ./znc/ks.yaml
   - ./dashy/ks.yaml
