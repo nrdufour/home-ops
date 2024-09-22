@@ -70,11 +70,9 @@ spec:
 
     persistence:
       config:
-        existingClaim: esphome-pv
-        advancedMounts:
-          main:
-            app:
-              - path: /config
+        existingClaim: esphome-pvc
+        globalMounts:
+          - path: config
       esphome-cache:
         type: emptyDir
         globalMounts:
