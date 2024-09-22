@@ -32,6 +32,9 @@ spec:
             image:
               repository: ghcr.io/esphome/esphome
               tag: 2024.9.0
+            env:
+              - name: "ESPHOME_DASHBOARD_USE_PING"
+                value: "true"
             probes:
               liveness:
                 enabled: false
