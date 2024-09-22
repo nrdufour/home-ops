@@ -72,7 +72,7 @@ spec:
       config:
         existingClaim: esphome-pv
         advancedMounts:
-          esphome:
+          main:
             app:
               - path: /config
       esphome-cache:
