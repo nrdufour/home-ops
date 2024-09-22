@@ -12,10 +12,6 @@ spec:
     app: influxdb2
   ports:
     - protocol: TCP
-      port: 8087
-      targetPort: 8086
-      name: legacy
-    - protocol: TCP
       port: 8086
       targetPort: 8086
       name: current
