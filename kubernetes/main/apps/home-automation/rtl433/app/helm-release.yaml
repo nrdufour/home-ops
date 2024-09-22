@@ -59,7 +59,7 @@ spec:
               - "-Mstats:2:300"
               - "-R40"
               - "-R41"
-              - "-Finflux://influxdb2.internal:8087/api/v2/write?org=nemoworld&bucket=rtl433_sensors,token=$(INFLUXDB2_TOKEN)"
+              - "-Finflux://influxdb2.internal:8086/api/v2/write?org=nemoworld&bucket=rtl433_sensors,token=$(INFLUXDB2_TOKEN)"
               - "-Fmqtt://mqtt.home,retain=0,events=rtl_433[/model][/id]"
               - "-Flog"
             securityContext:
