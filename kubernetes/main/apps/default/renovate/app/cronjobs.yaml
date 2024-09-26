@@ -13,7 +13,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: renovate/renovate:38.95
+              image: renovate/renovate:38.96
               args:
                 - nemo/home-ops
               # Environment Variables
@@ -51,7 +51,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: renovate/renovate:38.95
+              image: renovate/renovate:38.96
               args:
                 - nemo/mqtt-apps
               # Environment Variables
@@ -89,7 +89,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: renovate/renovate:38.95
+              image: renovate/renovate:38.96
               args:
                 - nemo/marmitton
               # Environment Variables
@@ -127,7 +127,7 @@ spec:
         spec:
           containers:
             - name: renovate
-              image: renovate/renovate:38.95
+              image: renovate/renovate:38.96
               args:
                 - nemo/snowy
               # Environment Variables
