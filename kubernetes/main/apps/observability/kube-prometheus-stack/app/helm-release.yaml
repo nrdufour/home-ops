@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: 62.7.0
+      version: 63.0.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community-charts
@@ -75,11 +75,18 @@ spec:
         replicas: 1
         replicaExternalLabelName: __replica__
         scrapeInterval: 1m # Must match interval in Grafana Helm chart
-        ruleSelectorNilUsesHelmValues: false
-        serviceMonitorSelectorNilUsesHelmValues: false
-        podMonitorSelectorNilUsesHelmValues: false
-        probeSelectorNilUsesHelmValues: false
-        scrapeConfigSelectorNilUsesHelmValues: false
+
+        ruleSelector:
+          matchLabels: null
+        serviceMonitorSelector:
+          matchLabels: null
+        podMonitorSelector:
+          matchLabels: null
+        probeSelector:
+          matchLabels: null
+        scrapeConfigSelector:
+          matchLabels: null
+
         enableAdminAPI: true
         walCompression: true
         enableFeatures:
