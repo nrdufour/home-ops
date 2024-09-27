@@ -7,4 +7,3 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./local-path-provisioner/ks.yaml
-  - ./volsync/ks.yaml

@@ -10,3 +10,4 @@ resources:
   ## Need more study.
   - ./kured/ks.yaml
   - ./node-feature-discovery/ks.yaml
+  - ./volsync/ks.yaml
