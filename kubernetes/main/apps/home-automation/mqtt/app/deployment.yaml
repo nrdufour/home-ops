@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mqtt
-  namespace: default
+  namespace: home-automation
   labels:
     app: mqtt
 spec:
