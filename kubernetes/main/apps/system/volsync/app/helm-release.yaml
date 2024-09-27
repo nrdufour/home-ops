@@ -29,3 +29,6 @@ spec:
     manageCRDs: true
     metrics:
       disableAuth: true
+    image:
+      repository: docker.io/bitnami/volsync
+      tag: 0.10.0
