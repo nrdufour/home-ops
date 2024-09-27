@@ -1,5 +1,4 @@
 {
-    "ansible.validation.lint.arguments": "-c .ansible-lint",
     "yaml.schemaStore.enable": true,
     "yaml.schemas": {
       "kubernetes": "kubernetes/**/*.yaml"
@@ -16,5 +15,4 @@
     ],
     "explorer.autoReveal": false,
     "files.trimTrailingWhitespace": true,
-    "ansible.python.interpreterPath": "/bin/python",
 }
