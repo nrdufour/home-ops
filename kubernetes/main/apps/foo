@@ -1,0 +1,76 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  creationTimestamp: "2024-09-27T13:29:20Z"
+  finalizers:
+  - finalizers.fluxcd.io
+  generation: 1
+  labels:
+    kustomize.toolkit.fluxcd.io/name: system-volsync
+    kustomize.toolkit.fluxcd.io/namespace: flux-system
+  name: volsync
+  namespace: system
+  resourceVersion: "227589367"
+  uid: 220dc625-3650-4267-b629-448390c4ea99
+spec:
+  chart:
+    spec:
+      chart: volsync
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: backube
+        namespace: flux-system
+      version: 0.10.0
+  install:
+    remediation:
+      retries: 3
+  interval: 30m
+  maxHistory: 2
+  uninstall:
+    deletionPropagation: background
+    keepHistory: false
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  values:
+    manageCRDs: true
+    metrics:
+      disableAuth: true
+status:
+  conditions:
+  - lastTransitionTime: "2024-09-27T13:32:54Z"
+    message: Running 'install' action with timeout of 5m0s
+    observedGeneration: 1
+    reason: Progressing
+    status: "True"
+    type: Reconciling
+  - lastTransitionTime: "2024-09-27T13:32:55Z"
+    message: 'Helm install failed for release system/volsync with chart volsync@0.10.0:
+      Unable to continue with install: CustomResourceDefinition "replicationdestinations.volsync.backube"
+      in namespace "" exists and cannot be imported into the current release: invalid
+      ownership metadata; annotation validation error: key "meta.helm.sh/release-namespace"
+      must equal "system": current value is "storage"'
+    observedGeneration: 1
+    reason: InstallFailed
+    status: "False"
+    type: Ready
+  - lastTransitionTime: "2024-09-27T13:29:24Z"
+    message: 'Helm install failed for release system/volsync with chart volsync@0.10.0:
+      Unable to continue with install: CustomResourceDefinition "replicationdestinations.volsync.backube"
+      in namespace "" exists and cannot be imported into the current release: invalid
+      ownership metadata; annotation validation error: key "meta.helm.sh/release-namespace"
+      must equal "system": current value is "storage"'
+    observedGeneration: 1
+    reason: InstallFailed
+    status: "False"
+    type: Released
+  failures: 9
+  helmChart: flux-system/system-volsync
+  lastAttemptedConfigDigest: sha256:4afdea0494fe325213cd497ecfc823c0feb30c97b9ae85a7afd437c6b93873e1
+  lastAttemptedGeneration: 1
+  lastAttemptedReleaseAction: install
+  lastAttemptedRevision: 0.10.0
+  observedGeneration: -1
+  storageNamespace: system
