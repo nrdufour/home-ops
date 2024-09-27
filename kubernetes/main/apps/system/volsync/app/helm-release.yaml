@@ -3,31 +3,29 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: snapshot-controller
+  name: volsync
+  namespace: system
 spec:
   interval: 30m
   chart:
     spec:
-      chart: snapshot-controller
-      version: 3.0.6
+      chart: volsync
+      version: 0.10.0
       sourceRef:
         kind: HelmRepository
-        name: piraeus
+        name: backube
         namespace: flux-system
+  maxHistory: 2
   install:
-    crds: CreateReplace
     remediation:
       retries: 3
   upgrade:
     cleanupOnFail: true
-    crds: CreateReplace
     remediation:
       retries: 3
   uninstall:
     keepHistory: false
   values:
-    controller:
-      serviceMonitor:
-        create: true
-    webhook:
-      enabled: false
+    manageCRDs: true
+    metrics:
+      disableAuth: true
