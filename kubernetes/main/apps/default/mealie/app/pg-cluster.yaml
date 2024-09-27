@@ -10,7 +10,7 @@ spec:
   #   reusePVC: false
 
   instances: 2
-  imageName: ghcr.io/cloudnative-pg/postgresql:15.4
+  imageName: ghcr.io/cloudnative-pg/postgresql:15.8
 
   enableSuperuserAccess: true
 
