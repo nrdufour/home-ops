@@ -5,7 +5,7 @@ metadata:
   labels:
     app: znc-bouncer
   name: znc-bouncer
-  namespace: default
+  namespace: irc
 spec:
   replicas: 1
   selector:

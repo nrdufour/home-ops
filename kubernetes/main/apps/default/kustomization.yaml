@@ -10,7 +10,6 @@ resources:
   - ./kanboard/ks.yaml
   - ./mqtt/ks.yaml
   - ./wikijs/ks.yaml
-  - ./znc/ks.yaml
   - ./dashy/ks.yaml
   - ./renovate/ks.yaml
   - ./miniflux/ks.yaml

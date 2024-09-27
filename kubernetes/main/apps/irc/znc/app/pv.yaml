@@ -2,7 +2,7 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: znc-pv
-  namespace: default
+  namespace: irc
 spec:
   capacity:
     storage: 10Gi
@@ -19,7 +19,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: znc-pvc
-  namespace: default
+  namespace: irc
 spec:
   storageClassName: nfs
   volumeName: znc-pv
