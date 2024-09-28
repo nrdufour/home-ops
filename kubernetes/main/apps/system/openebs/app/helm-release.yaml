@@ -27,9 +27,9 @@ spec:
       localpv:
         image:
           registry: quay.io/
-      basePath: /var/lib/rancher/openebs
       hostpathClass:
         name: openebs-hostpath
+        basePath: /var/lib/rancher/openebs
       helperPod:
         image:
           registry: quay.io/
