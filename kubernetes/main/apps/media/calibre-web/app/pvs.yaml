@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: calibre-web-config-pv
+  namespace: irc
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    path: /tank/NFS/calibre-config
+    server: possum.internal
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: calibre-web-config-pvc
+  namespace: irc
+spec:
+  storageClassName: nfs
+  volumeName: calibre-web-config-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: calibre-web-books-pv
+  namespace: irc
+spec:
+  capacity:
+    storage: 200Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    path: /tank/NFS/calibre-books
+    server: possum.internal
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: calibre-web-books-pvc
+  namespace: irc
+spec:
+  storageClassName: nfs
+  volumeName: calibre-web-books-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 200Gi
