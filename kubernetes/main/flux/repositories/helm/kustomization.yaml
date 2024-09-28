@@ -18,3 +18,4 @@ resources:
 - external-secrets.yaml
 - influxdata.yaml
 - kured.yaml
+- openebs.yaml
