@@ -64,6 +64,7 @@ spec:
           cert-manager.io/common-name: calibre.internal
           nginx.ingress.kubernetes.io/rewrite-target: /
           nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/16
+          nginx.ingress.kubernetes.io/proxy-body-size: 1g
         className: nginx
         hosts:
           - host: calibre.internal
