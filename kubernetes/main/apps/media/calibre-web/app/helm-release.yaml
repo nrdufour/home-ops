@@ -74,7 +74,8 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "calibre.internal"
+            - "calibre.internal"
+            secretName: calibre-ing-cert
 
     persistence:
       config:
