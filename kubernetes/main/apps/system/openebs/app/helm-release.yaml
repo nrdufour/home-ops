@@ -32,6 +32,7 @@ spec:
       helperPod:
         image:
           registry: quay.io/
+      basePath: /var/lib/rancher/openebs
     openebs-crds:
       csi:
         volumeSnapshots:
