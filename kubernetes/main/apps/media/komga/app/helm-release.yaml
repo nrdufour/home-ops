@@ -43,8 +43,8 @@ spec:
                   periodSeconds: 5
             resources:
               requests:
-                cpu: 5m
-                memory: 470M
+                cpu: 50m
+                memory: 512M
               limits:
                 memory: 2G
 
