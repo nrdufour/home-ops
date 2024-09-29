@@ -1,0 +1,61 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: komga-config-pv
+  namespace: irc
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    path: /tank/NFS/komga/config
+    server: possum.internal
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: komga-config-pvc
+  namespace: irc
+spec:
+  storageClassName: nfs
+  volumeName: komga-config-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: komga-data-pv
+  namespace: irc
+spec:
+  capacity:
+    storage: 200Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs
+  nfs:
+    path: /tank/NFS/komga/data
+    server: possum.internal
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: komga-data-pvc
+  namespace: irc
+spec:
+  storageClassName: nfs
+  volumeName: komga-data-pv
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 200Gi

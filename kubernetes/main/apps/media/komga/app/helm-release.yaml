@@ -1,0 +1,92 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/bjw-s/helm-charts/main/charts/other/app-template/schemas/helmrelease-helm-v2.schema.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: komga
+spec:
+  chart:
+    spec:
+      chart: app-template
+      version: 3.4.0
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  interval: 30m
+  values:
+    controllers:
+      komga:
+
+        pod:
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+            fsGroupChangePolicy: "OnRootMismatch"
+
+        containers:
+          app:
+            image:
+              repository: docker.io/gotson/komga
+              tag: 1.14.0
+            probes:
+              liveness:
+                enabled: true
+              readiness:
+                enabled: true
+              startup:
+                enabled: true
+                spec:
+                  failureThreshold: 30
+                  periodSeconds: 5
+            resources:
+              requests:
+                cpu: 5m
+                memory: 470M
+              limits:
+                memory: 1g
+
+    service:
+      app:
+        controller: komga
+        ports:
+          http:
+            port: 25600
+
+    ingress:
+      app:
+        annotations:
+          cert-manager.io/cluster-issuer: ca-server-cluster-issuer
+          cert-manager.io/common-name: komga.internal
+          nginx.ingress.kubernetes.io/rewrite-target: /
+          nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/16
+          nginx.ingress.kubernetes.io/proxy-body-size: 1g
+        className: nginx
+        hosts:
+          - host: komga.internal
+            paths:
+              - path: /
+                service:
+                  identifier: app
+                  port: http
+        tls:
+          - hosts:
+            - "komga.internal"
+            secretName: komga-ing-cert
+
+    persistence:
+      config:
+        existingClaim: komga-config-pvc
+        advancedMounts:
+          komga:
+            app:
+              - path: /config
+
+      media:
+        existingClaim: komga-data-pvc
+        advancedMounts:
+          komga:
+            app:
+              - path: /data
