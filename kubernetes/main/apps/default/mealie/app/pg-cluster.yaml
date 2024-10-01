@@ -4,10 +4,10 @@ metadata:
   name: mealie-db
   namespace: default
 spec:
-  # # In Maintenance mode
-  # nodeMaintenanceWindow:
-  #   inProgress: true
-  #   reusePVC: false
+  # In Maintenance mode
+  nodeMaintenanceWindow:
+    inProgress: true
+    reusePVC: false
 
   instances: 2
   imageName: ghcr.io/cloudnative-pg/postgresql:15.8
@@ -34,7 +34,7 @@ spec:
       endpointCA:
         name: cnpg-minio-access
         key: tls.crt
-      serverName: mealie-v2
+      serverName: mealie-v3
       s3Credentials:
         accessKeyId:
           name: cnpg-minio-access
@@ -45,6 +45,8 @@ spec:
 
   bootstrap:
     recovery:
+      database: mealie
+      owner: mealie
       source: clusterBackup
 
   externalClusters:
@@ -56,7 +58,7 @@ spec:
           compression: bzip2
           maxParallel: 8
         destinationPath: s3://cloudnative-pg/
-        endpointURL: https://s3.home
+        endpointURL: https://s3.internal
         endpointCA:
           name: cnpg-minio-access
           key: tls.crt
