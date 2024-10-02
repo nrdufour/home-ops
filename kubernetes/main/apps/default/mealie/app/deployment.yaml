@@ -35,27 +35,27 @@ spec:
           - name: "POSTGRES_USER"
             valueFrom:
               secretKeyRef:
-                name: mealie-db-app
+                name: mealie-16-db-app
                 key: username
           - name: "POSTGRES_PASSWORD"
             valueFrom:
               secretKeyRef:
-                name: mealie-db-app
+                name: mealie-16-db-app
                 key: password
           - name: "POSTGRES_SERVER"
             valueFrom:
               secretKeyRef:
-                name: mealie-db-app
+                name: mealie-16-db-app
                 key: host
           - name: "POSTGRES_PORT"
             valueFrom:
               secretKeyRef:
-                name: mealie-db-app
+                name: mealie-16-db-app
                 key: port
           - name: "POSTGRES_DB"
             valueFrom:
               secretKeyRef:
-                name: mealie-db-app
+                name: mealie-16-db-app
                 key: dbname
         ports:
           - containerPort: 9000
