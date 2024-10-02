@@ -1,0 +1,77 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: upgrade-hass-db
+  namespace: home-automation
+spec:
+  instances: 1
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.4-27
+  primaryUpdateStrategy: unsupervised
+
+  enableSuperuserAccess: true
+
+  storage:
+    size: 5Gi
+    storageClass: openebs-hostpath
+
+  # bootstrap:
+  #   recovery:
+  #     backup:
+  #       name: hass-db-20241001094738
+
+   # Initializes the cluster from scratch (initdb bootstrap)
+  bootstrap:
+    initdb:
+      database: hass
+      owner: hass
+      # Enables data checksums
+      dataChecksums: true
+      # Sets WAL segment size to 32MB
+      walSegmentSize: 32
+      # Defines the import strategy, using the microservice
+      # method to import a single database, called freddie,
+      # from the source external cluster called cluster-pg10
+      import:
+        type: microservice
+        databases:
+          - hass
+        source:
+          externalCluster: hass-db
+
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore:
+      data:
+        compression: bzip2
+      wal:
+        compression: bzip2
+        maxParallel: 8
+      destinationPath: s3://cloudnative-pg/
+      endpointURL: https://s3.internal
+      endpointCA:
+        name: cnpg-minio-access
+        key: tls.crt
+      serverName: hass-16-v0
+      s3Credentials:
+        accessKeyId:
+          name: cnpg-minio-access
+          key: aws-access-key-id
+        secretAccessKey:
+          name: cnpg-minio-access
+          key: aws-secret-access-key
+
+  externalClusters:
+  - name: hass-db
+    # barmanObjectStore:
+    #   destinationPath: s3://backups/
+    #   endpointURL: http://minio:9000
+    #   s3Credentials:
+    #     …
+    connectionParameters:
+      host: hass-db-rw.home-automation.svc
+      user: postgres
+      dbname: postgres
+    password:
+      name: hass-db-superuser
+      key: password
+

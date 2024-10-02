@@ -27,7 +27,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: uri
-                  name: hass-db-app
+                  name: hass-16-db-app
           volumeMounts:
             - mountPath: "/config"
               name: ha-storage
