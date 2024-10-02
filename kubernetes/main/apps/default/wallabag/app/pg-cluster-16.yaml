@@ -1,0 +1,74 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: wallabag-16-db
+  namespace: default
+spec:
+  # In Maintenance mode
+  # nodeMaintenanceWindow:
+  #   inProgress: true
+  #   reusePVC: false
+
+  instances: 2
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.4-27
+  primaryUpdateStrategy: unsupervised
+
+  enableSuperuserAccess: true
+
+  affinity:
+    nodeSelector:
+      opi.feature.node.kubernetes.io/5plus: "true"
+
+  storage:
+    size: 5Gi
+    storageClass: openebs-hostpath
+
+  backup:
+    retentionPolicy: 30d
+    barmanObjectStore:
+      data:
+        compression: bzip2
+      wal:
+        compression: bzip2
+        maxParallel: 8
+      destinationPath: s3://cloudnative-pg/
+      endpointURL: https://s3.internal
+      endpointCA:
+        name: cnpg-minio-access
+        key: tls.crt
+      serverName: wallabag-16-v1
+      s3Credentials:
+        accessKeyId:
+          name: cnpg-minio-access
+          key: aws-access-key-id
+        secretAccessKey:
+          name: cnpg-minio-access
+          key: aws-secret-access-key
+
+  bootstrap:
+    recovery:
+      database: wallabag
+      owner: wallabag
+      source: clusterBackup
+
+  externalClusters:
+    - name: clusterBackup
+      barmanObjectStore:
+        data:
+          compression: bzip2
+        wal:
+          compression: bzip2
+          maxParallel: 8
+        destinationPath: s3://cloudnative-pg/
+        endpointURL: https://s3.internal
+        endpointCA:
+          name: cnpg-minio-access
+          key: tls.crt
+        serverName: wallabag-16-v0
+        s3Credentials:
+          accessKeyId:
+            name: cnpg-minio-access
+            key: aws-access-key-id
+          secretAccessKey:
+            name: cnpg-minio-access
+            key: aws-secret-access-key
