@@ -2,11 +2,11 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: ScheduledBackup
 metadata:
-  name: miniflux-db
+  name: miniflux-16-db
   namespace: default
 spec:
   schedule: "@daily"
   immediate: true
   backupOwnerReference: self
   cluster:
-    name: miniflux-db
+    name: miniflux-16-db
