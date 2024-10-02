@@ -30,7 +30,7 @@ spec:
           - name: "DATABASE_URL"
             valueFrom:
               secretKeyRef:
-                name: miniflux-db-app
+                name: miniflux-16-db-app
                 key: uri
           - name: "DEBUG"
             value: "1"
