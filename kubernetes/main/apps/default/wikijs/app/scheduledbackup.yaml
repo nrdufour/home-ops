@@ -2,11 +2,11 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: ScheduledBackup
 metadata:
-  name: wikijs-db
+  name: wikijs-16-db
   namespace: default
 spec:
   schedule: "@daily"
   immediate: true
   backupOwnerReference: self
   cluster:
-    name: wikijs-db
+    name: wikijs-16-db
