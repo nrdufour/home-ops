@@ -7,4 +7,4 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./marmitton/ks.yaml
-  - ./znc/ks.yaml
+  #- ./znc/ks.yaml
