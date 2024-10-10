@@ -19,4 +19,5 @@ resources:
 - influxdata.yaml
 - kured.yaml
 - openebs.yaml
+- kyverno.yaml
 - longhorn.yaml
