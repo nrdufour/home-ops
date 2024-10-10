@@ -48,6 +48,7 @@ spec:
 
     ingress:
       enabled: true
+      ingressClassName: nginx
       host: longhorn.internal
       tls: true
       annotations:
