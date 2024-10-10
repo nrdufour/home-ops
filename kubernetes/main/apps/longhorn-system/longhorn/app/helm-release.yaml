@@ -7,6 +7,8 @@ metadata:
   namespace: longhorn-system
 spec:
   interval: 30m
+  # it takes quite sometimes to setup, so let's be patient :)
+  timeout: 10m
   chart:
     spec:
       chart: longhorn
