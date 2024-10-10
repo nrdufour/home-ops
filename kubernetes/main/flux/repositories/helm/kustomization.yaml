@@ -13,7 +13,7 @@ resources:
 # - crunchydata.yaml
 - bjw-s.yaml
 - piraeus.yaml
-- democratic-csi.yaml
+# - democratic-csi.yaml
 - backube.yaml
 - external-secrets.yaml
 - influxdata.yaml
