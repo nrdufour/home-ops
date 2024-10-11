@@ -6,3 +6,4 @@ namespace: longhorn-system
 resources:
   - ./cluster-policy.yaml
   - ./helm-release.yaml
+  - ./snapshot-classes.yaml

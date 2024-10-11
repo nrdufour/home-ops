@@ -1,0 +1,20 @@
+---
+# Documentation here:
+# https://longhorn.io/docs/1.7.1/snapshots-and-backups/csi-snapshot-support/enable-csi-snapshot-support/
+kind: VolumeSnapshotClass
+apiVersion: snapshot.storage.k8s.io/v1
+metadata:
+  name: longhorn
+driver: driver.longhorn.io
+deletionPolicy: Delete
+---
+# Documentation here:
+# https://longhorn.io/docs/1.7.1/snapshots-and-backups/csi-snapshot-support/csi-volume-snapshot-associated-with-longhorn-snapshot/
+kind: VolumeSnapshotClass
+apiVersion: snapshot.storage.k8s.io/v1
+metadata:
+  name: longhorn-snapshot-vsc
+driver: driver.longhorn.io
+deletionPolicy: Delete
+parameters:
+  type: snap
