@@ -21,3 +21,4 @@ resources:
 - openebs.yaml
 - kyverno.yaml
 - longhorn.yaml
+- kubernetes-sigs-metrics-server.yaml
