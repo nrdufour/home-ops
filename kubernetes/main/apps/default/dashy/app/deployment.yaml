@@ -28,7 +28,12 @@ spec:
         volumeMounts:
           - mountPath: /app/user-data
             name: dashy-data
+          - mountPath: /app/user-data-new
+            name: dashy-data-new
       volumes:
         - name: dashy-data
           persistentVolumeClaim:
             claimName: dashy-pvc
+        - name: dashy-data-new
+          persistentVolumeClaim:
+            claimName: dashy-longhorn-pvc
