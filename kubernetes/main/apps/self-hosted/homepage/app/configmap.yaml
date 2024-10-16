@@ -42,16 +42,5 @@ data:
           showLabel: true
           label: "cluster"
         nodes:
-          show: true
-          cpu: true
-          memory: true
-          showLabel: true
-    - resources:
-        backend: resources
-        expanded: true
-        cpu: true
-        memory: true
-    - search:
-        provider: duckduckgo
-        target: _blank
+          show: false
   docker.yaml: ""
