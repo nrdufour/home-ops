@@ -6,3 +6,5 @@ resources:
 - ingress.yaml
 - pv.yaml
 - service.yaml
+commonLabels:
+  app.kubernetes.io/instance: grafana
