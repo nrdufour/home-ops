@@ -27,6 +27,13 @@ spec:
               readOnly: true
             - name: marmitton-storage
               mountPath: /data
+          resources:
+            requests:
+              cpu: 10m
+              memory: 100Mi
+            limits:
+              cpu: 1
+              memory: 512Mi
       volumes:
         - name: config
           configMap:
