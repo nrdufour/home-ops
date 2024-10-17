@@ -29,11 +29,11 @@ spec:
               mountPath: /data
           resources:
             requests:
-              cpu: 10m
-              memory: 100Mi
+              cpu: 5m
+              memory: 20Mi
             limits:
-              cpu: 1
-              memory: 512Mi
+              cpu: 100m
+              memory: 100Mi
       volumes:
         - name: config
           configMap:
