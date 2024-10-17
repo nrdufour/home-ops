@@ -33,4 +33,4 @@ spec:
             name: marmitton-config
         - name: marmitton-storage
           persistentVolumeClaim:
-            claimName: marmitton-pvc
+            claimName: marmitton-longhorn-pvc
