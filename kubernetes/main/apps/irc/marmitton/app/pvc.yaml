@@ -3,7 +3,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: marmitton-longhorn-pvc
-  namespace: default
+  namespace: irc
 spec:
   storageClassName: longhorn
   accessModes:
