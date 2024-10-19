@@ -8,4 +8,4 @@ resources:
   # Flux-Kustomizations
   - ./calibre-web/ks.yaml
   - ./komga/ks.yaml
-  - ./archivebox/ks.yaml
+  # - ./archivebox/ks.yaml
