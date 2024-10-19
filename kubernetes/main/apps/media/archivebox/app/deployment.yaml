@@ -15,6 +15,9 @@ spec:
       labels:
         app: archivebox
     spec:
+      securityContext:
+        runAsUser:  1000
+        runAsGroup: 1000
       initContainers:
       - name: init-archivebox
         image: archivebox/archivebox
