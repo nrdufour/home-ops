@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: archivebox
+  namespace: media
+spec:
+  selector:
+    matchLabels:
+      app: archivebox
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: archivebox
+    spec:
+      initContainers:
+      - name: init-archivebox
+        image: archivebox/archivebox
+        args: ['init']
+        volumeMounts:
+          - mountPath: /data
+            name: archivebox
+      containers:
+        - name: archivebox
+          args: ["server"]
+          image: archivebox/archivebox
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+              name: http
+          resources:
+            requests:
+              cpu: 50m
+              memory: 32Mi
+            limits:
+              cpu: 1
+              memory: 512Mi
+          volumeMounts:
+            - mountPath: /data
+              name: archivebox
+      restartPolicy: Always
+      volumes:
+        - name: archivebox
+          persistentVolumeClaim:
+            claimName: archivebox

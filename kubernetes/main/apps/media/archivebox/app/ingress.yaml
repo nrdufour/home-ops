@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: archivebox-ingress
+  namespace: default
+  annotations:
+    gethomepage.dev/description: ArchiveBox
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Monitoring
+    gethomepage.dev/icon: archivebox.png
+    gethomepage.dev/name: archivebox
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: ca-server-cluster-issuer
+    cert-manager.io/common-name: archivebox.internal
+    nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/16
+spec:
+  tls:
+    - hosts:
+      - archivebox.internal
+      secretName: archivebox-ing-cert
+  ingressClassName: nginx
+  rules:
+  - host: archivebox.internal
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: archivebox
+            port:
+              number: 8000
