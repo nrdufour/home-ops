@@ -6,7 +6,7 @@ metadata:
   annotations:
     gethomepage.dev/description: Grafana Dashboards
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Monitoring
+    gethomepage.dev/group: Home
     gethomepage.dev/icon: grafana.png
     gethomepage.dev/name: Grafana
     gethomepage.dev/pod-selector: "app=grafana"
