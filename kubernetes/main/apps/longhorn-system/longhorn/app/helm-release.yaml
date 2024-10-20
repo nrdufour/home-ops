@@ -54,7 +54,7 @@ spec:
       annotations:
         gethomepage.dev/description: Longhorn Management
         gethomepage.dev/enabled: "true"
-        gethomepage.dev/group: Cluster Management
+        gethomepage.dev/group: Cluster
         gethomepage.dev/icon: longhorn.png
         gethomepage.dev/name: Longhorn
         gethomepage.dev/pod-selector: "app=longhorn-ui"

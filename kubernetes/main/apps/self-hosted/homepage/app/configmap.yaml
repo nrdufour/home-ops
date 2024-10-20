@@ -22,18 +22,18 @@ data:
     - Storage:
         - Minio:
             href: https://minio.internal/
-            description: Minio S3
+            description: S3 Server
             icon: sh-minio
 
         - Forgejo:
             href: https://forge.internal/
-            description: Forgejo
+            description: Git Server and Registry
             icon: sh-forgejo
 
     - Network:
         - Home Router:
             href: http://router01.internal:8443/
-            description: Opnsense on the home router
+            description: Managing everything network at home
             icon: sh-opnsense
 
   widgets.yaml: |
