@@ -4,6 +4,12 @@ metadata:
   name: wallabag-ingress
   namespace: default
   annotations:
+    gethomepage.dev/description: Links Library
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Media
+    gethomepage.dev/icon: wallabag.png
+    gethomepage.dev/name: Wallabag
+    gethomepage.dev/pod-selector: "app=wallabag"
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
     cert-manager.io/common-name: wallabag.internal
