@@ -52,6 +52,12 @@ spec:
       host: longhorn.internal
       tls: true
       annotations:
+        gethomepage.dev/description: Longhorn Management
+        gethomepage.dev/enabled: "true"
+        gethomepage.dev/group: Cluster Management
+        gethomepage.dev/icon: longhorn.png
+        gethomepage.dev/name: Longhorn
+        gethomepage.dev/pod-selector: "app=longhorn-ui"
         nginx.ingress.kubernetes.io/rewrite-target: /
         cert-manager.io/cluster-issuer: ca-server-cluster-issuer
         cert-manager.io/common-name: longhorn.internal
