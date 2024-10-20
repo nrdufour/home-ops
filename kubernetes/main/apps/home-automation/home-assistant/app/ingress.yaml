@@ -7,7 +7,7 @@ metadata:
     gethomepage.dev/description: Home Automation
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Home
-    gethomepage.dev/icon: homeassistant.png
+    gethomepage.dev/icon: home-assistant.png
     gethomepage.dev/name: HomeAssistant
     gethomepage.dev/pod-selector: "app=homeassistant"
     nginx.ingress.kubernetes.io/rewrite-target: /
