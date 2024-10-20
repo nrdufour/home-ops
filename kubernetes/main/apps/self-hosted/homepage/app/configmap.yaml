@@ -23,15 +23,18 @@ data:
         - Minio:
             href: https://minio.internal/
             description: Minio S3
+            icon: sh-minio
 
         - Forgejo:
             href: https://forge.internal/
             description: Forgejo
+            icon: sh-forgejo
 
     - Network:
         - Home Router:
             href: http://router01.internal:8443/
             description: Opnsense on the home router
+            icon: sh-opnsense
 
   widgets.yaml: |
     - kubernetes:
@@ -40,7 +43,7 @@ data:
           cpu: true
           memory: true
           showLabel: true
-          label: "cluster"
+          label: "Cluster"
         nodes:
           show: false
   docker.yaml: ""
