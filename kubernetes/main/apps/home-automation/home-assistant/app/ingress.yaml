@@ -4,6 +4,12 @@ metadata:
   name: ha-ingress
   namespace: home-automation
   annotations:
+    gethomepage.dev/description: Home Automation
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Home
+    gethomepage.dev/icon: homeassistant.png
+    gethomepage.dev/name: HomeAssistant
+    gethomepage.dev/pod-selector: "app=homeassistant"
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
     cert-manager.io/common-name: ha.internal
