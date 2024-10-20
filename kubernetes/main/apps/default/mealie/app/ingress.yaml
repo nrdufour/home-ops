@@ -4,6 +4,12 @@ metadata:
   name: mealie-ingress
   namespace: default
   annotations:
+    gethomepage.dev/description: Recipes Library
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Projects
+    gethomepage.dev/icon: mealie.png
+    gethomepage.dev/name: Mealie
+    gethomepage.dev/pod-selector: "app=mealie"
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
     cert-manager.io/common-name: mealie.internal
