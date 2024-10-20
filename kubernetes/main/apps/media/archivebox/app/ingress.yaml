@@ -4,11 +4,12 @@ metadata:
   name: archivebox-ingress
   namespace: default
   annotations:
-    gethomepage.dev/description: ArchiveBox
+    gethomepage.dev/description: Archiving articles and sites
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Monitoring
+    gethomepage.dev/group: Media
     gethomepage.dev/icon: archivebox.png
-    gethomepage.dev/name: archivebox
+    gethomepage.dev/name: ArchiveBox
+    gethomepage.dev/pod-selector: "app=archivebox"
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
     cert-manager.io/common-name: archivebox.internal
