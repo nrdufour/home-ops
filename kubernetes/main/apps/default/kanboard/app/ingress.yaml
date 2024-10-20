@@ -4,6 +4,12 @@ metadata:
   name: kanboard-ingress
   namespace: default
   annotations:
+    gethomepage.dev/description: Kanban board for all projects
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Projects
+    gethomepage.dev/icon: kanboard.png
+    gethomepage.dev/name: Kanboard
+    gethomepage.dev/pod-selector: "app=kanboard"
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
     cert-manager.io/common-name: kanboard.internal
