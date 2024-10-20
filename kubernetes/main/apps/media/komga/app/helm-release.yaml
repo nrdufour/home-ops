@@ -58,6 +58,12 @@ spec:
     ingress:
       app:
         annotations:
+          gethomepage.dev/description: Book Library
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Media
+          gethomepage.dev/icon: sh-komga
+          gethomepage.dev/name: Komga
+          gethomepage.dev/pod-selector: "app.kubernetes.io/name=komga"
           cert-manager.io/cluster-issuer: ca-server-cluster-issuer
           cert-manager.io/common-name: komga.internal
           nginx.ingress.kubernetes.io/rewrite-target: /
