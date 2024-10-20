@@ -76,6 +76,13 @@ spec:
     ingress:
       app:
         className: nginx
+        annotations:
+          gethomepage.dev/description: ZWave Device Management
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Home
+          gethomepage.dev/icon: zwave.png
+          gethomepage.dev/name: ZWave
+          gethomepage.dev/pod-selector: "app.kubernetes.io/name=zwave"
         hosts:
           - host: "zwave.internal"
             paths:
