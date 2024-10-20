@@ -4,6 +4,12 @@ metadata:
   name: miniflux-ingress
   namespace: default
   annotations:
+    gethomepage.dev/description: RSS Reader
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Media
+    gethomepage.dev/icon: miniflux.png
+    gethomepage.dev/name: Miniflux
+    gethomepage.dev/pod-selector: "app=miniflux"
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
     cert-manager.io/common-name: miniflux.internal
