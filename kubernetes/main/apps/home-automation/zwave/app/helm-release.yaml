@@ -80,7 +80,7 @@ spec:
           gethomepage.dev/description: ZWave Device Management
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Home
-          gethomepage.dev/icon: z-wave-js-ui.png
+          gethomepage.dev/icon: sh-z-wave-js-ui
           gethomepage.dev/name: ZWave JS UI
           gethomepage.dev/pod-selector: "app.kubernetes.io/name=zwave"
         hosts:
