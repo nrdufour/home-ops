@@ -60,6 +60,13 @@ spec:
       main:
         enabled: true
         className: "nginx"
+        annotations:
+          gethomepage.dev/description: Sensors Tooling
+          gethomepage.dev/enabled: "true"
+          gethomepage.dev/group: Home
+          gethomepage.dev/icon: esphome.png
+          gethomepage.dev/name: ESPHome
+          gethomepage.dev/pod-selector: "app.kubernetes.io/name=esphome"
         hosts:
           - host: "esphome.internal"
             paths:
