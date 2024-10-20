@@ -25,6 +25,8 @@ spec:
             runAsGroup: 1000
             fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
+          nodeSelector:
+            opi.feature.node.kubernetes.io/5plus: "true"
 
         containers:
           app:
