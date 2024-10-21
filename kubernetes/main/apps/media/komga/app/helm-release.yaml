@@ -84,15 +84,15 @@ spec:
 
     persistence:
       config:
-        existingClaim: komga-config-pvc
+        existingClaim: komga-config-longhorn-pvc
         advancedMounts:
           komga:
             app:
               - path: /config
 
       media:
-        existingClaim: komga-data-pvc
+        existingClaim: books-pvc
         advancedMounts:
           komga:
             app:
-              - path: /data
+              - path: /books
