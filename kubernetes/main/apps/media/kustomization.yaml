@@ -9,4 +9,4 @@ resources:
   - ./calibre-web/ks.yaml
   # - ./komga/ks.yaml
   - ./archivebox/ks.yaml
-  - ./kavita/ks.yaml
+  # - ./kavita/ks.yaml
