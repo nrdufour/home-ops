@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: searxng
-          image: "quay.io/searxng/searxng:searxng/searxng:2024.10.23-b14d885f2"
+          image: "docker.io/searxng/searxng:2024.10.23-b14d885f2"
           imagePullPolicy: Always
           ports:
             - name: http
