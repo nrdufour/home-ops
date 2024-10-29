@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: thelounge-ingress
+  namespace: irc
+  annotations:
+    gethomepage.dev/description: IRC Client/Bouncer
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Network
+    gethomepage.dev/icon: thelounge.png
+    gethomepage.dev/name: TheLounge
+    gethomepage.dev/pod-selector: "app=thelounge"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: ca-server-cluster-issuer
+    cert-manager.io/common-name: irc.internal
+    nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/16
+spec:
+  tls:
+    - hosts:
+      - irc.internal
+      secretName: thelounge-ing-cert
+  ingressClassName: nginx
+  rules:
+  - host: irc.internal
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: thelounge
+            port:
+              number: 9000

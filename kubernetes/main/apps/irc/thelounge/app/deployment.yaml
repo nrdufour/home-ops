@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: thelounge
+  name: thelounge
+  namespace: irc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: thelounge
+  template:
+    metadata:
+      labels:
+        app: thelounge
+    spec:
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: thelounge-longhorn-pvc
+      containers:
+      - name: thelounge
+        image: ghcr.io/thelounge/thelounge:4.4.3
+        ports:
+        - containerPort: 9000
+          name: http
+        volumeMounts:
+          - mountPath: /var/opt/thelounge
+            name: data
+        resources:
+          requests:
+            cpu: 50m
+            memory: 100M
+          limits:
+            cpu: 512m
+            memory: 512M
