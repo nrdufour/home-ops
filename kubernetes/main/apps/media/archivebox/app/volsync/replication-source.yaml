@@ -16,6 +16,7 @@ spec:
     repository: archivebox-volsync-minio
     storageClassName: "longhorn"
     volumeSnapshotClassName: "longhorn-snapshot-vsc"
+    cacheCapacity: "2Gi"
     moverSecurityContext:
       runAsUser: 911
       runAsGroup: 911
