@@ -6,6 +6,7 @@ metadata:
   name: irc-thelounge
   namespace: flux-system
 spec:
+  targetNamespace: irc
   path: ./kubernetes/main/apps/irc/thelounge/app
   prune: true
   sourceRef:
