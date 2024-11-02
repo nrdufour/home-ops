@@ -1,0 +1,27 @@
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: archivebox
+spec:
+  # The PVC to sync
+  sourcePVC: archivebox
+  trigger:
+    # Synchronize every hour
+    schedule: "0 * * * *"
+  restic:
+    customCA:
+      secretName: archivebox-volsync-minio
+      key: ca.crt
+    copyMethod: Snapshot
+    repository: archivebox-volsync-minio
+    storageClassName: "longhorn"
+    volumeSnapshotClassName: "longhorn-snapshot-vsc"
+    moverSecurityContext:
+      runAsUser: 911
+      runAsGroup: 911
+      fsGroup: 911
+    pruneIntervalDays: 7
+    retain:
+      hourly: 24
+      daily: 7
+      weekly: 5
