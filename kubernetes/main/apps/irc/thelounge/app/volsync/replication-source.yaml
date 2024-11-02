@@ -14,9 +14,6 @@ spec:
       key: ca.crt
     copyMethod: Snapshot
     repository: thelounge-volsync-minio
-    cacheStorageClassName: "openebs-hostpath"
-    cacheAccessModes: ["ReadWriteOnce"]
-    cacheCapacity: "1Gi"
     storageClassName: "longhorn"
     volumeSnapshotClassName: "longhorn-snapshot-vsc"
     moverSecurityContext:
