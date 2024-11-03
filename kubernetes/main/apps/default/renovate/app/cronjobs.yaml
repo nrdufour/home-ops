@@ -36,44 +36,44 @@ spec:
                 - name: RENOVATE_GIT_AUTHOR
                   value: "Renovate Bot <renovate@ptinem.casa>"
           restartPolicy: Never
----
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: renovate-mqtt-apps
-  namespace: default
-spec:
-  schedule: "0 */3 * * *"
-  concurrencyPolicy: Forbid
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          containers:
-            - name: renovate
-              image: renovate/renovate:38.142
-              args:
-                - nemo/mqtt-apps
-              # Environment Variables
-              envFrom:
-                - secretRef:
-                    name: renovate-secret
-              env:
-                - name: LOG_LEVEL
-                  value: info
-                - name: RENOVATE_ENDPOINT
-                  value: "https://forge.internal/api/v1"
-                - name: RENOVATE_PLATFORM
-                  value: "gitea"
-                - name: RENOVATE_PR_HOURLY_LIMIT
-                  value: "0"
-                - name: NODE_TLS_REJECT_UNAUTHORIZED
-                  value: "0"
-                - name: GIT_SSL_NO_VERIFY
-                  value: "1"
-                - name: RENOVATE_GIT_AUTHOR
-                  value: "Renovate Bot <renovate@ptinem.casa>"
-          restartPolicy: Never
+# ---
+# apiVersion: batch/v1
+# kind: CronJob
+# metadata:
+#   name: renovate-mqtt-apps
+#   namespace: default
+# spec:
+#   schedule: "0 */3 * * *"
+#   concurrencyPolicy: Forbid
+#   jobTemplate:
+#     spec:
+#       template:
+#         spec:
+#           containers:
+#             - name: renovate
+#               image: renovate/renovate:38.142
+#               args:
+#                 - nemo/mqtt-apps
+#               # Environment Variables
+#               envFrom:
+#                 - secretRef:
+#                     name: renovate-secret
+#               env:
+#                 - name: LOG_LEVEL
+#                   value: info
+#                 - name: RENOVATE_ENDPOINT
+#                   value: "https://forge.internal/api/v1"
+#                 - name: RENOVATE_PLATFORM
+#                   value: "gitea"
+#                 - name: RENOVATE_PR_HOURLY_LIMIT
+#                   value: "0"
+#                 - name: NODE_TLS_REJECT_UNAUTHORIZED
+#                   value: "0"
+#                 - name: GIT_SSL_NO_VERIFY
+#                   value: "1"
+#                 - name: RENOVATE_GIT_AUTHOR
+#                   value: "Renovate Bot <renovate@ptinem.casa>"
+#           restartPolicy: Never
 ---
 apiVersion: batch/v1
 kind: CronJob
@@ -112,41 +112,41 @@ spec:
                 - name: RENOVATE_GIT_AUTHOR
                   value: "Renovate Bot <renovate@ptinem.casa>"
           restartPolicy: Never
----
-apiVersion: batch/v1
-kind: CronJob
-metadata:
-  name: renovate-snowy
-  namespace: default
-spec:
-  schedule: "0 */3 * * *"
-  concurrencyPolicy: Forbid
-  jobTemplate:
-    spec:
-      template:
-        spec:
-          containers:
-            - name: renovate
-              image: renovate/renovate:38.142
-              args:
-                - nemo/snowy
-              # Environment Variables
-              envFrom:
-                - secretRef:
-                    name: renovate-secret
-              env:
-                - name: LOG_LEVEL
-                  value: info
-                - name: RENOVATE_ENDPOINT
-                  value: "https://forge.internal/api/v1"
-                - name: RENOVATE_PLATFORM
-                  value: "gitea"
-                - name: RENOVATE_PR_HOURLY_LIMIT
-                  value: "0"
-                - name: NODE_TLS_REJECT_UNAUTHORIZED
-                  value: "0"
-                - name: GIT_SSL_NO_VERIFY
-                  value: "1"
-                - name: RENOVATE_GIT_AUTHOR
-                  value: "Renovate Bot <renovate@ptinem.casa>"
-          restartPolicy: Never
+# ---
+# apiVersion: batch/v1
+# kind: CronJob
+# metadata:
+#   name: renovate-snowy
+#   namespace: default
+# spec:
+#   schedule: "0 */3 * * *"
+#   concurrencyPolicy: Forbid
+#   jobTemplate:
+#     spec:
+#       template:
+#         spec:
+#           containers:
+#             - name: renovate
+#               image: renovate/renovate:38.142
+#               args:
+#                 - nemo/snowy
+#               # Environment Variables
+#               envFrom:
+#                 - secretRef:
+#                     name: renovate-secret
+#               env:
+#                 - name: LOG_LEVEL
+#                   value: info
+#                 - name: RENOVATE_ENDPOINT
+#                   value: "https://forge.internal/api/v1"
+#                 - name: RENOVATE_PLATFORM
+#                   value: "gitea"
+#                 - name: RENOVATE_PR_HOURLY_LIMIT
+#                   value: "0"
+#                 - name: NODE_TLS_REJECT_UNAUTHORIZED
+#                   value: "0"
+#                 - name: GIT_SSL_NO_VERIFY
+#                   value: "1"
+#                 - name: RENOVATE_GIT_AUTHOR
+#                   value: "Renovate Bot <renovate@ptinem.casa>"
+#           restartPolicy: Never
