@@ -27,6 +27,7 @@
   },
 
   "ignorePaths": [
+    "kubernetes/main/apps/system/kured/app/**"
   ],
 
   "packageRules": [
