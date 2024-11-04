@@ -1,7 +1,7 @@
 name: ci
 on:
-  # schedule:
-  #   - cron: '0 */3 * * *'
+  schedule:
+    - cron: '0 */3 * * *'
   push:
     branches: ["main"]
     paths-ignore:
