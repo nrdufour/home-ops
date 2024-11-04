@@ -1,0 +1,36 @@
+name: ci
+on:
+  # schedule:
+  #   - cron: '0 */3 * * *'
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - '!.forgejo/workflows/renovate.yaml'
+
+jobs:
+  renovate:
+    name: Renovate
+    runs-on: docker
+    container:
+      image: ghcr.io/renovatebot/renovate:39.0.0@sha256:073ef9b52794bfcc16c8697634955006dacb8a7db3a82b91fa57cece9857c6a5
+      volumes:
+        - /etc/ssl/certs/ca-bundle.crt:/etc/ssl/certs/ca-bundle.crt
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        env:
+          NODE_EXTRA_CA_CERTS: /etc/ssl/certs/ca-bundle.crt
+          # DAMN ... renovate 39 puts node in /usr/local/renovate and not in the PATH
+          PATH: /usr/local/renovate:/home/ubuntu/.local/bin:/home/ubuntu/bin:/home/ubuntu/.local/bin:/home/ubuntu/bin:/home/ubuntu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+        with:
+          show-progress: false
+          repository: nemo/renovate-config
+          token: ${{ secrets.RENOVATE_TOKEN }}
+          path: ./renovate-config
+      - name: Renovate
+        uses: ./renovate-config/.forgejo/actions/common-renovate
+        with:
+          token: ${{ secrets.RENOVATE_TOKEN }}
+          github-token: ${{ secrets.GH_TOKEN }}
+          args: nemo/home-ops
+          log-level: debug
