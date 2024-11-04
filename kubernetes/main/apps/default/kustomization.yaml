@@ -9,8 +9,6 @@ resources:
   - ./grafana/ks.yaml
   - ./kanboard/ks.yaml
   - ./wikijs/ks.yaml
-  # - ./dashy/ks.yaml
-  - ./renovate/ks.yaml
   - ./miniflux/ks.yaml
   - ./wallabag/ks.yaml
   - ./mealie/ks.yaml
