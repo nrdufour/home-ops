@@ -1,54 +1,65 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-
-  "extends": [
-    "config:recommended",
-    "docker:enableMajor",
-    "replacements:k8s-registry-move",
-    ":automergeBranch",
-    ":disableRateLimiting",
-    ":dependencyDashboard",
-    ":semanticCommits",
-    ":skipStatusChecks",
-    ":timezone(America/New_York)"
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+    'docker:enableMajor',
+    'replacements:k8s-registry-move',
+    ':automergeBranch',
+    ':disableRateLimiting',
+    ':dependencyDashboard',
+    ':semanticCommits',
+    ':skipStatusChecks',
+    ':timezone(America/New_York)',
   ],
-
-  "flux": {
-    "fileMatch": ["(^|/)kubernetes/.+\\.yaml$"]
+  flux: {
+    fileMatch: [
+      '(^|/)kubernetes/.+\\.yaml$',
+    ],
   },
-  "helm-values": {
-    "fileMatch": ["(^|/)kubernetes/.+\\.yaml$"]
+  'helm-values': {
+    fileMatch: [
+      '(^|/)kubernetes/.+\\.yaml$',
+    ],
   },
-  "kubernetes": {
-    "fileMatch": [
-      "(^|/)\\.taskfiles/.+\\.yaml$",
-      "(^|/)kubernetes/.+\\.yaml$"
-    ]
+  kubernetes: {
+    fileMatch: [
+      '(^|/)\\.taskfiles/.+\\.yaml$',
+      '(^|/)kubernetes/.+\\.yaml$',
+    ],
   },
-
-  "ignorePaths": [
-    "**/*.sops.*",
-    "**/.archive/**",
-    "kubernetes/main/apps/system/kured/app/**"
+  ignorePaths: [
+    '**/*.sops.*',
+    '**/.archive/**',
+    'kubernetes/main/apps/system/kured/app/**',
   ],
-
-  "packageRules": [
+  packageRules: [
     {
-      "description": "Custom versioning for miniflux",
-      "matchDatasources": ["docker"],
-      "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<compatibility>)$",
-      "matchPackagePatterns": ["miniflux"]
+      description: 'Custom versioning for miniflux',
+      matchDatasources: [
+        'docker',
+      ],
+      versioning: 'regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<compatibility>)$',
+      matchPackageNames: [
+        '/miniflux/',
+      ],
     },
     {
-      "description": "Custom versioning for minio",
-      "matchDatasources": ["docker"],
-      "versioning": "regex:^RELEASE\\.(?<major>\\d+)-(?<minor>\\d+)-(?<patch>\\d+)T.*Z$",
-      "matchPackagePatterns": ["minio"]
+      description: 'Custom versioning for minio',
+      matchDatasources: [
+        'docker',
+      ],
+      versioning: 'regex:^RELEASE\\.(?<major>\\d+)-(?<minor>\\d+)-(?<patch>\\d+)T.*Z$',
+      matchPackageNames: [
+        '/minio/',
+      ],
     },
     {
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
-      "automerge": true
-    }
-  ]
+      matchUpdateTypes: [
+        'minor',
+        'patch',
+      ],
+      matchCurrentVersion: '!/^0/',
+      automerge: true,
+    },
+  ],
 }
