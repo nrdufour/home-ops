@@ -20,8 +20,6 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         env:
           NODE_EXTRA_CA_CERTS: /etc/ssl/certs/ca-bundle.crt
-          # DAMN ... renovate 39 puts node in /usr/local/renovate and not in the PATH
-          PATH: /usr/local/renovate:/home/ubuntu/.local/bin:/home/ubuntu/bin:/home/ubuntu/.local/bin:/home/ubuntu/bin:/home/ubuntu/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
         with:
           show-progress: false
           repository: nemo/renovate-config
