@@ -61,5 +61,10 @@
       matchCurrentVersion: '!/^0/',
       automerge: true,
     },
+    {
+      "description": "Update renovate only daily",
+      "extends": ["schedule:daily"],
+      "matchDepNames": ["ghcr.io/renovatebot/renovate"]
+    },
   ],
 }
