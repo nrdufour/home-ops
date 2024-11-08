@@ -6,6 +6,6 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
-  - ./marmitton/ks.yaml
+  # - ./marmitton/ks.yaml
   # - ./znc/ks.yaml
   - ./thelounge/ks.yaml
