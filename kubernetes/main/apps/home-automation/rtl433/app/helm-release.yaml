@@ -50,7 +50,7 @@ spec:
           main:
             image:
               repository: docker.io/hertzg/rtl_433
-              tag: 23.11
+              tag: 24.10
             args:
               - "-Ccustomary"
               - "-Mtime:unix:usec:utc"
