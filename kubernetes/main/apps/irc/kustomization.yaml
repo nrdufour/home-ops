@@ -8,4 +8,4 @@ resources:
   # Flux-Kustomizations
   # - ./marmitton/ks.yaml
   # - ./znc/ks.yaml
-  - ./thelounge/ks.yaml
+  # - ./thelounge/ks.yaml
