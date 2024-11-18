@@ -1,0 +1,26 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: self-hosted-actual
+  namespace: flux-system
+spec:
+  targetNamespace: self-hosted
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: actual
+  interval: 30m
+  timeout: 5m
+  path: "./kubernetes/main/apps/self-hosted/actual/app"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: home-ops-kubernetes
+  wait: false
+  dependsOn:
+    - name: volsync
+  decryption:
+    provider: sops
+    secretRef:
+      name: sops-age
