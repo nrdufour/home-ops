@@ -19,7 +19,7 @@ spec:
     name: home-ops-kubernetes
   wait: false
   dependsOn:
-    - name: volsync
+    - name: system-volsync
   decryption:
     provider: sops
     secretRef:
