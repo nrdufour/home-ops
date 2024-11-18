@@ -86,6 +86,7 @@ spec:
         tls:
           - hosts:
               - "actual.internal"
+            secretName: actual-ing-cert
 
     persistence:
       data:
