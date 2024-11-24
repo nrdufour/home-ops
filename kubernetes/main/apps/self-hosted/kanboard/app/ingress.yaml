@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: kanboard-ingress
-  namespace: default
   annotations:
     gethomepage.dev/description: Kanban board for all projects
     gethomepage.dev/enabled: "true"

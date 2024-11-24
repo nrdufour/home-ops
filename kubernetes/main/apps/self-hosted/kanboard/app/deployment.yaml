@@ -5,7 +5,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kanboard
-  namespace: default
   labels:
     app: kanboard
 spec:

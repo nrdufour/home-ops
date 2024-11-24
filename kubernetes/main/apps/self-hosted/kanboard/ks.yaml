@@ -3,10 +3,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-kanboard
+  name: sef-hosted-kanboard
   namespace: flux-system
 spec:
-  path: ./kubernetes/main/apps/default/kanboard/app
+  targetNamespace: self-hosted
+  path: ./kubernetes/main/apps/self-hosted/kanboard/app
   prune: true
   sourceRef:
     kind: GitRepository

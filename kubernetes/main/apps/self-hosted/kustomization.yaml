@@ -6,6 +6,7 @@ resources:
   # Pre Flux-Kustomizations
   - ./namespace.yaml
   # Flux-Kustomizations
+  - ./kanboard/ks.yaml
   - ./homepage/ks.yaml
   - ./searxng/ks.yaml
   - ./actual/ks.yaml
