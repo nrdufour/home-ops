@@ -27,8 +27,12 @@ spec:
           - mountPath: /var/www/app/config.php
             name: kanboard-conf
             subPath: config.php
-          - mountPath: /var/www/app
+          - mountPath: /var/www/app/data
             name: kanboard-data
+            subPath: data
+          - mountPath: /var/www/app/plugins
+            name: kanboard-data
+            subPath: plugins
       volumes:
         - name: kanboard-conf
           configMap:
