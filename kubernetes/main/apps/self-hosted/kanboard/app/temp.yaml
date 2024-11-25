@@ -23,7 +23,8 @@ spec:
       containers:
       - name: temp
         image: ubuntu:latest
-        command: bash
+        command:
+          - "bash"
         args:
           - "-c"
           - "sleep 3600"
