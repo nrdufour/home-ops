@@ -39,4 +39,4 @@ spec:
             claimName: kanboard-pvc
         - name: kanboard-data-longhorn
           persistentVolumeClaim:
-            claimName: kanboard-pvc-longhorn
+            claimName: kanboard-longhorn-pvc
