@@ -27,16 +27,12 @@ spec:
           - mountPath: /var/www/app/config.php
             name: kanboard-conf
             subPath: config.php
-          - mountPath: /var/www/app/plugins
+          - mountPath: /var/www/app
             name: kanboard-data
-            subPath: plugins
-          - mountPath: /var/www/app/data
-            name: kanboard-data
-            subPath: data
       volumes:
         - name: kanboard-conf
           configMap:
             name: kanboard-config
         - name: kanboard-data
           persistentVolumeClaim:
-            claimName: kanboard-pvc
+            claimName: kanboard-longhorn-pvc
