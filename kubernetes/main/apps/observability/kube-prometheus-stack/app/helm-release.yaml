@@ -49,8 +49,8 @@ spec:
         pathType: Prefix
         hosts: ["prometheus.internal"]
       prometheusSpec:
-        replicas: 3
-        replicaExternalLabelName: __replica__
+        # replicas: 3
+        # replicaExternalLabelName: __replica__
 
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
@@ -63,7 +63,7 @@ spec:
         enableFeatures:
           - memory-snapshot-on-shutdown
         retention: 7d
-        retentionSize: 15GB
+        retentionSize: 30GB
         externalLabels:
           cluster: main
         resources:
@@ -74,10 +74,11 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: openebs-hostpath
+              # storageClassName: openebs-hostpath
+              storageClassName: longhorn
               resources:
                 requests:
-                  storage: 15Gi
+                  storage: 30Gi
     nodeExporter:
       enabled: true
     prometheus-node-exporter:
