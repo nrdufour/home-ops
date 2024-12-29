@@ -49,6 +49,9 @@ spec:
         pathType: Prefix
         hosts: ["prometheus.internal"]
       prometheusSpec:
+        replicas: 3
+        replicaExternalLabelName: __replica__
+
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
         ruleSelectorNilUsesHelmValues: false
