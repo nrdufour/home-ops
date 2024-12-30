@@ -27,6 +27,8 @@ spec:
             runAsGroup: 1000
             fsGroup: 1000
             fsGroupChangePolicy: "OnRootMismatch"
+            supplementalGroups:
+              - 26 # video
 
         containers:
           app:
@@ -55,6 +57,8 @@ spec:
               limits:
                 cpu: 6
                 memory: 4Gi
+            securityContext:
+              privileged: true
 
     service:
       app:
@@ -115,3 +119,31 @@ spec:
                 subPath: cache
               - path: /transcode
                 subPath: transcode
+
+      # Adding device access for hardware acceleration
+      # as described here https://akashrajpurohit.com/blog/setup-jellyfin-with-hardware-acceleration-on-orange-pi-5-rockchip-rk3558/
+      dev-dri:
+        type: hostPath
+        hostPath: /dev/dri
+        globalMounts:
+          - path: /dev/dri
+      dev-dma-heap:
+        type: hostPath
+        hostPath: /dev/dma_heap
+        globalMounts:
+          - path: /dev/dma_heap
+      dev-mali0:
+        type: hostPath
+        hostPath: /dev/mali0
+        globalMounts:
+          - path: /dev/mali0
+      dev-rga:
+        type: hostPath
+        hostPath: /dev/rga
+        globalMounts:
+          - path: /dev/rga
+      dev-mpp-service:
+        type: hostPath
+        hostPath: /dev/mpp_service
+        globalMounts:
+          - path: /dev/mpp_service
