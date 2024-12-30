@@ -85,6 +85,10 @@ spec:
                 service:
                   identifier: app
                   port: http
+        tls:
+          - hosts:
+            - "jellyfin.internal"
+            secretName: jellyfin-ing-cert
 
     persistence:
       config:
