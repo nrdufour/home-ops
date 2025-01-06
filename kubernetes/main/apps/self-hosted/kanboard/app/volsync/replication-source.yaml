@@ -6,8 +6,8 @@ spec:
   # The PVC to sync
   sourcePVC: kanboard-longhorn-pvc
   trigger:
-    # Synchronize every hour
-    schedule: "0 * * * *"
+    # Synchronize every 6 hours
+    schedule: "0 */6 * * *"
   restic:
     customCA:
       secretName: kanboard-volsync-minio

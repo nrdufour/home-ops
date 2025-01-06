@@ -6,8 +6,8 @@ spec:
   # The PVC to sync
   sourcePVC: archivebox
   trigger:
-    # Synchronize every hour
-    schedule: "0 * * * *"
+    # Synchronize every 6 hours
+    schedule: "0 */6 * * *"
   restic:
     customCA:
       secretName: archivebox-volsync-minio
