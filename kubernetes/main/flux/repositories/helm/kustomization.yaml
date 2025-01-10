@@ -22,3 +22,4 @@ resources:
 - kyverno.yaml
 - longhorn.yaml
 - kubernetes-sigs-metrics-server.yaml
+- ollama.yaml
