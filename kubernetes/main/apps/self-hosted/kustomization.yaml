@@ -10,4 +10,4 @@ resources:
   - ./homepage/ks.yaml
   - ./searxng/ks.yaml
   - ./actual/ks.yaml
-  - ./ollama/ks.yaml
+  # - ./ollama/ks.yaml
