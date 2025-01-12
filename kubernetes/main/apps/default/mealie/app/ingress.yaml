@@ -12,16 +12,16 @@ metadata:
     gethomepage.dev/pod-selector: "app=mealie"
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
-    cert-manager.io/common-name: mealie.internal
+    cert-manager.io/common-name: mealie.home.internal
     nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/16
 spec:
   tls:
     - hosts:
-      - mealie.internal
+      - mealie.home.internal
       secretName: mealie-ing-cert
   ingressClassName: nginx
   rules:
-  - host: mealie.internal
+  - host: mealie.home.internal
     http:
       paths:
       - path: /

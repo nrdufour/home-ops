@@ -31,7 +31,7 @@ spec:
           - name: "TZ"
             value: "America/New_York"
           - name: "BASE_URL"
-            value: "https://mealie.home"
+            value: "https://mealie.home.internal"
           - name: "POSTGRES_USER"
             valueFrom:
               secretKeyRef:
