@@ -84,7 +84,7 @@ spec:
           gethomepage.dev/name: ZWave JS UI
           gethomepage.dev/pod-selector: "app.kubernetes.io/name=zwave"
         hosts:
-          - host: "zwave.internal"
+          - host: "zwave.home.internal"
             paths:
               - path: /
                 service:
