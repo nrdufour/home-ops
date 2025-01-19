@@ -74,10 +74,10 @@ spec:
           gethomepage.dev/pod-selector: "app.kubernetes.io/name=actual"
           nginx.ingress.kubernetes.io/rewrite-target: /
           cert-manager.io/cluster-issuer: ca-server-cluster-issuer
-          cert-manager.io/common-name: actual.internal
+          cert-manager.io/common-name: actual.home.internal
           nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/16
         hosts:
-          - host: actual.internal
+          - host: actual.home.internal
             paths:
               - path: /
                 service:
@@ -85,7 +85,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "actual.internal"
+              - "actual.home.internal"
             secretName: actual-ing-cert
 
     persistence:
