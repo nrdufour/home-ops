@@ -72,7 +72,6 @@ spec:
     ingress:
       app:
         annotations:
-          external-dns.alpha.kubernetes.io/target: ingress-ext.bjw-s.dev
           gethomepage.dev/description: Jellyfin media server
           gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Media
