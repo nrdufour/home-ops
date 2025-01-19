@@ -81,11 +81,11 @@ spec:
           gethomepage.dev/pod-selector: "app.kubernetes.io/name=jellyfin"
           nginx.ingress.kubernetes.io/rewrite-target: /
           cert-manager.io/cluster-issuer: ca-server-cluster-issuer
-          cert-manager.io/common-name: jellyfin.internal
+          cert-manager.io/common-name: jellyfin.home.internal
           nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/16
         className: "nginx"
         hosts:
-          - host: jellyfin.internal
+          - host: jellyfin.home.internal
             paths:
               - path: /
                 service:
@@ -93,7 +93,7 @@ spec:
                   port: http
         tls:
           - hosts:
-            - "jellyfin.internal"
+            - "jellyfin.home.internal"
             secretName: jellyfin-ing-cert
 
     persistence:
