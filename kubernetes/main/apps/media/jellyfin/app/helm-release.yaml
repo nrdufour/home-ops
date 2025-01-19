@@ -78,7 +78,7 @@ spec:
           gethomepage.dev/group: Media
           gethomepage.dev/icon: jellyfin.png
           gethomepage.dev/name: Jellyfin
-          gethomepage.dev/pod-selector: "app=jellyfin"
+          gethomepage.dev/pod-selector: "app.kubernetes.io/name=jellyfin"
           nginx.ingress.kubernetes.io/rewrite-target: /
           cert-manager.io/cluster-issuer: ca-server-cluster-issuer
           cert-manager.io/common-name: jellyfin.internal
