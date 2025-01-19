@@ -8,5 +8,4 @@ resources:
   # Flux-Kustomizations
   - ./komga/ks.yaml
   - ./archivebox/ks.yaml
-  # - ./kavita/ks.yaml
   - ./jellyfin/ks.yaml
