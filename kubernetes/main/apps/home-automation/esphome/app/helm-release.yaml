@@ -68,7 +68,7 @@ spec:
           gethomepage.dev/name: ESPHome
           gethomepage.dev/pod-selector: "app.kubernetes.io/name=esphome"
         hosts:
-          - host: "esphome.internal"
+          - host: "esphome.home.internal"
             paths:
               - path: /
                 service:
@@ -76,7 +76,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "esphome.internal"
+              - "esphome.home.internal"
 
     persistence:
       config:
