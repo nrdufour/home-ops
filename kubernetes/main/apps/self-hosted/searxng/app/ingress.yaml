@@ -17,7 +17,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: "search.internal"
+    - host: "search.home.internal"
       http:
         paths:
           - path: "/"
