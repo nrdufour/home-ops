@@ -12,16 +12,16 @@ metadata:
     gethomepage.dev/pod-selector: "app=miniflux"
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
-    cert-manager.io/common-name: miniflux.internal
+    cert-manager.io/common-name: miniflux.home.internal
     nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/16
 spec:
   tls:
     - hosts:
-      - miniflux.internal
+      - miniflux.home.internal
       secretName: miniflux-ing-cert
   ingressClassName: nginx
   rules:
-  - host: miniflux.internal
+  - host: miniflux.home.internal
     http:
       paths:
       - path: /
