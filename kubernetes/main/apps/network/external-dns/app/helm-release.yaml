@@ -45,7 +45,7 @@ spec:
       - --ingress-class=nginx
     triggerLoopOnEvent: true
     policy: sync
-    sources: ["crd", "ingress"]
+    sources: ["crd", "ingress", "service"]
     txtOwnerId: default
     txtPrefix: k8s.
     domainFilters: ["test.internal", "home.internal"]
