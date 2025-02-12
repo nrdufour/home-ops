@@ -4,6 +4,7 @@ metadata:
   name: ha
   namespace: home-automation
 spec:
+  type: LoadBalancer
   selector:
     app: homeassistant
   ports:
