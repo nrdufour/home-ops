@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: wikijs-config
+type: Opaque
+data:
+  DB_PASS: ENC[AES256_GCM,data:8NreVm1wVNIJ64VGhD7xT4ypLKX9ykrN,iv:x1NMd2uHrp6ZObBOGuKPcQvN4O0dkbxzhxdBVhf7guU=,tag:6BtYvsWdRyi7VDg7OBTRzA==,type:str]
+sops:
+  kms: []
+  gcp_kms: []
+  azure_kv: []
+  hc_vault: []
+  age:
+    - recipient: age1tmrr00pnj6gpc4pfp3wzvyjt66tfhudwj2kn84skt24qvwzlcsusrvrypj
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBZK1AvUGxod2dmeTFUNUdv
+        THZYQzA2ZHRiNUxzemlqUXBZaTdGek1uMEZFCkc0SjFsNENyTjNLaDlwQUNoNkxk
+        bmFqRUF6cUdiZ0RVVlR6ZlYwbnQ2blkKLS0tIFdXNHVYU0tmU25HUldHK2VVQzRV
+        ajBIRDVDM1kyWTd4WElLd0R4eWhSM28KH6CWeIVQEk9/O7OQtyJ8H4Um1+6SEuLC
+        yntEP6dcnQUXrMNDDmJfxg8iFirTbGE+6VwM4mX/+37pCOOZm5fNLg==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-02-22T18:41:19Z"
+  mac: ENC[AES256_GCM,data:gURKfwlsgZDBBCosKt7sdDDgUDwyiXskdZZscXENk8XWaZomnWxsBCFDwxvg5E1yK8CHBgKxB2ufATS5SZWinKTq5CoHNIDypXYGRseEO8SdBHLeK0CuC/aPpm9gFNlYFEavQQpFPU5cL+7f6cPbSFxGgEM0dYv5Rqvc/rN5BKs=,iv:OnrhK0mGkMdV92gu1VxFPfXsGMaciHTpGXnX8WBI8WQ=,tag:l7diSQfd5NedbPALjvHexQ==,type:str]
+  pgp: []
+  encrypted_regex: ^(data|stringData)$
+  version: 3.9.4
