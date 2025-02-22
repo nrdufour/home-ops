@@ -10,4 +10,3 @@ resources:
   - ./wikijs/ks.yaml
   - ./miniflux/ks.yaml
   - ./wallabag/ks.yaml
-  # - ./mealie/ks.yaml
