@@ -1,0 +1,67 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mealie
+  labels:
+    app: mealie
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mealie
+  template:
+    metadata:
+      labels:
+        app: mealie
+    spec:
+      containers:
+      - name: mealie
+        image: ghcr.io/mealie-recipes/mealie:v2.6.0
+        env:
+          - name: "DB_ENGINE"
+            value: "postgres"
+          - name: "ALLOW_SIGNUP"
+            value: "true"
+          - name: "PUID"
+            value: "1000"
+          - name: "PGID"
+            value: "1000"
+          - name: "TZ"
+            value: "America/New_York"
+          - name: "BASE_URL"
+            value: "https://mealie.home.internal"
+          - name: "POSTGRES_USER"
+            valueFrom:
+              secretKeyRef:
+                name: mealie-16-db-app
+                key: username
+          - name: "POSTGRES_PASSWORD"
+            valueFrom:
+              secretKeyRef:
+                name: mealie-16-db-app
+                key: password
+          - name: "POSTGRES_SERVER"
+            valueFrom:
+              secretKeyRef:
+                name: mealie-16-db-app
+                key: host
+          - name: "POSTGRES_PORT"
+            valueFrom:
+              secretKeyRef:
+                name: mealie-16-db-app
+                key: port
+          - name: "POSTGRES_DB"
+            valueFrom:
+              secretKeyRef:
+                name: mealie-16-db-app
+                key: dbname
+        ports:
+          - containerPort: 9000
+            name: http-mealie
+        resources:
+          requests:
+            cpu: 5m
+            memory: 256Mi
+          limits:
+            memory: 512Mi

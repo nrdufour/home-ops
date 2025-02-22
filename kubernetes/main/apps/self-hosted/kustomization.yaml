@@ -12,4 +12,4 @@ resources:
   - ./homepage/ks.yaml
   - ./searxng/ks.yaml
   - ./actual/ks.yaml
-  # - ./mealie/ks.yaml
+  - ./mealie/ks.yaml
