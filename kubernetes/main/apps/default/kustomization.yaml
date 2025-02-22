@@ -7,4 +7,3 @@ resources:
   - ./cnpg-minio-access.sops.yaml
   # Flux-Kustomizations
   - ./grafana/ks.yaml
-  - ./wikijs/ks.yaml
