@@ -8,4 +8,4 @@ resources:
   # Flux-Kustomizations
   - ./grafana/ks.yaml
   - ./wikijs/ks.yaml
-  - ./wallabag/ks.yaml
+  # - ./wallabag/ks.yaml
