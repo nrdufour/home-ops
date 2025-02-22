@@ -13,3 +13,4 @@ resources:
   - ./searxng/ks.yaml
   - ./actual/ks.yaml
   - ./mealie/ks.yaml
+  - ./miniflux/ks.yaml
