@@ -8,5 +8,5 @@ resources:
   # Flux-Kustomizations
   - ./grafana/ks.yaml
   - ./wikijs/ks.yaml
-  - ./miniflux/ks.yaml
+  # - ./miniflux/ks.yaml
   - ./wallabag/ks.yaml
