@@ -32,7 +32,7 @@ spec:
           app:
             image:
               repository: docker.io/gotson/komga
-              tag: 1.21.1
+              tag: 1.21.2
             probes:
               liveness:
                 enabled: true
