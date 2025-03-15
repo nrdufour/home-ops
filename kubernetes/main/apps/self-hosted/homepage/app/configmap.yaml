@@ -7,6 +7,9 @@ metadata:
 data:
   kubernetes.yaml: |
     mode: cluster
+    ingress: true  # enable ingress
+    traefik: false # enable traefik ingressRoute
+    gateway: false # enable gateway-api
   settings.yaml: |
    providers:
      longhorn:
