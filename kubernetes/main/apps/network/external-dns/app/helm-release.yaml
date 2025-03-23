@@ -25,7 +25,7 @@ spec:
       strategy: rollback
       retries: 3
   values:
-    fullnameOverride: *app
+    # fullnameOverride: *app
     provider:
       name: rfc2136
     env:
