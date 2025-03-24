@@ -31,9 +31,8 @@ spec:
   values:
     manageCRDs: true
     image:
-      # https://github.com/backube/volsync/issues/828
-      repository: &image ghcr.io/onedr0p/volsync
-      tag: &tag 0.12.0
+      repository: &image ghcr.io/home-operations/volsync
+      tag: &tag sha256-1915128df669d5cbb1d0e4819b7905e8937874ada1377e56c69b34a89abf90ef
     rclone:
       repository: *image
       tag: *tag
