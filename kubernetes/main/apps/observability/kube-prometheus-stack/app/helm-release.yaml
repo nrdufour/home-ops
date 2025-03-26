@@ -54,6 +54,8 @@ spec:
       prometheusSpec:
         # replicas: 3
         # replicaExternalLabelName: __replica__
+        nodeSelector:
+          opi.feature.node.kubernetes.io/5plus: "true"
 
         podMonitorSelectorNilUsesHelmValues: false
         probeSelectorNilUsesHelmValues: false
