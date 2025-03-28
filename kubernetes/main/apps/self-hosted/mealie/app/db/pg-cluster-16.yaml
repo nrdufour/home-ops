@@ -37,7 +37,7 @@ spec:
       endpointCA:
         name: cnpg-minio-access
         key: tls.crt
-      serverName: mealie-16-v2
+      serverName: mealie-16-v3
       s3Credentials:
         accessKeyId:
           name: cnpg-minio-access
@@ -65,7 +65,7 @@ spec:
         endpointCA:
           name: cnpg-minio-access
           key: tls.crt
-        serverName: mealie-16-v1
+        serverName: mealie-16-v2
         s3Credentials:
           accessKeyId:
             name: cnpg-minio-access
