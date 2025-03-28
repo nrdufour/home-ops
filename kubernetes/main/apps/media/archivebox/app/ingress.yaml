@@ -2,7 +2,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: archivebox-ingress
-  namespace: default
   annotations:
     gethomepage.dev/description: Archiving articles and sites
     gethomepage.dev/enabled: "true"

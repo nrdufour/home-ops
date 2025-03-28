@@ -9,6 +9,10 @@ spec:
   storageClassName: longhorn
   accessModes:
     - ReadWriteMany
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: "archivebox"
   resources:
     requests:
       storage: 2Gi
