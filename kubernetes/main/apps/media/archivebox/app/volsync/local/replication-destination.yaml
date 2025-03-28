@@ -21,3 +21,4 @@ spec:
     enableFileDeletion: true
     cleanupCachePVC: true
     cleanupTempPVC: true
+    accessModes: ReadWriteOnce
