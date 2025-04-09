@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: wallabag
-        image: wallabag/wallabag:2.6.10
+        image: wallabag/wallabag:2.6.11
         env:
           - name: "SYMFONY__ENV__DATABASE_DRIVER"
             value: "pdo_pgsql"
