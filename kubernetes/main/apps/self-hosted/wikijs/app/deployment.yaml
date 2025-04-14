@@ -51,5 +51,4 @@ spec:
             cpu: 100m
             memory: 200M
           limits:
-            cpu: 500m
             memory: 512M

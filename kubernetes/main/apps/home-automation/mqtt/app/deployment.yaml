@@ -30,7 +30,6 @@ spec:
             cpu: 5m
             memory: 10M
           limits:
-            cpu: 10m
             memory: 10M
         volumeMounts:
           - mountPath: /mosquitto/config

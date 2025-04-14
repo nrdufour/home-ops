@@ -33,7 +33,6 @@ spec:
               cpu: 10m
               memory: 100Mi
             limits:
-              cpu: 1
               memory: 2Gi
       volumes:
         - name: searxng-config
