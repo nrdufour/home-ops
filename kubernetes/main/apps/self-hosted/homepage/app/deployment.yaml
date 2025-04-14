@@ -29,6 +29,12 @@ spec:
             - name: http
               containerPort: 3000
               protocol: TCP
+          resources:
+            requests:
+              cpu: 10m
+              memory: 132Mi
+            limits:
+              memory: 132Mi
           env:
             - name: HOMEPAGE_ALLOWED_HOSTS
               value: start.home.internal

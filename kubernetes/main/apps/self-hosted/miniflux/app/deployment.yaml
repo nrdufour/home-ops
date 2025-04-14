@@ -47,10 +47,10 @@ spec:
             name: http-miniflux
         resources:
           requests:
-            cpu: 12m
-            memory: 64M
+            cpu: 122m
+            memory: 100Mi
           limits:
-            memory: 256M
+            memory: 100Mi
         livenessProbe:
           initialDelaySeconds: 30
           periodSeconds: 10

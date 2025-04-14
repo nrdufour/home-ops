@@ -61,7 +61,7 @@ spec:
             name: http-mealie
         resources:
           requests:
-            cpu: 5m
-            memory: 256Mi
+            cpu: 10m
+            memory: 450Mi
           limits:
-            memory: 512Mi
+            memory: 450Mi
