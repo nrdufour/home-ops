@@ -53,10 +53,10 @@ spec:
                 enabled: false
             resources:
               requests:
-                cpu: 237m
-                memory: 526Mi
+                cpu: 2
+                memory: 512Mi
               limits:
-                memory: 526Mi
+                memory: 4Gi
             securityContext:
               privileged: true
 
