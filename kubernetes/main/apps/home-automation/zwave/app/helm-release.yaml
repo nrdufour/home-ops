@@ -62,9 +62,10 @@ spec:
               privileged: true
             resources:
               requests:
-                cpu: 10m
+                cpu: 62m
+                memory: 149Mi
               limits:
-                memory: 512Mi
+                memory: 149Mi
     service:
       app:
         controller: zwave

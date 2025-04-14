@@ -27,10 +27,10 @@ spec:
         - containerPort: 9001
         resources:
           requests:
-            cpu: 5m
-            memory: 10M
+            cpu: 10m
+            memory: 100Mi
           limits:
-            memory: 10M
+            memory: 100Mi
         volumeMounts:
           - mountPath: /mosquitto/config
             name: mqtt-conf

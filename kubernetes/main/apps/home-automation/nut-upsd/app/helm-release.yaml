@@ -36,10 +36,10 @@ spec:
               privileged: true
             resources:
               requests:
-                cpu: 50m
-                memory: 64Mi
+                cpu: 10m
+                memory: 100Mi
               limits:
-                memory: 256Mi
+                memory: 100Mi
             env:
               DRIVER: "usbhid-ups"
               DESCRIPTION: "Main Cluster UPS"

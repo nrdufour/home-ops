@@ -66,10 +66,10 @@ spec:
               privileged: true
             resources:
               requests:
-                cpu: 50m
-                memory: 64Mi
+                cpu: 27m
+                memory: 100Mi
               limits:
-                memory: 256Mi
+                memory: 100Mi
             envFrom:
               - secretRef:
                   name: rtl433-secret
