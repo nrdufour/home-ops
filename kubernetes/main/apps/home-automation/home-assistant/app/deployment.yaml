@@ -22,12 +22,6 @@ spec:
       containers:
         - image: ghcr.io/home-assistant/home-assistant:2025.4.2
           name: home-assistant
-          resources:
-            requests:
-              cpu: 173m
-              memory: 628Mi
-            limits:
-              memory: 628Mi
           env:
             - name: "SECRET_RECORDER_DB_URL"
               valueFrom:
