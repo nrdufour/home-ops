@@ -30,10 +30,10 @@ spec:
               name: searxng-config
           resources:
             requests:
-              cpu: 342m
-              memory: 815Mi
+              cpu: 10m
+              memory: 100Mi
             limits:
-              memory: 815Mi
+              memory: 2Gi
       volumes:
         - name: searxng-config
           persistentVolumeClaim:
