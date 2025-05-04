@@ -1,7 +1,7 @@
 apiVersion: volsync.backube/v1alpha1
 kind: ReplicationDestination
 metadata:
-  name: archivebox
+  name: archivebox-bootstrap
 spec:
   trigger:
     manual: restore-once
@@ -15,11 +15,7 @@ spec:
     volumeSnapshotClassName: "longhorn-snapshot-vsc"
     cacheCapacity: "2Gi"
     capacity: "2Gi"
-    moverSecurityContext:
-      runAsUser: 911
-      runAsGroup: 911
-      fsGroup: 911
     enableFileDeletion: true
     cleanupCachePVC: true
-    cleanupTempPVC: true
+    # cleanupTempPVC: true
     accessModes: [ "ReadWriteOnce" ]
