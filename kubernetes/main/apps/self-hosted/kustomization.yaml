@@ -8,7 +8,7 @@ resources:
   # Secrets
   - ./cnpg-minio-access.sops.yaml
   # Flux-Kustomizations
-  # - ./kanboard/ks.yaml
+  - ./kanboard/ks.yaml
   - ./homepage/ks.yaml
   - ./searxng/ks.yaml
   # - ./actual/ks.yaml

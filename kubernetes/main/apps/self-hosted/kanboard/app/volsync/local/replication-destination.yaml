@@ -1,0 +1,25 @@
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: kanboard-bootstrap
+spec:
+  trigger:
+    manual: restore-once
+  restic:
+    customCA:
+      secretName: kanboard-volsync-minio
+      key: ca.crt
+    copyMethod: Snapshot
+    repository: kanboard-volsync-minio
+    storageClassName: "longhorn"
+    volumeSnapshotClassName: "longhorn-snapshot-vsc"
+    cacheCapacity: "200Mi"
+    capacity: "200Mi"
+    moverSecurityContext:
+      runAsUser: 100
+      runAsGroup: 101
+      fsGroup: 101
+    enableFileDeletion: true
+    cleanupCachePVC: true
+    # cleanupTempPVC: true
+    accessModes: [ "ReadWriteOnce" ]
