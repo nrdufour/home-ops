@@ -18,9 +18,9 @@ spec:
     volumeSnapshotClassName: "longhorn-snapshot-vsc"
     cacheCapacity: "2Gi"
     moverSecurityContext:
-      runAsUser: 911
-      runAsGroup: 911
-      fsGroup: 911
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
     pruneIntervalDays: 7
     retain:
       hourly: 24
