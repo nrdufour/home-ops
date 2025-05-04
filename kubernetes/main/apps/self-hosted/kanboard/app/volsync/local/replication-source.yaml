@@ -4,7 +4,7 @@ metadata:
   name: kanboard
 spec:
   # The PVC to sync
-  sourcePVC: kanboard-longhorn-pvc
+  sourcePVC: kanboard
   trigger:
     # Synchronize every 6 hours
     schedule: "0 */6 * * *"
