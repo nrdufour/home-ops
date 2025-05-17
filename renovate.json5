@@ -12,19 +12,19 @@
     ':timezone(America/New_York)',
   ],
   flux: {
-    fileMatch: [
-      '(^|/)kubernetes/.+\\.yaml$',
+    managerFilePatterns: [
+      '/(^|/)kubernetes/.+\\.yaml$/',
     ],
   },
   'helm-values': {
-    fileMatch: [
-      '(^|/)kubernetes/.+\\.yaml$',
+    managerFilePatterns: [
+      '/(^|/)kubernetes/.+\\.yaml$/',
     ],
   },
   kubernetes: {
-    fileMatch: [
-      '(^|/)\\.taskfiles/.+\\.yaml$',
-      '(^|/)kubernetes/.+\\.yaml$',
+    managerFilePatterns: [
+      '/(^|/)\\.taskfiles/.+\\.yaml$/',
+      '/(^|/)kubernetes/.+\\.yaml$/',
     ],
   },
   ignorePaths: [
@@ -62,9 +62,13 @@
       automerge: true,
     },
     {
-      "description": "Update renovate only daily",
-      "extends": ["schedule:daily"],
-      "matchDepNames": ["ghcr.io/renovatebot/renovate"]
+      description: 'Update renovate only daily',
+      extends: [
+        'schedule:daily',
+      ],
+      matchDepNames: [
+        'ghcr.io/renovatebot/renovate',
+      ],
     },
   ],
 }
