@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: ollama
-      version: 1.16.0
+      version: 1.17.0
       interval: 30m
       sourceRef:
         kind: HelmRepository
