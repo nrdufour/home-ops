@@ -4,7 +4,6 @@ metadata:
   labels:
     app: esphome
   name: esphome
-  namespace: media
 spec:
   storageClassName: longhorn
   accessModes:

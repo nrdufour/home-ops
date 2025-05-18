@@ -6,6 +6,7 @@ metadata:
   name: ha-esphome
   namespace: flux-system
 spec:
+  targetNamespace: home-automation
   path: ./kubernetes/main/apps/home-automation/esphome/app
   prune: true
   sourceRef:
