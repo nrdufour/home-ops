@@ -1,0 +1,28 @@
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: esphome
+spec:
+  # The PVC to sync
+  sourcePVC: esphome
+  trigger:
+    # Synchronize every 6 hours
+    schedule: "0 */6 * * *"
+  restic:
+    customCA:
+      secretName: esphome-volsync-minio
+      key: ca.crt
+    copyMethod: Snapshot
+    repository: esphome-volsync-minio
+    storageClassName: "longhorn"
+    volumeSnapshotClassName: "longhorn-snapshot-vsc"
+    cacheCapacity: "100Mi"
+    moverSecurityContext:
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+    pruneIntervalDays: 7
+    retain:
+      hourly: 24
+      daily: 7
+      weekly: 5
