@@ -80,13 +80,9 @@ spec:
 
     persistence:
       config:
-        existingClaim: esphome-pvc
-        globalMounts:
-          - path: config
-      config2:
         existingClaim: esphome
         globalMounts:
-          - path: config2
+          - path: config
       esphome-cache:
         type: emptyDir
         globalMounts:
