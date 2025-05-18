@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
 - secrets.sops.yaml
 # - replication-destination.yaml
-# - replication-source.yaml
+- replication-source.yaml
