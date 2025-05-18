@@ -8,10 +8,10 @@ spec:
   storageClassName: longhorn
   accessModes:
     - ReadWriteMany
-  # dataSourceRef:
-  #   kind: ReplicationDestination
-  #   apiGroup: volsync.backube
-  #   name: "esphome-bootstrap"
+  dataSourceRef:
+    kind: ReplicationDestination
+    apiGroup: volsync.backube
+    name: "esphome-bootstrap"
   resources:
     requests:
       storage: 100Mi
