@@ -16,5 +16,5 @@ rules:
   truthy: disable
 
 ignore: |
-  venv
   *.sops.yml
+  *.sops.yaml

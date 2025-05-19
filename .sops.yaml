@@ -6,9 +6,6 @@ creation_rules:
     input_type: yaml
     encrypted_regex: '^(data|stringData)$'
     age: *admin-ndufour-2022
-  - path_regex: ansible/.+\.sops\.ya?ml
-    input_type: yaml
-    age: *admin-ndufour-2022
 
 stores:
   yaml:
