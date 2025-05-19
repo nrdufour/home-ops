@@ -17,7 +17,7 @@ spec:
         app: grafana
     spec:
       securityContext:
-        runAsUser:  472
+        runAsUser: 472
         runAsGroup: 472
       containers:
         - name: grafana

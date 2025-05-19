@@ -1,3 +1,4 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -17,17 +18,17 @@ metadata:
 spec:
   tls:
     - hosts:
-      - grafana.home.internal
+        - grafana.home.internal
       secretName: grafana-ing-cert
   ingressClassName: nginx
   rules:
-  - host: grafana.home.internal
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: grafana
-            port:
-              number: 3000
+    - host: grafana.home.internal
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: grafana
+                port:
+                  number: 3000

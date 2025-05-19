@@ -8,5 +8,6 @@
       fluxcd
       kubernetes-helm
       jq
+      yamllint
     ];
 }
