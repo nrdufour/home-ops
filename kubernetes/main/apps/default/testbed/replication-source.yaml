@@ -1,0 +1,31 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/volsync.backube/replicationsource_v1alpha1.json
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: testbed
+spec:
+  # The PVC to sync
+  sourcePVC: pvc
+  trigger:
+    # Synchronize every 6 hours
+    schedule: "0 */6 * * *"
+  restic:
+    customCA:
+      secretName: testbed-volsync-minio
+      key: ca.crt
+    copyMethod: Clone
+    repository: testbed-volsync-minio
+    cacheStorageClassName: "openebs-hostpath"
+    storageClassName: "longhorn"
+    # volumeSnapshotClassName: "longhorn-snapshot-vsc"
+    # cacheCapacity: "2Gi"
+    # moverSecurityContext:
+    #   runAsUser: 1000
+    #   runAsGroup: 1000
+    #   fsGroup: 1000
+    # pruneIntervalDays: 7
+    # retain:
+    #   hourly: 24
+    #   daily: 7
+    #   weekly: 5
