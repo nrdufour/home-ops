@@ -12,6 +12,7 @@ spec:
       app.kubernetes.io/name: *app
   components:
     - ../../../../components/volsync
+  targetNamespace: default
   prune: true
   sourceRef:
     kind: GitRepository
