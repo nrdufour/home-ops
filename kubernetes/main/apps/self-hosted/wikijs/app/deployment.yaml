@@ -25,27 +25,27 @@ spec:
             valueFrom:
               secretKeyRef:
                 key: host
-                name: wallabag-16-db-app
+                name: wikijs-16-db-app
           - name: "DB_PORT"
             valueFrom:
               secretKeyRef:
                 key: port
-                name: wallabag-16-db-app
+                name: wikijs-16-db-app
           - name: "DB_NAME"
             valueFrom:
               secretKeyRef:
                 key: dbname
-                name: wallabag-16-db-app
+                name: wikijs-16-db-app
           - name: "DB_USER"
             valueFrom:
               secretKeyRef:
                 key: username
-                name: wallabag-16-db-app
+                name: wikijs-16-db-app
           - name: "DB_PASS"
             valueFrom:
               secretKeyRef:
                 key: password
-                name: wallabag-16-db-app
+                name: wikijs-16-db-app
         resources:
           requests:
             cpu: 100m
