@@ -11,7 +11,7 @@ spec:
     labels:
       app.kubernetes.io/name: *app
   components:
-    - ../../../components/volsync
+    - ../../../../components/volsync
   prune: true
   sourceRef:
     kind: GitRepository
