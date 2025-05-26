@@ -8,7 +8,6 @@ spec:
   # The PVC to sync
   sourcePVC: "${APP}"
   trigger:
-    manual: trigger-me
     # Synchronize every hour
     schedule: "0 * * * *"
 
