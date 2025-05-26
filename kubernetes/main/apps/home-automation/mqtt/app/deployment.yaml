@@ -48,4 +48,4 @@ spec:
                 path: mosquitto.conf
         - name: mqtt-data
           persistentVolumeClaim:
-            claimName: mqtt-pvc
+            claimName: mqtt
