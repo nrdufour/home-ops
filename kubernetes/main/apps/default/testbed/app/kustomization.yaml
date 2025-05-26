@@ -3,12 +3,5 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-components:
-  - ../../components/common
-
 resources:
-  - ./namespace.yaml
-
-  # Flux-Kustomizations
-  - ./grafana/ks.yaml
-  - ./testbed/ks.yaml
+  - ./deployment.yaml
