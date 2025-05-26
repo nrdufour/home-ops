@@ -1,0 +1,29 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/volsync.backube/replicationdestination_v1alpha1.json
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationDestination
+metadata:
+  name: "${APP}-dst"
+spec:
+  trigger:
+    manual: restore-once
+  restic:
+    customCA:
+      secretName: "${APP}-volsync-secret"
+      key: ca.crt
+
+    copyMethod: Snapshot
+    repository: "${APP}-volsync-secret"
+
+    storageClassName: "${VOLSYNC_STORAGECLASS:=longhorn}"
+    volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:=longhorn-snapshot-vsc}"
+
+    cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:=2Gi}"
+    capacity: "${VOLSYNC_CAPACITY:=5Gi}"
+
+    enableFileDeletion: true
+    cleanupCachePVC: true
+    # cleanupTempPVC has to stay set to false,
+    # otherwise the final PVC won't be created at all.
+    cleanupTempPVC: false
+    accessModes: ["${VOLSYNC_ACCESSMODES:=ReadWriteOnce}"]

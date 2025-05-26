@@ -1,0 +1,37 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/volsync.backube/replicationsource_v1alpha1.json
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: "${APP}"
+spec:
+  # The PVC to sync
+  sourcePVC: "${APP}"
+  trigger:
+    manual: trigger-me
+    # Synchronize every hour
+    schedule: "0 * * * *"
+
+  restic:
+    customCA:
+      secretName: "${APP}-volsync-secret"
+      key: ca.crt
+
+    copyMethod: "${VOLSYNC_COPYMETHOD:=Snapshot}"
+    repository: "${APP}-volsync-secret"
+
+    storageClassName: "${VOLSYNC_STORAGECLASS:=longhorn}"
+    volumeSnapshotClassName: "${VOLSYNC_SNAPSHOTCLASS:=longhorn-snapshot-vsc}"
+    accessModes: ["${VOLSYNC_SNAP_ACCESSMODES:=ReadWriteOnce}"]
+
+    cacheCapacity: "${VOLSYNC_CACHE_CAPACITY:=2Gi}"
+
+    moverSecurityContext:
+      runAsUser: ${VOLSYNC_PUID:=1000}
+      runAsGroup: ${VOLSYNC_PGID:=1000}
+      fsGroup: ${VOLSYNC_PGID:=1000}
+
+    pruneIntervalDays: 14
+    retain:
+      hourly: 24
+      daily: 7
