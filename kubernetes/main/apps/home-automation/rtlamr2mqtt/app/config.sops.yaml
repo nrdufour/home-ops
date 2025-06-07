@@ -1,27 +1,22 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-    name: rtlamr2mqtt-config
-    namespace: home-automation
+  name: rtlamr2mqtt-config
+  namespace: home-automation
 data:
-    rtlamr2mqtt.yaml: ENC[AES256_GCM,data:uqxN33a7fkft6UCM7u4q2ZjOT6V/8eefoDoAzaz9+XtaHrXjBSVEydmIEGlUiy/rCE2vEXyzz7pNgnL0AnuIgN7qhywxjB/7M4aWsKH/Q9oWtAy4C3XKPahE62ROOC7pEJGFWvnKnl4auEXjAIePSve1d48g/zjIgE071DeVc+nIHzVxKwSR/ZEQdtaTcIXVd2pvLeFpBl864niFJXYwk6J59WjaxIRfu640/Bo52/1jHMlOBJeNckvO/6iO1cYMNQmy0R9Vm6VodGoikTnuODnyPRNpZvRxT+F90Q54KNCk5bxyvga1iziYFkNK1jLqu64SBChed5BmK2rRlNCgsS8T7hk5XJnszul3liS01Hv6e9UkelOfdObscVMjncQxMY9oa6Y56ZqMHLnLXVwh233W+KomctGYHV5eUDEih8UQX+BwFD5T9Z0MKHb3AyRibMKOV1w6INyIYak3kbF5N3YPQJMDiwSSA3Wrc7IzNyKf0qL6qMIdR1tV1xtDB+YDR0Fcys4DiMIny04aU5ZRKfYslBw9m47+0F/bjImJYfOwEXF40EGUorqGduw63nYQZvJje5ojGqcVGoBCqepOHkMgM/V3ysxGV7JU/SQn/Ctz6RqkyNug6gG9e0TKCOyDzEvdyBtdu4PeN6JYEHFcLe12+qQteyGF3aLIR4j1+PMAj6gLbIWrWq5J9paT2yMBTLvCd2pufp+RimbUWYkwrfxVqlPGpYJu6L5F7vuHoYeEGEOA5crwco9UFglsj9D1VMODy0Xh1SYu+RwWagg5pJhCl8G64H5YGlHWneiQojanyExtNrxMoPvnrksWTFiz15/h/4IH9i5kj0QoEJRpECi/qnEcCeQ=,iv:IIZjOlkXNf4NX3Va/aL7D1frWkCwyn5wBtbYcoHx4H0=,tag:UzQs1iafk7ZE7R14itRiLA==,type:str]
+  rtlamr2mqtt.yaml: ENC[AES256_GCM,data:b/cwmTQ3IFDYZsOgkgi73iw/EWqb4YzTRkEjCSwP+65kxFLhwqypaZDxfzNB2VMmCOkZ21pw6baFNyZgK2+n7U0lN8mDZQSS9AZ482N8tck2uC1TXov3UdN5yoh6JcPbwQDlK9K0S5S3sYHsCIDmRYIrxwOX5PxIuwxkaWOWV2wTR3+jPkhnpjAiii30/zvwB29rBRRikq8CgWJwKQNNWvhl1cGv+iWm+CXc2ivm57zH9F3aYFTuKyeGU6Fu4v8Hp0o7zIKnTvDGKymOfBrDXXXGYbuScxi6f/pkZhosP642sTung2yho8F/O1YyDglW6v3kKiQds2tp93MXn7FKxlufHFsyzKxLUAlFhfl9nI8KNM0uir5Ae96nhm7GB+TZRuVcVPvZeaPtvYFdgrHxt31diBSNRp7rxWfrPV+xF2yKQxdgop9ZxSdsJLOFpq/OD4slKJwwHE1Ck99B99MVOjXe72Y5fRKqcB2L1QlYkEn2RqNnzJZx6oBcDJI3hAJQ4/0RM0vjUVkXDVkfqVxMzlaC+k2bP1OH1pXlav1vm8fXifXfk5m15YIHoE+i3fuCP0ieBW3raPtGm0P/FrLsfMXkz0s6mrCH6XGsTR6dhwguSXqIJpssf3qD+ShmL5q3QRK/wJBqk3ZGE1A8RZ/Onft9QRlKomkRud3SdMUJzfUkUxBEopsJyqDyldDRyH8rjiQ3eUu+DovhHiAEI37nXjqo+QslmudNmIg+O/vN4n3AjvyIJz2I87m/Cho5HyNT0gjZLv2bbu6MESKYn3OzE9snCvJyQed81HHEiZiImg2Gr6gPqcadfCj7J7gp0HLxwbl/rsq4hy3Oxw8f9yMmHpxLaKCn6qg=,iv:ymSS/bBUvxXsIlqyFukiwr7XOrjesCfWjzLF8azwXMo=,tag:36CuQ+g4wA8t1CPKnlJuTw==,type:str]
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
-    age:
-        - recipient: age1tmrr00pnj6gpc4pfp3wzvyjt66tfhudwj2kn84skt24qvwzlcsusrvrypj
-          enc: |
-            -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBJRWFqYnRjUzczWm04djNt
-            clFaVVoyQ2E3SGc0NXEzOVJIRHZmUTdTU25jCjYwSkM4N0JuTGlNSzhLV3FhOHFh
-            YnlvNDBMcWxJWUNjZi93TXFZYUJSZmcKLS0tIEJpNTNKa2V3MjFnRU9DUWJDa09O
-            VW1RSy9NRlBZRjR1b1BOZHpTQ2hSWlEKuyfcPJLF1gti/TiZAcDwz3/hSgY9aPa7
-            qaMnW/h+5z8ySlzxgYgx8aMq8Cz5dl5Xktp1EmSIPH69AJuaX2c/jQ==
-            -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-09-28T11:44:48Z"
-    mac: ENC[AES256_GCM,data:H28XxgtnV3V+6Ay8n78tFiX3u4ZiZHdZhOl+fOwTEjMR0IO+dZ9vFR2fdS4zkRB0bubzWt1TX6UQpz/SX6JHlIgeKPJoRkNG1ZHAfE09RuemToaNPKcM1EoZZdEEWIi7dEJO42vpTfwrIf9LaJUkRD9aCIJGnG1LXby/JwrBRLw=,iv:2fLTEzHj4/xmRUeTOuCp5QJPxBO4hlXChbHtXw8Y6EU=,tag:tv5RI8JJGMezp8oZAam/BQ==,type:str]
-    pgp: []
-    encrypted_regex: ^(data|stringData)$
-    version: 3.8.1
+  age:
+    - recipient: age1tmrr00pnj6gpc4pfp3wzvyjt66tfhudwj2kn84skt24qvwzlcsusrvrypj
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBBTUgzWGZKUk4wUEpoUGpa
+        UVE4S3NjeUZZbHJlMWo2NTNPSDVkcUZGOEFvCk1xN0luVmxZU1lIWnBYMTlWWXJM
+        alhQU3ZKRk5jWHNBMmdwVWx2aUhvZ3cKLS0tIDA2bWJnYmVvUXg2d2V4OUNBbGlM
+        aTNoZDNaTzhpcDJiaFRHRzdoWEZQQkUKje6+msrtoyS84wdx4lsOk7pGGFsszJnN
+        +nYBSIyK3jpYv+b+/kwJcQFG5ESxLpmK4RAkZGUYUMC2ohuZs9++Yg==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-06-07T12:24:02Z"
+  mac: ENC[AES256_GCM,data:KcKJJyb6DsRP8gqSWtqvh0DvRmAleeeWHIv3yQTXbLQl1mhNrPr1Ysq3l8N3yWxsBShdvMbYq8tDSIIzNINyja7YvXkIaSZhTiBEBSSgPxt8Wnjm951sTEpOJx4Bpa21yfRECS6bxH47AYmfBBCmhOsrAx/5o5Rh+dNZ247A2Uc=,iv:5oHtIn22Wrn2bscH1pW+csEdNt0kCdrN8LhBGDjXg70=,tag:HuNI7lOnTo8j03q2xEUlOg==,type:str]
+  encrypted_regex: ^(data|stringData)$
+  version: 3.10.2
