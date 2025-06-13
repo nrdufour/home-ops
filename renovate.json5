@@ -31,6 +31,7 @@
     '**/*.sops.*',
     '**/.archive/**',
     'kubernetes/main/apps/system/kured/app/**',
+    'kubernetes/main/apps/cert-manager/cert-manager/app/**',
   ],
   packageRules: [
     {
