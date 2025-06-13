@@ -9,5 +9,6 @@
       kubernetes-helm
       jq
       yamllint
+      cmctl
     ];
 }
