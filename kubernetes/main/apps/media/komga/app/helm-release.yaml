@@ -32,7 +32,7 @@ spec:
           app:
             image:
               repository: docker.io/gotson/komga
-              tag: 1.21.3
+              tag: 1.22.0
             env:
               - name: JAVA_TOOL_OPTIONS
                 value: "-Xmx3g"
