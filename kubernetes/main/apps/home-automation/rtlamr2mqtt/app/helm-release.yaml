@@ -50,7 +50,7 @@ spec:
           main:
             image:
               repository: docker.io/allangood/rtlamr2mqtt
-              tag: 2025.6.5
+              tag: 2025.6.6
             securityContext:
               privileged: true
             resources:
