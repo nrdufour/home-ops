@@ -6,6 +6,8 @@ metadata:
   namespace: database
   labels:
     svccontroller.k3s.cattle.io/lbpool: internal
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: influxdb2.internal
 spec:
   type: LoadBalancer
   selector:
