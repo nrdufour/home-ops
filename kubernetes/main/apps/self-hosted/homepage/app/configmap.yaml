@@ -33,12 +33,6 @@ data:
             description: Git Server and Registry
             icon: sh-forgejo
 
-    - Network:
-        - Home Router:
-            href: https://192.168.0.1:8443/
-            description: Managing everything network at home
-            icon: sh-opnsense
-
   widgets.yaml: |
     - kubernetes:
         cluster:

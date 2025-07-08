@@ -69,7 +69,7 @@ spec:
           cert-manager.io/cluster-issuer: ca-server-cluster-issuer
           cert-manager.io/common-name: kavita.internal
           nginx.ingress.kubernetes.io/rewrite-target: /
-          nginx.ingress.kubernetes.io/whitelist-source-range: 192.168.0.0/16
+          nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
           nginx.ingress.kubernetes.io/proxy-body-size: 1g
         className: nginx
         hosts:
