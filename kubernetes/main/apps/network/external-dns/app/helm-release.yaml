@@ -47,6 +47,6 @@ spec:
     sources: ["crd", "ingress", "service"]
     txtOwnerId: default
     txtPrefix: k8s.
-    domainFilters: ["test.internal", "home.internal"]
+    domainFilters: ["internal"]
     serviceMonitor:
       enabled: true
