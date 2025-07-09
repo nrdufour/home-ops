@@ -37,7 +37,7 @@ spec:
       endpointCA:
         name: cnpg-minio-access
         key: tls.crt
-      serverName: wallabag-16-v3
+      serverName: wallabag-16-v4
       s3Credentials:
         accessKeyId:
           name: cnpg-minio-access
