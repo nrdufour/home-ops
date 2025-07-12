@@ -8,7 +8,7 @@ spec:
   #   inProgress: true
   #   reusePVC: false
 
-  instances: 2
+  instances: 3
   imageName: ghcr.io/cloudnative-pg/postgresql:16.4-27
   primaryUpdateStrategy: unsupervised
 
@@ -37,7 +37,7 @@ spec:
       endpointCA:
         name: cnpg-minio-access
         key: tls.crt
-      serverName: wikijs-16-v4
+      serverName: wikijs-16-v5
       s3Credentials:
         accessKeyId:
           name: cnpg-minio-access
@@ -65,7 +65,7 @@ spec:
         endpointCA:
           name: cnpg-minio-access
           key: tls.crt
-        serverName: wikijs-16-v3
+        serverName: wikijs-16-v4
         s3Credentials:
           accessKeyId:
             name: cnpg-minio-access
