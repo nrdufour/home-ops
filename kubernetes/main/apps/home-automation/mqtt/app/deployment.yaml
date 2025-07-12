@@ -20,7 +20,7 @@ spec:
         runAsGroup: 1883
       containers:
       - name: mqtt
-        image: eclipse-mosquitto:2.0.21
+        image: eclipse-mosquitto:2.0.22
         ports:
         - containerPort: 1883
         - containerPort: 9001
