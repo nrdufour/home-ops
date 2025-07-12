@@ -10,5 +10,6 @@
       jq
       yamllint
       cmctl
+      argocd
     ];
 }
