@@ -11,7 +11,6 @@ spec:
         - mysecrets.internal:9002
         - beacon.internal:9002
         - possum.internal:9002
-        - sparrow01.internal:9002
   metricsPath: /metrics
   relabelings:
     - action: replace
