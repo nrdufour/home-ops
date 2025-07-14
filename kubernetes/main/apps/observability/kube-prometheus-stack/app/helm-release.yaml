@@ -29,22 +29,55 @@ spec:
         enabled: true
         forceConflicts: true
     cleanPrometheusOperatorObjectNames: true
+
     alertmanager:
       enabled: false
-    kubeControllerManager:
+
+    kubeApiServer:
       enabled: true
       endpoints: &cp
         - 10.1.0.20
         - 10.1.0.21
         - 10.1.0.22
+      serviceMonitor:
+        metricRelabelings:
+          # Drop high cardinality labels
+          - action: drop
+            sourceLabels:
+              - "__name__"
+            regex: (apiserver|etcd|rest_client)_request(|_sli|_slo)_duration_seconds_bucket
+          - action: drop
+            sourceLabels:
+              - "__name__"
+            regex: (apiserver_response_sizes_bucket|apiserver_watch_events_sizes_bucket)
+
+    kubeControllerManager:
+      enabled: false
+
     kubeEtcd:
       enabled: true
       endpoints: *cp
+
     kubeScheduler:
-      enabled: true
-      endpoints: *cp
+      enabled: false
+
     kubeProxy:
       enabled: false
+
+    kubelet:
+      enabled: true
+      serviceMonitor:
+        metricRelabelings:
+          # Drop high cardinality labels
+          - action: labeldrop
+            regex: (uid)
+          - action: labeldrop
+            regex: (id|name)
+          - action: drop
+            sourceLabels:
+              - "__name__"
+            regex: (rest_client_request_duration_seconds_bucket|rest_client_request_duration_seconds_sum|rest_client_request_duration_seconds_count)
+
     prometheus:
       ingress:
         enabled: true
@@ -62,6 +95,8 @@ spec:
         ruleSelectorNilUsesHelmValues: false
         scrapeConfigSelectorNilUsesHelmValues: false
         serviceMonitorSelectorNilUsesHelmValues: false
+
+        scrapeInterval: 1m # Must match interval in Grafana Helm chart
 
         enableAdminAPI: true
         walCompression: true
@@ -85,8 +120,10 @@ spec:
               resources:
                 requests:
                   storage: 30Gi
+
     nodeExporter:
       enabled: true
+
     prometheus-node-exporter:
       fullnameOverride: node-exporter
       prometheus:
@@ -98,6 +135,7 @@ spec:
               replacement: $1
               sourceLabels: ["__meta_kubernetes_pod_node_name"]
               targetLabel: kubernetes_node
+
     kube-state-metrics:
       fullnameOverride: kube-state-metrics
       metricLabelsAllowlist:
@@ -113,6 +151,7 @@ spec:
               replacement: $1
               sourceLabels: ["__meta_kubernetes_pod_node_name"]
               targetLabel: kubernetes_node
+
     grafana:
       enabled: false
       forceDeployDashboards: true
