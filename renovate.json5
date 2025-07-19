@@ -31,7 +31,7 @@
     '**/*.sops.*',
     '**/.archive/**',
     // Ignoring for now cloudnative-pg until the backup system is migrated
-    'kubernetes/main/apps/database/cloudnative-pg/app/**'
+    'kubernetes/main/apps/cnpg-system/cloudnative-pg/app/**'
   ],
   packageRules: [
     {
