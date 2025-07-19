@@ -30,8 +30,8 @@
   ignorePaths: [
     '**/*.sops.*',
     '**/.archive/**',
-    'kubernetes/main/apps/system/kured/app/**',
-    'kubernetes/main/apps/cert-manager/cert-manager/app/**',
+    // Ignoring for now cloudnative-pg until the backup system is migrated
+    'kubernetes/main/apps/database/cloudnative-pg/app/**'
   ],
   packageRules: [
     {
