@@ -11,4 +11,4 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./influxdb2/ks.yaml
-  - ./cloudnative-pg/ks.yaml
+  # - ./cloudnative-pg/ks.yaml
