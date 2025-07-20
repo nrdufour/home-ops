@@ -11,7 +11,7 @@ spec:
     targetRevision: HEAD
   destination:
     namespace: argocd
-    server: 'in-cluster'
+    name: 'in-cluster'
   syncPolicy:
     automated:
       prune: false
