@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  project: default
+  source:
+    path: base/argocd/app
+    repoURL: 'https://forge.internal/nemo/home-ops.git'
+    targetRevision: HEAD
+  destination:
+    namespace: argocd
+    server: 'in-cluster'

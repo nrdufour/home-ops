@@ -1,0 +1,12 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: argocd
+resources:
+  # Namespace first
+  - ./namespace.yaml
+  # ArgoCD itself
+  - https://raw.githubusercontent.com/argoproj/argo-cd/v3.1.0-rc3/manifests/ha/install.yaml
+  # Temporary ingress -- til we switch to gateway
+  - ingress.yaml
