@@ -4,5 +4,4 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: argocd
 resources:
-  - ../../../base/argocd
-  - ../../../base/top
+  - ./applications-app.yaml

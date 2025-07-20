@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: placeholder-for-apps
+  namespace: default
+data:
+  foo: bar
