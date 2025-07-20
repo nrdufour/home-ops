@@ -10,7 +10,7 @@ spec:
     repoURL: 'https://forge.internal/nemo/home-ops.git'
     targetRevision: HEAD
   destination:
-    namespace: argocd
+    namespace: default
     name: 'in-cluster'
   syncPolicy:
     automated:
