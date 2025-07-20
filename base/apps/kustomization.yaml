@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - ./placeholder-cm.yaml
   - cert-manager/cert-manager-app.yaml
+  - security/external-secrets-app.yaml
