@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: cert-manager
+    repoURL: https://charts.jetstack.io
+    targetRevision: v1.18.2
+    helm:
+      releaseName: cert-manager
+      values: |
+        installCRDs: true
+        prometheus:
+          enabled: true
+          servicemonitor:
+            enabled: true
+        #
+        config:
+          featureGates:
+            # Disable the use of Exact PathType in Ingress resources, to work around a bug in ingress-nginx
+            # https://github.com/kubernetes/ingress-nginx/issues/11176
+            ACMEHTTP01IngressPathTypeExact: false
+  destination:
+    namespace: cert-manager
+    name: 'in-cluster'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
