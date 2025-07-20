@@ -1,0 +1,8 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  # See https://github.com/external-secrets/bitwarden-sdk-server for documentation
+  - bitwarden-sdk-server-cert-issuer.yaml
+  - bitwarden-sdk-server-cert.yaml
