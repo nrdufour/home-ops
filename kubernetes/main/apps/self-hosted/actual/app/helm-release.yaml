@@ -67,7 +67,7 @@ spec:
         className: "nginx"
         annotations:
           gethomepage.dev/description: Finances Management
-          gethomepage.dev/enabled: "true"
+          gethomepage.dev/enabled: "false"
           gethomepage.dev/group: Home
           gethomepage.dev/icon: sh-actual-budget
           gethomepage.dev/name: Actual Budget

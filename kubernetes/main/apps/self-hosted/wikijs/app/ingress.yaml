@@ -4,7 +4,7 @@ metadata:
   name: wikijs-ingress
   annotations:
     gethomepage.dev/description: Documentation
-    gethomepage.dev/enabled: "true"
+    gethomepage.dev/enabled: "false"
     gethomepage.dev/group: Projects
     gethomepage.dev/icon: wikijs.png
     gethomepage.dev/name: WikiJS

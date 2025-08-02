@@ -4,7 +4,7 @@ metadata:
   name: wallabag-ingress
   annotations:
     gethomepage.dev/description: Links Library
-    gethomepage.dev/enabled: "true"
+    gethomepage.dev/enabled: "false"
     gethomepage.dev/group: Media
     gethomepage.dev/icon: wallabag.png
     gethomepage.dev/name: Wallabag

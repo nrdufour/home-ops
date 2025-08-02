@@ -53,7 +53,7 @@ spec:
       tls: true
       annotations:
         gethomepage.dev/description: Longhorn Management
-        gethomepage.dev/enabled: "true"
+        gethomepage.dev/enabled: "false"
         gethomepage.dev/group: Cluster
         gethomepage.dev/icon: longhorn.png
         gethomepage.dev/name: Longhorn
