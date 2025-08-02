@@ -72,7 +72,7 @@ spec:
       app:
         annotations:
           gethomepage.dev/description: Jellyfin media server
-          gethomepage.dev/enabled: "false"
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Media
           gethomepage.dev/icon: jellyfin.png
           gethomepage.dev/name: Jellyfin

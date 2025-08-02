@@ -64,7 +64,7 @@ spec:
       app:
         annotations:
           gethomepage.dev/description: Book Library
-          gethomepage.dev/enabled: "false"
+          gethomepage.dev/enabled: "true"
           gethomepage.dev/group: Media
           gethomepage.dev/icon: sh-komga
           gethomepage.dev/name: Komga

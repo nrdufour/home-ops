@@ -6,7 +6,7 @@ metadata:
     app.kubernetes.io/name: searxng
   annotations:
     gethomepage.dev/description: Free metasearch engine
-    gethomepage.dev/enabled: "false"
+    gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Projects
     gethomepage.dev/icon: sh-searxng-light
     gethomepage.dev/name: SearXNG

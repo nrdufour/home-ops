@@ -4,7 +4,7 @@ metadata:
   name: mealie-ingress
   annotations:
     gethomepage.dev/description: Recipes Library
-    gethomepage.dev/enabled: "false"
+    gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Home
     gethomepage.dev/icon: mealie.png
     gethomepage.dev/name: Mealie

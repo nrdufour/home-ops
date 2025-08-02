@@ -5,7 +5,7 @@ metadata:
   namespace: default
   annotations:
     gethomepage.dev/description: RSS Reader
-    gethomepage.dev/enabled: "false"
+    gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Media
     gethomepage.dev/icon: miniflux.png
     gethomepage.dev/name: Miniflux

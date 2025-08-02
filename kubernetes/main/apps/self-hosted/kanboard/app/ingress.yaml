@@ -4,7 +4,7 @@ metadata:
   name: kanboard-ingress
   annotations:
     gethomepage.dev/description: Kanban board for all projects
-    gethomepage.dev/enabled: "false"
+    gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Projects
     gethomepage.dev/icon: sh-kanboard
     gethomepage.dev/name: Kanboard
