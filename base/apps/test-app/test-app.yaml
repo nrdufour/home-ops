@@ -11,7 +11,7 @@ spec:
       targetRevision: 0.1.0
       helm:
         releaseName: hello-world
-    - path: base/apps/test-app/resourcs
+    - path: base/apps/test-app/resources
       repoURL: 'https://forge.internal/nemo/home-ops.git'
       targetRevision: HEAD
   destination:
