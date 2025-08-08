@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-app
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - chart: hello-world
+      repoURL: https://helm.github.io/examples
+      targetRevision: 0.1.0
+      helm:
+        releaseName: hello-world
+    - path: base/apps/test-app/resourcs
+      repoURL: 'https://forge.internal/nemo/home-ops.git'
+      targetRevision: HEAD
+  destination:
+    namespace: default
+    name: 'in-cluster'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
