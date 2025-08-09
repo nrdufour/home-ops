@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bitwarden-store
+  namespace: argocd
+spec:
+  project: default
+  source:
+    path: base/apps/security/bitwarden
+    repoURL: https://charts.external-secrets.io
+    targetRevision: HEAD
+  destination:
+    namespace: security
+    name: 'in-cluster'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
