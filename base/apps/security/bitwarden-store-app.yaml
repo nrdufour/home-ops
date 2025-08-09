@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     path: base/apps/security/bitwarden
-    repoURL: https://charts.external-secrets.io
+    repoURL: https://forge.internal/nemo/home-ops.git
     targetRevision: HEAD
   destination:
     namespace: security
