@@ -7,3 +7,4 @@ resources:
   - service.yaml
   - netpol.yaml
   - cluster-secret-stores.yaml
+  - external-secret-test.yaml
