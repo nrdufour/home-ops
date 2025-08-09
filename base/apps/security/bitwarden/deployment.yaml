@@ -53,6 +53,7 @@ spec:
                 - -q
                 - http://127.0.0.1:8087/sync?force=true
                 - --post-data=''
+                - -O /dev/null
             initialDelaySeconds: 20
             failureThreshold: 3
             timeoutSeconds: 10
