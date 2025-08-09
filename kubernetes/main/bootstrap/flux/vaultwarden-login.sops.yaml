@@ -1,0 +1,25 @@
+apiVersion: v1
+data:
+  BW_HOST: ENC[AES256_GCM,data:3x1JD03nzGRokOzyTa4AOrOSigzIQYmYv8xomA==,iv:Wq2oks6sFNz/73XeaWCxlqEJ40T+bOMuXX44tK0eFhE=,tag:9EtTg+DL6CSMhFh7U4NYDQ==,type:str]
+  BW_USERNAME: ENC[AES256_GCM,data:zEiwZ1JxMrOyGrEqgj49Ka6j80yDNZp/pUURUA==,iv:Pf8Js11wTmZOKB2vYL5JlohRAEqc6dVEicDFxGZ5qNg=,tag:bH+5I+eZTD4N0WVRwsPYTQ==,type:str]
+  BW_PASSWORD: ENC[AES256_GCM,data:bnDJegj+Sag1TMeHekRUZFGkMovg1RXs,iv:kBxivaco04YUfA5GdvWAsb0HC/lzDFpNGagG55sSeHQ=,tag:yw+WfeWUtl77CiDkvHvY0A==,type:str]
+kind: Secret
+metadata:
+  name: bitwarden-cli
+  namespace: security
+type: Opaque
+sops:
+  age:
+    - recipient: age1tmrr00pnj6gpc4pfp3wzvyjt66tfhudwj2kn84skt24qvwzlcsusrvrypj
+      enc: |
+        -----BEGIN AGE ENCRYPTED FILE-----
+        YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBhRW91SkxvWHpLSnc1UWRB
+        UlN2cm1ZVS8xUXhHSmdzdUVEYnZOK01TL0JRCkxxbXBlR3NrSUw1QjRrS0RWNzdx
+        OXFGVUhlbjlxRHFxWDVuclVLMTVDMlEKLS0tIC9nVmtNR0lvNkFuRkNLMXBaaFly
+        b3VIZ0cxU0JJbi9zLzhPUkNwRGx0ajQKCw5QZQdj9MDGVJ7OAumW+xW/7Md8hQl0
+        T6Ypjkxm7PgArntXPvRUmEg5LOyNrzsAb0atTbXBuDRhv4dVZrUQ0w==
+        -----END AGE ENCRYPTED FILE-----
+  lastmodified: "2025-08-09T19:47:07Z"
+  mac: ENC[AES256_GCM,data:oNR3MAksYMEyoRXfs5aUxjwEA7icQ3jYoXXqAlkAIXCuut7hiC4uv/kvRj+ZhH7gFVoFK4k+E7/K1+JsNBznJUAl0S1+JC47TnQ9jDMw2xVVb2su5hqVk5dgbJT+vcWhnkUKrEhKQMQ8z568Aw8mHDf0K2Yy7hrIEET6eFvJd5Y=,iv:beacVrgWbX8nh6ko/cRqjygdgfxPUCJfiAxKCkVbbi4=,tag:WzL34+wULotxlH/FB1EuDA==,type:str]
+  encrypted_regex: ^(data|stringData)$
+  version: 3.10.2
