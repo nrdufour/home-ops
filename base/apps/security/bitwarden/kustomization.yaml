@@ -14,3 +14,6 @@ configMapGenerator:
     behavior: create
     files:
       - root_ca.crt
+
+generatorOptions:
+  disableNameSuffixHash: true
