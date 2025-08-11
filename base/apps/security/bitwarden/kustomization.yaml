@@ -8,3 +8,9 @@ resources:
   - netpol.yaml
   - cluster-secret-stores.yaml
   - external-secret-test.yaml
+
+configMapGenerator:
+  - name: private-ca
+    behavior: create
+    files:
+      - root_ca.crt
