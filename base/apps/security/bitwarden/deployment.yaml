@@ -20,13 +20,19 @@ spec:
         app.kubernetes.io/name: bitwarden-cli
         app.kubernetes.io/instance: bitwarden-cli
     spec:
+      volumes:
+        - name: private-ca
+          configMap:
+            name: private-ca
       containers:
         - name: bitwarden-cli
           image: forge.internal/nemo/bitwarden-cli@sha256:2fcd2a8622342ebf7203fc6315799485b96045e21cf857763224499dea71d98f
           imagePullPolicy: IfNotPresent
           env:
-            - name: NODE_TLS_REJECT_UNAUTHORIZED
-              value: "0"
+            # - name: NODE_TLS_REJECT_UNAUTHORIZED
+            #   value: "0"
+            - name: NODE_EXTRA_CA_CERTS
+              value: /private_ca/root-ca.crt
             - name: BW_HOST
               valueFrom:
                 secretKeyRef:
@@ -46,6 +52,9 @@ spec:
             - name: http
               containerPort: 8087
               protocol: TCP
+          volumeMounts:
+            - name: private-ca
+              mountPath: /private-ca
           livenessProbe:
             exec:
               command:
