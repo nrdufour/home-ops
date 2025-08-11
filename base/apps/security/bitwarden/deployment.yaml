@@ -46,18 +46,18 @@ spec:
             - name: http
               containerPort: 8087
               protocol: TCP
-          # livenessProbe:
-          #   exec:
-          #     command:
-          #       - wget
-          #       - -q
-          #       - http://127.0.0.1:8087/sync?force=true
-          #       - --post-data=''
-          #       - -O /dev/null
-          #   initialDelaySeconds: 20
-          #   failureThreshold: 3
-          #   timeoutSeconds: 10
-          #   periodSeconds: 120
+          livenessProbe:
+            exec:
+              command:
+                - curl
+                - -s
+                - -o /dev/null
+                - -XPOST
+                - http://127.0.0.1:8087/sync?force=true
+            initialDelaySeconds: 20
+            failureThreshold: 3
+            timeoutSeconds: 10
+            periodSeconds: 120
           readinessProbe:
             tcpSocket:
               port: 8087
