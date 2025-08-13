@@ -11,6 +11,12 @@
     ':skipStatusChecks',
     ':timezone(America/New_York)',
   ],
+  argocd: {
+    managerFilePatterns: [
+      '/(^|/)base/.+\\.yaml$/',
+      '/(^|/)clusters/.+\\.yaml$/',
+    ],
+  },
   flux: {
     managerFilePatterns: [
       '/(^|/)kubernetes/.+\\.yaml$/',
