@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
   - ./placeholder-cm.yaml
   - cert-manager/cert-manager-app.yaml
+  - cert-manager/cert-manager-issuers-app.yaml
   - security/external-secrets-app.yaml
   - security/bitwarden-store-app.yaml
   # - test-app

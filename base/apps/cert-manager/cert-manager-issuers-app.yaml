@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cert-manager-issuers
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - path: base/apps/cert-manager/issuers
+      repoURL: 'https://forge.internal/nemo/home-ops.git'
+      targetRevision: HEAD
+  destination:
+    namespace: cert-manager
+    name: 'in-cluster'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
