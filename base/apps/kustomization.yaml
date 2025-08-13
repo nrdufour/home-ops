@@ -9,3 +9,4 @@ resources:
   - security/external-secrets-app.yaml
   - security/bitwarden-store-app.yaml
   # - test-app
+  - network/ingress-nginx-internal-app
