@@ -8,7 +8,7 @@ metadata:
 spec:
   targetNamespace: network
   path: ./kubernetes/main/apps/network/ingress-nginx/internal
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: home-ops-kubernetes
