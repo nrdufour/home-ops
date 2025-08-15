@@ -1,0 +1,25 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: external-dns-rfc2136-secret
+  namespace: network
+spec:
+  refreshInterval: "10m"
+  target:
+    name: external-dns-rfc2136-secret
+    deletionPolicy: Delete
+    template:
+      type: Opaque
+      data:
+        EXTERNAL_DNS_RFC2136_TSIG_SECRET: |-
+          {{ .EXTERNAL_DNS_RFC2136_TSIG_SECRET }}
+  data:
+    - secretKey: EXTERNAL_DNS_RFC2136_TSIG_SECRET
+      sourceRef:
+        storeRef:
+          name: bitwarden-fields
+          kind: ClusterSecretStore
+      remoteRef:
+        # Item called "Network"
+        key: e518dbe7-996e-4f70-aada-6f0079c14737
+        property: EXTERNAL_DNS_RFC2136_TSIG_SECRET
