@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    path: base/apps/security/bitwarden
+    path: base/infra/security/bitwarden
     repoURL: https://forge.internal/nemo/home-ops.git
     targetRevision: HEAD
   destination:

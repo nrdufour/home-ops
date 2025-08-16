@@ -1,0 +1,11 @@
+---
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - cert-manager/cert-manager-app.yaml
+  - cert-manager/cert-manager-issuers-app.yaml
+  - security/external-secrets-app.yaml
+  - security/bitwarden-store-app.yaml
+  - network/ingress-nginx-internal-app.yaml
+  - network/external-dns-app.yaml

@@ -3,11 +3,4 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ./placeholder-cm.yaml
-  - cert-manager/cert-manager-app.yaml
-  - cert-manager/cert-manager-issuers-app.yaml
-  - security/external-secrets-app.yaml
-  - security/bitwarden-store-app.yaml
-  # - test-app
-  - network/ingress-nginx-internal-app.yaml
-  - network/external-dns-app.yaml
+  - placeholder-cm.yaml

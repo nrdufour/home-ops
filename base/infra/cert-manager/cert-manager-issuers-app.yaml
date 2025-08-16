@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   sources:
-    - path: base/apps/cert-manager/issuers
+    - path: base/infra/cert-manager/issuers
       repoURL: 'https://forge.internal/nemo/home-ops.git'
       targetRevision: HEAD
   destination:

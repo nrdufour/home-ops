@@ -36,7 +36,7 @@ spec:
           domainFilters: ["internal"]
           serviceMonitor:
             enabled: true
-    - path: base/apps/network/external-dns
+    - path: base/infra/network/external-dns
       repoURL: https://forge.internal/nemo/home-ops.git
       targetRevision: HEAD
   destination:
