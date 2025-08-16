@@ -15,3 +15,4 @@ resources:
   - system/nfd-rules-app.yaml
   - system/openebs-app.yaml
   - system/snapshot-controller-app.yaml
+  - system/volsync-app.yaml
