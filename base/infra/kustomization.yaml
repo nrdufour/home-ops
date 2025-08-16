@@ -11,3 +11,4 @@ resources:
   - network/external-dns-app.yaml
   - system/kyverno-app.yaml
   - system/kured-app.yaml
+  - system/nfd-app.yaml
