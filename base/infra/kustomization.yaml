@@ -14,3 +14,4 @@ resources:
   - system/nfd-app.yaml
   - system/nfd-rules-app.yaml
   - system/openebs-app.yaml
+  - system/snapshot-controller-app.yaml

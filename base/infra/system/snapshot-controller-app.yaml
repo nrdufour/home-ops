@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: snapshot-controller
+  namespace: argocd
+spec:
+  project: default
+  source:
+    chart: snapshot-controller
+    repoURL: https://piraeus.io/helm-charts/
+    targetRevision: 4.1.0
+    helm:
+      releaseName: snapshot-controller
+      values: |
+        controller:
+          serviceMonitor:
+            create: true
+        webhook:
+          enabled: false
+  destination:
+    namespace: system
+    name: 'in-cluster'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
