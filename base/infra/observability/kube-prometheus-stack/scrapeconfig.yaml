@@ -1,0 +1,19 @@
+---
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ScrapeConfig
+metadata:
+  name: &name node-exporter
+  namespace: observability
+spec:
+  staticConfigs:
+    - targets:
+        - eagle.internal:9002
+        - mysecrets.internal:9002
+        - beacon.internal:9002
+        - possum.internal:9002
+        - cardinal.internal:9002
+  metricsPath: /metrics
+  relabelings:
+    - action: replace
+      targetLabel: job
+      replacement: *name

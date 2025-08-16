@@ -16,3 +16,4 @@ resources:
   - system/openebs-app.yaml
   - system/snapshot-controller-app.yaml
   - system/volsync-app.yaml
+  - observability/kube-prometheus-stack-app.yaml
