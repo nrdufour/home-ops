@@ -10,3 +10,4 @@ resources:
   - network/ingress-nginx-internal-app.yaml
   - network/external-dns-app.yaml
   - system/kyverno-app.yaml
+  - system/kured-app.yaml
