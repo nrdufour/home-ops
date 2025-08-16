@@ -8,7 +8,7 @@ resources:
   # Flux-Kustomizations
   ## Disable this for now as it has some trouble with raspberry pi machines.
   ## Need more study.
-  - ./kured/ks.yaml
+  # - ./kured/ks.yaml
   - ./node-feature-discovery/ks.yaml
   - ./snapshot-controller/ks.yaml
   - ./volsync/ks.yaml
