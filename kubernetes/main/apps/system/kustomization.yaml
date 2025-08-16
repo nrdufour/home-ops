@@ -11,6 +11,6 @@ resources:
   # - ./kured/ks.yaml
   # - ./node-feature-discovery/ks.yaml
   # - ./snapshot-controller/ks.yaml
-  - ./volsync/ks.yaml
+  # - ./volsync/ks.yaml
   # - ./openebs/ks.yaml
   # - ./kyverno/ks.yaml
