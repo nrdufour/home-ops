@@ -1,0 +1,15 @@
+---
+apiVersion: nfd.k8s-sigs.io/v1alpha1
+kind: NodeFeatureRule
+metadata:
+  name: homeseer-smartstick-g8-device
+spec:
+  rules:
+    - # RTL2838 DVB-T
+      name: homeseer-g8
+      labels:
+        homeseer.feature.node.kubernetes.io/g8: "true"
+      matchFeatures:
+        - feature: usb.device
+          matchExpressions:
+            vendor: { op: In, value: ["1a86", "55d4"] }

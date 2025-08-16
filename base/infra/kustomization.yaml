@@ -12,3 +12,4 @@ resources:
   - system/kyverno-app.yaml
   - system/kured-app.yaml
   - system/nfd-app.yaml
+  - system/nfd-rules-app.yaml
