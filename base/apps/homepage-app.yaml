@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    path: base/apps/self-hosted
+    path: base/apps/self-hosted/homepage
     repoURL: https://forge.internal/nemo/home-ops.git
     targetRevision: HEAD
   destination:
