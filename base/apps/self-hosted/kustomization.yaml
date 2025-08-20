@@ -2,6 +2,12 @@
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: self-hosted
 resources:
-  - placeholder-cm.yaml
-  - homepage-app.yaml
+  - sa.yaml
+  - secret.yaml
+  - configmap.yaml
+  - roles.yaml
+  - service.yaml
+  - deployment.yaml
+  - ingress.yaml

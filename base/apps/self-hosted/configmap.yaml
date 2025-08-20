@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage
+  labels:
+    app.kubernetes.io/name: homepage
+data:
+  kubernetes.yaml: |
+    mode: cluster
+    ingress: true  # enable ingress
+    traefik: false # enable traefik ingressRoute
+    gateway: false # enable gateway-api
+  settings.yaml: |
+   providers:
+     longhorn:
+       url: https://longhorn.internal
+  custom.css: ""
+  custom.js: ""
+  bookmarks.yaml: |
+    - Developer:
+        - Github:
+            - abbr: GH
+              href: https://github.com/
+  services.yaml: |
+    - Storage:
+        - Minio:
+            href: https://minio.internal/
+            description: S3 Server
+            icon: sh-minio
+
+        - Forgejo:
+            href: https://forge.internal/
+            description: Git Server and Registry
+            icon: sh-forgejo
+
+  widgets.yaml: |
+    - kubernetes:
+        cluster:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+          label: "Cluster"
+        nodes:
+          show: false
+  docker.yaml: ""
