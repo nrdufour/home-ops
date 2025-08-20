@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb2
+  labels:
+    svccontroller.k3s.cattle.io/lbpool: internal
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: influxdb2.internal
+spec:
+  type: LoadBalancer
+  selector:
+    app: influxdb2
+  ports:
+    - protocol: TCP
+      port: 8086
+      targetPort: 8086
+      name: current

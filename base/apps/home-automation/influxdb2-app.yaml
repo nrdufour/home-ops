@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: influxdb2
+  namespace: argocd
+spec:
+  project: default
+  source:
+    path: base/apps/home-automation/influxdb2
+    repoURL: https://forge.internal/nemo/home-ops.git
+    targetRevision: HEAD
+  destination:
+    namespace: home-automation
+    name: 'in-cluster'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
