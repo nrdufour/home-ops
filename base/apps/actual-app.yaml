@@ -1,0 +1,104 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: actual
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: oci://ghcr.io/bjw-s/helm/app-template
+      targetRevision: 3.7.3
+      path: .
+      helm:
+        releaseName: actual
+        values: |
+          controllers:
+            actual:
+
+              pod:
+                securityContext:
+                  runAsUser: 1000
+                  runAsGroup: 1000
+                  fsGroup: 1000
+                  fsGroupChangePolicy: "OnRootMismatch"
+
+              containers:
+                app:
+                  image:
+                    repository: ghcr.io/actualbudget/actual-server
+                    tag: 25.8.0
+                  env:
+                    ACTUAL_PORT: &httpPort 5006
+                  probes:
+                    liveness:
+                      enabled: true
+                    readiness:
+                      enabled: true
+                      custom: true
+                      spec:
+                        httpGet:
+                          path: /
+                          port: *httpPort
+                        initialDelaySeconds: 0
+                        periodSeconds: 10
+                        timeoutSeconds: 1
+                        failureThreshold: 3
+                  resources:
+                    requests:
+                      cpu: 12m
+                      memory: 128M
+                    limits:
+                      memory: 512M
+
+          service:
+            app:
+              controller: actual
+              ports:
+                http:
+                  port: *httpPort
+
+          ingress:
+            app:
+              className: "nginx"
+              annotations:
+                gethomepage.dev/description: Finances Management
+                gethomepage.dev/enabled: "true"
+                gethomepage.dev/group: Home
+                gethomepage.dev/icon: sh-actual-budget
+                gethomepage.dev/name: Actual Budget
+                gethomepage.dev/pod-selector: "app.kubernetes.io/name=actual"
+                nginx.ingress.kubernetes.io/rewrite-target: /
+                cert-manager.io/cluster-issuer: ca-server-cluster-issuer
+                cert-manager.io/common-name: actual.home.internal
+                nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
+              hosts:
+                - host: actual.home.internal
+                  paths:
+                    - path: /
+                      service:
+                        identifier: app
+                        port: http
+              tls:
+                - hosts:
+                    - "actual.home.internal"
+                  secretName: actual-ing-cert
+
+          persistence:
+            data:
+              existingClaim: actual-longhorn-pvc
+              advancedMounts:
+                actual:
+                  app:
+                    - path: /data
+    - path: base/apps/self-hosted/actual
+      repoURL: https://forge.internal/nemo/home-ops.git
+      targetRevision: HEAD
+  destination:
+    namespace: self-hosted
+    name: 'in-cluster'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
