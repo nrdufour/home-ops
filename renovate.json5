@@ -25,12 +25,16 @@
   'helm-values': {
     managerFilePatterns: [
       '/(^|/)kubernetes/.+\\.yaml$/',
+      '/(^|/)base/.+\\.yaml$/',
+      '/(^|/)clusters/.+\\.yaml$/',
     ],
   },
   kubernetes: {
     managerFilePatterns: [
       '/(^|/)\\.taskfiles/.+\\.yaml$/',
       '/(^|/)kubernetes/.+\\.yaml$/',
+      '/(^|/)base/.+\\.yaml$/',
+      '/(^|/)clusters/.+\\.yaml$/',
     ],
   },
   ignorePaths: [
