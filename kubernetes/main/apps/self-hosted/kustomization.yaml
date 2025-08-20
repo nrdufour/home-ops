@@ -13,7 +13,7 @@ resources:
   - ./cnpg-minio-access.sops.yaml
   # Flux-Kustomizations
   - ./kanboard/ks.yaml
-  - ./homepage/ks.yaml
+  # - ./homepage/ks.yaml
   - ./searxng/ks.yaml
   # - ./actual/ks.yaml
   - ./mealie/ks.yaml
