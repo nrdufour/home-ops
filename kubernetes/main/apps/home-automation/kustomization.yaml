@@ -14,7 +14,7 @@ resources:
   - ./home-assistant/ks.yaml
   # - ./rtlamr2mqtt/ks.yaml
   - ./esphome/ks.yaml
-  - ./nut-upsd/ks.yaml
+  # - ./nut-upsd/ks.yaml
   # - ./rtl433/ks.yaml
   - ./zwave/ks.yaml
   - ./mqtt/ks.yaml

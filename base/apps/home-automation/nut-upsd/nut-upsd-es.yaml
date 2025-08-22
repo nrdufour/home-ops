@@ -1,0 +1,35 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: nut-upsd-secret
+spec:
+  refreshInterval: "10m"
+  target:
+    name: nut-upsd-secret
+    deletionPolicy: Delete
+    template:
+      type: Opaque
+      data:
+        API_USER: |-
+          {{ .NUT_API_USER }}
+        API_PASSWORD: |-
+          {{ .NUT_API_PASSWORD }}
+  data:
+    - secretKey: NUT_API_USER
+      sourceRef:
+        storeRef:
+          name: bitwarden-fields
+          kind: ClusterSecretStore
+      remoteRef:
+        # Item called "Home Automation"
+        key: ec4485d9-4570-4475-aeb8-4053bd864e4b
+        property: NUT_API_USER
+    - secretKey: NUT_API_PASSWORD
+      sourceRef:
+        storeRef:
+          name: bitwarden-fields
+          kind: ClusterSecretStore
+      remoteRef:
+        # Item called "Home Automation"
+        key: ec4485d9-4570-4475-aeb8-4053bd864e4b
+        property: NUT_API_PASSWORD
