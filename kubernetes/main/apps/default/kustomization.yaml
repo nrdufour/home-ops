@@ -10,5 +10,5 @@ resources:
   - ./namespace.yaml
 
   # Flux-Kustomizations
-  - ./grafana/ks.yaml
-  - ./testbed/ks.yaml
+  # - ./grafana/ks.yaml
+  # - ./testbed/ks.yaml
