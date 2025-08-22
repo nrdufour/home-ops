@@ -6,3 +6,4 @@ resources:
   - placeholder-cm.yaml
   - self-hosted
   - home-automation
+  - cnpg-system
