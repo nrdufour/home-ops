@@ -1,0 +1,25 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: rtl433-secret
+  namespace: home-automation
+spec:
+  refreshInterval: "10m"
+  target:
+    name: rtl433-secret
+    deletionPolicy: Delete
+    template:
+      type: Opaque
+      data:
+        INFLUXDB2_TOKEN: |-
+          {{ .INFLUXDB2_TOKEN }}
+  data:
+    - secretKey: INFLUXDB2_TOKEN
+      sourceRef:
+        storeRef:
+          name: bitwarden-fields
+          kind: ClusterSecretStore
+      remoteRef:
+        # Item called "Home Automation"
+        key: ec4485d9-4570-4475-aeb8-4053bd864e4b
+        property: INFLUXDB2_TOKEN
