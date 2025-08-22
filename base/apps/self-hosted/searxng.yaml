@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: searxng
+  namespace: argocd
+spec:
+  project: default
+  source:
+    path: base/apps/self-hosted/searxng
+    repoURL: https://forge.internal/nemo/home-ops.git
+    targetRevision: HEAD
+  destination:
+    namespace: self-hosted
+    name: 'in-cluster'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

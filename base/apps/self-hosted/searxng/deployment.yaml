@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: searxng
+  labels:
+    app.kubernetes.io/name: searxng
+spec:
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: searxng
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: searxng
+    spec:
+      containers:
+        - name: searxng
+          image: "ghcr.io/searxng/searxng:2025.8.3-2e62eb5"
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /etc/searxng
+              name: searxng-config
+          resources:
+            requests:
+              cpu: 10m
+              memory: 100Mi
+            limits:
+              memory: 2Gi
+      volumes:
+        - name: searxng-config
+          persistentVolumeClaim:
+            claimName: searxng-longhorn-pvc

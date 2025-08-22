@@ -14,7 +14,7 @@ resources:
   # Flux-Kustomizations
   - ./kanboard/ks.yaml
   # - ./homepage/ks.yaml
-  - ./searxng/ks.yaml
+  # - ./searxng/ks.yaml
   # - ./actual/ks.yaml
   - ./mealie/ks.yaml
   - ./miniflux/ks.yaml

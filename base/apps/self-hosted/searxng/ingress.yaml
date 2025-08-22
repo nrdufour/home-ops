@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: searxng
+  labels:
+    app.kubernetes.io/name: searxng
+  annotations:
+    gethomepage.dev/description: Free metasearch engine
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Projects
+    gethomepage.dev/icon: sh-searxng-light
+    gethomepage.dev/name: SearXNG
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: ca-server-cluster-issuer
+    cert-manager.io/common-name: search.internal
+    nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
+spec:
+  tls:
+    - hosts:
+        - search.home.internal
+      secretName: searxng-ing-cert
+  ingressClassName: nginx
+  rules:
+    - host: "search.home.internal"
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: searxng
+                port:
+                  number: 8080
