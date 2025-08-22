@@ -12,7 +12,7 @@ resources:
   - ./cnpg-minio-access.sops.yaml
   # Applications
   - ./home-assistant/ks.yaml
-  - ./rtlamr2mqtt/ks.yaml
+  # - ./rtlamr2mqtt/ks.yaml
   - ./esphome/ks.yaml
   - ./nut-upsd/ks.yaml
   # - ./rtl433/ks.yaml

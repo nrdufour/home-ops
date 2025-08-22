@@ -3,7 +3,4 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - influxdb2-app.yaml
-  - rtl433-app.yaml
-  - grafana-app.yaml
-  - rtlamr2mqtt-app.yaml
+  - rtlamr2mqtt-es.yaml

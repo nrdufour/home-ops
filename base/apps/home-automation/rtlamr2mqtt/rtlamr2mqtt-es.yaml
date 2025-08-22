@@ -1,0 +1,61 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: rtlamr2mqtt-config
+spec:
+  refreshInterval: "10m"
+  target:
+    name: rtlamr2mqtt-config
+    deletionPolicy: Delete
+    template:
+      type: Opaque
+      data:
+        rtlamr2mqtt.yaml: |
+          general:
+            sleep_for: 0
+            verbosity: debug
+            device_id: "004:002"
+
+          mqtt:
+            host: mqtt.internal
+            port: 1883
+            ha_autodiscovery: true
+            ha_autodiscovery_topic: homeassistant
+            base_topic: rtlamr
+
+          meters:
+            - id: "{{ .HOME_WATER_METER_ID }}"
+              protocol: r900
+              name: home_water_meter
+              format: "######.#"
+              unit_of_measurement: gal
+              icon: mdi:gauge
+              device_class: water
+              state_class: total_increasing
+            - id: "{{ .HOME_GAS_METER_ID }}"
+              protocol: scm
+              name: home_gas_meter
+              format: "######"
+              unit_of_measurement: ft³
+              icon: mdi:gauge
+              device_class: gas
+              state_class: total_increasing
+  data:
+    - secretKey: HOME_GAS_METER_ID
+      sourceRef:
+        storeRef:
+          name: bitwarden-fields
+          kind: ClusterSecretStore
+      remoteRef:
+        # Item called "Home Automation"
+        key: ec4485d9-4570-4475-aeb8-4053bd864e4b
+        property: HOME_GAS_METER_ID
+    - secretKey: HOME_WATER_METER_ID
+      sourceRef:
+        storeRef:
+          name: bitwarden-fields
+          kind: ClusterSecretStore
+      remoteRef:
+        # Item called "Home Automation"
+        key: ec4485d9-4570-4475-aeb8-4053bd864e4b
+        property: HOME_WATER_METER_ID
