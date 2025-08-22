@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - homepage-app.yaml
   - actual-app.yaml
+  - searxng-app.yaml
