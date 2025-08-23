@@ -1,0 +1,58 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: longhorn
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - chart: longhorn
+      repoURL: https://charts.longhorn.io
+      targetRevision: 1.9.1
+      helm:
+        releaseName: longhorn
+        values: |
+          # See original values here https://github.com/longhorn/longhorn/blob/master/chart/values.yaml
+          global:
+            # -- Node selector for nodes allowed to run user-deployed components such as Longhorn Manager, Longhorn UI, and Longhorn Driver Deployer.
+            nodeSelector: {}
+
+          networkPolicies:
+            # -- Setting that allows you to enable network policies that control access to Longhorn pods.
+            enabled: false
+            # -- Distribution that determines the policy for allowing access for an ingress. (Options: "k3s", "rke2", "rke1")
+            type: "k3s"
+
+          defaultSettings:
+            # Changing the default path from /var/lib/longhorn
+            defaultDataPath: /var/lib/rancher/longhorn
+
+          ingress:
+            enabled: true
+            ingressClassName: nginx
+            host: longhorn.home.internal
+            tls: true
+            annotations:
+              gethomepage.dev/description: Longhorn Management
+              gethomepage.dev/enabled: "true"
+              gethomepage.dev/group: Cluster
+              gethomepage.dev/icon: longhorn.png
+              gethomepage.dev/name: Longhorn
+              gethomepage.dev/pod-selector: "app=longhorn-ui"
+              nginx.ingress.kubernetes.io/rewrite-target: /
+              cert-manager.io/cluster-issuer: ca-server-cluster-issuer
+              cert-manager.io/common-name: longhorn.home.internal
+              nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
+    - path: base/infra/longhorn-system/resources
+      repoURL: https://forge.internal/nemo/home-ops.git
+      targetRevision: HEAD
+  destination:
+    namespace: longhorn-system
+    name: 'in-cluster'
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

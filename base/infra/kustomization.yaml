@@ -18,3 +18,4 @@ resources:
   - system/volsync-app.yaml
   - observability/kube-prometheus-stack-app.yaml
   - kube-system/metrics-server.yaml
+  - longhorn-system/longhorn-app.yaml
