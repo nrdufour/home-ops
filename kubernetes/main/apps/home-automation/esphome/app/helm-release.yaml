@@ -81,6 +81,7 @@ spec:
         tls:
           - hosts:
               - "esphome.home.internal"
+            secretName: esphome-ing-cert
 
     persistence:
       config:
