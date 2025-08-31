@@ -12,7 +12,7 @@ spec:
         - beacon.internal:9002
         - possum.internal:9002
         - cardinal.internal:9002
-        - 10.0.0.1:9002
+        - '10.0.0.1:9002'
   metricsPath: /metrics
   relabelings:
     - action: replace
