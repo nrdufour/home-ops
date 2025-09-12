@@ -22,10 +22,31 @@ data:
             - abbr: GH
               href: https://github.com/
   services.yaml: |
+    - Media:
+        - Jellyfin:
+            href: https://jellyfin.internal/
+            description: TV/Video Server
+            icon: sh-jellyfin
+
+        - Navidrome:
+            href: https://navidrome.internal/
+            description: Music Server
+            icon: sh-navidrome
+
+        - Calibre Wed Automated:
+            href: https://cwa.internal/
+            description: Books Server
+            icon: sh-cwa
+
     - Storage:
+        - Garage:
+            href: https://ui.garage.internal/
+            description: S3 Server (Garage)
+            icon: sh-garage
+
         - Minio:
             href: https://minio.internal/
-            description: S3 Server
+            description: S3 Server (Minio -- will go away)
             icon: sh-minio
 
         - Forgejo:
