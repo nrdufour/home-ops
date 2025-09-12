@@ -36,7 +36,7 @@ data:
         - Calibre Wed Automated:
             href: https://cwa.internal/
             description: Books Server
-            icon: sh-cwa
+            icon: sh-calibre-web
 
     - Storage:
         - Garage:
