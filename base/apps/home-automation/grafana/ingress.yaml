@@ -4,7 +4,7 @@ kind: Ingress
 metadata:
   name: grafana-ingress
   annotations:
-    gethomepage.dev/description: Grafana Dashboards
+    gethomepage.dev/description: Home Dashboards
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Home
     gethomepage.dev/icon: grafana.png
