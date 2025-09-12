@@ -38,7 +38,7 @@ data:
             description: Books Server
             icon: sh-calibre-web
 
-    - Storage:
+    - Projects:
         - Garage:
             href: https://ui.garage.internal/
             description: S3 Server (Garage)
