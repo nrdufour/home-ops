@@ -28,6 +28,7 @@ spec:
             - --rfc2136-tsig-keyname=update
             - --rfc2136-tsig-axfr
             - --ingress-class=nginx
+            - --record-ttl=300
           triggerLoopOnEvent: true
           policy: sync
           sources: ["crd", "ingress", "service"]
