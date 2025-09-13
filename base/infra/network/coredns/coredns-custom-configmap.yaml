@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+data:
+  42-10-reverse.server: |
+    42.10.in-addr.arpa:53 {
+      template ANY ANY {
+        match "^.*$"
+        rcode NXDOMAIN
+      }
+      cache 30
+      errors
+    }

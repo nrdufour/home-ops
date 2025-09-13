@@ -19,3 +19,4 @@ resources:
   - observability/kube-prometheus-stack-app.yaml
   - kube-system/metrics-server.yaml
   - longhorn-system/longhorn-app.yaml
+  - network/coredns-custom-app.yaml
