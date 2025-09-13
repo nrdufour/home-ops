@@ -29,6 +29,7 @@ spec:
             - --rfc2136-tsig-axfr
             - --ingress-class=nginx
             - --rfc2136-min-ttl=300s
+            - --policy=sync
           triggerLoopOnEvent: true
           policy: sync
           sources: ["crd", "ingress", "service"]
