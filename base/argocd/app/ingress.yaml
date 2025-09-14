@@ -7,7 +7,7 @@ metadata:
   annotations:
     gethomepage.dev/description: Gitops UI
     gethomepage.dev/enabled: "true"
-    gethomepage.dev/group: Cluster
+    gethomepage.dev/group: System
     gethomepage.dev/icon: argo-cd
     gethomepage.dev/name: ArgoCD
     gethomepage.dev/pod-selector: "app.kubernetes.io/name=argocd-server"
