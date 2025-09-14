@@ -69,10 +69,10 @@ spec:
           gethomepage.dev/pod-selector: "app.kubernetes.io/name=esphome"
           nginx.ingress.kubernetes.io/rewrite-target: /
           cert-manager.io/cluster-issuer: ca-server-cluster-issuer
-          cert-manager.io/common-name: esphome.home.internal
+          cert-manager.io/common-name: esphome.internal
           nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
         hosts:
-          - host: "esphome.home.internal"
+          - host: "esphome.internal"
             paths:
               - path: /
                 service:
@@ -80,7 +80,7 @@ spec:
                   port: http
         tls:
           - hosts:
-              - "esphome.home.internal"
+              - "esphome.internal"
             secretName: esphome-ing-cert
 
     persistence:

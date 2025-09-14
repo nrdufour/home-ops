@@ -11,16 +11,16 @@ metadata:
     gethomepage.dev/pod-selector: "app=kanboard"
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
-    cert-manager.io/common-name: kanboard.home.internal
+    cert-manager.io/common-name: kanboard.internal
     nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
 spec:
   tls:
     - hosts:
-      - kanboard.home.internal
+      - kanboard.internal
       secretName: kanboard-ing-cert
   ingressClassName: nginx
   rules:
-  - host: kanboard.home.internal
+  - host: kanboard.internal
     http:
       paths:
       - path: /

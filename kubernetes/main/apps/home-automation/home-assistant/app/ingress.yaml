@@ -12,16 +12,16 @@ metadata:
     gethomepage.dev/pod-selector: "app=homeassistant"
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
-    cert-manager.io/common-name: ha.home.internal
+    cert-manager.io/common-name: ha.internal
     nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
 spec:
   tls:
     - hosts:
-        - ha.home.internal
+        - ha.internal
       secretName: ha-ing-cert
   ingressClassName: nginx
   rules:
-  - host: ha.home.internal
+  - host: ha.internal
     http:
       paths:
       - path: /

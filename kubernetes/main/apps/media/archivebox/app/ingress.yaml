@@ -11,16 +11,16 @@ metadata:
     gethomepage.dev/pod-selector: "app=archivebox"
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
-    cert-manager.io/common-name: archivebox.home.internal
+    cert-manager.io/common-name: archivebox.internal
     nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
 spec:
   tls:
     - hosts:
-      - archivebox.home.internal
+      - archivebox.internal
       secretName: archivebox-ing-cert
   ingressClassName: nginx
   rules:
-  - host: archivebox.home.internal
+  - host: archivebox.internal
     http:
       paths:
       - path: /
