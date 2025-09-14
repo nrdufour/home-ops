@@ -12,16 +12,16 @@ metadata:
     gethomepage.dev/name: SearXNG
     nginx.ingress.kubernetes.io/rewrite-target: /
     cert-manager.io/cluster-issuer: ca-server-cluster-issuer
-    cert-manager.io/common-name: search.home.internal
+    cert-manager.io/common-name: search.internal
     nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
 spec:
   tls:
     - hosts:
-        - search.home.internal
+        - search.internal
       secretName: searxng-ing-cert
   ingressClassName: nginx
   rules:
-    - host: "search.home.internal"
+    - host: "search.internal"
       http:
         paths:
           - path: "/"
