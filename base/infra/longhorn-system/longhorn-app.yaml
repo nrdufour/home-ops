@@ -30,7 +30,7 @@ spec:
           ingress:
             enabled: true
             ingressClassName: nginx
-            host: longhorn.home.internal
+            host: longhorn.internal
             tls: true
             annotations:
               gethomepage.dev/description: Longhorn Management
@@ -41,7 +41,7 @@ spec:
               gethomepage.dev/pod-selector: "app=longhorn-ui"
               nginx.ingress.kubernetes.io/rewrite-target: /
               cert-manager.io/cluster-issuer: ca-server-cluster-issuer
-              cert-manager.io/common-name: longhorn.home.internal
+              cert-manager.io/common-name: longhorn.internal
               nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
     - path: base/infra/longhorn-system/resources
       repoURL: https://forge.internal/nemo/home-ops.git
