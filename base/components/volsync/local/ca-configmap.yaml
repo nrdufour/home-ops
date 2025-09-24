@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-volsync-ca
+data:
+  ca.crt: |
+    -----BEGIN CERTIFICATE-----
+    # Replace with your actual public CA certificate content
+    # This is a public certificate and doesn't need to be encrypted
+    -----END CERTIFICATE-----
