@@ -9,6 +9,8 @@ spec:
     repoURL: https://github.com/cloudnative-pg/plugin-barman-cloud
     targetRevision: v0.7.0
     path: .
+    directory:
+      include: manifest.yaml
   destination:
     namespace: cnpg-system
     name: 'in-cluster'
