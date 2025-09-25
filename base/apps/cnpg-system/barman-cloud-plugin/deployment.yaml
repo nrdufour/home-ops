@@ -1,0 +1,69 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: barman-cloud
+  namespace: cnpg-system
+  labels:
+    app: barman-cloud
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: barman-cloud
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: barman-cloud
+    spec:
+      serviceAccountName: plugin-barman-cloud
+      securityContext:
+        runAsNonRoot: true
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+      - name: barman-cloud
+        image: ghcr.io/cloudnative-pg/plugin-barman-cloud:v0.6.0
+        args:
+        - operator
+        - --server-cert=/server/tls.crt
+        - --server-key=/server/tls.key
+        - --client-cert=/client/tls.crt
+        - --server-address=:9090
+        - --leader-elect
+        - --log-level=info
+        ports:
+        - containerPort: 9090
+          protocol: TCP
+        env:
+        - name: SIDECAR_IMAGE
+          value: ghcr.io/cloudnative-pg/plugin-barman-cloud-sidecar:v0.6.0
+        readinessProbe:
+          tcpSocket:
+            port: 9090
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          runAsGroup: 10001
+          runAsUser: 10001
+          seccompProfile:
+            type: RuntimeDefault
+        volumeMounts:
+        - name: server
+          mountPath: /server
+        - name: client
+          mountPath: /client
+      volumes:
+      - name: server
+        secret:
+          secretName: barman-cloud-server-tls
+      - name: client
+        secret:
+          secretName: barman-cloud-client-tls

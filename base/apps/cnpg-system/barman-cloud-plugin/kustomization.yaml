@@ -1,7 +1,10 @@
----
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+namespace: cnpg-system
 resources:
-  - cloudnative-pg-app.yaml
-  - barman-cloud-plugin-app.yaml
+- serviceaccount.yaml
+- rbac.yaml
+- certificates.yaml
+- service.yaml
+- deployment.yaml

@@ -1,0 +1,29 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: barman-cloud-plugin
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"  # Deploy after CNPG system
+spec:
+  project: default
+  source:
+    repoURL: https://forge.internal/nemo/home-ops.git
+    targetRevision: HEAD
+    path: base/apps/cnpg-system/barman-cloud-plugin
+  destination:
+    namespace: cnpg-system
+    name: 'in-cluster'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    retry:
+      limit: 10
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
