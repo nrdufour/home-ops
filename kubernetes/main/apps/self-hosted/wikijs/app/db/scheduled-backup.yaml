@@ -3,9 +3,10 @@ apiVersion: postgresql.cnpg.io/v1
 kind: ScheduledBackup
 metadata:
   name: wikijs-16-db
-  namespace: default
+  namespace: self-hosted
 spec:
   schedule: "@daily"
+  method: plugin  # Use Barman Cloud Plugin
   immediate: true
   backupOwnerReference: self
   cluster:

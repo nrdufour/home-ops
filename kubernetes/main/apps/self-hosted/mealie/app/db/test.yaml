@@ -1,9 +1,9 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: miniflux-16-db
+  name: my-test
 spec:
-  instances: 3
+  instances: 1
   imageName: ghcr.io/cloudnative-pg/postgresql:16.4-27
   primaryUpdateStrategy: unsupervised
 
@@ -29,20 +29,18 @@ spec:
     size: 5Gi
     storageClass: openebs-hostpath
 
-  backup:
-    target: "prefer-standby"
-
   # Backup configuration migrated to Barman Cloud Plugin
   plugins:
     - name: barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
       parameters:
-        barmanObjectName: miniflux-backup-store
-        serverName: miniflux-16-v5
+        barmanObjectName: mealie-backup-store
+        serverName: some-test-for-mealie
 
   bootstrap:
     recovery:
-      database: miniflux
-      owner: miniflux
+      database: mealie
+      owner: mealie
       source: clusterBackup
 
   externalClusters:
@@ -50,5 +48,5 @@ spec:
       plugin:
         name: barman-cloud.cloudnative-pg.io
         parameters:
-          barmanObjectName: miniflux-external-store
-          serverName: miniflux-16-v4
+          barmanObjectName: mealie-external-store
+          serverName: mealie-16-v5

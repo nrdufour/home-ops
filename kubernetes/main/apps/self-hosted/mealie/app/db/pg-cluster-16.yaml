@@ -29,9 +29,13 @@ spec:
     size: 5Gi
     storageClass: openebs-hostpath
 
+  backup:
+    target: "prefer-standby"
+
   # Backup configuration migrated to Barman Cloud Plugin
   plugins:
     - name: barman-cloud.cloudnative-pg.io
+      isWALArchiver: true
       parameters:
         barmanObjectName: mealie-backup-store
         serverName: mealie-16-v5

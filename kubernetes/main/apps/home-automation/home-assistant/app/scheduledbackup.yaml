@@ -6,6 +6,7 @@ metadata:
   namespace: home-automation
 spec:
   schedule: "@daily"
+  method: plugin  # Use Barman Cloud Plugin
   immediate: true
   backupOwnerReference: self
   cluster:

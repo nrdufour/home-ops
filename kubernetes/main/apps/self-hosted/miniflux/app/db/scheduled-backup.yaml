@@ -5,6 +5,7 @@ metadata:
   name: miniflux-16-db
 spec:
   schedule: "@daily"
+  method: plugin  # Use Barman Cloud Plugin
   immediate: true
   backupOwnerReference: self
   cluster:
