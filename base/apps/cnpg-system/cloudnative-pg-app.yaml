@@ -22,7 +22,7 @@ spec:
             ENABLE_INSTANCE_MANAGER_INPLACE_UPDATES: "false"
             CREATE_ANY_SERVICE: "false"
             # Enable Barman Cloud Plugin
-            CNPG_PLUGIN_ALLOW_LIST: "barman-cloud.cloudnative-pg.io"
+            CNPG_INCLUDE_PLUGINS: "barman-cloud.cloudnative-pg.io"
   destination:
     namespace: cnpg-system
     name: 'in-cluster'
