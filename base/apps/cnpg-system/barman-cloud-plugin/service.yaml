@@ -6,6 +6,9 @@ metadata:
   namespace: cnpg-system
   labels:
     app: barman-cloud
+  annotations:
+    cnpg.io/plugin-name: barman-cloud.cloudnative-pg.io
+    cnpg.io/plugin-version: "0.6.0"
 spec:
   selector:
     app: barman-cloud
