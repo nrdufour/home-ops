@@ -29,27 +29,12 @@ spec:
     size: 5Gi
     storageClass: openebs-hostpath
 
-  backup:
-    retentionPolicy: 30d
-    barmanObjectStore:
-      data:
-        compression: bzip2
-      wal:
-        compression: bzip2
-        maxParallel: 8
-      destinationPath: s3://cloudnative-pg/
-      endpointURL: https://s3.internal
-      endpointCA:
-        name: cnpg-minio-access
-        key: tls.crt
-      serverName: mealie-16-v5
-      s3Credentials:
-        accessKeyId:
-          name: cnpg-minio-access
-          key: aws-access-key-id
-        secretAccessKey:
-          name: cnpg-minio-access
-          key: aws-secret-access-key
+  # Backup configuration migrated to Barman Cloud Plugin
+  plugins:
+    - name: barman-cloud.cloudnative-pg.io
+      parameters:
+        barmanObjectName: mealie-backup-store
+        serverName: mealie-16-v5
 
   bootstrap:
     recovery:
@@ -59,22 +44,8 @@ spec:
 
   externalClusters:
     - name: clusterBackup
-      barmanObjectStore:
-        data:
-          compression: bzip2
-        wal:
-          compression: bzip2
-          maxParallel: 8
-        destinationPath: s3://cloudnative-pg/
-        endpointURL: https://s3.internal
-        endpointCA:
-          name: cnpg-minio-access
-          key: tls.crt
-        serverName: mealie-16-v4
-        s3Credentials:
-          accessKeyId:
-            name: cnpg-minio-access
-            key: aws-access-key-id
-          secretAccessKey:
-            name: cnpg-minio-access
-            key: aws-secret-access-key
+      plugin:
+        name: barman-cloud.cloudnative-pg.io
+        parameters:
+          barmanObjectName: mealie-external-store
+          serverName: mealie-16-v4

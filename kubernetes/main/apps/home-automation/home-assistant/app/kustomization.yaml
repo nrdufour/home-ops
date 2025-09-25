@@ -8,4 +8,7 @@ resources:
   - service.yaml
   - ingress.yaml
   # - pg-cluster.yaml
+  - objectstore-backup.yaml
+  - objectstore-external.yaml
+  - pg-cluster-16.yaml
   - scheduledbackup.yaml
