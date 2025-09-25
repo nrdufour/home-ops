@@ -3,22 +3,27 @@ kind: Cluster
 metadata:
   name: miniflux-16-db
 spec:
-  # In Maintenance mode
-  # nodeMaintenanceWindow:
-  #   inProgress: true
-  #   reusePVC: false
-
   instances: 3
   imageName: ghcr.io/cloudnative-pg/postgresql:16.4-27
   primaryUpdateStrategy: unsupervised
 
   enableSuperuserAccess: true
+  enablePDB: true  # Enable PodDisruptionBudgets
 
+  # CRITICAL: Ensure replicas spread across nodes
   affinity:
     nodeSelector:
       ## Store it on the raspberry pi 4 with ssd
       raspberry.feature.node.kubernetes.io/4: "true"
       svccontroller.k3s.cattle.io/enablelb: "true"
+    podAntiAffinityType: required  # Force replicas on different nodes
+
+  # Optimized timing for node reboots/drains
+  failoverDelay: 60        # Wait 60s for node to return before failover
+  switchoverDelay: 60      # Graceful switchover delay
+  startDelay: 60          # Faster startup (vs default 3600s)
+  stopDelay: 30           # Faster shutdown (vs default 1800s)
+  smartShutdownTimeout: 60  # Quick graceful shutdown
 
   storage:
     size: 5Gi
