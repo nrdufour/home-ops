@@ -8,7 +8,7 @@ metadata:
 spec:
   targetNamespace: self-hosted
   path: ./kubernetes/main/apps/self-hosted/miniflux/app
-  prune: true
+  prune: false
   sourceRef:
     kind: GitRepository
     name: home-ops-kubernetes
