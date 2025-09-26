@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: miniflux-ingress
+  annotations:
+    gethomepage.dev/description: RSS Reader
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Media
+    gethomepage.dev/icon: miniflux.png
+    gethomepage.dev/name: Miniflux
+    gethomepage.dev/pod-selector: "app=miniflux"
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: ca-server-cluster-issuer
+    cert-manager.io/common-name: miniflux.internal
+    nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
+spec:
+  tls:
+    - hosts:
+      - miniflux.internal
+      secretName: miniflux-ing-cert
+  ingressClassName: nginx
+  rules:
+  - host: miniflux.internal
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: miniflux
+            port:
+              number: 8080

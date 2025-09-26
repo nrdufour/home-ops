@@ -1,0 +1,35 @@
+apiVersion: external-secrets.io/v1
+kind: ExternalSecret
+metadata:
+  name: miniflux-admin-user-secret
+spec:
+  refreshInterval: "10m"
+  target:
+    name: miniflux-admin-user-secret
+    deletionPolicy: Delete
+    template:
+      type: Opaque
+      data:
+        ADMIN_USERNAME: |-
+          {{ .MINIFLUX_ADMIN_USERNAME }}
+        ADMIN_PASSWORD: |-
+          {{ .MINIFLUX_ADMIN_PASSWORD }}
+  data:
+    - secretKey: MINIFLUX_ADMIN_USERNAME
+      sourceRef:
+        storeRef:
+          name: bitwarden-fields
+          kind: ClusterSecretStore
+      remoteRef:
+        # Item called "Self Hosted"
+        key: 6abe895f-83ea-4e1d-9610-a9324093d608
+        property: MINIFLUX_ADMIN_USERNAME
+    - secretKey: MINIFLUX_ADMIN_PASSWORD
+      sourceRef:
+        storeRef:
+          name: bitwarden-fields
+          kind: ClusterSecretStore
+      remoteRef:
+        # Item called "Self Hosted"
+        key: 6abe895f-83ea-4e1d-9610-a9324093d608
+        property: MINIFLUX_ADMIN_PASSWORD

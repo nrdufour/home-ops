@@ -1,0 +1,60 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: miniflux
+  labels:
+    app: miniflux
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: miniflux
+  template:
+    metadata:
+      labels:
+        app: miniflux
+    spec:
+      containers:
+      - name: miniflux
+        image: ghcr.io/miniflux/miniflux:2.0.51@sha256:9f3bca6a95428c04c8fb54ee723a5f69b9e419b0bf5dfd7a4d70dfb0414d60f1
+        envFrom:
+          - secretRef:
+              name: miniflux-admin-user-secret
+        env:
+          - name: "BASE_URL"
+            value: "https://miniflux.internal"
+          - name: "CREATE_ADMIN"
+            value: "1"
+          - name: "DATABASE_URL"
+            valueFrom:
+              secretKeyRef:
+                name: miniflux-16-db-app
+                key: uri
+          - name: "DEBUG"
+            value: "1"
+          - name: "LOG_DATE_TIME"
+            value: "15"
+          - name: "POLLING_SCHEDULER"
+            value: "entry_frequency"
+          - name: "POLLING_FREQUENCY"
+            value: "15"
+          - name: "RUN_MIGRATIONS"
+            value: "1"
+        ports:
+          - containerPort: 8080
+            name: http-miniflux
+        resources:
+          requests:
+            cpu: 12m
+            memory: 64M
+          limits:
+            memory: 256M
+        livenessProbe:
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 1
+          failureThreshold: 3
+          httpGet:
+            path: /healthcheck
+            port: 8080

@@ -9,3 +9,4 @@ resources:
   - mealie-app.yaml
   - wikijs-app.yaml
   - wallabag-app.yaml
+  - miniflux-app.yaml
