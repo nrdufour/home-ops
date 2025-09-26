@@ -19,4 +19,4 @@ resources:
   # - ./mealie/ks.yaml
   - ./miniflux/ks.yaml
   - ./wallabag/ks.yaml
-  - ./wikijs/ks.yaml
+  # - ./wikijs/ks.yaml
