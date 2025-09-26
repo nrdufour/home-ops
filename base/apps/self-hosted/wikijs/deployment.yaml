@@ -1,0 +1,54 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wikijs
+  labels:
+    app: wikijs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wikijs
+  template:
+    metadata:
+      labels:
+        app: wikijs
+    spec:
+      containers:
+      - name: wikijs
+        image: requarks/wiki:2.5
+        env:
+          - name: "DB_TYPE"
+            value: "postgres"
+          - name: "DB_HOST"
+            valueFrom:
+              secretKeyRef:
+                key: host
+                name: wikijs-16-db-app
+          - name: "DB_PORT"
+            valueFrom:
+              secretKeyRef:
+                key: port
+                name: wikijs-16-db-app
+          - name: "DB_NAME"
+            valueFrom:
+              secretKeyRef:
+                key: dbname
+                name: wikijs-16-db-app
+          - name: "DB_USER"
+            valueFrom:
+              secretKeyRef:
+                key: username
+                name: wikijs-16-db-app
+          - name: "DB_PASS"
+            valueFrom:
+              secretKeyRef:
+                key: password
+                name: wikijs-16-db-app
+        resources:
+          requests:
+            cpu: 100m
+            memory: 200M
+          limits:
+            memory: 512M

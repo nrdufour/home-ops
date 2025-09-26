@@ -1,10 +1,8 @@
----
 # yaml-language-server: $schema=https://json.schemastore.org/kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - homepage-app.yaml
-  - actual-app.yaml
-  # - searxng-app.yaml
-  - mealie-app.yaml
-  - wikijs-app.yaml
+- deployment.yaml
+- ingress.yaml
+- service.yaml
+- db
