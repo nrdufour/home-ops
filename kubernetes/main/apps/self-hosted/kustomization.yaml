@@ -18,5 +18,5 @@ resources:
   # - ./actual/ks.yaml
   # - ./mealie/ks.yaml
   - ./miniflux/ks.yaml
-  - ./wallabag/ks.yaml
+  # - ./wallabag/ks.yaml
   # - ./wikijs/ks.yaml
