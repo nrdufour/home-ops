@@ -40,10 +40,6 @@
   ignorePaths: [
     '**/*.sops.*',
     '**/.archive/**',
-    // Ignoring for now cloudnative-pg until the backup system is migrated
-    'kubernetes/main/apps/cnpg-system/cloudnative-pg/app/**',
-    // Ignoring komga for now, as they became a pain regarding nfs
-    'kubernetes/main/apps/media/komga/app/**',
   ],
   packageRules: [
     {
@@ -54,16 +50,6 @@
       versioning: 'regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-(?<compatibility>)$',
       matchPackageNames: [
         '/miniflux/',
-      ],
-    },
-    {
-      description: 'Custom versioning for minio',
-      matchDatasources: [
-        'docker',
-      ],
-      versioning: 'regex:^RELEASE\\.(?<major>\\d+)-(?<minor>\\d+)-(?<patch>\\d+)T.*Z$',
-      matchPackageNames: [
-        '/minio/',
       ],
     },
     {
