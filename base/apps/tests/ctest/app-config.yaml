@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ctest-config
+data:
+  # Required: Bitwarden item UUID for credentials
+  BITWARDEN_KEY: "your-bitwarden-item-uuid-here"
+  # Optional: Storage settings (using 1Gi as requested)
+  STORAGE_CLASS: "longhorn"
+  STORAGE_CAPACITY: "1Gi"
+  CACHE_CAPACITY: "1Gi"
+  # Optional: Backup schedule (default: hourly)
+  BACKUP_SCHEDULE: "0 * * * *"

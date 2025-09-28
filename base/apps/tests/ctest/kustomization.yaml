@@ -1,0 +1,138 @@
+# yaml-language-server: $schema=https://json.schemastore.org/kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- app-config.yaml
+- deployment.yaml
+components:
+- ../../../components/volsync
+replacements:
+# Replace Bitwarden key reference
+- source:
+    kind: ConfigMap
+    name: ctest-config
+    fieldPath: data.BITWARDEN_KEY
+  targets:
+  - select:
+      kind: ExternalSecret
+    fieldPaths:
+    - spec.data.0.remoteRef.key
+    - spec.data.1.remoteRef.key
+    - spec.data.2.remoteRef.key
+    - spec.data.3.remoteRef.key
+# Replace storage class
+- source:
+    kind: ConfigMap
+    name: ctest-config
+    fieldPath: data.STORAGE_CLASS
+  targets:
+  - select:
+      kind: PersistentVolumeClaim
+    fieldPaths:
+    - spec.storageClassName
+  - select:
+      kind: ReplicationSource
+    fieldPaths:
+    - spec.restic.storageClassName
+  - select:
+      kind: ReplicationDestination
+    fieldPaths:
+    - spec.restic.storageClassName
+# Replace storage capacity
+- source:
+    kind: ConfigMap
+    name: ctest-config
+    fieldPath: data.STORAGE_CAPACITY
+  targets:
+  - select:
+      kind: PersistentVolumeClaim
+    fieldPaths:
+    - spec.resources.requests.storage
+  - select:
+      kind: ReplicationDestination
+    fieldPaths:
+    - spec.restic.capacity
+# Replace cache capacity
+- source:
+    kind: ConfigMap
+    name: ctest-config
+    fieldPath: data.CACHE_CAPACITY
+  targets:
+  - select:
+      kind: ReplicationSource
+    fieldPaths:
+    - spec.restic.cacheCapacity
+  - select:
+      kind: ReplicationDestination
+    fieldPaths:
+    - spec.restic.cacheCapacity
+# Replace backup schedule
+- source:
+    kind: ConfigMap
+    name: ctest-config
+    fieldPath: data.BACKUP_SCHEDULE
+  targets:
+  - select:
+      kind: ReplicationSource
+    fieldPaths:
+    - spec.trigger.schedule
+# Fix cross-references with proper prefixes
+# Fix PVC dataSourceRef to point to correct ReplicationDestination
+- source:
+    kind: ReplicationDestination
+    name: app-dst
+    fieldPath: metadata.name
+  targets:
+  - select:
+      kind: PersistentVolumeClaim
+    fieldPaths:
+    - spec.dataSourceRef.name
+# Fix ReplicationSource sourcePVC to point to correct PVC
+- source:
+    kind: PersistentVolumeClaim
+    name: app
+    fieldPath: metadata.name
+  targets:
+  - select:
+      kind: ReplicationSource
+    fieldPaths:
+    - spec.sourcePVC
+# Fix ExternalSecret target name to match metadata name
+- source:
+    kind: ExternalSecret
+    name: app-volsync-secret
+    fieldPath: metadata.name
+  targets:
+  - select:
+      kind: ExternalSecret
+    fieldPaths:
+    - spec.target.name
+# Fix secret references in ReplicationSource and ReplicationDestination
+- source:
+    kind: ExternalSecret
+    name: app-volsync-secret
+    fieldPath: metadata.name
+  targets:
+  - select:
+      kind: ReplicationSource
+    fieldPaths:
+    - spec.restic.repository
+  - select:
+      kind: ReplicationDestination
+    fieldPaths:
+    - spec.restic.repository
+# Fix CA ConfigMap references
+- source:
+    kind: ConfigMap
+    name: app-volsync-ca
+    fieldPath: metadata.name
+  targets:
+  - select:
+      kind: ReplicationSource
+    fieldPaths:
+    - spec.restic.customCA.configMapName
+  - select:
+      kind: ReplicationDestination
+    fieldPaths:
+    - spec.restic.customCA.configMapName
+namePrefix: ctest-

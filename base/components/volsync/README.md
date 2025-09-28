@@ -19,7 +19,7 @@ The component creates:
 
 ## Bitwarden Setup
 
-Create a Bitwarden item named `volsync-restic` with these custom fields:
+Create a Bitwarden item with a unique name (the UUID will be used in the component) containing these custom fields:
 - `RESTIC_REPOSITORY`: S3/Restic repository URL
 - `RESTIC_PASSWORD`: Repository encryption password
 - `AWS_ACCESS_KEY_ID`: S3 access key
@@ -46,9 +46,12 @@ In your application's kustomization.yaml:
 ```yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+resources:
+- app-config.yaml
 components:
 - ../../../base/components/volsync
 replacements:
+# Replace resource names with app name
 - source:
     kind: ConfigMap
     name: app-config
@@ -74,9 +77,97 @@ replacements:
     - spec.target.name
   - select:
       kind: ConfigMap
+      name: app-volsync-ca
     fieldPaths:
     - metadata.name
+# Replace Bitwarden key reference (removes app- prefix)
+- source:
+    kind: ConfigMap
+    name: app-config
+    fieldPath: data.BITWARDEN_KEY
+  targets:
+  - select:
+      kind: ExternalSecret
+    fieldPaths:
+    - spec.data.[*].remoteRef.key
+    options:
+      delimiter: '-'
+      index: 1
+# Replace storage class
+- source:
+    kind: ConfigMap
+    name: app-config
+    fieldPath: data.STORAGE_CLASS
+  targets:
+  - select:
+      kind: PersistentVolumeClaim
+    fieldPaths:
+    - spec.storageClassName
+  - select:
+      kind: ReplicationSource
+    fieldPaths:
+    - spec.restic.storageClassName
+  - select:
+      kind: ReplicationDestination
+    fieldPaths:
+    - spec.restic.storageClassName
+# Replace storage capacity
+- source:
+    kind: ConfigMap
+    name: app-config
+    fieldPath: data.STORAGE_CAPACITY
+  targets:
+  - select:
+      kind: PersistentVolumeClaim
+    fieldPaths:
+    - spec.resources.requests.storage
+  - select:
+      kind: ReplicationDestination
+    fieldPaths:
+    - spec.restic.capacity
+# Replace cache capacity
+- source:
+    kind: ConfigMap
+    name: app-config
+    fieldPath: data.CACHE_CAPACITY
+  targets:
+  - select:
+      kind: ReplicationSource
+    fieldPaths:
+    - spec.restic.cacheCapacity
+  - select:
+      kind: ReplicationDestination
+    fieldPaths:
+    - spec.restic.cacheCapacity
+# Replace backup schedule
+- source:
+    kind: ConfigMap
+    name: app-config
+    fieldPath: data.BACKUP_SCHEDULE
+  targets:
+  - select:
+      kind: ReplicationSource
+    fieldPaths:
+    - spec.trigger.schedule
 namePrefix: myapp-
+```
+
+The required `app-config.yaml` ConfigMap should contain all configurable values:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  # Required: Bitwarden item UUID for credentials
+  BITWARDEN_KEY: "your-bitwarden-item-uuid-here"
+  # Optional: Storage settings (defaults shown)
+  STORAGE_CLASS: "longhorn"
+  STORAGE_CAPACITY: "5Gi"
+  CACHE_CAPACITY: "2Gi"
+  # Optional: Backup schedule (default: hourly)
+  BACKUP_SCHEDULE: "0 * * * *"
 ```
 
 ### Customization with Patches
