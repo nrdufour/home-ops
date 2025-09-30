@@ -19,6 +19,7 @@ spec:
         - image: forge.internal/nemo/marmitton:main-2488b7d-1759188924
           name: marmithon
           args:
+            - "/app/marmithon"
             - "-config"
             - "/etc/marmithon/marmithon.conf"
           volumeMounts:
