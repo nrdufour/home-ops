@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: marmithon
+  name: marmithon
+  namespace: irc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: marmithon
+  template:
+    metadata:
+      labels:
+        app: marmithon
+    spec:
+      containers:
+        - image: forge.internal/nemo/marmitton:main-2488b7d-1759188924
+          name: marmithon
+          args:
+            - "-config"
+            - "/etc/marmithon/marmithon.conf"
+          volumeMounts:
+            - name: config
+              mountPath: /etc/marmithon
+              readOnly: true
+            - name: marmithon-storage
+              mountPath: /data
+          resources:
+            requests:
+              cpu: 10m
+              memory: 20Mi
+            limits:
+              memory: 100Mi
+      volumes:
+        - name: config
+          configMap:
+            name: marmithon-config
+        - name: marmithon-storage
+          persistentVolumeClaim:
+            claimName: marmithon-longhorn-pvc

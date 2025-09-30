@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: marmithon
+  namespace: argocd
+spec:
+  project: default
+  source:
+    path: base/apps/irc/marmithon
+    repoURL: 'https://forge.internal/nemo/home-ops.git'
+    targetRevision: HEAD
+  destination:
+    namespace: irc
+    name: 'in-cluster'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
