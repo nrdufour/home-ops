@@ -16,7 +16,7 @@ spec:
         app: marmithon
     spec:
       containers:
-        - image: forge.internal/nemo/marmitton:main-2488b7d-1759188924
+        - image: forge.internal/nemo/marmitton:main-5dd3df7-1759438264
           name: marmithon
           args:
             - "/app/marmithon"
