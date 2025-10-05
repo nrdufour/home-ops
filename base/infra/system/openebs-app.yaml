@@ -19,6 +19,12 @@ spec:
           hostpathClass:
             name: openebs-hostpath
             basePath: /var/lib/rancher/openebs
+          # Additional storage class for CNPG databases with Retain policy
+          # This prevents data loss during node reboots by preserving PVs even if PVCs are deleted
+          additionalHostpathClass:
+            - name: openebs-hostpath-retain
+              basePath: /var/lib/rancher/openebs-retain
+              reclaimPolicy: Retain
           helperPod:
             image:
               registry: quay.io/
