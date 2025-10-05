@@ -13,9 +13,8 @@ spec:
   # CRITICAL: Ensure replicas spread across nodes
   affinity:
     nodeSelector:
-      ## Store it on the raspberry pi 4 with ssd
-      raspberry.feature.node.kubernetes.io/4: "true"
-      svccontroller.k3s.cattle.io/enablelb: "true"
+      ## Store it on the Orange Pi 5+ nodes
+      opi.feature.node.kubernetes.io/5plus: "true"
     podAntiAffinityType: required  # Force replicas on different nodes
 
   # Optimized timing for node reboots/drains
@@ -27,7 +26,7 @@ spec:
 
   storage:
     size: 5Gi
-    storageClass: openebs-hostpath-retain
+    storageClass: openebs-hostpath
 
   backup:
     target: "prefer-standby"

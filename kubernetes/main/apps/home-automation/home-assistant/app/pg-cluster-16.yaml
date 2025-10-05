@@ -26,7 +26,7 @@ spec:
 
   storage:
     size: 10Gi
-    storageClass: openebs-hostpath-retain
+    storageClass: openebs-hostpath
 
   backup:
     target: "prefer-standby"
