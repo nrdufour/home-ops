@@ -15,7 +15,7 @@ spec:
         image: &image
           repository: ghcr.io/perfectra1n/volsync
           tag: v0.15.38
-        kopia: *image
+        # kopia: *image
         rclone: *image
         restic: *image
         rsync: *image
@@ -24,10 +24,10 @@ spec:
         manageCRDs: true
         metrics:
           disableAuth: true
-        # podSecurityContext:
-        #   runAsNonRoot: true
-        #   runAsUser: 1000
-        #   runAsGroup: 1000
+        podSecurityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
+          runAsGroup: 1000
   destination:
     namespace: system
     name: 'in-cluster'
