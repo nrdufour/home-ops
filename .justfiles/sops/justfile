@@ -1,0 +1,12 @@
+# SOPS recipes
+
+# Update all sops secrets
+sops-update:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    # Find all .sops.yaml files (excluding .sops.yaml itself)
+    while IFS= read -r file; do
+        echo "Updating $file"
+        sops updatekeys "$file"
+    done < <(find . -type f -name '*.sops.yaml' ! -name '.sops.yaml')
