@@ -26,7 +26,7 @@ spec:
             name: private-ca
       containers:
         - name: bitwarden-cli
-          image: forge.internal/nemo/bitwarden-cli@sha256:9b69fd5463b0de4cafd9146ad6d6248eb799f568ee22466da548fdde48946aec
+          image: forge.internal/nemo/bitwarden-cli@sha256:6cccf4f03ea7ec01920a35c8f7a17acffedb94683e9237040087301690f53746
           imagePullPolicy: IfNotPresent
           env:
             # - name: NODE_TLS_REJECT_UNAUTHORIZED
