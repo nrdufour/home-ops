@@ -4,3 +4,6 @@ resources:
 - deployment.yaml
 - pv.yaml
 - service.yaml
+- backup-cronjob.yaml
+- backup-pvc.yaml
+- backup-secret.yaml

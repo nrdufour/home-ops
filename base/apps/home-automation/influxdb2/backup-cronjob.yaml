@@ -1,0 +1,67 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: influxdb2-backup
+spec:
+  # Run daily at 2 AM
+  schedule: "0 2 * * *"
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  concurrencyPolicy: Forbid
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: influxdb2-backup
+        spec:
+          restartPolicy: OnFailure
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
+          containers:
+          - name: backup
+            image: influxdb:2.7
+            command:
+            - /bin/sh
+            - -c
+            - |
+              set -e
+              echo "Starting InfluxDB backup at $(date)"
+
+              # Create timestamped backup directory
+              BACKUP_DIR="/backup/influxdb-backup-$(date +%Y%m%d-%H%M%S)"
+              mkdir -p "$BACKUP_DIR"
+
+              # Run InfluxDB backup
+              influx backup \
+                --host http://influxdb2:8086 \
+                --token "${INFLUXDB_TOKEN}" \
+                "$BACKUP_DIR"
+
+              echo "Backup completed successfully at $(date)"
+              echo "Backup location: $BACKUP_DIR"
+
+              # Keep only last 7 days of backups
+              echo "Cleaning up old backups..."
+              find /backup -maxdepth 1 -name "influxdb-backup-*" -type d -mtime +7 -exec rm -rf {} \;
+
+              # Show backup info
+              du -sh "$BACKUP_DIR"
+              echo "Available backups:"
+              ls -lh /backup/ | grep influxdb-backup
+            env:
+            - name: INFLUXDB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: influxdb2-admin-token
+                  key: token
+            volumeMounts:
+            - name: backup-storage
+              mountPath: /backup
+          volumes:
+          - name: backup-storage
+            persistentVolumeClaim:
+              claimName: influxdb2-backup-pvc
