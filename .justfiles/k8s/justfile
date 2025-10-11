@@ -3,6 +3,28 @@
 # renovate: datasource=github-releases depName=prometheus-operator/prometheus-operator
 prometheus_operator_version := "v0.80.0"
 
+# Retrieve kubeconfig from the main cluster host
+k8s-get-kubeconfig host="opi01.internal":
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    echo "Retrieving kubeconfig from {{host}}..."
+
+    # Create the kubernetes/main directory if it doesn't exist
+    mkdir -p {{kubernetes_dir}}/main
+
+    # Retrieve the kubeconfig file via SSH
+    ssh {{host}} 'sudo cat /etc/rancher/k3s/k3s.yaml' > {{kubernetes_dir}}/main/kubeconfig.tmp
+
+    # Replace 127.0.0.1 with the host address
+    sed 's/127\.0\.0\.1/{{host}}/g' {{kubernetes_dir}}/main/kubeconfig.tmp > {{kubernetes_dir}}/main/kubeconfig
+
+    # Clean up temporary file
+    rm {{kubernetes_dir}}/main/kubeconfig.tmp
+
+    echo "Kubeconfig saved to {{kubernetes_dir}}/main/kubeconfig"
+    echo "The server URL has been updated to use {{host}}"
+
 # Bootstrap Flux on a cluster (default: main)
 k8s-bootstrap cluster="main":
     #!/usr/bin/env bash
