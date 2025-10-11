@@ -9,9 +9,10 @@ This is a home operations (home-ops) repository for managing Kubernetes infrastr
 ## Key Commands
 
 ### Task Management
-- `task --list` - List all available tasks
-- `task k8s:bootstrap` - Bootstrap Flux on a cluster (installs Prometheus Operator CRDs, Flux, GitOps access, and kustomizations)
-- `task sops:update` - Update all SOPS secrets by running `sops updatekeys` on all `*.sops.yaml` files
+- `just` - List all available tasks
+- `just k8s-bootstrap cluster="main"` - Bootstrap Flux on a cluster (installs Prometheus Operator CRDs, Flux, GitOps access, and kustomizations)
+- `just sops-update` - Update all SOPS secrets by running `sops updatekeys` on all `*.sops.yaml` files
+- `just k8s-get-kubeconfig host="opi01.internal"` - Retrieve the latest kubeconfig from the first master node or the specified host
 
 ### SOPS and Secrets
 - SOPS configuration is in `.sops.yaml` with Age encryption
@@ -125,12 +126,12 @@ namePrefix: myapp-
 3. For encrypted secrets, use `sops` to edit: `sops <file>.sops.yaml`
 4. For ExternalSecrets, update Bitwarden vault with required fields
 5. Commit changes - ArgoCD will automatically sync
-6. For Flux bootstrap (legacy): `task k8s:bootstrap`
-7. Update SOPS keys when needed: `task sops:update`
+6. For Flux bootstrap (legacy): `just k8s-bootstrap`
+7. Update SOPS keys when needed: `just sops-update`
 
 ## Environment Setup
 
-Required environment variables (set in Taskfile.yaml):
+Required environment variables:
 - `KUBECONFIG` - Path to kubectl configuration
 - `SOPS_AGE_KEY_FILE` - Path to Age private key for SOPS
 
