@@ -71,6 +71,17 @@ just k8s-get-kubeconfig
 - **SOPS + Age** - Secrets management
 - **External Secrets** - Bitwarden integration
 - **Renovate** - Automated dependency updates
+- **NixOS** - Via [snowpea](https://github.com/nrdufour/snowpea) for declarative machine management
+
+## The Missing Piece
+
+This repository handles the Kubernetes workloads, but the actual machines running all this chaos are managed by [snowpea](https://github.com/nrdufour/snowpea) - a companion NixOS configuration repo. Because why stop at declarative Kubernetes when you can have declarative everything?
+
+Think of it this way:
+- **snowpea** = The OS layer (NixOS configurations for all the machines)
+- **home-ops** = The workload layer (Kubernetes apps and infrastructure)
+
+Together they form a complete infrastructure-as-code setup. Or as I like to call it: "Two repos to break instead of one."
 
 ## Philosophy
 
