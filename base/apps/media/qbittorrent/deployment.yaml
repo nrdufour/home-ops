@@ -58,6 +58,10 @@ spec:
               value: "true"
             - name: QBT_BitTorrent__Session__InterfaceAddress
               value: "10.2.0.2"
+            - name: QBT_Preferences__Downloads__SavePath
+              value: "/data/torrents"
+            - name: QBT_Preferences__Downloads__TempPathEnabled
+              value: "false"
           envFrom:
             - secretRef:
                 name: qbittorrent-app
