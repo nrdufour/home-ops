@@ -158,22 +158,18 @@ spec:
 
         # Port forwarding sync container
         - name: port-forward
-          image: ghcr.io/bjw-s/gluetun-qb-port-sync:v0.0.2
+          image: ghcr.io/monstermuffin/qsticky:latest
           env:
-            - name: GLUETUN_CONTROL_SERVER_HOST
-              value: "localhost"
-            - name: GLUETUN_CONTROL_SERVER_PORT
-              value: "8000"
-            - name: QBITTORRENT_HOST
+            - name: QBITTORRENT_SERVER
               value: "localhost"
             - name: QBITTORRENT_PORT
               value: "8080"
-            - name: CRON_ENABLED
-              value: "true"
-            - name: CRON_SCHEDULE
-              value: "*/5 * * * *"
-            - name: LOG_TIMESTAMP
-              value: "false"
+            - name: GLUETUN_HOST
+              value: "localhost"
+            - name: GLUETUN_PORT
+              value: "8000"
+            - name: LOG_LEVEL
+              value: "info"
           envFrom:
             - secretRef:
                 name: qbittorrent-app
@@ -188,7 +184,7 @@ spec:
             runAsGroup: 1000
             runAsNonRoot: true
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
+            readOnlyRootFilesystem: false
             capabilities:
               drop:
                 - ALL
