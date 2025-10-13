@@ -155,7 +155,8 @@ spec:
             capabilities:
               add:
                 - NET_ADMIN
-            allowPrivilegeEscalation: false
+                - NET_RAW
+            allowPrivilegeEscalation: true
 
         # Port forwarding sync container
         - name: port-forward
