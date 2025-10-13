@@ -60,28 +60,25 @@ spec:
             - name: tmp
               mountPath: /tmp
           livenessProbe:
-            httpGet:
-              path: /api/v2/app/version
+            tcpSocket:
               port: 8080
-            initialDelaySeconds: 30
+            initialDelaySeconds: 60
             periodSeconds: 30
-            timeoutSeconds: 10
+            timeoutSeconds: 5
             failureThreshold: 3
           readinessProbe:
-            httpGet:
-              path: /api/v2/app/version
+            tcpSocket:
               port: 8080
             initialDelaySeconds: 30
-            periodSeconds: 30
-            timeoutSeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
             failureThreshold: 3
           startupProbe:
-            httpGet:
-              path: /api/v2/app/version
+            tcpSocket:
               port: 8080
             initialDelaySeconds: 0
             periodSeconds: 5
-            timeoutSeconds: 10
+            timeoutSeconds: 5
             failureThreshold: 30
           resources:
             requests:
