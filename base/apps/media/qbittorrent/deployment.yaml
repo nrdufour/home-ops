@@ -28,6 +28,17 @@ spec:
         # Main qBittorrent container
         - name: qbittorrent
           image: ghcr.io/home-operations/qbittorrent:5.1.2@sha256:31ac39705e31f7cdcc04dc46c1c0b0cdf8dc6f9865d4894efc097a33adc41524
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Waiting for Gluetun VPN to be ready..."
+              until wget --spider -q http://localhost:9999 2>/dev/null; do
+                echo "VPN not ready, waiting 5s..."
+                sleep 5
+              done
+              echo "VPN is ready! Starting qBittorrent..."
+              exec /entrypoint.sh
           ports:
             - name: http
               containerPort: 8080
