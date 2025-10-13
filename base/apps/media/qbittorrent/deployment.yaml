@@ -122,6 +122,10 @@ spec:
               value: "10s"
             - name: HEALTH_SERVER_ADDRESS
               value: "0.0.0.0:9999"
+            - name: DOT
+              value: "off"
+            - name: DNS_ADDRESS
+              value: "127.0.0.1"
           envFrom:
             - secretRef:
                 name: qbittorrent-vpn
