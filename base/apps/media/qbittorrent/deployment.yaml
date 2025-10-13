@@ -44,7 +44,7 @@ spec:
             - name: QBT_Preferences__WebUI__AuthSubnetWhitelist
               value: "10.0.0.0/8"
             - name: QBT_Preferences__WebUI__LocalHostAuth
-              value: "false"
+              value: "true"
             - name: QBT_BitTorrent__Session__Interface
               value: "tun0"
             - name: QBT_BitTorrent__Session__InterfaceName
@@ -132,18 +132,18 @@ spec:
             httpGet:
               path: /
               port: 9999
-            initialDelaySeconds: 60
+            initialDelaySeconds: 120
             periodSeconds: 60
             timeoutSeconds: 10
-            failureThreshold: 3
+            failureThreshold: 5
           readinessProbe:
             httpGet:
               path: /
               port: 9999
-            initialDelaySeconds: 30
+            initialDelaySeconds: 60
             periodSeconds: 30
             timeoutSeconds: 10
-            failureThreshold: 3
+            failureThreshold: 5
           resources:
             requests:
               cpu: 50m
