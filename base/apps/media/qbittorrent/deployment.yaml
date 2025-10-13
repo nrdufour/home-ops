@@ -1,0 +1,205 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qbittorrent
+  namespace: media
+  labels:
+    app: qbittorrent
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: qbittorrent
+  template:
+    metadata:
+      labels:
+        app: qbittorrent
+    spec:
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
+        supplementalGroups:
+          - 100  # users group
+
+      containers:
+        # Main qBittorrent container
+        - name: qbittorrent
+          image: ghcr.io/onedr0p/qbittorrent:5.0.2@sha256:1cc1878d06fafe6a1a1294f1547203634e729e3386324b7a63c8fde68554d705
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: QBITTORRENT__PORT
+              value: "8080"
+            - name: QBITTORRENT__BT_PORT
+              value: "50413"
+            - name: QBT_Preferences__WebUI__AlternativeUIEnabled
+              value: "false"
+            - name: QBT_Preferences__WebUI__AuthSubnetWhitelistEnabled
+              value: "true"
+            - name: QBT_Preferences__WebUI__AuthSubnetWhitelist
+              value: "10.0.0.0/8"
+            - name: QBT_Preferences__WebUI__LocalHostAuth
+              value: "false"
+            - name: QBT_BitTorrent__Session__Interface
+              value: "tun0"
+            - name: QBT_BitTorrent__Session__InterfaceName
+              value: "tun0"
+          envFrom:
+            - secretRef:
+                name: qbittorrent-app
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: torrents
+              mountPath: /data/torrents
+            - name: tmp
+              mountPath: /tmp
+          livenessProbe:
+            httpGet:
+              path: /api/v2/app/version
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /api/v2/app/version
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /api/v2/app/version
+              port: 8080
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            timeoutSeconds: 10
+            failureThreshold: 30
+          resources:
+            requests:
+              cpu: 100m
+              memory: 512Mi
+            limits:
+              memory: 8Gi
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+        # Gluetun VPN sidecar
+        - name: gluetun
+          image: ghcr.io/qdm12/gluetun:v3.40.0
+          ports:
+            - name: gluetun-http
+              containerPort: 9999
+              protocol: TCP
+          env:
+            - name: VPN_SERVICE_PROVIDER
+              value: "protonvpn"
+            - name: VPN_TYPE
+              value: "wireguard"
+            - name: SERVER_COUNTRIES
+              value: "Netherlands"
+            - name: FIREWALL_OUTBOUND_SUBNETS
+              value: "10.0.0.0/8"
+            - name: VPN_PORT_FORWARDING
+              value: "on"
+            - name: VPN_PORT_FORWARDING_PROVIDER
+              value: "protonvpn"
+            - name: LOG_LEVEL
+              value: "info"
+            - name: HEALTH_VPN_DURATION_INITIAL
+              value: "30s"
+            - name: HEALTH_SUCCESS_WAIT_DURATION
+              value: "10s"
+          envFrom:
+            - secretRef:
+                name: qbittorrent-vpn
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 9999
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            timeoutSeconds: 10
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9999
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 10
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              memory: 512Mi
+          securityContext:
+            capabilities:
+              add:
+                - NET_ADMIN
+            allowPrivilegeEscalation: false
+
+        # Port forwarding sync container
+        - name: port-forward
+          image: ghcr.io/bjw-s/gluetun-qb-port-sync:v0.0.2
+          env:
+            - name: GLUETUN_CONTROL_SERVER_HOST
+              value: "localhost"
+            - name: GLUETUN_CONTROL_SERVER_PORT
+              value: "8000"
+            - name: QBITTORRENT_HOST
+              value: "localhost"
+            - name: QBITTORRENT_PORT
+              value: "8080"
+            - name: CRON_ENABLED
+              value: "true"
+            - name: CRON_SCHEDULE
+              value: "*/5 * * * *"
+            - name: LOG_TIMESTAMP
+              value: "false"
+          envFrom:
+            - secretRef:
+                name: qbittorrent-app
+          resources:
+            requests:
+              cpu: 10m
+              memory: 32Mi
+            limits:
+              memory: 128Mi
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: qbittorrent-config
+        - name: torrents
+          nfs:
+            server: cardinal.internal
+            path: /tank/Media/torrents
+        - name: tmp
+          emptyDir: {}
