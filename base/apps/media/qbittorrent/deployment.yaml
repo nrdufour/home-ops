@@ -173,11 +173,11 @@ spec:
         - name: port-forward
           image: ghcr.io/monstermuffin/qsticky:latest
           command:
-            - /bin/sh
+            - /bin/bash
             - -c
             - |
               echo "Waiting for qBittorrent and Gluetun to be ready..."
-              until wget --spider -q http://localhost:8080 2>/dev/null && wget --spider -q http://localhost:8000 2>/dev/null; do
+              until (echo > /dev/tcp/localhost/8080) 2>/dev/null && (echo > /dev/tcp/localhost/8000) 2>/dev/null; do
                 echo "Services not ready, waiting 5s..."
                 sleep 5
               done
