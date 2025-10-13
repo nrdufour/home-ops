@@ -172,6 +172,17 @@ spec:
         # Port forwarding sync container
         - name: port-forward
           image: ghcr.io/monstermuffin/qsticky:latest
+          command:
+            - /bin/sh
+            - -c
+            - |
+              echo "Waiting for qBittorrent and Gluetun to be ready..."
+              until wget --spider -q http://localhost:8080 2>/dev/null && wget --spider -q http://localhost:8000 2>/dev/null; do
+                echo "Services not ready, waiting 5s..."
+                sleep 5
+              done
+              echo "Services ready! Starting qsticky..."
+              exec python -m qsticky
           env:
             - name: QBITTORRENT_SERVER
               value: "localhost"
