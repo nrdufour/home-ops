@@ -184,7 +184,7 @@ spec:
               echo "Services ready! Starting qsticky..."
               exec python -m qsticky
           env:
-            - name: QBITTORRENT_SERVER
+            - name: QBITTORRENT_HOST
               value: "localhost"
             - name: QBITTORRENT_PORT
               value: "8080"
