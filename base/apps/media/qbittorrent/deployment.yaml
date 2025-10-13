@@ -124,7 +124,7 @@ spec:
             - name: VPN_TYPE
               value: "wireguard"
             - name: SERVER_COUNTRIES
-              value: "Netherlands"
+              value: "Iceland"
             - name: FIREWALL_OUTBOUND_SUBNETS
               value: "10.42.0.0/16,10.43.0.0/16"
             - name: VPN_PORT_FORWARDING
