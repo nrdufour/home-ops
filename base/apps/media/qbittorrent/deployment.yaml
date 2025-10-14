@@ -146,22 +146,23 @@ spec:
           envFrom:
             - secretRef:
                 name: qbittorrent-vpn
-          livenessProbe:
-            httpGet:
-              path: /
-              port: 9999
-            initialDelaySeconds: 120
-            periodSeconds: 60
-            timeoutSeconds: 10
-            failureThreshold: 5
-          readinessProbe:
-            httpGet:
-              path: /
-              port: 9999
-            initialDelaySeconds: 60
-            periodSeconds: 30
-            timeoutSeconds: 10
-            failureThreshold: 5
+          # Probes disabled - causing unnecessary restarts
+          # livenessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 9999
+          #   initialDelaySeconds: 120
+          #   periodSeconds: 60
+          #   timeoutSeconds: 10
+          #   failureThreshold: 5
+          # readinessProbe:
+          #   httpGet:
+          #     path: /
+          #     port: 9999
+          #   initialDelaySeconds: 60
+          #   periodSeconds: 30
+          #   timeoutSeconds: 10
+          #   failureThreshold: 5
           resources:
             requests:
               cpu: 50m
