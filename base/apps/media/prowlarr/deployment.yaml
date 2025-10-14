@@ -71,15 +71,17 @@ spec:
               memory: 256Mi
             limits:
               memory: 1Gi
-          securityContext:
-            runAsUser: 1000
-            runAsGroup: 1000
-            runAsNonRoot: true
-            allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: false
-            capabilities:
-              drop:
-                - ALL
+          # LinuxServer.io images handle user switching via PUID/PGID
+          # and need relaxed security context for s6-overlay init system
+          # securityContext:
+          #   runAsUser: 1000
+          #   runAsGroup: 1000
+          #   runAsNonRoot: true
+          #   allowPrivilegeEscalation: false
+          #   readOnlyRootFilesystem: false
+          #   capabilities:
+          #     drop:
+          #       - ALL
 
       volumes:
         - name: config
