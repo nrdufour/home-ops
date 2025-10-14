@@ -6,9 +6,11 @@ This guide walks through configuring the *arr stack after initial deployment.
 
 All applications should be running and accessible:
 - qBittorrent: `https://qbittorrent.internal`
+- NZBGet: `https://nzbget.internal`
 - Prowlarr: `https://prowlarr.internal`
 - Sonarr: `https://sonarr.internal`
 - Radarr: `https://radarr.internal`
+- Readarr: `https://readarr.internal`
 
 ## Step 1: Collect API Keys
 
@@ -35,6 +37,13 @@ Each *arr application generates a unique API key on first startup. You'll need t
 3. Copy the **API Key**
 4. Save to Bitwarden under "Media Stack" item as `RADARR_API_KEY`
 
+### Readarr API Key
+
+1. Navigate to `https://readarr.internal`
+2. Go to **Settings → General → Security**
+3. Copy the **API Key**
+4. Save to Bitwarden under "Media Stack" item as `READARR_API_KEY`
+
 ## Step 2: Configure Root Folders
 
 Root folders define where media files are stored.
@@ -55,6 +64,15 @@ Root folders define where media files are stored.
 3. Scroll to **Root Folders** section
 4. Click **Add Root Folder (+)**
 5. Enter path: `/data/media/Movies`
+6. Click **OK**
+
+### Readarr Root Folder
+
+1. Navigate to `https://readarr.internal`
+2. Go to **Settings → Media Management**
+3. Scroll to **Root Folders** section
+4. Click **Add Root Folder (+)**
+5. Enter path: `/data/books`
 6. Click **OK**
 
 ## Step 3: Connect Prowlarr to Sonarr
@@ -91,7 +109,25 @@ Prowlarr manages indexers centrally and syncs them to Sonarr and Radarr.
 6. Click **Test** to verify connection
 7. Click **Save**
 
-## Step 5: Add qBittorrent to Sonarr
+## Step 4a: Connect Prowlarr to Readarr
+
+1. Navigate to `https://prowlarr.internal`
+2. Go to **Settings → Apps**
+3. Click **Add Application (+)**
+4. Select **Readarr**
+5. Configure:
+   - **Name:** `Readarr`
+   - **Sync Level:** `Full Sync`
+   - **Tags:** (leave empty for all indexers)
+   - **Prowlarr Server:** `http://localhost:9696`
+   - **Readarr Server:** `http://readarr.media.svc.cluster.local:8787`
+   - **API Key:** (Paste Readarr's API key from Step 1)
+6. Click **Test** to verify connection
+7. Click **Save**
+
+## Step 5: Add Download Clients
+
+### Add qBittorrent to Sonarr
 
 1. Navigate to `https://sonarr.internal`
 2. Go to **Settings → Download Clients**
@@ -132,6 +168,95 @@ Prowlarr manages indexers centrally and syncs them to Sonarr and Radarr.
    - **Initial State:** `Start`
 6. Click **Test** to verify connection
 7. Click **Save**
+
+### Add qBittorrent to Readarr
+
+1. Navigate to `https://readarr.internal`
+2. Go to **Settings → Download Clients**
+3. Click **Add (+)**
+4. Select **qBittorrent**
+5. Configure:
+   - **Name:** `qBittorrent`
+   - **Enable:** ✓ (checked)
+   - **Host:** `qbittorrent.media.svc.cluster.local`
+   - **Port:** `8080`
+   - **Username:** `admin` (from Bitwarden)
+   - **Password:** (from Bitwarden `QBITTORRENT_PASSWORD`)
+   - **Category:** `readarr` (optional but recommended)
+   - **Post-Import Category:** (leave empty)
+   - **Recent Priority:** `Last`
+   - **Older Priority:** `Last`
+   - **Initial State:** `Start`
+6. Click **Test** to verify connection
+7. Click **Save**
+
+### Add NZBGet to Sonarr (Optional - Usenet)
+
+1. Navigate to `https://sonarr.internal`
+2. Go to **Settings → Download Clients**
+3. Click **Add (+)**
+4. Select **NZBGet**
+5. Configure:
+   - **Name:** `NZBGet`
+   - **Enable:** ✓ (checked)
+   - **Host:** `nzbget.media.svc.cluster.local`
+   - **Port:** `6789`
+   - **Username:** `admin`
+   - **Password:** (from Bitwarden `NZBGET_PASSWORD`)
+   - **Category:** `sonarr` (optional but recommended)
+   - **Priority:** `1` (higher priority than qBittorrent for faster downloads)
+6. Click **Test** to verify connection
+7. Click **Save**
+
+### Add NZBGet to Radarr (Optional - Usenet)
+
+1. Navigate to `https://radarr.internal`
+2. Go to **Settings → Download Clients**
+3. Click **Add (+)**
+4. Select **NZBGet**
+5. Configure:
+   - **Name:** `NZBGet`
+   - **Enable:** ✓ (checked)
+   - **Host:** `nzbget.media.svc.cluster.local`
+   - **Port:** `6789`
+   - **Username:** `admin`
+   - **Password:** (from Bitwarden `NZBGET_PASSWORD`)
+   - **Category:** `radarr` (optional but recommended)
+   - **Priority:** `1` (higher priority than qBittorrent for faster downloads)
+6. Click **Test** to verify connection
+7. Click **Save**
+
+### Add NZBGet to Readarr (Optional - Usenet)
+
+1. Navigate to `https://readarr.internal`
+2. Go to **Settings → Download Clients**
+3. Click **Add (+)**
+4. Select **NZBGet**
+5. Configure:
+   - **Name:** `NZBGet`
+   - **Enable:** ✓ (checked)
+   - **Host:** `nzbget.media.svc.cluster.local`
+   - **Port:** `6789`
+   - **Username:** `admin`
+   - **Password:** (from Bitwarden `NZBGET_PASSWORD`)
+   - **Category:** `readarr` (optional but recommended)
+   - **Priority:** `1` (higher priority than qBittorrent for faster downloads)
+6. Click **Test** to verify connection
+7. Click **Save**
+
+## Step 6: Configure NZBGet Paths (If Using Usenet)
+
+If you added NZBGet as a download client, configure its paths:
+
+1. Navigate to `https://nzbget.internal`
+2. Click **Settings** (gear icon)
+3. Go to **PATHS** section
+4. Configure:
+   - **MainDir:** `/data/torrents`
+   - **DestDir:** `${MainDir}/complete`
+   - **InterDir:** `${MainDir}/incomplete`
+5. Click **Save all changes**
+6. Reload NZBGet when prompted
 
 ## Step 7: Add Indexers in Prowlarr
 
@@ -385,8 +510,10 @@ Enable metadata and artwork downloads:
 - [Prowlarr Wiki](https://wiki.servarr.com/prowlarr)
 - [Sonarr Wiki](https://wiki.servarr.com/sonarr)
 - [Radarr Wiki](https://wiki.servarr.com/radarr)
+- [Readarr Wiki](https://wiki.servarr.com/readarr)
 - [qBittorrent Documentation](https://github.com/qbittorrent/qBittorrent/wiki)
+- [NZBGet Documentation](https://nzbget.com/documentation)
 - [TRaSH Guides](https://trash-guides.info/) - Comprehensive *arr stack guides
 
 ---
-**Last Updated:** 2025-10-13
+**Last Updated:** 2025-10-14
