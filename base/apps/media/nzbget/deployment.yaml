@@ -18,6 +18,12 @@ spec:
       labels:
         app: nzbget
     spec:
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
+        supplementalGroups:
+          - 100  # users group
+
       containers:
         - name: nzbget
           image: ghcr.io/home-operations/nzbget:25.4.0@sha256:7afaa93e1992f86a033a310eb0f012f1e4c6bd406caa608146df951e85298ff1
