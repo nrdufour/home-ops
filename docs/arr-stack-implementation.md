@@ -33,6 +33,7 @@ This document tracks the implementation of a complete media automation stack on 
    - Web UI: `http://radarr.internal`
 
 5. **Future additions:**
+   - **SABnzbd or NZBGet** (Usenet/NZB downloader) - To be added after Sonarr/Radarr are operational
    - Bazarr (subtitles)
    - Lidarr (music)
    - Readarr (books/audiobooks)
@@ -490,6 +491,40 @@ Before deploying to cluster:
 - [Sonarr Wiki](https://wiki.servarr.com/sonarr)
 - [Radarr Wiki](https://wiki.servarr.com/radarr)
 - [qBittorrent Documentation](https://github.com/qbittorrent/qBittorrent/wiki)
+
+## Future Enhancements
+
+### Usenet/NZB Support (Priority: After Sonarr/Radarr completion)
+
+**Why add Usenet:**
+- Faster downloads (no seeding required)
+- Better availability for older/obscure content
+- Encrypted connections (no VPN needed)
+- Complements torrent sources
+
+**Options:**
+1. **SABnzbd** (Recommended)
+   - User-friendly web interface
+   - Mature and well-documented
+   - Good Sonarr/Radarr integration
+   - Image: `lscr.io/linuxserver/sabnzbd`
+
+2. **NZBGet**
+   - Lighter weight, more efficient
+   - Lower resource usage
+   - Still actively maintained
+   - Image: `lscr.io/linuxserver/nzbget`
+
+**Requirements:**
+- Usenet provider subscription (e.g., Newshosting, Eweka, Frugal Usenet)
+- NZB indexer access (e.g., NZBGeek, NZBPlanet, or free indexers)
+- Additional storage for incomplete downloads (`/tank/Media/usenet/incomplete`)
+
+**Implementation Notes:**
+- No VPN needed (Usenet uses SSL/TLS)
+- Similar deployment pattern to qBittorrent (but simpler, no sidecar)
+- Sonarr/Radarr can use both torrent and Usenet simultaneously
+- NZB indexers can be managed through Prowlarr
 
 ## Next Steps for Current Session
 
