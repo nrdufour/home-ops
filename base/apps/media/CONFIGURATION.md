@@ -143,10 +143,21 @@ Indexers are torrent trackers or sites where content is indexed.
 2. Go to **Indexers**
 3. Click **Add Indexer (+)**
 4. Search for public indexers:
-   - **1337x** (popular public tracker)
-   - **The Pirate Bay** (if available in your region)
-   - **EZTV** (TV shows focused)
-   - **YTS** (movies focused)
+
+   **Indexers that work without Cloudflare bypass:**
+   - **EZTV** - TV shows focused, reliable
+   - **TorrentGalaxy (TGx)** - General tracker, good selection
+   - **Torlock** - Movies and TV, usually works well
+   - **Nyaa** - Anime focused, very reliable
+   - **RuTracker** - Large Russian tracker (works globally)
+
+   **Indexers that require FlareSolverr (Cloudflare protected):**
+   - **1337x** - Popular but needs FlareSolverr
+   - **The Pirate Bay** - Needs FlareSolverr
+   - **RARBG alternatives** - Most need FlareSolverr
+
+   > **Note:** If you want to use Cloudflare-protected indexers, you'll need to deploy FlareSolverr. See the arr-stack implementation guide for details on adding FlareSolverr in the future.
+
 5. For each indexer:
    - Select the indexer from the list
    - Configure any required settings (usually minimal for public indexers)

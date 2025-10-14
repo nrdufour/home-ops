@@ -34,6 +34,7 @@ This document tracks the implementation of a complete media automation stack on 
 
 5. **Future additions:**
    - **SABnzbd or NZBGet** (Usenet/NZB downloader) - To be added after Sonarr/Radarr are operational
+   - **FlareSolverr** (Cloudflare bypass proxy) - Enables Prowlarr to use Cloudflare-protected indexers (1337x, etc.)
    - Bazarr (subtitles)
    - Lidarr (music)
    - Readarr (books/audiobooks)
@@ -493,6 +494,31 @@ Before deploying to cluster:
 - [qBittorrent Documentation](https://github.com/qbittorrent/qBittorrent/wiki)
 
 ## Future Enhancements
+
+### FlareSolverr (Cloudflare Bypass)
+
+**Purpose:** Allows Prowlarr to access indexers protected by Cloudflare (e.g., 1337x, The Pirate Bay)
+
+**Why needed:**
+- Many popular public indexers use Cloudflare protection
+- Cloudflare blocks automated requests (like those from Prowlarr)
+- FlareSolverr acts as a proxy that solves Cloudflare challenges
+
+**Implementation:**
+- Simple container deployment (no special configuration needed)
+- Image: `ghcr.io/flaresolverr/flaresolverr:latest`
+- Prowlarr integrates via Settings → Indexers → Add FlareSolverr
+- No VPN needed (just talks to indexers on behalf of Prowlarr)
+
+**Configuration in Prowlarr:**
+1. Settings → Indexers → FlareSolverr Tags
+2. Add FlareSolverr endpoint: `http://flaresolverr.media.svc.cluster.local:8191`
+3. Tag indexers that need Cloudflare bypass
+
+**Resources:**
+- ~100MB memory
+- Minimal CPU usage
+- Port: 8191
 
 ### Usenet/NZB Support (Priority: After Sonarr/Radarr completion)
 
