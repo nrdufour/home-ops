@@ -1,0 +1,71 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nzbget
+  namespace: media
+  labels:
+    app: nzbget
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: nzbget
+  template:
+    metadata:
+      labels:
+        app: nzbget
+    spec:
+      containers:
+        - name: nzbget
+          image: ghcr.io/home-operations/nzbget:25.4.0@sha256:7afaa93e1992f86a033a310eb0f012f1e4c6bd406caa608146df951e85298ff1
+          ports:
+            - name: http
+              containerPort: 6789
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "America/New_York"
+            - name: NZBGET_USER
+              value: "admin"
+            - name: NZBGET_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: nzbget-app
+                  key: NZBGET_PASSWORD
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: downloads
+              mountPath: /data/torrents
+            - name: movies
+              mountPath: /data/media/Movies
+            - name: series
+              mountPath: /data/media/Series
+          resources:
+            requests:
+              cpu: 100m
+              memory: 512Mi
+            limits:
+              memory: 2Gi
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: nzbget-config
+        - name: downloads
+          nfs:
+            server: cardinal.internal
+            path: /tank/Media/torrents
+        - name: movies
+          nfs:
+            server: cardinal.internal
+            path: /tank/Media/Movies
+        - name: series
+          nfs:
+            server: cardinal.internal
+            path: /tank/Media/Series

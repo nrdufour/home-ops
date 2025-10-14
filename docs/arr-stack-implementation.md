@@ -32,8 +32,13 @@ This document tracks the implementation of a complete media automation stack on 
    - Quality management and upgrading
    - Web UI: `http://radarr.internal`
 
-5. **Future additions:**
-   - **SABnzbd or NZBGet** (Usenet/NZB downloader) - To be added after Sonarr/Radarr are operational
+5. **NZBGet** - Usenet downloader
+   - Fast, efficient NZB/Usenet downloads
+   - Lightweight C++ implementation
+   - Complements torrent sources
+   - Web UI: `http://nzbget.internal`
+
+6. **Future additions:**
    - **FlareSolverr** (Cloudflare bypass proxy) - Enables Prowlarr to use Cloudflare-protected indexers (1337x, etc.)
    - Bazarr (subtitles)
    - Lidarr (music)
@@ -83,6 +88,7 @@ This document tracks the implementation of a complete media automation stack on 
 
 **Mount strategy:**
 - **qBittorrent:** Mount `/tank/Media/torrents` for downloads
+- **NZBGet:** Mount `/tank/Media/torrents` for downloads (shared directory, no collision)
 - **Sonarr:** Mount `/tank/Media/Series` (TV shows) + `/tank/Media/torrents` (downloads)
 - **Radarr:** Mount `/tank/Media/Movies` (movies) + `/tank/Media/torrents` (downloads)
 - **Prowlarr:** No media mounts needed (only manages indexers)
@@ -343,10 +349,25 @@ Persistence:
   movies: /data/media/Movies             # NFS: /tank/Media/Movies
 ```
 
+### NZBGet Configuration
+```yaml
+Persistence:
+  config: /config                        # Longhorn PVC
+  downloads: /data/torrents              # NFS: /tank/Media/torrents (shared with qBittorrent)
+  series: /data/media/Series             # NFS: /tank/Media/Series
+  movies: /data/media/Movies             # NFS: /tank/Media/Movies
+
+Environment:
+  NZBGET_USER: admin
+  NZBGET_PASS: <from bitwarden>
+```
+
 ### Network Flow
 ```
 Internet → ProtonVPN → Gluetun → qBittorrent (pod)
                                      ↑
+Internet (SSL/TLS) → NZBGet (pod) ───┤
+                                     |
                                      | (cluster network)
                                      |
 Prowlarr ─────────────────────────────┤
@@ -354,7 +375,10 @@ Sonarr   ───────────────────────�
 Radarr   ─────────────────────────────┘
 ```
 
-**Important:** Only qBittorrent traffic goes through VPN. Prowlarr, Sonarr, and Radarr communicate with qBittorrent over the cluster network (10.0.0.0/8).
+**Important:**
+- Only qBittorrent traffic goes through VPN (torrent protocol requires privacy)
+- NZBGet uses direct encrypted SSL/TLS connections to Usenet servers (no VPN needed)
+- Prowlarr, Sonarr, and Radarr communicate with download clients over the cluster network (10.0.0.0/8)
 
 ## Helm Charts Used
 
