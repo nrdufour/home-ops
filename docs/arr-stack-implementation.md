@@ -38,11 +38,16 @@ This document tracks the implementation of a complete media automation stack on 
    - Complements torrent sources
    - Web UI: `http://nzbget.internal`
 
-6. **Future additions:**
+6. **Readarr** - Book and audiobook management
+   - Automated book/ebook/audiobook downloads
+   - Metadata management via Goodreads/Google Books
+   - Support for multiple formats (EPUB, MOBI, PDF, AZW3, etc.)
+   - Web UI: `http://readarr.internal`
+
+7. **Future additions:**
    - **FlareSolverr** (Cloudflare bypass proxy) - Enables Prowlarr to use Cloudflare-protected indexers (1337x, etc.)
    - Bazarr (subtitles)
    - Lidarr (music)
-   - Readarr (books/audiobooks)
 
 ### Infrastructure
 
@@ -91,6 +96,7 @@ This document tracks the implementation of a complete media automation stack on 
 - **NZBGet:** Mount `/tank/Media/torrents` for downloads (shared directory, no collision)
 - **Sonarr:** Mount `/tank/Media/Series` (TV shows) + `/tank/Media/torrents` (downloads)
 - **Radarr:** Mount `/tank/Media/Movies` (movies) + `/tank/Media/torrents` (downloads)
+- **Readarr:** Mount `/tank/Books` (books/audiobooks) + `/tank/Media/torrents` (downloads)
 - **Prowlarr:** No media mounts needed (only manages indexers)
 
 #### Networking
@@ -362,6 +368,14 @@ Environment:
   NZBGET_PASS: <from bitwarden>
 ```
 
+### Readarr Configuration
+```yaml
+Persistence:
+  config: /config                        # Longhorn PVC
+  downloads: /data/torrents              # NFS: /tank/Media/torrents
+  books: /data/books                     # NFS: /tank/Books
+```
+
 ### Network Flow
 ```
 Internet → ProtonVPN → Gluetun → qBittorrent (pod)
@@ -372,13 +386,14 @@ Internet (SSL/TLS) → NZBGet (pod) ───┤
                                      |
 Prowlarr ─────────────────────────────┤
 Sonarr   ─────────────────────────────┤
-Radarr   ─────────────────────────────┘
+Radarr   ─────────────────────────────┤
+Readarr  ─────────────────────────────┘
 ```
 
 **Important:**
 - Only qBittorrent traffic goes through VPN (torrent protocol requires privacy)
 - NZBGet uses direct encrypted SSL/TLS connections to Usenet servers (no VPN needed)
-- Prowlarr, Sonarr, and Radarr communicate with download clients over the cluster network (10.0.0.0/8)
+- Prowlarr, Sonarr, Radarr, and Readarr communicate with download clients over the cluster network (10.0.0.0/8)
 
 ## Helm Charts Used
 
