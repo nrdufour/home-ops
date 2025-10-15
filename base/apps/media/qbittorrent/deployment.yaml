@@ -18,6 +18,9 @@ spec:
       labels:
         app: qbittorrent
     spec:
+      nodeSelector:
+        opi.feature.node.kubernetes.io/5plus: "true"
+
       securityContext:
         fsGroup: 1000
         fsGroupChangePolicy: "OnRootMismatch"
