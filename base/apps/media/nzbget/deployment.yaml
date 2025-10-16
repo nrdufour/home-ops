@@ -51,7 +51,7 @@ spec:
             - name: config
               mountPath: /config
             - name: downloads
-              mountPath: /data/torrents
+              mountPath: /data/Downloads
             - name: movies
               mountPath: /data/media/Movies
             - name: series
@@ -67,9 +67,8 @@ spec:
           persistentVolumeClaim:
             claimName: nzbget-config
         - name: downloads
-          nfs:
-            server: cardinal.internal
-            path: /tank/Media/torrents
+          persistentVolumeClaim:
+            claimName: nzbget-downloads
         - name: movies
           nfs:
             server: cardinal.internal
