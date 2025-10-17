@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://forge.internal/nemo/home-ops.git
-    targetRevision: main
+    targetRevision: HEAD
     path: base/infra/system/kube-vip
   destination:
     namespace: kube-system
