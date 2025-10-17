@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cmd-params-cm
+  namespace: argocd
+data:
+  # Set reconciliation timeout to 1 hour (3600 seconds)
+  # Default is 180 seconds (3 minutes)
+  timeout.reconciliation: "3600s"

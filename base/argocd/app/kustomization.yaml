@@ -10,3 +10,5 @@ resources:
   - https://raw.githubusercontent.com/argoproj/argo-cd/v3.1.8/manifests/ha/install.yaml
   # Temporary ingress -- til we switch to gateway
   - ingress.yaml
+  # ArgoCD configuration
+  - argocd-cmd-params-cm.yaml
