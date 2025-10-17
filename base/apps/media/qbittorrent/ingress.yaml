@@ -1,0 +1,32 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qbittorrent
+  namespace: media
+  annotations:
+    cert-manager.io/cluster-issuer: ca-server-cluster-issuer
+    cert-manager.io/common-name: qbittorrent.internal
+    nginx.ingress.kubernetes.io/whitelist-source-range: 10.0.0.0/8
+    gethomepage.dev/enabled: "true"
+    gethomepage.dev/group: Media
+    gethomepage.dev/name: qBittorrent
+    gethomepage.dev/icon: qbittorrent.png
+    gethomepage.dev/description: Torrent client with VPN
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - qbittorrent.internal
+      secretName: qbittorrent-tls
+  rules:
+    - host: qbittorrent.internal
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: qbittorrent
+                port:
+                  number: 8080

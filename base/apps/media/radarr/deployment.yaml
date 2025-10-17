@@ -1,0 +1,92 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+  namespace: media
+  labels:
+    app: radarr
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: radarr
+  template:
+    metadata:
+      labels:
+        app: radarr
+    spec:
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: "OnRootMismatch"
+        supplementalGroups:
+          - 100  # users group
+
+      containers:
+        - name: radarr
+          image: lscr.io/linuxserver/radarr:5.15.1
+          ports:
+            - name: http
+              containerPort: 7878
+              protocol: TCP
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: "America/New_York"
+          volumeMounts:
+            - name: config
+              mountPath: /config
+            - name: movies
+              mountPath: /data/media/Movies
+            - name: torrents
+              mountPath: /data/torrents
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: 7878
+            initialDelaySeconds: 60
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: 7878
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          startupProbe:
+            httpGet:
+              path: /ping
+              port: 7878
+            initialDelaySeconds: 0
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 30
+          resources:
+            requests:
+              cpu: 50m
+              memory: 256Mi
+            limits:
+              memory: 1Gi
+          # LinuxServer.io images handle user switching via PUID/PGID
+          # and need relaxed security context for s6-overlay init system
+
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: radarr-config
+        - name: movies
+          nfs:
+            server: cardinal.internal
+            path: /tank/Media/Movies
+        - name: torrents
+          nfs:
+            server: cardinal.internal
+            path: /tank/Media/torrents

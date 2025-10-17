@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qbittorrent
+  namespace: media
+  labels:
+    app: qbittorrent
+spec:
+  selector:
+    app: qbittorrent
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+    - name: gluetun
+      port: 9999
+      targetPort: 9999
+      protocol: TCP

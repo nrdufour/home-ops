@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: radarr
+  namespace: argocd
+spec:
+  project: default
+  source:
+    path: base/apps/media/radarr
+    repoURL: https://forge.internal/nemo/home-ops.git
+    targetRevision: arr-stack
+  destination:
+    namespace: media
+    name: 'in-cluster'
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
