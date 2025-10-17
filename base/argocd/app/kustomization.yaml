@@ -10,6 +10,8 @@ resources:
   - https://raw.githubusercontent.com/argoproj/argo-cd/v3.1.8/manifests/ha/install.yaml
   # Temporary ingress -- til we switch to gateway
   - ingress.yaml
-patchesStrategicMerge:
-  # ArgoCD configuration overrides
-  - argocd-cmd-params-cm-patch.yaml
+configMapGenerator:
+  - name: argocd-cmd-params-cm
+    behavior: merge
+    literals:
+      - timeout.reconciliation=3600s
