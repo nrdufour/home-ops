@@ -11,7 +11,8 @@ resources:
   # Temporary ingress -- til we switch to gateway
   - ingress.yaml
 configMapGenerator:
-  - name: argocd-cmd-params-cm
+  - name: argocd-cm
     behavior: merge
     literals:
-      - timeout.reconciliation=3600s
+      # How often ArgoCD checks Git for changes (default: 3 minutes)
+      - timeout.reconciliation=1h
