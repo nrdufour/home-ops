@@ -9,7 +9,7 @@ spec:
   source:
     path: base/apps/media/nzbget
     repoURL: https://forge.internal/nemo/home-ops.git
-    targetRevision: arr-stack
+    targetRevision: HEAD
   destination:
     namespace: media
     name: 'in-cluster'

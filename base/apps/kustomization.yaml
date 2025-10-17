@@ -9,3 +9,8 @@ resources:
   - cnpg-system
   # - tests
   - irc
+  - media/prowlarr-app.yaml
+  - media/qbittorrent-app.yaml
+  - media/nzbget-app.yaml
+  - media/radarr-app.yaml
+  - media/sonarr-app.yaml
