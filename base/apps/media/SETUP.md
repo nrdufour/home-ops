@@ -2,40 +2,6 @@
 
 This guide walks you through the prerequisites for deploying the *arr stack with VPN protection.
 
-## Volume Architecture
-
-The media stack uses a hybrid storage approach:
-
-### Download Workflow
-1. **NZBGet downloads** → Longhorn volume (`nzbget-downloads`, 200Gi, ReadWriteMany)
-2. **Radarr/Sonarr import** → Read from shared Longhorn volume, move to NFS final destination
-3. **Final storage** → NFS (`/tank/Media/Movies` or `/tank/Media/Series`)
-
-### Volume Mounts
-
-**nzbget:**
-- `/config` → `nzbget-config` PVC (Longhorn, 1Gi)
-- `/data/Downloads` → `nzbget-downloads` PVC (Longhorn, 200Gi, shared)
-
-**radarr:**
-- `/config` → `radarr-config` PVC (Longhorn, 5Gi)
-- `/data/Downloads` → `nzbget-downloads` PVC (Longhorn, 200Gi, shared)
-- `/data/media/Movies` → NFS (cardinal.internal:/tank/Media/Movies)
-- `/data/torrents` → NFS (cardinal.internal:/tank/Media/torrents)
-
-**sonarr:**
-- `/config` → `sonarr-config` PVC (Longhorn, 5Gi)
-- `/data/Downloads` → `nzbget-downloads` PVC (Longhorn, 200Gi, shared)
-- `/data/media/Series` → NFS (cardinal.internal:/tank/Media/Series)
-- `/data/torrents` → NFS (cardinal.internal:/tank/Media/torrents)
-
-### Why This Architecture?
-
-- **Fast downloads:** Longhorn provides fast local storage for active downloads
-- **Shared access:** ReadWriteMany allows nzbget, radarr, and sonarr to access the same volume
-- **Efficient moves:** Radarr/Sonarr can efficiently move files from Longhorn to NFS
-- **NFS for final storage:** Large media library remains on NFS for capacity and accessibility
-
 ## Prerequisites
 
 ### 1. NFS Storage Setup
@@ -46,18 +12,12 @@ Create the required directory structure on `cardinal.internal`:
 # SSH to cardinal.internal
 ssh cardinal.internal
 
-# Create torrents directory structure (for qBittorrent)
-sudo mkdir -p /tank/Media/torrents
-
-# Ensure media directories exist
-sudo mkdir -p /tank/Media/Movies
-sudo mkdir -p /tank/Media/Series
+# Create torrents directory structure
+sudo mkdir -p /tank/Media/torrents/{incomplete,complete,watch}
 
 # Set appropriate permissions (adjust user/group as needed)
-sudo chown -R 1000:1000 /tank/Media/torrents
-sudo chown -R 1000:1000 /tank/Media/Movies
-sudo chown -R 1000:1000 /tank/Media/Series
-sudo chmod -R 775 /tank/Media/{torrents,Movies,Series}
+sudo chown -R <your-user>:<your-group> /tank/Media/torrents
+sudo chmod -R 755 /tank/Media/torrents
 ```
 
 **Verify NFS export:**
@@ -68,8 +28,6 @@ showmount -e cardinal.internal
 # Should show:
 # /tank/Media    10.0.0.0/8
 ```
-
-**Note:** Downloads are handled via a shared Longhorn volume (`nzbget-downloads`, 200Gi) mounted by nzbget, radarr, and sonarr. NFS is only used for the final media destinations and torrent downloads.
 
 ### 2. ProtonVPN Wireguard Configuration
 

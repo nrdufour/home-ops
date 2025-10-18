@@ -252,14 +252,11 @@ If you added NZBGet as a download client, configure its paths:
 2. Click **Settings** (gear icon)
 3. Go to **PATHS** section
 4. Configure:
-   - **MainDir:** `/data/Downloads`
-   - **DestDir:** `${MainDir}/completed`
-   - **InterDir:** `${MainDir}/intermediate`
-   - **NzbDir:** `${MainDir}/nzb`
+   - **MainDir:** `/data/torrents`
+   - **DestDir:** `${MainDir}/complete`
+   - **InterDir:** `${MainDir}/incomplete`
 5. Click **Save all changes**
 6. Reload NZBGet when prompted
-
-**Note:** NZBGet uses a dedicated Longhorn volume (200Gi) shared with Radarr and Sonarr for fast downloads. Files are moved from this volume to the final NFS locations (`/data/media/Movies` or `/data/media/Series`) by Radarr/Sonarr after import.
 
 ## Step 7: Add Indexers in Prowlarr
 

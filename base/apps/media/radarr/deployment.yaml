@@ -18,9 +18,6 @@ spec:
       labels:
         app: radarr
     spec:
-      nodeSelector:
-        opi.feature.node.kubernetes.io/5plus: "true"
-
       securityContext:
         fsGroup: 1000
         fsGroupChangePolicy: "OnRootMismatch"
@@ -44,8 +41,6 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
-            - name: downloads
-              mountPath: /data/Downloads
             - name: movies
               mountPath: /data/media/Movies
             - name: torrents
@@ -87,9 +82,6 @@ spec:
         - name: config
           persistentVolumeClaim:
             claimName: radarr-config
-        - name: downloads
-          persistentVolumeClaim:
-            claimName: nzbget-downloads
         - name: movies
           nfs:
             server: cardinal.internal
