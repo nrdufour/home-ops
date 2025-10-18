@@ -52,12 +52,6 @@ spec:
               mountPath: /config
             - name: downloads
               mountPath: /data/Downloads
-            - name: torrents
-              mountPath: /data/torrents
-            - name: movies
-              mountPath: /data/media/Movies
-            - name: series
-              mountPath: /data/media/Series
           resources:
             requests:
               cpu: 100m
@@ -71,15 +65,3 @@ spec:
         - name: downloads
           persistentVolumeClaim:
             claimName: nzbget-downloads
-        - name: torrents
-          nfs:
-            server: cardinal.internal
-            path: /tank/Media/torrents
-        - name: movies
-          nfs:
-            server: cardinal.internal
-            path: /tank/Media/Movies
-        - name: series
-          nfs:
-            server: cardinal.internal
-            path: /tank/Media/Series

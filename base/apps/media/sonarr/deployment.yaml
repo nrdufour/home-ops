@@ -18,6 +18,9 @@ spec:
       labels:
         app: sonarr
     spec:
+      nodeSelector:
+        opi.feature.node.kubernetes.io/5plus: "true"
+
       securityContext:
         fsGroup: 1000
         fsGroupChangePolicy: "OnRootMismatch"
@@ -41,6 +44,8 @@ spec:
           volumeMounts:
             - name: config
               mountPath: /config
+            - name: downloads
+              mountPath: /data/Downloads
             - name: series
               mountPath: /data/media/Series
             - name: torrents
@@ -82,6 +87,9 @@ spec:
         - name: config
           persistentVolumeClaim:
             claimName: sonarr-config
+        - name: downloads
+          persistentVolumeClaim:
+            claimName: nzbget-downloads
         - name: series
           nfs:
             server: cardinal.internal

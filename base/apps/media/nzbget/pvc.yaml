@@ -19,8 +19,8 @@ metadata:
   namespace: media
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 200Gi
-  storageClassName: openebs-hostpath
+  storageClassName: longhorn
