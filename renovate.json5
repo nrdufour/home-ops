@@ -64,6 +64,12 @@
   ],
   packageRules: [
     {
+      description: 'Disable git-tags datasource for OCI Helm charts (handled by regex manager)',
+      matchDatasources: ['git-tags'],
+      matchPackagePatterns: ['^oci://ghcr\\.io/'],
+      enabled: false,
+    },
+    {
       description: 'Custom versioning for miniflux',
       matchDatasources: [
         'docker',
