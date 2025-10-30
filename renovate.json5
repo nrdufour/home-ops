@@ -41,11 +41,13 @@
     '**/*.sops.*',
     '**/.archive/**',
   ],
-  registryAliases: {
-    'ghcr.io/bjw-s/helm': 'https://bjw-s.github.io/helm-charts',
-    'ghcr.io/kyverno/charts': 'https://kyverno.github.io/kyverno',
-    'ghcr.io/piraeusdatastore/helm-charts': 'https://piraeus.io/helm-charts',
-  },
+  hostRules: [
+    {
+      description: 'Use GitHub token for GHCR authentication',
+      hostType: 'docker',
+      matchHost: 'ghcr.io',
+    },
+  ],
   packageRules: [
     {
       description: 'Custom versioning for miniflux',
