@@ -50,12 +50,13 @@
   ],
   // Custom regex manager for OCI Helm charts in ArgoCD Applications
   // Note: This assumes repoURL field comes before targetRevision field in YAML files
+  // Handles both single source and multi-source (sources:) Applications
   regexManagers: [
     {
       description: 'Handle OCI Helm charts in ArgoCD Applications',
       fileMatch: ['^base/.+\\.yaml$', '^clusters/.+\\.yaml$'],
       matchStrings: [
-        'repoURL:\\s+oci://(?<depName>ghcr\\.io/[^\\s]+)\\s+targetRevision:\\s+(?<currentValue>[^\\s]+)',
+        '(?:-\\s+)?repoURL:\\s+oci://(?<depName>ghcr\\.io/[^\\s]+)\\s+targetRevision:\\s+(?<currentValue>[^\\s]+)',
       ],
       datasourceTemplate: 'docker',
       versioningTemplate: 'docker',
