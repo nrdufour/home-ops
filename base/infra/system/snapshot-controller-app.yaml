@@ -8,7 +8,7 @@ spec:
   source:
     path: .
     repoURL: oci://ghcr.io/piraeusdatastore/helm-charts/snapshot-controller
-    targetRevision: 4.1.0
+    targetRevision: 4.1.1
     helm:
       releaseName: snapshot-controller
       values: |
