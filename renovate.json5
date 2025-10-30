@@ -43,6 +43,19 @@
   ],
   packageRules: [
     {
+      description: 'Use helm datasource for OCI Helm charts in ArgoCD',
+      matchManagers: [
+        'argocd',
+      ],
+      matchDatasources: [
+        'git-tags',
+      ],
+      matchPackagePatterns: [
+        '^oci://.*',
+      ],
+      datasource: 'helm',
+    },
+    {
       description: 'Custom versioning for miniflux',
       matchDatasources: [
         'docker',
