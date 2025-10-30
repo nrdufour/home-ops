@@ -63,6 +63,13 @@
   ],
   packageRules: [
     {
+      description: 'Disable ArgoCD manager git-tags detection for OCI Helm charts (handled by regex manager)',
+      matchManagers: ['argocd'],
+      matchDatasources: ['git-tags'],
+      matchPackagePatterns: ['^oci://ghcr\\.io/'],
+      enabled: false,
+    },
+    {
       description: 'Custom versioning for miniflux',
       matchDatasources: [
         'docker',
