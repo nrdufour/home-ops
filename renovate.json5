@@ -48,6 +48,19 @@
       matchHost: 'ghcr.io',
     },
   ],
+  // Custom regex manager for OCI Helm charts in ArgoCD Applications
+  // Note: This assumes repoURL field comes before targetRevision field in YAML files
+  regexManagers: [
+    {
+      description: 'Handle OCI Helm charts in ArgoCD Applications',
+      fileMatch: ['^base/.+\\.yaml$', '^clusters/.+\\.yaml$'],
+      matchStrings: [
+        'repoURL:\\s+oci://(?<depName>ghcr\\.io/[^\\s]+)\\s+targetRevision:\\s+(?<currentValue>[^\\s]+)',
+      ],
+      datasourceTemplate: 'docker',
+      versioningTemplate: 'docker',
+    },
+  ],
   packageRules: [
     {
       description: 'Custom versioning for miniflux',
