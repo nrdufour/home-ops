@@ -56,7 +56,7 @@
       description: 'Handle OCI Helm charts in ArgoCD Applications',
       fileMatch: ['^base/.+\\.yaml$', '^clusters/.+\\.yaml$'],
       matchStrings: [
-        '(?:-\\s+)?repoURL:\\s+oci://(?<depName>ghcr\\.io/[^\\s]+)[\\s\\S]*?targetRevision:\\s+(?<currentValue>[^\\s]+)',
+        '(?:-\\s+)?repoURL:\\s+oci://(?<depName>ghcr\\.io/[^\\s]+)\\s+targetRevision:\\s+(?<currentValue>[^\\s]+)',
       ],
       datasourceTemplate: 'docker',
     },
