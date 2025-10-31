@@ -13,6 +13,7 @@ metadata:
     gethomepage.dev/name: qBittorrent
     gethomepage.dev/icon: qbittorrent.png
     gethomepage.dev/description: Torrent client with VPN
+    gethomepage.dev/pod-selector: "app=qbittorrent"
 spec:
   ingressClassName: nginx
   tls:
