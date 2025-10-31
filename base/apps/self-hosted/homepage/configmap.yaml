@@ -75,10 +75,10 @@ data:
           timeStyle: short
           hourCycle: h23
     - openmeteo:
-        label: Home
-        latitude: 50.85
-        longitude: 4.35
-        units: metric
+        label: West Orange, NJ
+        latitude: 40.7987
+        longitude: -74.2390
+        units: imperial
         cache: 5
     - kubernetes:
         cluster:
