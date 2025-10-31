@@ -11,6 +11,19 @@ data:
     traefik: false # enable traefik ingressRoute
     gateway: false # enable gateway-api
   settings.yaml: |
+   layout:
+     Media:
+       style: row
+       columns: 4
+     Home:
+       style: row
+       columns: 3
+     System:
+       style: row
+       columns: 3
+     Projects:
+       style: row
+       columns: 3
    providers:
      longhorn:
        url: https://longhorn.internal
