@@ -12,16 +12,16 @@ data:
     gateway: false # enable gateway-api
   settings.yaml: |
    layout:
-     Media:
-       style: row
-       columns: 4
      Home:
        style: row
        columns: 3
-     System:
+     Media:
+       style: row
+       columns: 4
+     Projects:
        style: row
        columns: 3
-     Projects:
+     System:
        style: row
        columns: 3
    providers:
