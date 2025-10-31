@@ -13,6 +13,7 @@ metadata:
     gethomepage.dev/name: Sonarr
     gethomepage.dev/icon: sonarr.png
     gethomepage.dev/description: TV show management
+    gethomepage.dev/pod-selector: "app=sonarr"
 spec:
   ingressClassName: nginx
   tls:

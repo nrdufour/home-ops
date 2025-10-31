@@ -13,6 +13,7 @@ metadata:
     gethomepage.dev/name: Prowlarr
     gethomepage.dev/icon: prowlarr.png
     gethomepage.dev/description: Indexer manager
+    gethomepage.dev/pod-selector: "app=prowlarr"
 spec:
   ingressClassName: nginx
   tls:
