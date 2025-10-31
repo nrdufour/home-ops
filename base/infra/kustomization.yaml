@@ -15,6 +15,7 @@ resources:
   - system/nfd-app.yaml
   - system/nfd-rules-app.yaml
   - system/openebs-app.yaml
+  - system/reloader-app.yaml
   - system/snapshot-controller-app.yaml
   - system/volsync-app.yaml
   - observability/kube-prometheus-stack-app.yaml
