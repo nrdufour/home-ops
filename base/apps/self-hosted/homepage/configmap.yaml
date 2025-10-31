@@ -27,7 +27,44 @@ data:
    providers:
      longhorn:
        url: https://longhorn.internal
-  custom.css: ""
+  custom.css: |
+    /* Rounded corners for service cards */
+    .service {
+      border-radius: 12px !important;
+    }
+
+    /* Rounded corners for widget cards */
+    .widget {
+      border-radius: 12px !important;
+    }
+
+    /* Better spacing between service groups */
+    .services-group {
+      margin-bottom: 2rem !important;
+    }
+
+    /* Better spacing for service items */
+    .service {
+      margin: 0.5rem !important;
+      padding: 1rem !important;
+    }
+
+    /* Rounded corners for bookmarks */
+    .bookmark {
+      border-radius: 8px !important;
+    }
+
+    /* Better spacing for widgets */
+    .widget {
+      margin: 0.5rem !important;
+      padding: 1rem !important;
+    }
+
+    /* Rounded search bar */
+    input[type="text"], input[type="search"] {
+      border-radius: 24px !important;
+      padding: 0.75rem 1.5rem !important;
+    }
   custom.js: ""
   bookmarks.yaml: |
     - Developer:
@@ -68,6 +105,9 @@ data:
             icon: sh-forgejo
 
   widgets.yaml: |
+    - search:
+        provider: duckduckgo
+        target: _blank
     - datetime:
         text_size: xl
         format:
