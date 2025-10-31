@@ -105,13 +105,4 @@ data:
         longitude: -74.2390
         units: imperial
         cache: 5
-    - kubernetes:
-        cluster:
-          show: true
-          cpu: true
-          memory: true
-          showLabel: true
-          label: "Cluster"
-        nodes:
-          show: false
   docker.yaml: ""
