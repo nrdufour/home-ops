@@ -87,6 +87,9 @@ data:
             icon: sh-forgejo
 
   widgets.yaml: |
+    - greeting:
+        text_size: xl
+        text: "Welcome home!"
     - search:
         provider: duckduckgo
         target: _blank
