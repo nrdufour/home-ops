@@ -23,10 +23,12 @@
     ],
   },
   'helm-values': {
+    // Detects Helm chart values in YAML files
+    // - base/: only helm-values.yaml files (ArgoCD Helm values)
+    // - kubernetes/: all YAML files (legacy Flux inline values)
     managerFilePatterns: [
+      '/(^|/)base/.+/helm-values\\.yaml$/',
       '/(^|/)kubernetes/.+\\.yaml$/',
-      '/(^|/)base/.+\\.yaml$/',
-      '/(^|/)clusters/.+\\.yaml$/',
     ],
   },
   kubernetes: {
