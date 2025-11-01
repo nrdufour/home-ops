@@ -1,0 +1,7 @@
+reloader:
+  watchGlobally: true
+  enableHA: false
+  autoReloadAll: false
+  logFormat: json
+  ignoreSecrets: false
+  ignoreConfigMaps: false

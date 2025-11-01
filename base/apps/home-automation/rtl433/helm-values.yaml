@@ -1,0 +1,58 @@
+defaultPodOptions:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+            - key: "rtlsdr.feature.node.kubernetes.io/v3"
+              operator: "In"
+              values:
+                - "true"
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - topologyKey: "kubernetes.io/hostname"
+          labelSelector:
+            matchExpressions:
+              - key: "app.kubernetes.io/name"
+                operator: "In"
+                values:
+                  - "rtlamr2mqtt"
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          repository: docker.io/hertzg/rtl_433
+          tag: "25.02"
+        args:
+          - "-Ccustomary"
+          - "-Mtime:unix:usec:utc"
+          - "-Mlevel"
+          - "-Mprotocol"
+          - "-Mstats:2:300"
+          - "-R40"
+          - "-R41"
+          - "-Finflux://influxdb2.internal:8086/api/v2/write?org=nemoworld&bucket=rtl433_sensors,token=$(INFLUXDB2_TOKEN)"
+          - "-Fmqtt://mqtt.internal,retain=0,events=rtl_433[/model][/id]"
+          - "-Flog"
+        securityContext:
+          privileged: true
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            memory: 256Mi
+        envFrom:
+          - secretRef:
+              name: rtl433-secret
+    # pod:
+    #   nodeSelector:
+    #     # For now pinning it directly to the machine.
+    #     # Next step is to use nfd flags and anti-affinity
+    #     # to not collide with rtlamr one.
+    #     kubernetes.io/hostname: "sparrow01"
+service:
+  main:
+    controller: main
+    enabled: false

@@ -5,20 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: reloader
-    repoURL: https://stakater.github.io/stakater-charts
-    targetRevision: 2.2.3
-    helm:
-      releaseName: reloader
-      values: |
-        reloader:
-          watchGlobally: true
-          enableHA: false
-          autoReloadAll: false
-          logFormat: json
-          ignoreSecrets: false
-          ignoreConfigMaps: false
+  sources:
+    - repoURL: https://forge.internal/nemo/home-ops.git
+      targetRevision: HEAD
+      ref: values
+    - chart: reloader
+      repoURL: https://stakater.github.io/stakater-charts
+      targetRevision: 2.2.3
+      helm:
+        releaseName: reloader
+        valueFiles:
+          - $values/base/infra/system/reloader/helm-values.yaml
   destination:
     namespace: system
     name: 'in-cluster'

@@ -5,29 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: ingress-nginx
-    repoURL: https://kubernetes.github.io/ingress-nginx
-    targetRevision: 4.13.3
-    helm:
-      releaseName: ingress-nginx-internal
-      values: |
-        controller:
-          kind: DaemonSet
-          nodeSelector:
-            svccontroller.k3s.cattle.io/enablelb: "true"
-            svccontroller.k3s.cattle.io/lbpool: internal
-          service:
-            externalTrafficPolicy: Local
-            labels:
-              svccontroller.k3s.cattle.io/lbpool: internal
-          metrics:
-            enabled: true
-            serviceMonitor:
-              enabled: true
-              namespace: default
-              namespaceSelector:
-                any: true
+  sources:
+    - repoURL: https://forge.internal/nemo/home-ops.git
+      targetRevision: HEAD
+      ref: values
+    - chart: ingress-nginx
+      repoURL: https://kubernetes.github.io/ingress-nginx
+      targetRevision: 4.13.3
+      helm:
+        releaseName: ingress-nginx-internal
+        valueFiles:
+          - $values/base/infra/network/ingress-nginx-internal/helm-values.yaml
   destination:
     namespace: network
     name: 'in-cluster'

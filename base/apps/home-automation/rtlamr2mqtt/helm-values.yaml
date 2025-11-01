@@ -1,0 +1,57 @@
+defaultPodOptions:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+            - key: "rtlsdr.feature.node.kubernetes.io/v3"
+              operator: "In"
+              values:
+                - "true"
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        - topologyKey: "kubernetes.io/hostname"
+          labelSelector:
+            matchExpressions:
+              - key: "app.kubernetes.io/name"
+                operator: "In"
+                values:
+                  - "rtl433"
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          # repository: docker.io/allangood/rtlamr2mqtt
+          # tag: 2025.6.6
+          repository: forge.internal/nemo/rtlamr2mqtt
+          tag: fix
+        securityContext:
+          privileged: true
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            memory: 256Mi
+    # pod:
+    #   nodeSelector:
+    #     rtlsdr.feature.node.kubernetes.io/v3: "true"
+    # pod:
+    #   nodeSelector:
+    #     # For now pinning it directly to the machine.
+    #     # Next step is to use nfd flags and anti-affinity
+    #     # to not collide with rtl433 one.
+    #     kubernetes.io/hostname: "sparrow03"
+service:
+  main:
+    controller: main
+    enabled: false
+persistence:
+  config-file:
+    type: secret
+    name: rtlamr2mqtt-config
+    globalMounts:
+      - path: /etc/rtlamr2mqtt.yaml
+        subPath: rtlamr2mqtt.yaml
+        readOnly: true

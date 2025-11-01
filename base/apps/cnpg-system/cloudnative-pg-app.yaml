@@ -5,24 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: cloudnative-pg
-    repoURL: https://cloudnative-pg.github.io/charts
-    targetRevision: 0.26.1
-    helm:
-      releaseName: cloudnative-pg
-      values: |
-        crds:
-          create: true
-        config:
-          data:
-            INHERITED_ANNOTATIONS: ""
-            INHERITED_LABELS: ""
-            MONITORING_QUERIES_CONFIGMAP: "cnpg-default-monitoring"
-            ENABLE_INSTANCE_MANAGER_INPLACE_UPDATES: "false"
-            CREATE_ANY_SERVICE: "false"
-            # Enable Barman Cloud Plugin
-            CNPG_INCLUDE_PLUGINS: "barman-cloud.cloudnative-pg.io"
+  sources:
+    - repoURL: https://forge.internal/nemo/home-ops.git
+      targetRevision: HEAD
+      ref: values
+    - chart: cloudnative-pg
+      repoURL: https://cloudnative-pg.github.io/charts
+      targetRevision: 0.26.1
+      helm:
+        releaseName: cloudnative-pg
+        valueFiles:
+          - $values/base/apps/cnpg-system/cloudnative-pg/helm-values.yaml
   destination:
     namespace: cnpg-system
     name: 'in-cluster'

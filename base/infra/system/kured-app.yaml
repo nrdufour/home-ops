@@ -5,18 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: kured
-    repoURL: https://kubereboot.github.io/charts
-    targetRevision: 5.10.0
-    helm:
-      releaseName: kured
-      values: |
-        configuration:
-          rebootSentinel: "/var/run/reboot-required"
-          period: "10m"
-          # Only for nix based node for now ...
-          rebootCommand: "/run/current-system/sw/bin/reboot"
+  sources:
+    - repoURL: https://forge.internal/nemo/home-ops.git
+      targetRevision: HEAD
+      ref: values
+    - chart: kured
+      repoURL: https://kubereboot.github.io/charts
+      targetRevision: 5.10.0
+      helm:
+        releaseName: kured
+        valueFiles:
+          - $values/base/infra/system/kured/helm-values.yaml
   destination:
     namespace: system
     name: 'in-cluster'

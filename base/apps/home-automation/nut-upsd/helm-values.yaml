@@ -1,0 +1,30 @@
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          repository: docker.io/instantlinux/nut-upsd
+          tag: 2.8.2-r0
+        securityContext:
+          privileged: true
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            memory: 256Mi
+        env:
+          DRIVER: "usbhid-ups"
+          DESCRIPTION: "Main Cluster UPS"
+        envFrom:
+          - secretRef:
+              name: nut-upsd-secret
+    pod:
+      nodeSelector:
+        apc.feature.node.kubernetes.io/1500s: "true"
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 3493

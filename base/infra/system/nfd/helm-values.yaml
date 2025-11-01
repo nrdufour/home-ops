@@ -1,0 +1,3 @@
+worker:
+  nodeSelector:
+    beta.kubernetes.io/arch: arm64

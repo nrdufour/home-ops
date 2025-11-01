@@ -5,16 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    path: .
-    repoURL: oci://ghcr.io/piraeusdatastore/helm-charts/snapshot-controller
-    targetRevision: 4.1.1
-    helm:
-      releaseName: snapshot-controller
-      values: |
-        controller:
-          serviceMonitor:
-            create: true
+  sources:
+    - repoURL: https://forge.internal/nemo/home-ops.git
+      targetRevision: HEAD
+      ref: values
+    - path: .
+      repoURL: oci://ghcr.io/piraeusdatastore/helm-charts/snapshot-controller
+      targetRevision: 4.1.1
+      helm:
+        releaseName: snapshot-controller
+        valueFiles:
+          - $values/base/infra/system/snapshot-controller/helm-values.yaml
   destination:
     namespace: system
     name: 'in-cluster'

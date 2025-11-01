@@ -5,24 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  source:
-    chart: cert-manager
-    repoURL: https://charts.jetstack.io
-    targetRevision: v1.19.1
-    helm:
-      releaseName: cert-manager
-      values: |
-        installCRDs: true
-        prometheus:
-          enabled: true
-          servicemonitor:
-            enabled: true
-        #
-        config:
-          featureGates:
-            # Disable the use of Exact PathType in Ingress resources, to work around a bug in ingress-nginx
-            # https://github.com/kubernetes/ingress-nginx/issues/11176
-            ACMEHTTP01IngressPathTypeExact: false
+  sources:
+    - repoURL: https://forge.internal/nemo/home-ops.git
+      targetRevision: HEAD
+      ref: values
+    - chart: cert-manager
+      repoURL: https://charts.jetstack.io
+      targetRevision: v1.19.1
+      helm:
+        releaseName: cert-manager
+        valueFiles:
+          - $values/base/infra/cert-manager/cert-manager/helm-values.yaml
   destination:
     namespace: cert-manager
     name: 'in-cluster'

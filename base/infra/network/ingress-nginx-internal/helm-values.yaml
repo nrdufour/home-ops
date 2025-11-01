@@ -1,0 +1,16 @@
+controller:
+  kind: DaemonSet
+  nodeSelector:
+    svccontroller.k3s.cattle.io/enablelb: "true"
+    svccontroller.k3s.cattle.io/lbpool: internal
+  service:
+    externalTrafficPolicy: Local
+    labels:
+      svccontroller.k3s.cattle.io/lbpool: internal
+  metrics:
+    enabled: true
+    serviceMonitor:
+      enabled: true
+      namespace: default
+      namespaceSelector:
+        any: true
