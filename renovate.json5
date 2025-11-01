@@ -12,9 +12,10 @@
     ':timezone(America/New_York)',
   ],
   argocd: {
+    // Only scan ArgoCD Application manifests (files ending in -app.yaml)
     managerFilePatterns: [
-      '/(^|/)base/.+\\.yaml$/',
-      '/(^|/)clusters/.+\\.yaml$/',
+      '/(^|/)base/.+-app\\.yaml$/',
+      '/(^|/)clusters/.+-app\\.yaml$/',
     ],
   },
   flux: {
