@@ -36,8 +36,10 @@ spec:
               containers:
                 main:
                   image:
-                    repository: docker.io/allangood/rtlamr2mqtt
-                    tag: 2025.6.6
+                    # repository: docker.io/allangood/rtlamr2mqtt
+                    # tag: 2025.6.6
+                    repository: forge.internal/nemo/rtlamr2mqtt
+                    tag: fix
                   securityContext:
                     privileged: true
                   resources:
