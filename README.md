@@ -1,5 +1,11 @@
 # home-ops
 
+> **⚠️ ARCHIVED REPOSITORY**
+>
+> This repository is now archived. All active development has moved to **avalanche**:
+> - GitHub: https://github.com/nrdufour/avalanche
+> - Internal Forgejo: https://forge.internal/nemo/avalanche
+
 > Because paying for cloud services is for people who hate tinkering at 2 AM
 
 This is my homelab Kubernetes cluster, where I host everything I probably shouldn't be self-hosting but absolutely will anyway. Because why trust a reliable cloud provider when you can trust your own questionable infrastructure decisions?
